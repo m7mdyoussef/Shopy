@@ -212,7 +212,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
-  - Alamofire (5.4.3)
+  - Alamofire (5.4.2)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -424,7 +424,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
-  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
   EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
@@ -454,6 +454,6 @@ SPEC CHECKSUMS:
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: 61c7045deb26d8d4eb5a08b7e1f4e9ab0b57f1cf
+PODFILE CHECKSUM: 37ef1709d76870fd030503f71fc1f8b8a4f83d62
 
 COCOAPODS: 1.10.1

@@ -15,25 +15,31 @@ class CategoryCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+             getData()
     }
+    
+    func getData(){
+        let api = RemoteDataSource()
+        api.customCollections{ [weak self](result) in
+            guard let self = self else {return}
+            switch result {
+            case .success(let response):
+                guard let customCollections = response?.customCollections else {return}
+                for collection in customCollections {
+                    print(collection)
+                }
+            case .failure(let error):
+                print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
+                print(error.code)
+            }
+        }}
+    
+    
+    
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -87,3 +93,4 @@ class CategoryCollectionViewController: UICollectionViewController {
     */
 
 }
+

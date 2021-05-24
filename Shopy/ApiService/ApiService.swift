@@ -9,10 +9,10 @@
 import Foundation
 import Alamofire
 
-class ApiServices{
+class ApiService{
     
     // singletone
-    static let instance = ApiServices()
+    static let instance = ApiService()
     
     
     func getResponses<T: Decodable>(url: String, id: String = "" ,completion: @escaping(T?, Error?) ->Void){

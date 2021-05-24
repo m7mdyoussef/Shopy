@@ -18,7 +18,7 @@ target 'Shopy' do
   pod 'PayPal-iOS-SDK'
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
-  pod 'Alamofire', '~> 5.2'
+pod 'Alamofire', '~> 5.2'
   # Pods for Shopy
 
   target 'ShopyTests' do

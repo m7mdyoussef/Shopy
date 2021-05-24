@@ -21,10 +21,16 @@
 		9E59BDDA2653173C003B113F /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E59BDD92653173C003B113F /* CategoryCollectionViewCell.swift */; };
 		9E59BDDC26531C67003B113F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E59BDDB26531C66003B113F /* GoogleService-Info.plist */; };
 		9E59BDDE265321E0003B113F /* FirebaseCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E59BDDD265321E0003B113F /* FirebaseCollectionReference.swift */; };
-		9EAE5747265710BD00BE44C2 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE5746265710BD00BE44C2 /* ApiServices.swift */; };
+		9EAE5747265710BD00BE44C2 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE5746265710BD00BE44C2 /* ApiService.swift */; };
 		9EAE574A2657114700BE44C2 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE57492657114700BE44C2 /* URLs.swift */; };
 		9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */; };
 		B4E41A22EA1A1774ECFA56DD /* Pods_Shopy_ShopyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264E4FC7B77E696D0A2906DC /* Pods_Shopy_ShopyUITests.framework */; };
+		D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A3B11265BF58F0096553A /* RemoteDataSource.swift */; };
+		D21A3B15265C22410096553A /* CustomCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A3B14265C22410096553A /* CustomCollection.swift */; };
+		D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A4726574E06005ABAF2 /* ErrorMessage.swift */; };
+		D2745A4F265751CC005ABAF2 /* ApiRequestWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A4E265751CC005ABAF2 /* ApiRequestWrapper.swift */; };
+		D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A5026575255005ABAF2 /* ApiServices.swift */; };
+		D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A5226575420005ABAF2 /* RemoteDataSourceWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,11 +75,17 @@
 		9E59BDD92653173C003B113F /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		9E59BDDB26531C66003B113F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E59BDDD265321E0003B113F /* FirebaseCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollectionReference.swift; sourceTree = "<group>"; };
-		9EAE5746265710BD00BE44C2 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
+		9EAE5746265710BD00BE44C2 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		9EAE57492657114700BE44C2 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowIndecator.swift; sourceTree = "<group>"; };
 		A3CABA92B1A37A7896D62DF3 /* Pods-Shopy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy.debug.xcconfig"; path = "Target Support Files/Pods-Shopy/Pods-Shopy.debug.xcconfig"; sourceTree = "<group>"; };
 		B42953B933926FFD4773FB7A /* Pods-Shopy-ShopyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy-ShopyUITests.release.xcconfig"; path = "Target Support Files/Pods-Shopy-ShopyUITests/Pods-Shopy-ShopyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D21A3B11265BF58F0096553A /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		D21A3B14265C22410096553A /* CustomCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollection.swift; sourceTree = "<group>"; };
+		D2745A4726574E06005ABAF2 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		D2745A4E265751CC005ABAF2 /* ApiRequestWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestWrapper.swift; sourceTree = "<group>"; };
+		D2745A5026575255005ABAF2 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
+		D2745A5226575420005ABAF2 /* RemoteDataSourceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceWrapper.swift; sourceTree = "<group>"; };
 		EC60D919DA0F486F083773E9 /* Pods-Shopy-ShopyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy-ShopyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Shopy-ShopyUITests/Pods-Shopy-ShopyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +155,8 @@
 		9E182D8326503E8100069E6E /* Shopy */ = {
 			isa = PBXGroup;
 			children = (
+				D21A3B13265C22210096553A /* model */,
+				D2745A49265750BB005ABAF2 /* data */,
 				9EAE57482657110500BE44C2 /* Utils */,
 				9EAE57452657108100BE44C2 /* ApiService */,
 				9E182D8426503E8100069E6E /* AppDelegate.swift */,
@@ -181,7 +195,7 @@
 		9EAE57452657108100BE44C2 /* ApiService */ = {
 			isa = PBXGroup;
 			children = (
-				9EAE5746265710BD00BE44C2 /* ApiServices.swift */,
+				9EAE5746265710BD00BE44C2 /* ApiService.swift */,
 			);
 			path = ApiService;
 			sourceTree = "<group>";
@@ -191,6 +205,7 @@
 			children = (
 				9EAE57492657114700BE44C2 /* URLs.swift */,
 				9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */,
+				D2745A4726574E06005ABAF2 /* ErrorMessage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -203,6 +218,49 @@
 				3B33C7D1FE68BC50FDE5402E /* Pods_ShopyTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D21A3B13265C22210096553A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				D21A3B14265C22410096553A /* CustomCollection.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		D2745A49265750BB005ABAF2 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				D2745A4A265750C4005ABAF2 /* remote */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		D2745A4A265750C4005ABAF2 /* remote */ = {
+			isa = PBXGroup;
+			children = (
+				D2745A4C265750EE005ABAF2 /* api-service */,
+				D2745A4B265750E2005ABAF2 /* data-source */,
+			);
+			path = remote;
+			sourceTree = "<group>";
+		};
+		D2745A4B265750E2005ABAF2 /* data-source */ = {
+			isa = PBXGroup;
+			children = (
+				D2745A5226575420005ABAF2 /* RemoteDataSourceWrapper.swift */,
+				D21A3B11265BF58F0096553A /* RemoteDataSource.swift */,
+			);
+			path = "data-source";
+			sourceTree = "<group>";
+		};
+		D2745A4C265750EE005ABAF2 /* api-service */ = {
+			isa = PBXGroup;
+			children = (
+				D2745A4E265751CC005ABAF2 /* ApiRequestWrapper.swift */,
+				D2745A5026575255005ABAF2 /* ApiServices.swift */,
+			);
+			path = "api-service";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,11 +504,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E59BDDE265321E0003B113F /* FirebaseCollectionReference.swift in Sources */,
-				9EAE5747265710BD00BE44C2 /* ApiServices.swift in Sources */,
+				9EAE5747265710BD00BE44C2 /* ApiService.swift in Sources */,
+				D21A3B15265C22410096553A /* CustomCollection.swift in Sources */,
+				D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */,
+				D2745A4F265751CC005ABAF2 /* ApiRequestWrapper.swift in Sources */,
 				9E182D8F26503E8100069E6E /* Shopy.xcdatamodeld in Sources */,
 				9EAE574A2657114700BE44C2 /* URLs.swift in Sources */,
+				D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */,
 				9E59BDDA2653173C003B113F /* CategoryCollectionViewCell.swift in Sources */,
+				D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */,
 				9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */,
+				D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */,
 				9E59BDD82653168C003B113F /* CategoryCollectionViewController.swift in Sources */,
 				9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */,
 				9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */,
