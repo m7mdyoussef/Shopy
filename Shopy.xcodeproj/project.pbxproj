@@ -240,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				D2745A4C265750EE005ABAF2 /* api-service */,
-				D2745A4B265750E2005ABAF2 /* data-source */,
 			);
 			path = remote;
 			sourceTree = "<group>";
@@ -259,6 +258,7 @@
 			children = (
 				D2745A4E265751CC005ABAF2 /* ApiRequestWrapper.swift */,
 				D2745A5026575255005ABAF2 /* ApiServices.swift */,
+				D2745A4B265750E2005ABAF2 /* data-source */,
 			);
 			path = "api-service";
 			sourceTree = "<group>";

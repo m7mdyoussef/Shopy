@@ -11,6 +11,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class CategoryCollectionViewController: UICollectionViewController {
+    var x = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,15 @@ class CategoryCollectionViewController: UICollectionViewController {
     
     func getData(){
         let api = RemoteDataSource()
-        api.customCollections{ [weak self](result) in
-            guard let self = self else {return}
+        api.customCollections{[weak self](result) in
+           guard let self = self else {return}
+            
             switch result {
             case .success(let response):
                 guard let customCollections = response?.customCollections else {return}
                 for collection in customCollections {
                     print(collection)
+                    
                 }
             case .failure(let error):
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")

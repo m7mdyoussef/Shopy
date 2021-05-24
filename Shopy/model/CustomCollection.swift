@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct CustomCollectionResponse<T : Codable>: Codable {
     var customCollections:[T]?
     enum CodingKeys : String , CodingKey{

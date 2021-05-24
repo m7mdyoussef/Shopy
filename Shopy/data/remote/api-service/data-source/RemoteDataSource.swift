@@ -9,13 +9,19 @@
 import Foundation
 
 protocol RemoteDataSourceProtocol {
+    
     func customCollections(completion: @escaping (Result<CustomCollectionResponse<CustomCollection>?, NSError>) -> Void)
 }
 
 class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceProtocol {
+    
     func customCollections(completion: @escaping (Result<CustomCollectionResponse<CustomCollection>?, NSError>) -> Void) {
+        
         self.fetchData(target: .getAllCustomCollections, responseClass: CustomCollectionResponse<CustomCollection>.self) { (result) in
             completion(result)
         }
      }
+    
+    
+    
 }

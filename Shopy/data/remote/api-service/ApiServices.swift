@@ -9,19 +9,19 @@
 import Foundation
 import Alamofire
 
-class ApiServices<T :ApiRequestWrapper>{
+class ApiServices<T : ApiRequestWrapper>{
     
-    func fetchData<M :Codable>(target:T,responseClass : M.Type, completion:@escaping (Result<M?, NSError>) -> Void){
+    func fetchData<M :Codable>(target: T,responseClass : M.Type, completion:@escaping (Result<M?, NSError>) -> Void){
         
         let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
          let params = buildParams(task: target.task)
-    
+        let method = Alamofire.HTTPMethod(rawValue: target.httpMethod.rawValue)
 
-        AF.request(target.baseURL+target.endpoint, method: .get, parameters: params.0, encoding:params.1, headers: headers).responseJSON { (response) in
+        AF.request(target.baseURL+target.endpoint, method: method, parameters: params.0, encoding:params.1, headers: headers).responseJSON { (response) in
         guard let statusCode = response.response?.statusCode else {
          // ADD Custom Error
                                let error = NSError(domain: target.baseURL, code: 200, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
-                               completion(.failure(error))
+                               completion(Result.failure(error))
                                return
         }
             
@@ -49,7 +49,7 @@ class ApiServices<T :ApiRequestWrapper>{
                                    return
             }
             //   print("responseObj---->\(responseObj)")
-            completion(.success(responseObj))
+            completion(Result.success(responseObj))
         } else {
             // ADD custom error base on status code 404 / 401 /
             // Error Parsing for the error message from the BE
