@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oY1-e7-rB0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aGa-bo-GIK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,8 +17,8 @@
                     <view key="view" contentMode="scaleToFill" id="Ppq-1w-gZp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ziB-kN-zvP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="VeF-P8-bY1"/>
                 </viewController>
@@ -31,7 +33,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1HD-vR-9iS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2ix-QZ-NXZ">
                             <size key="itemSize" width="120" height="120"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -85,6 +87,73 @@
             </objects>
             <point key="canvasLocation" x="2650.7246376811595" y="-323.4375"/>
         </scene>
+        <!--Entry PointVC-->
+        <scene sceneID="zxU-RP-unS">
+            <objects>
+                <viewController id="aGa-bo-GIK" customClass="EntryPointVC" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FWJ-zb-mrU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTC-IV-iBv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="298.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shopy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-41-4Lu">
+                                        <rect key="frame" x="120.5" y="119" width="173" height="61"/>
+                                        <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="50"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yaI-41-4Lu" firstAttribute="centerX" secondItem="qTC-IV-iBv" secondAttribute="centerX" id="JUM-a9-blL"/>
+                                    <constraint firstItem="yaI-41-4Lu" firstAttribute="centerY" secondItem="qTC-IV-iBv" secondAttribute="centerY" id="fSF-gP-kZp"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nN2-rM-gqo">
+                                <rect key="frame" x="0.0" y="298.5" width="414" height="563.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iuU-Hd-Vls">
+                                <rect key="frame" x="136.5" y="283" width="141" height="32"/>
+                                <color key="backgroundColor" red="0.69803921568627447" green="0.69019607843137254" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="Register"/>
+                                    <segment title="Login"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="selectedSegmentTintColor" red="1" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="uiSegmentAction:" destination="aGa-bo-GIK" eventType="valueChanged" id="fmC-Kw-KhJ"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="U9G-UK-SXv"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qTC-IV-iBv" firstAttribute="leading" secondItem="U9G-UK-SXv" secondAttribute="leading" id="1LV-NC-q4I"/>
+                            <constraint firstItem="iuU-Hd-Vls" firstAttribute="centerX" secondItem="FWJ-zb-mrU" secondAttribute="centerX" id="5Zl-PG-wFX"/>
+                            <constraint firstItem="iuU-Hd-Vls" firstAttribute="top" secondItem="qTC-IV-iBv" secondAttribute="bottom" constant="-15.5" id="8y6-rU-GxM"/>
+                            <constraint firstItem="nN2-rM-gqo" firstAttribute="leading" secondItem="U9G-UK-SXv" secondAttribute="leading" id="Cui-3q-g2e"/>
+                            <constraint firstItem="nN2-rM-gqo" firstAttribute="bottom" secondItem="U9G-UK-SXv" secondAttribute="bottom" id="DRl-Rp-vDA"/>
+                            <constraint firstItem="qTC-IV-iBv" firstAttribute="trailing" secondItem="U9G-UK-SXv" secondAttribute="trailing" id="RTt-rT-Wwd"/>
+                            <constraint firstItem="qTC-IV-iBv" firstAttribute="top" secondItem="FWJ-zb-mrU" secondAttribute="top" id="UWN-E1-igf"/>
+                            <constraint firstItem="nN2-rM-gqo" firstAttribute="bottom" secondItem="U9G-UK-SXv" secondAttribute="bottom" id="hdu-O7-Re6"/>
+                            <constraint firstItem="qTC-IV-iBv" firstAttribute="width" secondItem="FWJ-zb-mrU" secondAttribute="width" id="io4-qX-Zhk"/>
+                            <constraint firstItem="U9G-UK-SXv" firstAttribute="trailing" secondItem="nN2-rM-gqo" secondAttribute="trailing" id="krg-Iq-rOY"/>
+                            <constraint firstItem="nN2-rM-gqo" firstAttribute="top" secondItem="qTC-IV-iBv" secondAttribute="bottom" id="q0I-ae-Pr5"/>
+                            <constraint firstItem="qTC-IV-iBv" firstAttribute="height" secondItem="FWJ-zb-mrU" secondAttribute="height" multiplier="1:3" id="qW4-8F-nN6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="uiBottomView" destination="nN2-rM-gqo" id="93s-f4-z0i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFe-jl-lLV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1541" y="62"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="x7B-xU-Zxh">
             <objects>
@@ -123,4 +192,9 @@
             <point key="canvasLocation" x="1740.5797101449277" y="-323.4375"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
