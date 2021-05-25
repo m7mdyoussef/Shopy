@@ -212,15 +212,13 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
-  - Alamofire (5.4.2)
+  - Alamofire (5.4.3)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - CardIO (5.4.1)
-  - EmptyDataSet-Swift (5.0.0)
   - Firebase/Auth (7.11.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.11.0)
@@ -296,7 +294,6 @@ PODS:
   - FirebaseStorage (7.11.0):
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
-  - Gallery (2.4.0)
   - GoogleAppMeasurement/AdIdSupport (7.11.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
@@ -351,8 +348,6 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.5.0)
-  - InstantSearchClient (7.0.5)
-  - JGProgressHUD (2.2)
   - leveldb-library (1.22.1)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
@@ -360,12 +355,6 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - NVActivityIndicatorView/AppExtension (4.8.0)
-  - PayPal-iOS-SDK (2.18.1):
-    - PayPal-iOS-SDK/CardIO (= 2.18.1)
-    - PayPal-iOS-SDK/Core (= 2.18.1)
-  - PayPal-iOS-SDK/CardIO (2.18.1):
-    - CardIO (~> 5.4.1)
-  - PayPal-iOS-SDK/Core (2.18.1)
   - PromisesObjC (1.2.12)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
@@ -376,16 +365,11 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
-  - EmptyDataSet-Swift
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
-  - Gallery
-  - InstantSearchClient
-  - JGProgressHUD
   - NVActivityIndicatorView/AppExtension
-  - PayPal-iOS-SDK
   - RxCocoa (= 6.1.0)
   - RxSwift (= 6.1.0)
 
@@ -394,8 +378,6 @@ SPEC REPOS:
     - abseil
     - Alamofire
     - BoringSSL-GRPC
-    - CardIO
-    - EmptyDataSet-Swift
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -404,19 +386,15 @@ SPEC REPOS:
     - FirebaseFirestore
     - FirebaseInstallations
     - FirebaseStorage
-    - Gallery
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
-    - InstantSearchClient
-    - JGProgressHUD
     - leveldb-library
     - nanopb
     - NVActivityIndicatorView
-    - PayPal-iOS-SDK
     - PromisesObjC
     - RxCocoa
     - RxRelay
@@ -424,10 +402,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
-  Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  CardIO: 56983b39b62f495fc6dae9ad7cf875143df06443
-  EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
   Firebase: c121feb35e4126c0b355e3313fa9b487d47319fd
   FirebaseAnalytics: cd3bd84d722a24a8923918af8af8e5236f615d77
   FirebaseAuth: 5fe4585c2ed847319f0ea68bd1d82c77e49ff9a0
@@ -436,24 +412,20 @@ SPEC CHECKSUMS:
   FirebaseFirestore: f495bb336b23eca23ea5d3605dce2a4cc214fde9
   FirebaseInstallations: a58d4f72ec5861840b84df489f2668d970df558a
   FirebaseStorage: 8542711850ca181a3931c0ed483006a7b46039e7
-  Gallery: b7fc1aeb68a39ad6d2c423574750196bf9b25e5c
   GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: 284cddc7fffc14ae1907efb6f78ab95c1fccaedc
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
-  InstantSearchClient: cd4b41f46bed82c1b12c759c76b733f7ed6dd8c2
-  JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
-  PayPal-iOS-SDK: 70d56697aef502c130b9840e31dea5c6b8a350e1
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: 37ef1709d76870fd030503f71fc1f8b8a4f83d62
+PODFILE CHECKSUM: 6d192f9b10a20e4bb2b43596e0116d201230282f
 
 COCOAPODS: 1.10.1

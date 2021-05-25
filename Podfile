@@ -10,15 +10,16 @@ target 'Shopy' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  pod 'Gallery'
-  pod 'InstantSearchClient'
-  pod 'EmptyDataSet-Swift'
+  pod 'Alamofire', '~> 5.2'
   pod 'NVActivityIndicatorView/AppExtension'
-  pod 'JGProgressHUD'
-  pod 'PayPal-iOS-SDK'
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
-pod 'Alamofire', '~> 5.2'
+#  pod 'Gallery'
+#  pod 'InstantSearchClient'
+#  pod 'EmptyDataSet-Swift'
+#  pod 'JGProgressHUD'
+#  pod 'PayPal-iOS-SDK'
+
   # Pods for Shopy
 
   target 'ShopyTests' do
