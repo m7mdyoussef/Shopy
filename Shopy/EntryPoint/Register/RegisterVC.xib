@@ -21,7 +21,59 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awF-kS-kP4">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9B7-aH-cHA">
+                            <rect key="frame" x="50" y="50" width="314" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LOk-YQ-MN6">
+                            <rect key="frame" x="50" y="104" width="314" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SAQ-nM-nwu">
+                            <rect key="frame" x="50" y="158" width="314" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9a-2X-sys">
+                            <rect key="frame" x="50" y="212" width="314" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Confirmation" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bL8-79-8TA">
+                            <rect key="frame" x="50" y="266" width="314" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NBb-gA-Jmg">
+                            <rect key="frame" x="50" y="320" width="314" height="34"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="bL8-79-8TA" firstAttribute="trailing" secondItem="S9a-2X-sys" secondAttribute="trailing" id="2rd-WE-e9B"/>
+                        <constraint firstAttribute="trailing" secondItem="9B7-aH-cHA" secondAttribute="trailing" constant="50" id="3Bg-Mu-P2l"/>
+                        <constraint firstItem="S9a-2X-sys" firstAttribute="top" secondItem="SAQ-nM-nwu" secondAttribute="bottom" constant="20" id="4rU-vb-AE4"/>
+                        <constraint firstItem="NBb-gA-Jmg" firstAttribute="trailing" secondItem="bL8-79-8TA" secondAttribute="trailing" id="76e-Ip-uxC"/>
+                        <constraint firstItem="9B7-aH-cHA" firstAttribute="top" secondItem="awF-kS-kP4" secondAttribute="top" constant="50" id="9bh-AD-pS5"/>
+                        <constraint firstItem="LOk-YQ-MN6" firstAttribute="leading" secondItem="9B7-aH-cHA" secondAttribute="leading" id="ER4-LX-IjK"/>
+                        <constraint firstItem="bL8-79-8TA" firstAttribute="top" secondItem="S9a-2X-sys" secondAttribute="bottom" constant="20" id="EV3-pW-YGK"/>
+                        <constraint firstItem="SAQ-nM-nwu" firstAttribute="trailing" secondItem="LOk-YQ-MN6" secondAttribute="trailing" id="Fb5-Ot-1wW"/>
+                        <constraint firstItem="S9a-2X-sys" firstAttribute="leading" secondItem="SAQ-nM-nwu" secondAttribute="leading" id="JDQ-Xw-ado"/>
+                        <constraint firstItem="NBb-gA-Jmg" firstAttribute="top" secondItem="bL8-79-8TA" secondAttribute="bottom" constant="20" id="QmZ-AI-hUH"/>
+                        <constraint firstItem="SAQ-nM-nwu" firstAttribute="top" secondItem="LOk-YQ-MN6" secondAttribute="bottom" constant="20" id="R0A-9W-gPU"/>
+                        <constraint firstItem="SAQ-nM-nwu" firstAttribute="leading" secondItem="LOk-YQ-MN6" secondAttribute="leading" id="ZVG-Ah-CSV"/>
+                        <constraint firstItem="9B7-aH-cHA" firstAttribute="leading" secondItem="awF-kS-kP4" secondAttribute="leading" constant="50" id="eNO-Ib-hHv"/>
+                        <constraint firstItem="S9a-2X-sys" firstAttribute="trailing" secondItem="SAQ-nM-nwu" secondAttribute="trailing" id="m9s-wV-mgd"/>
+                        <constraint firstItem="NBb-gA-Jmg" firstAttribute="leading" secondItem="bL8-79-8TA" secondAttribute="leading" id="oYa-yD-2P0"/>
+                        <constraint firstItem="LOk-YQ-MN6" firstAttribute="top" secondItem="9B7-aH-cHA" secondAttribute="bottom" constant="20" id="qnW-Uc-qFZ"/>
+                        <constraint firstItem="bL8-79-8TA" firstAttribute="leading" secondItem="S9a-2X-sys" secondAttribute="leading" id="tEw-60-pTz"/>
+                        <constraint firstItem="LOk-YQ-MN6" firstAttribute="trailing" secondItem="9B7-aH-cHA" secondAttribute="trailing" id="yRx-tg-e7E"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
