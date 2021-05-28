@@ -10,26 +10,15 @@ import UIKit
 
 class EntryPointVC: UIViewController {
 
-    @IBOutlet private weak var uiBottomView: UIView!
-    
-    var views:[UIView]!
+    @IBOutlet weak var uiSegment: UISegmentedControl!
+    var notificationName:Notification.Name!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        views = [UIView]()
-        views.append(RegisterVC().view)
-        views.append(LoginVC().view)
-        
-        for v in views {
-            uiBottomView.addSubview(v)
-        }
-        uiBottomView.bringSubviewToFront(views[0])
-                
+        notificationName = Notification.Name("EntryScreen")
     }
     
     @IBAction func uiSegmentAction(_ sender: UISegmentedControl) {
-        uiBottomView.bringSubviewToFront(views[sender.selectedSegmentIndex])
+        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["key":uiSegment.selectedSegmentIndex])
     }
-    
-
 }

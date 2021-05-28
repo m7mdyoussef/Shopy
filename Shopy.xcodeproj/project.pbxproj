@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		074782A1C8E6277CE1CBE546 /* Pods_ShopyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B33C7D1FE68BC50FDE5402E /* Pods_ShopyTests.framework */; };
 		25439C4C0A5EE7980C196ABD /* Pods_Shopy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DE585536EF363BD795C169 /* Pods_Shopy.framework */; };
+		273FF7D42660932400A37003 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7D32660932400A37003 /* Register.swift */; };
+		273FF7D926609D4300A37003 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7D826609D4300A37003 /* Login.swift */; };
+		273FF7DE2660A30300A37003 /* EntryNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7DD2660A30300A37003 /* EntryNavigator.swift */; };
+		27465D9E26615720000FF0D0 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D9D26615720000FF0D0 /* DismissKeyboard.swift */; };
 		277F3A99265D51A000C822D9 /* IRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F3A98265D51A000C822D9 /* IRounded.swift */; };
 		27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BBDF25265D36DC009A887D /* EntryPointVC.swift */; };
-		27BBDF37265D462A009A887D /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BBDF35265D462A009A887D /* RegisterVC.swift */; };
-		27BBDF38265D462A009A887D /* RegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BBDF36265D462A009A887D /* RegisterVC.xib */; };
-		27BBDF41265D4680009A887D /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BBDF3F265D4680009A887D /* LoginVC.swift */; };
-		27BBDF42265D4680009A887D /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27BBDF40265D4680009A887D /* LoginVC.xib */; };
 		9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D8426503E8100069E6E /* AppDelegate.swift */; };
 		9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D8626503E8100069E6E /* SceneDelegate.swift */; };
 		9E182D8C26503E8100069E6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E182D8A26503E8100069E6E /* Main.storyboard */; };
@@ -59,12 +59,12 @@
 /* Begin PBXFileReference section */
 		0B13707064EE8F01FB88405D /* Pods-ShopyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopyTests.debug.xcconfig"; path = "Target Support Files/Pods-ShopyTests/Pods-ShopyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		264E4FC7B77E696D0A2906DC /* Pods_Shopy_ShopyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopy_ShopyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		273FF7D32660932400A37003 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		273FF7D826609D4300A37003 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		273FF7DD2660A30300A37003 /* EntryNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryNavigator.swift; sourceTree = "<group>"; };
+		27465D9D26615720000FF0D0 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
 		277F3A98265D51A000C822D9 /* IRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRounded.swift; sourceTree = "<group>"; };
 		27BBDF25265D36DC009A887D /* EntryPointVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPointVC.swift; sourceTree = "<group>"; };
-		27BBDF35265D462A009A887D /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
-		27BBDF36265D462A009A887D /* RegisterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterVC.xib; sourceTree = "<group>"; };
-		27BBDF3F265D4680009A887D /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		27BBDF40265D4680009A887D /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
 		30DE585536EF363BD795C169 /* Pods_Shopy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B33C7D1FE68BC50FDE5402E /* Pods_ShopyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4920382F047EDE4839325372 /* Pods-Shopy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy.release.xcconfig"; path = "Target Support Files/Pods-Shopy/Pods-Shopy.release.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +144,7 @@
 				27BBDF3E265D4672009A887D /* Login */,
 				27BBDF3D265D465D009A887D /* Register */,
 				27BBDF25265D36DC009A887D /* EntryPointVC.swift */,
+				273FF7DD2660A30300A37003 /* EntryNavigator.swift */,
 			);
 			path = EntryPoint;
 			sourceTree = "<group>";
@@ -151,8 +152,7 @@
 		27BBDF3D265D465D009A887D /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				27BBDF35265D462A009A887D /* RegisterVC.swift */,
-				27BBDF36265D462A009A887D /* RegisterVC.xib */,
+				273FF7D32660932400A37003 /* Register.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -160,8 +160,7 @@
 		27BBDF3E265D4672009A887D /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				27BBDF3F265D4680009A887D /* LoginVC.swift */,
-				27BBDF40265D4680009A887D /* LoginVC.xib */,
+				273FF7D826609D4300A37003 /* Login.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -256,6 +255,7 @@
 				9EAE57492657114700BE44C2 /* URLs.swift */,
 				9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */,
 				D2745A4726574E06005ABAF2 /* ErrorMessage.swift */,
+				27465D9D26615720000FF0D0 /* DismissKeyboard.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -422,12 +422,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27BBDF42265D4680009A887D /* LoginVC.xib in Resources */,
 				9E182D9426503E8300069E6E /* LaunchScreen.storyboard in Resources */,
 				9E59BDDC26531C67003B113F /* GoogleService-Info.plist in Resources */,
 				9E182D9126503E8300069E6E /* Assets.xcassets in Resources */,
 				9E182D8C26503E8100069E6E /* Main.storyboard in Resources */,
-				27BBDF38265D462A009A887D /* RegisterVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,22 +553,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273FF7D926609D4300A37003 /* Login.swift in Sources */,
 				9E59BDDE265321E0003B113F /* FirebaseCollectionReference.swift in Sources */,
 				9EAE5747265710BD00BE44C2 /* ApiService.swift in Sources */,
 				D21A3B15265C22410096553A /* CustomCollection.swift in Sources */,
 				277F3A99265D51A000C822D9 /* IRounded.swift in Sources */,
 				D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */,
-				27BBDF37265D462A009A887D /* RegisterVC.swift in Sources */,
 				D2745A4F265751CC005ABAF2 /* ApiRequestWrapper.swift in Sources */,
 				9E182D8F26503E8100069E6E /* Shopy.xcdatamodeld in Sources */,
 				9EAE574A2657114700BE44C2 /* URLs.swift in Sources */,
 				D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */,
 				9E59BDDA2653173C003B113F /* CategoryCollectionViewCell.swift in Sources */,
+				27465D9E26615720000FF0D0 /* DismissKeyboard.swift in Sources */,
 				27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */,
 				D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */,
+				273FF7DE2660A30300A37003 /* EntryNavigator.swift in Sources */,
 				9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */,
+				273FF7D42660932400A37003 /* Register.swift in Sources */,
 				D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */,
-				27BBDF41265D4680009A887D /* LoginVC.swift in Sources */,
 				9E59BDD82653168C003B113F /* CategoryCollectionViewController.swift in Sources */,
 				9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */,
 				9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */,

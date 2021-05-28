@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-protocol IRounded {
+public protocol IRounded {
     var BOTTOM_VIEW_CORNER_RADIUS:Double {get}
     func roundView(uiView:UIView)
 }

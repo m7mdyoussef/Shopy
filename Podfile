@@ -17,7 +17,7 @@ target 'Shopy' do
 #  pod 'Gallery'
 #  pod 'InstantSearchClient'
 #  pod 'EmptyDataSet-Swift'
-#  pod 'JGProgressHUD'
+  pod 'JGProgressHUD'
 #  pod 'PayPal-iOS-SDK'
 
   # Pods for Shopy
