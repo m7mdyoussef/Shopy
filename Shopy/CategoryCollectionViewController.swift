@@ -17,26 +17,10 @@ class CategoryCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-             getData()
+            
     }
     
-    func getData(){
-        let api = RemoteDataSource()
-        api.customCollections{[weak self](result) in
-           guard let self = self else {return}
-            
-            switch result {
-            case .success(let response):
-                guard let customCollections = response?.customCollections else {return}
-                for collection in customCollections {
-                    print(collection)
-                    
-                }
-            case .failure(let error):
-                print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
-                print(error.code)
-            }
-        }}
+   
     
     
     
