@@ -13,6 +13,9 @@
 		273FF7D926609D4300A37003 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7D826609D4300A37003 /* Login.swift */; };
 		273FF7DE2660A30300A37003 /* EntryNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7DD2660A30300A37003 /* EntryNavigator.swift */; };
 		27465D9E26615720000FF0D0 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D9D26615720000FF0D0 /* DismissKeyboard.swift */; };
+		2748ECC0266440F400A9DF42 /* Register_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748ECBF266440F400A9DF42 /* Register_ViewModel.swift */; };
+		2748ECCC266465E800A9DF42 /* EmailValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */; };
+		2759BB6926646F4100AF288D /* AlertExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2759BB6826646F4100AF288D /* AlertExtention.swift */; };
 		277F3A99265D51A000C822D9 /* IRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F3A98265D51A000C822D9 /* IRounded.swift */; };
 		27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BBDF25265D36DC009A887D /* EntryPointVC.swift */; };
 		9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D8426503E8100069E6E /* AppDelegate.swift */; };
@@ -63,6 +66,9 @@
 		273FF7D826609D4300A37003 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		273FF7DD2660A30300A37003 /* EntryNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryNavigator.swift; sourceTree = "<group>"; };
 		27465D9D26615720000FF0D0 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
+		2748ECBF266440F400A9DF42 /* Register_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register_ViewModel.swift; sourceTree = "<group>"; };
+		2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationExtension.swift; sourceTree = "<group>"; };
+		2759BB6826646F4100AF288D /* AlertExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtention.swift; sourceTree = "<group>"; };
 		277F3A98265D51A000C822D9 /* IRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRounded.swift; sourceTree = "<group>"; };
 		27BBDF25265D36DC009A887D /* EntryPointVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPointVC.swift; sourceTree = "<group>"; };
 		30DE585536EF363BD795C169 /* Pods_Shopy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +135,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27465DA226615814000FF0D0 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				27BBDF3C265D4643009A887D /* EntryPoint */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		27465DA32661581E000FF0D0 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				27465DA4266158B4000FF0D0 /* EntryPoint */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
+		27465DA4266158B4000FF0D0 /* EntryPoint */ = {
+			isa = PBXGroup;
+			children = (
+				2748ECBF266440F400A9DF42 /* Register_ViewModel.swift */,
+			);
+			path = EntryPoint;
+			sourceTree = "<group>";
+		};
 		277F3A97265D517F00C822D9 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +170,6 @@
 		27BBDF3C265D4643009A887D /* EntryPoint */ = {
 			isa = PBXGroup;
 			children = (
-				277F3A97265D517F00C822D9 /* Protocol */,
 				27BBDF3E265D4672009A887D /* Login */,
 				27BBDF3D265D465D009A887D /* Register */,
 				27BBDF25265D36DC009A887D /* EntryPointVC.swift */,
@@ -203,10 +232,13 @@
 		9E182D8326503E8100069E6E /* Shopy */ = {
 			isa = PBXGroup;
 			children = (
-				D21A3B13265C22210096553A /* model */,
-				D2745A49265750BB005ABAF2 /* data */,
+				277F3A97265D517F00C822D9 /* Protocol */,
 				9EAE57482657110500BE44C2 /* Utils */,
+				D2745A49265750BB005ABAF2 /* data */,
 				9EAE57452657108100BE44C2 /* ApiService */,
+				D21A3B13265C22210096553A /* model */,
+				27465DA226615814000FF0D0 /* view */,
+				27465DA32661581E000FF0D0 /* viewModel */,
 				9E182D8426503E8100069E6E /* AppDelegate.swift */,
 				9E59BDDD265321E0003B113F /* FirebaseCollectionReference.swift */,
 				9E182D8626503E8100069E6E /* SceneDelegate.swift */,
@@ -218,7 +250,6 @@
 				9E182D9526503E8300069E6E /* Info.plist */,
 				9E59BDDB26531C66003B113F /* GoogleService-Info.plist */,
 				9E182D8D26503E8100069E6E /* Shopy.xcdatamodeld */,
-				27BBDF3C265D4643009A887D /* EntryPoint */,
 			);
 			path = Shopy;
 			sourceTree = "<group>";
@@ -256,6 +287,8 @@
 				9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */,
 				D2745A4726574E06005ABAF2 /* ErrorMessage.swift */,
 				27465D9D26615720000FF0D0 /* DismissKeyboard.swift */,
+				2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */,
+				2759BB6826646F4100AF288D /* AlertExtention.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -564,13 +597,16 @@
 				9EAE574A2657114700BE44C2 /* URLs.swift in Sources */,
 				D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */,
 				9E59BDDA2653173C003B113F /* CategoryCollectionViewCell.swift in Sources */,
+				2748ECC0266440F400A9DF42 /* Register_ViewModel.swift in Sources */,
 				27465D9E26615720000FF0D0 /* DismissKeyboard.swift in Sources */,
+				2759BB6926646F4100AF288D /* AlertExtention.swift in Sources */,
 				27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */,
 				D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */,
 				273FF7DE2660A30300A37003 /* EntryNavigator.swift in Sources */,
 				9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */,
 				273FF7D42660932400A37003 /* Register.swift in Sources */,
 				D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */,
+				2748ECCC266465E800A9DF42 /* EmailValidationExtension.swift in Sources */,
 				9E59BDD82653168C003B113F /* CategoryCollectionViewController.swift in Sources */,
 				9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */,
 				9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */,

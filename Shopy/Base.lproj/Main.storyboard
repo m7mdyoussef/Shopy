@@ -247,16 +247,25 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email is not Valid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2t-qF-VWK">
+                                <rect key="frame" x="20" y="236" width="374" height="13"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rae-Qf-4rL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QRN-Ph-zbX" firstAttribute="leading" secondItem="gmP-mA-Ukr" secondAttribute="leading" id="0ZC-tD-8ft"/>
+                            <constraint firstItem="f2t-qF-VWK" firstAttribute="trailing" secondItem="3UE-o7-19c" secondAttribute="trailing" id="2VA-wK-kzJ"/>
                             <constraint firstItem="W45-DF-nw7" firstAttribute="width" secondItem="QRN-Ph-zbX" secondAttribute="width" multiplier="0.382166" id="37s-ms-GFb"/>
                             <constraint firstItem="gmP-mA-Ukr" firstAttribute="top" secondItem="EUg-Hn-ROn" secondAttribute="bottom" constant="20" id="APT-vU-fUH"/>
+                            <constraint firstItem="EUg-Hn-ROn" firstAttribute="top" secondItem="f2t-qF-VWK" secondAttribute="bottom" constant="7" id="C0c-bp-9Ks"/>
                             <constraint firstItem="7Ng-hw-gSE" firstAttribute="leading" secondItem="HcP-rB-El8" secondAttribute="leading" id="DbJ-h7-ny1"/>
                             <constraint firstItem="HcP-rB-El8" firstAttribute="leading" secondItem="Zqo-Lx-0P0" secondAttribute="leadingMargin" id="FL0-sF-yu6"/>
                             <constraint firstItem="W45-DF-nw7" firstAttribute="height" secondItem="QRN-Ph-zbX" secondAttribute="height" multiplier="1.17647" id="Hxh-gc-dcE"/>
+                            <constraint firstItem="f2t-qF-VWK" firstAttribute="leading" secondItem="3UE-o7-19c" secondAttribute="leading" id="K88-wy-mYK"/>
                             <constraint firstItem="W45-DF-nw7" firstAttribute="centerX" secondItem="QRN-Ph-zbX" secondAttribute="centerX" id="KdS-rP-vbQ"/>
                             <constraint firstItem="3UE-o7-19c" firstAttribute="trailing" secondItem="7Ng-hw-gSE" secondAttribute="trailing" id="OLk-cn-PNt"/>
                             <constraint firstItem="QRN-Ph-zbX" firstAttribute="trailing" secondItem="gmP-mA-Ukr" secondAttribute="trailing" id="Ouf-ia-F0Y"/>
@@ -269,11 +278,11 @@
                             <constraint firstItem="7Ng-hw-gSE" firstAttribute="top" secondItem="HcP-rB-El8" secondAttribute="bottom" constant="20" id="iFJ-DO-1fM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HcP-rB-El8" secondAttribute="trailing" id="jaq-Bh-ZgT"/>
                             <constraint firstItem="gmP-mA-Ukr" firstAttribute="leading" secondItem="EUg-Hn-ROn" secondAttribute="leading" id="k0C-PT-uVA"/>
-                            <constraint firstItem="EUg-Hn-ROn" firstAttribute="top" secondItem="3UE-o7-19c" secondAttribute="bottom" constant="20" id="qBx-3q-6Zo"/>
                             <constraint firstItem="gmP-mA-Ukr" firstAttribute="trailing" secondItem="EUg-Hn-ROn" secondAttribute="trailing" id="qrX-SA-In6"/>
                             <constraint firstItem="Caq-gj-Ppi" firstAttribute="top" secondItem="gmP-mA-Ukr" secondAttribute="bottom" id="sXW-I4-96L"/>
                             <constraint firstItem="3UE-o7-19c" firstAttribute="leading" secondItem="7Ng-hw-gSE" secondAttribute="leading" id="sx4-6J-Tv3"/>
                             <constraint firstItem="Caq-gj-Ppi" firstAttribute="trailing" secondItem="gmP-mA-Ukr" secondAttribute="trailing" id="tTY-US-Jy0"/>
+                            <constraint firstItem="f2t-qF-VWK" firstAttribute="top" secondItem="3UE-o7-19c" secondAttribute="bottom" id="tja-Cw-eAD"/>
                             <constraint firstItem="EUg-Hn-ROn" firstAttribute="trailing" secondItem="3UE-o7-19c" secondAttribute="trailing" id="tuc-AW-kSr"/>
                             <constraint firstItem="QRN-Ph-zbX" firstAttribute="top" secondItem="Caq-gj-Ppi" secondAttribute="bottom" constant="7" id="wyz-6s-OGI"/>
                         </constraints>
@@ -285,6 +294,7 @@
                         <outlet property="uiEmail" destination="3UE-o7-19c" id="HGx-4q-jgh"/>
                         <outlet property="uiFirstName" destination="HcP-rB-El8" id="NjG-cR-OkM"/>
                         <outlet property="uiLastName" destination="7Ng-hw-gSE" id="4br-dg-ImI"/>
+                        <outlet property="uiMaillbl" destination="f2t-qF-VWK" id="J94-n5-kQb"/>
                         <outlet property="uiPassword" destination="EUg-Hn-ROn" id="E8f-zS-QGs"/>
                         <outlet property="uiPasswordlbl" destination="Caq-gj-Ppi" id="Loo-i4-Cc4"/>
                         <outlet property="uiPhone" destination="QRN-Ph-zbX" id="lD3-sa-hM9"/>
