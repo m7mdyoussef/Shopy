@@ -14,6 +14,7 @@ target 'Shopy' do
   pod 'NVActivityIndicatorView/AppExtension'
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
+  pod 'SDWebImage', '~> 5.0'
 #  pod 'Gallery'
 #  pod 'InstantSearchClient'
 #  pod 'EmptyDataSet-Swift'
