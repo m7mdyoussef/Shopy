@@ -16,6 +16,7 @@
 		2748ECC0266440F400A9DF42 /* Entry_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748ECBF266440F400A9DF42 /* Entry_ViewModel.swift */; };
 		2748ECCC266465E800A9DF42 /* EmailValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */; };
 		2759BB6926646F4100AF288D /* AlertExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2759BB6826646F4100AF288D /* AlertExtention.swift */; };
+		27647BCB26659E6B00A7BE47 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27647BCA26659E6B00A7BE47 /* Customer.swift */; };
 		277F3A99265D51A000C822D9 /* IRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F3A98265D51A000C822D9 /* IRounded.swift */; };
 		27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BBDF25265D36DC009A887D /* EntryPointVC.swift */; };
 		9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D8426503E8100069E6E /* AppDelegate.swift */; };
@@ -69,6 +70,7 @@
 		2748ECBF266440F400A9DF42 /* Entry_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry_ViewModel.swift; sourceTree = "<group>"; };
 		2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationExtension.swift; sourceTree = "<group>"; };
 		2759BB6826646F4100AF288D /* AlertExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtention.swift; sourceTree = "<group>"; };
+		27647BCA26659E6B00A7BE47 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		277F3A98265D51A000C822D9 /* IRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRounded.swift; sourceTree = "<group>"; };
 		27BBDF25265D36DC009A887D /* EntryPointVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPointVC.swift; sourceTree = "<group>"; };
 		30DE585536EF363BD795C169 /* Pods_Shopy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				D21A3B14265C22410096553A /* CustomCollection.swift */,
+				27647BCA26659E6B00A7BE47 /* Customer.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				273FF7D42660932400A37003 /* Register.swift in Sources */,
 				D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */,
 				2748ECCC266465E800A9DF42 /* EmailValidationExtension.swift in Sources */,
+				27647BCB26659E6B00A7BE47 /* Customer.swift in Sources */,
 				9E59BDD82653168C003B113F /* CategoryCollectionViewController.swift in Sources */,
 				9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */,
 				9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */,
