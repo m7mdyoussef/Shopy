@@ -32,7 +32,7 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
         case .getAllCustomCollections:
             return "/admin/api/2021-04/custom_collections.json"
         case .getAllproducts(collectionId: let collectionId):
-          return "fhhfhhfhfh \(collectionId)"
+          return "/admin/api/2021-04/collections/\(collectionId)/products.json"
             
         }
         
@@ -42,12 +42,10 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
         case .getAllCustomCollections:
             return .requestPlain
         case .getAllproducts(collectionId: let collectionId):
-            return .requestParameters(parameters: ["collectId" : collectionId], encoding: URLEncoding.queryString)
+            return .requestPlain
         }
         
     }
-    
-    
     
     var headers: [String : String]? {
         return nil
