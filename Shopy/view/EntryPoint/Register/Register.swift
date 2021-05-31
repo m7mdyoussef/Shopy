@@ -34,14 +34,14 @@ class Register: UIViewController,IRounded {
     @IBOutlet weak var uiPasswordlbl: UILabel!
     @IBOutlet weak var uiMaillbl: UILabel!
     
-    var viewModl:RegisterViewModel!
+    var viewModl:EntryViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.tabBarController?.tabBar.isHidden = true
         
-        viewModl = RegisterViewModel()
+        viewModl = EntryViewModel()
     
         setupView()
     }
@@ -109,7 +109,8 @@ class Register: UIViewController,IRounded {
         yes: {empty in
             
             if empty == true{
-                alert(title: "Missing Fields", msg: "Please Fill in The blanks!!")
+                onFaildHud(text: "Please Fill in The blanks!!")
+
             }else{
                 
                 if viewModl.isAllTextFilld && viewModl.isMailValid {
@@ -119,25 +120,40 @@ class Register: UIViewController,IRounded {
                     hud.show(in: self.view)
                     viewModl.signUp(email: uiEmail.text!, password: uiPassword.text!,
                     onSuccess: { [unowned self] in
-                        self.alert(title: "Signup", msg: "Signed up successfully")
                         hud.dismiss()
+                        onSuccessHud()
+                        //MARK:- redirection
                     },onFailure: { [unowned self] localizedDescription in
                         print(localizedDescription)
-                        self.alert(title: "Signup", msg: localizedDescription)
                         hud.dismiss()
+                        onFaildHud(text: localizedDescription)
                     });
                     
                 }else if !viewModl.isMailValid {
-                    alert(title: "Email isn't Valid", msg: "Please Enter Valid Email!!")
+                    onFaildHud(text: "Please Enter Valid Email!!")
                 }else{
-                    alert(title: "Missing Fields", msg: "Please Fill in The blanks!!")
+                    onFaildHud(text: "Please Fill in The blanks!!")
                 }
                 
             }
                 
         }, no: {
-            alert(title: "Confirmation Mismatch", msg: "Please confirm that you enter a valid passwords")
+            onFaildHud(text: "Please confirm that you enter a valid passwords")
         })
-    }    
+    }
+    
+}
+
+extension Register: UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if ( textField == self.uiPassword && !self.uiPassword.isSecureTextEntry ) {
+             self.uiPassword.isSecureTextEntry = true
+        }else if(textField == self.uiConfirmation && !self.uiConfirmation.isSecureTextEntry){
+             self.uiConfirmation.isSecureTextEntry = true
+        }
+
+         return true
+    }
 }
 

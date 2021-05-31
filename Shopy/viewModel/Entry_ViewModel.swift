@@ -8,7 +8,8 @@
 
 import Foundation
 import FirebaseAuth
-class RegisterViewModel {
+
+class EntryViewModel {
     
     public var isAllTextFilld:Bool!
     public var isMailValid:Bool!
@@ -17,7 +18,7 @@ class RegisterViewModel {
         isMailValid = false
     }
     
-    func checkForEmptyTextField(text: String?) -> RegisterViewModel? {
+    func checkForEmptyTextField(text: String?) -> EntryViewModel? {
         
         guard let myText = text else {return self}
         isAllTextFilld = !myText.isEmpty ? true : false
@@ -60,6 +61,17 @@ class RegisterViewModel {
                 onSuccess()
             }
 
+        }
+    }
+    
+    func signIn(email:String,password:String,onSuccess:@escaping ()->(),onFailure: @escaping(String)->()) {
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if let err = error{
+                onFailure(err.localizedDescription)
+            }else{
+                print("login successfully")
+                onSuccess()
+            }
         }
     }
 }

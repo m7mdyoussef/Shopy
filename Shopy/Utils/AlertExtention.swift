@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 extension UIViewController{
     
     func alert(title:String, msg:String) {
@@ -14,5 +15,23 @@ extension UIViewController{
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func onSuccessHud() {
+        let hud = JGProgressHUD()
+        hud.textLabel.text = "Success"
+        hud.show(in: self.view)
+        hud.style = .dark
+        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        hud.dismiss(afterDelay: 3.0)
+    }
+    
+    func onFaildHud(text:String) {
+        let hud = JGProgressHUD()
+        hud.textLabel.text = "\(text)"
+        hud.show(in: self.view)
+        hud.style = .dark
+        hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        hud.dismiss(afterDelay: 3.0)
     }
 }
