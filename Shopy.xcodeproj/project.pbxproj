@@ -31,6 +31,8 @@
 		CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */; };
 		CF6571A9266197D300C31614 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6571A7266197D200C31614 /* ProductCollectionViewCell.swift */; };
 		CF6571AA266197D300C31614 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6571A8266197D300C31614 /* ProductCollectionViewCell.xib */; };
+		CFF7A3C426644C7B003D7987 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF7A3C326644C7B003D7987 /* HomeViewModel.swift */; };
+		CFF7A3CD26652302003D7987 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF7A3CC26652302003D7987 /* Product.swift */; };
 		D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A3B11265BF58F0096553A /* RemoteDataSource.swift */; };
 		D21A3B15265C22410096553A /* CustomCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A3B14265C22410096553A /* CustomCollection.swift */; };
 		D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A4726574E06005ABAF2 /* ErrorMessage.swift */; };
@@ -92,6 +94,8 @@
 		CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
 		CF6571A7266197D200C31614 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF6571A8266197D300C31614 /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
+		CFF7A3C326644C7B003D7987 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CFF7A3CC26652302003D7987 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		D21A3B11265BF58F0096553A /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		D21A3B14265C22410096553A /* CustomCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollection.swift; sourceTree = "<group>"; };
 		D2745A4726574E06005ABAF2 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 		CF65719026617D8500C31614 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CFF7A3BF26644C4D003D7987 /* ViewModel */,
 				CF6571A62661977500C31614 /* Products */,
 				CF65719E2661973700C31614 /* Menu */,
 				CF6571992661966700C31614 /* CollectionViewController.swift */,
@@ -270,10 +275,19 @@
 			path = MenuCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		CFF7A3BF26644C4D003D7987 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CFF7A3C326644C7B003D7987 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D21A3B13265C22210096553A /* model */ = {
 			isa = PBXGroup;
 			children = (
 				D21A3B14265C22410096553A /* CustomCollection.swift */,
+				CFF7A3CC26652302003D7987 /* Product.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -558,6 +572,7 @@
 				9E59BDDE265321E0003B113F /* FirebaseCollectionReference.swift in Sources */,
 				9EAE5747265710BD00BE44C2 /* ApiService.swift in Sources */,
 				D21A3B15265C22410096553A /* CustomCollection.swift in Sources */,
+				CFF7A3C426644C7B003D7987 /* HomeViewModel.swift in Sources */,
 				D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */,
 				D2745A4F265751CC005ABAF2 /* ApiRequestWrapper.swift in Sources */,
 				9E182D8F26503E8100069E6E /* Shopy.xcdatamodeld in Sources */,
@@ -574,6 +589,7 @@
 				9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */,
 				9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */,
 				CF6571A9266197D300C31614 /* ProductCollectionViewCell.swift in Sources */,
+				CFF7A3CD26652302003D7987 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

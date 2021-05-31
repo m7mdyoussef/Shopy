@@ -16,8 +16,12 @@ struct CustomCollectionResponse<T : Codable>: Codable {
     }
 }
 
+struct CustomCollection : Codable{
+    let custom_collections: [CustomElement]
+}
+
 // MARK: - CustomCollection
-struct CustomCollection: Codable {
+struct CustomElement: Codable {
     let id: Int
     let handle: String
    let updatedAt, publishedAt: String

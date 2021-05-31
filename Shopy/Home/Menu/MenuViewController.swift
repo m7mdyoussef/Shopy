@@ -7,60 +7,43 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class MenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
+class MenuViewController: UIViewController{
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = menuCollectionView.dequeueReusableCell(withReuseIdentifier: "MenuCollectionViewCell", for: indexPath) as! MenuCollectionViewCell
-        cell.title.text = "sss"
-        return cell
-    }
     
-
     @IBOutlet weak var menuCollectionView: UICollectionView!
+    var collectionViewModel:HomeModelType?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        collectionViewModel = HomeViewModel()
+        collectionViewModel?.getCollectionData()
+        
         // Do any additional setup after loading the view.
         regicterCell()
-        getData()
+        collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: "MenuCollectionViewCell")){row, items, cell in
+            (cell as? MenuCollectionViewCell)?.title.text=items.title
+        }
+        
+        menuCollectionView.rx.setDelegate(self)
+        
+        menuCollectionView.rx.itemSelected.subscribe{_ in
+            print("hello")
+        }
     }
     
     func regicterCell(){
        var menuCell = UINib(nibName: "MenuCollectionViewCell", bundle: nil)
         menuCollectionView.register(menuCell, forCellWithReuseIdentifier: "MenuCollectionViewCell")
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 60, height: 20)
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("hello")
-    }
-    
-    func getData(){
-        let api = RemoteDataSource()
-        api.customCollections{[weak self](result) in
-           guard let self = self else {return}
-            
-            switch result {
-            case .success(let response):
-                guard let customCollections = response?.customCollections else {return}
-                for collection in customCollections {
-                    print(collection.title)
-                    
-                }
-            case .failure(let error):
-                print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
-                print(error.code)
-            }
-        }}
+}
 
+extension MenuViewController:UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/3, height: 25)
+    }
+    
 }
 
