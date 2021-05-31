@@ -10,18 +10,22 @@ import Foundation
 
 protocol RemoteDataSourceProtocol {
     
-    func customCollections(completion: @escaping (Result<CustomCollectionResponse<CustomCollection>?, NSError>) -> Void)
+    func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void)
+    func getProducts(collectionId:String, completion: @escaping (Result<Product?, NSError>) -> Void)
 }
 
 class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceProtocol {
     
-    func customCollections(completion: @escaping (Result<CustomCollectionResponse<CustomCollection>?, NSError>) -> Void) {
+    func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void) {
         
-        self.fetchData(target: .getAllCustomCollections, responseClass: CustomCollectionResponse<CustomCollection>.self) { (result) in
+        self.fetchData(target: .getAllCustomCollections, responseClass: CustomCollection.self) { (result) in
             completion(result)
         }
      }
     
-    
-    
+    func getProducts(collectionId:String, completion: @escaping (Result<Product?, NSError>) -> Void) {
+        self.fetchData(target: .getAllproducts(collectionId: collectionId), responseClass: Product.self){(result) in
+            completion(result)
+        }
+    }
 }
