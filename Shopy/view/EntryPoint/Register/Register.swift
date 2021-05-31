@@ -34,14 +34,14 @@ class Register: UIViewController,IRounded {
     @IBOutlet weak var uiPasswordlbl: UILabel!
     @IBOutlet weak var uiMaillbl: UILabel!
     
-    var viewModl:EntryViewModel!
+    var viewModel:EntryViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.tabBarController?.tabBar.isHidden = true
         
-        viewModl = EntryViewModel()
+        viewModel = EntryViewModel()
     
         setupView()
     }
@@ -56,7 +56,7 @@ class Register: UIViewController,IRounded {
     
     func checkEmptyTexts(){
         
-        let _ = viewModl.checkForEmptyTextField(text: uiFirstName.text)?
+        let _ = viewModel.checkForEmptyTextField(text: uiFirstName.text)?
             .checkForEmptyTextField(text: uiLastName.text)?
             .checkForEmptyTextField(text: uiEmail.text)?
             .checkForEmptyTextField(text: uiPassword.text)?
@@ -65,7 +65,7 @@ class Register: UIViewController,IRounded {
     }
     
     @objc func checkPassword(){
-        viewModl.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
+        viewModel.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
                     yes: {empty in
                         
                         if empty == true{
@@ -83,7 +83,7 @@ class Register: UIViewController,IRounded {
                     })
     }
     @objc func checkMail(){
-        viewModl.isMailValid(mail: uiEmail.text,
+        viewModel.isMailValid(mail: uiEmail.text,
         yes: { empty in
             if empty{
                 uiMaillbl.isHidden = true
@@ -105,7 +105,7 @@ class Register: UIViewController,IRounded {
     
     @IBAction func uiSubmit(_ sender: UIButton) {
         checkEmptyTexts()
-        viewModl.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
+        viewModel.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
         yes: {empty in
             
             if empty == true{
@@ -113,12 +113,12 @@ class Register: UIViewController,IRounded {
 
             }else{
                 
-                if viewModl.isAllTextFilld && viewModl.isMailValid {
+                if viewModel.isAllTextFilld && viewModel.isMailValid {
                     let hud = JGProgressHUD()
                     hud.textLabel.text = "Loading"
                     hud.style = .dark
                     hud.show(in: self.view)
-                    viewModl.signUp(email: uiEmail.text!, password: uiPassword.text!,
+                    viewModel.signUp(email: uiEmail.text!, password: uiPassword.text!,
                     onSuccess: { [unowned self] in
                         hud.dismiss()
                         onSuccessHud()
@@ -129,7 +129,7 @@ class Register: UIViewController,IRounded {
                         onFaildHud(text: localizedDescription)
                     });
                     
-                }else if !viewModl.isMailValid {
+                }else if !viewModel.isMailValid {
                     onFaildHud(text: "Please Enter Valid Email!!")
                 }else{
                     onFaildHud(text: "Please Fill in The blanks!!")
