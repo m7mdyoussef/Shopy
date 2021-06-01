@@ -36,6 +36,7 @@
 		9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */; };
 		B4E41A22EA1A1774ECFA56DD /* Pods_Shopy_ShopyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264E4FC7B77E696D0A2906DC /* Pods_Shopy_ShopyUITests.framework */; };
 		CF4797E62665D3D800B0A64D /* CollectionViewController+FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4797E52665D3D800B0A64D /* CollectionViewController+FlowLayout.swift */; };
+		CF4798072665DC9900B0A64D /* AppCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4798062665DC9900B0A64D /* AppCommon.swift */; };
 		CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6571992661966700C31614 /* CollectionViewController.swift */; };
 		CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */; };
 		CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */; };
@@ -109,6 +110,7 @@
 		A3CABA92B1A37A7896D62DF3 /* Pods-Shopy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy.debug.xcconfig"; path = "Target Support Files/Pods-Shopy/Pods-Shopy.debug.xcconfig"; sourceTree = "<group>"; };
 		B42953B933926FFD4773FB7A /* Pods-Shopy-ShopyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy-ShopyUITests.release.xcconfig"; path = "Target Support Files/Pods-Shopy-ShopyUITests/Pods-Shopy-ShopyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CF4797E52665D3D800B0A64D /* CollectionViewController+FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewController+FlowLayout.swift"; sourceTree = "<group>"; };
+		CF4798062665DC9900B0A64D /* AppCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommon.swift; sourceTree = "<group>"; };
 		CF6571992661966700C31614 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */,
 				D2745A4726574E06005ABAF2 /* ErrorMessage.swift */,
 				9E756A1C26644277000B5D98 /* Constants.swift */,
+				CF4798062665DC9900B0A64D /* AppCommon.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 		CF4797E32665D33D00B0A64D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CF6571A62661977500C31614 /* Products */,
 				CF4797E42665D38900B0A64D /* CollectionViewController */,
 				CF6571AE26619B9100C31614 /* MenuCollectionViewCell */,
 			);
@@ -354,7 +358,6 @@
 			children = (
 				CF4797E32665D33D00B0A64D /* View */,
 				CFF7A3BF26644C4D003D7987 /* ViewModel */,
-				CF6571A62661977500C31614 /* Products */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				9E756A1D26644277000B5D98 /* Constants.swift in Sources */,
 				9EAE5747265710BD00BE44C2 /* ApiService.swift in Sources */,
 				D21A3B15265C22410096553A /* CustomCollection.swift in Sources */,
+				CF4798072665DC9900B0A64D /* AppCommon.swift in Sources */,
 				CFF7A3C426644C7B003D7987 /* HomeViewModel.swift in Sources */,
 				D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */,
 				9E14BDEF265D45BD000899B9 /* CategoryViewController.swift in Sources */,
