@@ -49,8 +49,9 @@ class CategoryViewController: UIViewController {
         productsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
 
 
+        var item = 0
         //select first item at initialization
-        let selectedIndexPath = IndexPath(item: 0, section: 0)
+        let selectedIndexPath = IndexPath(item: item, section: 0)
 
         //bindingData from viewModel
         categoryViewModel.mainCatDataObservable.bind(to: mainCategoryCollectionView.rx.items(cellIdentifier: Constants.mainCatNibCelln)){ [weak self] row,item,cell in
@@ -72,20 +73,21 @@ class CategoryViewController: UIViewController {
         
         
         //when item selected
-        mainCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
+        mainCategoryCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (value) in
+            
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
-            self?.mainCatagoryID = value
+            item = value.item
+           // self?.mainCatagoryID = value
             self?.subCat = "Tshirt"
          //   collectionId:String,subCat:String
+            self?.categoryViewModel.getCollectionData(index: value.item)
             self?.categoryViewModel.fetchCatProducts(collectionId: self!.mainCat, subCat: self!.subCat)
 
         }).disposed(by: disposeBag)
         
         subCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
             guard let self = self else {return}
-        //    guard let subCat = value else {return}
-          
-         //   print(self?.subCat ?? "")
+
             self.categoryViewModel.fetchFilteredProducts(subCat: value)
 
         }).disposed(by: disposeBag)
@@ -108,7 +110,7 @@ class CategoryViewController: UIViewController {
          }).disposed(by: disposeBag)
 
         // categoryViewModel.fetchData()
-         categoryViewModel.getCollectionData()
+        categoryViewModel.getCollectionData(index: 0)
         
     }
 

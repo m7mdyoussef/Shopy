@@ -65,7 +65,7 @@ class CategoryViewModel : CategoryContract{
     }
     
     
-    func getCollectionData(){
+    func getCollectionData(index:Int){
         api.customCollections{[weak self](result) in
            guard let self = self else {return}
             
@@ -73,10 +73,13 @@ class CategoryViewModel : CategoryContract{
             case .success(let response):
                 guard let customCollections = response?.custom_collections else {return}
                 for item in customCollections {
-                    self.mainCategories.append(item)
+                    if item.title != "Home page" {
+                        self.mainCategories.append(item)
+                    }
+                  
                 }
                 self.mainCatDatasubject.onNext(self.mainCategories)
-                self.fetchCatProducts(collectionId: "\(customCollections[0].id)", subCat: "T-Shirts")
+                self.fetchCatProducts(collectionId: "\(self.mainCategories[index].id)", subCat: "T-Shirts")
             case .failure(let error):
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)

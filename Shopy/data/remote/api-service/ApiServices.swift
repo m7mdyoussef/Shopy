@@ -25,7 +25,7 @@ class ApiServices<T : ApiRequestWrapper>{
                                return
         }
             
-      //  print("\(response)")
+        print("\(response)")
         if statusCode == 200 { // 200 reflect success response
             // Successful request
             guard let jsonResponse = try? response.result.get() else {
