@@ -11,42 +11,54 @@ import RxCocoa
 import RxSwift
 import SDWebImage
 class CollectionViewController: UIViewController {
-
+    
     var collectionViewModel:HomeViewModel?
     @IBOutlet weak var productsCollectionView: UICollectionView!
+    var arrId = [Int]()
+    @IBOutlet weak var menuCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
-        registerCell()
+        registerMenuCell()
+        registerProductCell()
         collectionViewModel = HomeViewModel()
-       // collectionViewModel?.getCollectionData()
         collectionViewModel?.getCollectionData()
-        collectionViewModel?.getAllProduct(id: "268359598278")
+        productsCollectionView.rx.setDelegate(self)
+        setUpMenuColllection()
+        setupProductCollection()
+    }
+    
+    func setUpMenuColllection(){
+        menuCollectionView.rx.itemSelected.subscribe{value in
+            print(self.arrId[value.element?.item ?? 0])
+            self.collectionViewModel?.getAllProduct(id: String(self.arrId[value.element?.item ?? 0]))
+        }
+        
+        collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: "MenuCollectionViewCell")){row, items, cell in
+            (cell as? MenuCollectionViewCell)?.title.text=items.title
+            self.arrId.append(items.id)
+        }
+    }
+    
+    func setupProductCollection(){
         collectionViewModel?.productsDataObservable?.asObservable().bind(to: productsCollectionView.rx.items(cellIdentifier: "ProductCollectionViewCell")){
             row, item, cell in
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
-            
         }
-        
-        productsCollectionView.rx.setDelegate(self)
-       
-        
     }
     
-    func registerCell(){
+    func registerProductCell(){
         var productCell = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
         productsCollectionView.register(productCell, forCellWithReuseIdentifier: "ProductCollectionViewCell")
     }
+    
+    func registerMenuCell(){
+        var menuCell = UINib(nibName: "MenuCollectionViewCell", bundle: nil)
+        menuCollectionView.register(menuCell, forCellWithReuseIdentifier: "MenuCollectionViewCell")
+    }
 }
 
-extension CollectionViewController: UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/3, height: 180)
-    }
-    
-    
-}
+
 

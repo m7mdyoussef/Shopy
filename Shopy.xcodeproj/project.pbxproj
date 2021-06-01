@@ -35,7 +35,7 @@
 		9EAE574A2657114700BE44C2 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE57492657114700BE44C2 /* URLs.swift */; };
 		9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */; };
 		B4E41A22EA1A1774ECFA56DD /* Pods_Shopy_ShopyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264E4FC7B77E696D0A2906DC /* Pods_Shopy_ShopyUITests.framework */; };
-		CF657195266195E400C31614 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF657194266195E400C31614 /* MenuViewController.swift */; };
+		CF4797E62665D3D800B0A64D /* CollectionViewController+FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4797E52665D3D800B0A64D /* CollectionViewController+FlowLayout.swift */; };
 		CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6571992661966700C31614 /* CollectionViewController.swift */; };
 		CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */; };
 		CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */; };
@@ -108,7 +108,7 @@
 		9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowIndecator.swift; sourceTree = "<group>"; };
 		A3CABA92B1A37A7896D62DF3 /* Pods-Shopy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy.debug.xcconfig"; path = "Target Support Files/Pods-Shopy/Pods-Shopy.debug.xcconfig"; sourceTree = "<group>"; };
 		B42953B933926FFD4773FB7A /* Pods-Shopy-ShopyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy-ShopyUITests.release.xcconfig"; path = "Target Support Files/Pods-Shopy-ShopyUITests/Pods-Shopy-ShopyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		CF657194266195E400C31614 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		CF4797E52665D3D800B0A64D /* CollectionViewController+FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewController+FlowLayout.swift"; sourceTree = "<group>"; };
 		CF6571992661966700C31614 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -331,24 +331,32 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		CF4797E32665D33D00B0A64D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF4797E42665D38900B0A64D /* CollectionViewController */,
+				CF6571AE26619B9100C31614 /* MenuCollectionViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF4797E42665D38900B0A64D /* CollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF6571992661966700C31614 /* CollectionViewController.swift */,
+				CF4797E52665D3D800B0A64D /* CollectionViewController+FlowLayout.swift */,
+			);
+			path = CollectionViewController;
+			sourceTree = "<group>";
+		};
 		CF65719026617D8500C31614 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CF4797E32665D33D00B0A64D /* View */,
 				CFF7A3BF26644C4D003D7987 /* ViewModel */,
 				CF6571A62661977500C31614 /* Products */,
-				CF65719E2661973700C31614 /* Menu */,
-				CF6571992661966700C31614 /* CollectionViewController.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		CF65719E2661973700C31614 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				CF6571AE26619B9100C31614 /* MenuCollectionViewCell */,
-				CF657194266195E400C31614 /* MenuViewController.swift */,
-			);
-			path = Menu;
 			sourceTree = "<group>";
 		};
 		CF6571A62661977500C31614 /* Products */ = {
@@ -677,8 +685,8 @@
 				9E182D8F26503E8100069E6E /* Shopy.xcdatamodeld in Sources */,
 				9E756A10266431EB000B5D98 /* SubCategoriesCollectionViewCell.swift in Sources */,
 				9EAE574A2657114700BE44C2 /* URLs.swift in Sources */,
-				CF657195266195E400C31614 /* MenuViewController.swift in Sources */,
 				D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */,
+				CF4797E62665D3D800B0A64D /* CollectionViewController+FlowLayout.swift in Sources */,
 				CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */,
 				9E59BDDA2653173C003B113F /* CategoryCollectionViewCell.swift in Sources */,
 				9E756A0C266431CB000B5D98 /* MainProductsCollectionViewCell.swift in Sources */,
