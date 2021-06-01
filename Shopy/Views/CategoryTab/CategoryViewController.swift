@@ -12,7 +12,7 @@ import RxCocoa
 
 class CategoryViewController: UIViewController {
 
-    @IBOutlet weak var mainCategoryCollectionView: UICollectionView!
+    @IBOutlet private weak var mainCategoryCollectionView: UICollectionView!
     @IBOutlet weak var subCategoryCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
     
@@ -20,8 +20,8 @@ class CategoryViewController: UIViewController {
     private var categoryViewModel:CategoryViewModel!
     private var disposeBag:DisposeBag!
     private var mainCat:String = "Men"
-    private var subCat:String = "tshirt"
-    
+    private var subCat:String = "T-Shirts"
+    private var activityView:UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,7 @@ class CategoryViewController: UIViewController {
         //initialization
         categoryViewModel = CategoryViewModel()
         disposeBag = DisposeBag()
+        activityView = UIActivityIndicatorView(style: .large)
         
         //setting delegates
         mainCategoryCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -65,7 +66,7 @@ class CategoryViewController: UIViewController {
         
         categoryViewModel.productDataObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: Constants.productNibCell)){ [weak self] row,item,cell in
            let castedCell = cell as! MainProductsCollectionViewCell
-            castedCell.productName.text = item
+            castedCell.productObject = item
         }.disposed(by: disposeBag)
         
         
@@ -74,20 +75,36 @@ class CategoryViewController: UIViewController {
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
             self?.mainCat = value
             self?.subCat = "Tshirt"
-            self?.categoryViewModel.fetchCetainData(mainCat: self!.mainCat, subCat: self!.subCat)
+            self?.categoryViewModel.fetchCatProducts(mainCat: self!.mainCat, subCat: self!.subCat)
+
         }).disposed(by: disposeBag)
         
         subCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
             self?.subCat = value
             print(self?.subCat ?? "")
-            self?.categoryViewModel.fetchCetainData(mainCat: self!.mainCat, subCat: self!.subCat)
+            self?.categoryViewModel.fetchCatProducts(mainCat: self!.mainCat, subCat: self!.subCat)
+
         }).disposed(by: disposeBag)
 
         productsCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (indexpath) in
         }).disposed(by: disposeBag)
 
-        categoryViewModel.fetchData()
-        categoryViewModel.fetchCetainData(mainCat: "Men", subCat: "Tshirt")
+        //listen while getting data
+         categoryViewModel.errorObservable.subscribe(onError: {[weak self] (error) in
+             self?.hideLoading()
+             }).disposed(by: disposeBag)
+         
+         categoryViewModel.LoadingObservable.subscribe(onNext: {[weak self] (value) in
+             switch value{
+             case true:
+                 self?.showLoading()
+             case false:
+                 self?.hideLoading()
+             }
+         }).disposed(by: disposeBag)
+
+         categoryViewModel.fetchData()
+         categoryViewModel.fetchCatProducts(mainCat: mainCat, subCat: subCat)
         
     }
 
@@ -112,5 +129,30 @@ extension CategoryViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+}
+
+
+extension CategoryViewController{
+    func showLoading() {
+        activityView!.center = self.view.center
+        self.view.addSubview(activityView!)
+        activityView!.startAnimating()
+    }
+    
+    func hideLoading() {
+        activityView!.stopAnimating()
+    }
+    
+    func showErrorMessage(errorMessage: String) {
+        let alertController = UIAlertController(title: "Error", message: "An Error Occured", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel)
+        { action -> Void in
+            // Put your code here
+        })
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     
 }

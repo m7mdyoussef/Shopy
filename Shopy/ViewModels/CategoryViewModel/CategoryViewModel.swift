@@ -14,22 +14,22 @@ class CategoryViewModel : CategoryContract{
     //observables
     var mainCatDataObservable: Observable<[String]>
     var subCatDataObservable: Observable<[String]>
-    var productDataObservable: Observable<[String]>
+    var productDataObservable: Observable<[CategoryProduct]>
 
     var errorObservable: Observable<Bool>
     var LoadingObservable: Observable<Bool>
     
     //publishers
-    private var data:[String]?
+    private var data:[CategoryProduct]?
     private var mainCatDatasubject = PublishSubject<[String]>()
     private var subCatDatasubject = PublishSubject<[String]>()
-    private var productDatasubject = PublishSubject<[String]>()
+    private var productDatasubject = PublishSubject<[CategoryProduct]>()
 
     private var errorsubject = PublishSubject<Bool>()
     private var Loadingsubject = PublishSubject<Bool>()
     
     let mainCategories = ["Men","Women","Kids"]
-    let subCategories = ["Tshirt","Shoes","Accessories"]
+    let subCategories = ["T-Shirts","Shoes","Accessories"]
     
     let menTshirt = ["1","2","3"]
     let menShoes = ["4","5","6"]
@@ -43,9 +43,12 @@ class CategoryViewModel : CategoryContract{
     let kidShoes = ["22","23","24"]
     let kidAcc = ["25","26","27"]
 
-
+    private var api:RemoteDataSourceProtocol!
     
     init() {
+        
+        api = RemoteDataSource()
+        
         mainCatDataObservable = mainCatDatasubject.asObservable()
         subCatDataObservable = subCatDatasubject.asObservable()
         productDataObservable = productDatasubject.asObservable()
@@ -59,31 +62,21 @@ class CategoryViewModel : CategoryContract{
         subCatDatasubject.onNext(subCategories)
     }
     
-    func fetchCetainData(mainCat:String,subCat:String){
+    func fetchCatProducts(mainCat:String,subCat:String){
+        Loadingsubject.onNext(true)
         print(mainCat + " " + subCat)
-        if(mainCat == "Men"){
-            if(subCat == "Tshirt"){
-                productDatasubject.onNext(menTshirt)
-            }else if(subCat == "Shoes"){
-                productDatasubject.onNext(menShoes)
-            }else{
-                productDatasubject.onNext(menAcc)
-            }
-        }else if(mainCat == "Women"){
-            if(subCat == "Tshirt"){
-                productDatasubject.onNext(womenTshirt)
-            }else if(subCat == "Shoes"){
-                productDatasubject.onNext(womenShoes)
-            }else{
-                productDatasubject.onNext(womenAcc)
-            }
-        }else{
-            if(subCat == "Tshirt"){
-                productDatasubject.onNext(kidTshirt)
-            }else if(subCat == "Shoes"){
-                productDatasubject.onNext(kidShoes)
-            }else{
-                productDatasubject.onNext(kidAcc)
+         api.getCategoryProducts(catType: mainCat) {[weak self] (result) in
+            switch result{
+            case .success(let cat):
+                self?.data = cat?.products
+                let filteredData = self?.data?.filter({(catItem) -> Bool in
+                    catItem.productType.capitalized == subCat.capitalized
+                })
+                self?.productDatasubject.onNext(filteredData ?? [])
+                self?.Loadingsubject.onNext(false)
+            case .failure(let error):
+                self?.Loadingsubject.onNext(false)
+                self?.errorsubject.onError(error)
             }
         }
     }

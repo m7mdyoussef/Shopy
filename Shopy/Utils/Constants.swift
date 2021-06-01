@@ -16,7 +16,9 @@ struct Constants {
         static let mainCatNibCelln = "MainCategoriesCollectionViewCell"
         static let subCatNibCell = "SubCategoriesCollectionViewCell"
         static let productNibCell = "MainProductsCollectionViewCell"
-
+    static let menCatPath = "/admin/api/2021-04/collections/268359598278/products.json"
+    static let womenCatPath = "/admin/api/2021-04/collections/268359631046/products.json"
+    static let kidCatPath = "/admin/api/2021-04/collections/268359663814/products.json"
     //end
     
 
