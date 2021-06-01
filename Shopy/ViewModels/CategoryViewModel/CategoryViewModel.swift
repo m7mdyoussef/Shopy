@@ -12,8 +12,8 @@ import RxSwift
 class CategoryViewModel : CategoryContract{
     
     //observables
-    var mainCatDataObservable: Observable<[String]>
-    var subCatDataObservable: Observable<[String]>
+    var mainCatDataObservable: Observable<[CustomElement]>
+    var subCatDataObservable: Observable<Set<String>>
     var productDataObservable: Observable<[ProductElement]>
 
     var errorObservable: Observable<Bool>
@@ -21,15 +21,17 @@ class CategoryViewModel : CategoryContract{
     
     //publishers
     private var data:[ProductElement]?
-    private var mainCatDatasubject = PublishSubject<[String]>()
-    private var subCatDatasubject = PublishSubject<[String]>()
+    private var mainCatDatasubject = PublishSubject<[CustomElement]>()
+    private var subCatDatasubject = PublishSubject<Set<String>>()
     private var productDatasubject = PublishSubject<[ProductElement]>()
 
     private var errorsubject = PublishSubject<Bool>()
     private var Loadingsubject = PublishSubject<Bool>()
     
-    var mainCategories = [String]()
-    let subCategories = ["T-Shirts","Shoes","Accessories"]
+    var mainCategories = [CustomElement]()
+    var subCategories = [ProductElement]()
+    var subCategoriesStrings :Set<String> = []
+    var filteredProducts = [ProductElement]()
     
     let menTshirt = ["1","2","3"]
     let menShoes = ["4","5","6"]
@@ -59,7 +61,7 @@ class CategoryViewModel : CategoryContract{
     
     func fetchData() {
         mainCatDatasubject.onNext(mainCategories)
-        subCatDatasubject.onNext(subCategories)
+     //   subCatDatasubject.onNext(filteredProducts)
     }
     
     
@@ -71,8 +73,9 @@ class CategoryViewModel : CategoryContract{
             case .success(let response):
                 guard let customCollections = response?.custom_collections else {return}
                 for item in customCollections {
-                    self.mainCategories.append(item.title)
+                    self.mainCategories.append(item)
                 }
+                self.mainCatDatasubject.onNext(self.mainCategories)
                 self.fetchCatProducts(collectionId: "\(customCollections[0].id)", subCat: "T-Shirts")
             case .failure(let error):
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
@@ -87,20 +90,49 @@ func fetchCatProducts(collectionId:String,subCat:String){
     Loadingsubject.onNext(true)
     print(collectionId + " " + subCat)
     api.getProducts(collectionId: collectionId){[weak self] (result) in
+        guard let self = self else  {return}
         switch result{
         case .success(let cat):
-            self?.data = cat?.products
-            let filteredData = self?.data?.filter({(catItem) -> Bool in
-                catItem.productType.capitalized == subCat.capitalized
-            })
-            self?.productDatasubject.onNext(filteredData ?? [])
-            self?.Loadingsubject.onNext(false)
+            guard let subCategories = cat?.products else {return}
+            self.subCategories = subCategories
+            for sub in subCategories{
+                self.subCategoriesStrings.insert(sub.productType)
+            }
+            
+            self.subCatDatasubject.onNext(self.subCategoriesStrings)
+//            self?.fetchFilteredProducts(subCat: subCat)
+//            let filteredData = self?.subCategories?.filter({(catItem) -> Bool in
+//                catItem.productType.capitalized == subCat.capitalized
+//            })
+//            self?.productDatasubject.onNext(filteredData ?? [])
+//            self?.Loadingsubject.onNext(false)
         case .failure(let error):
-            self?.Loadingsubject.onNext(false)
-            self?.errorsubject.onError(error)
+            self.Loadingsubject.onNext(false)
+            self.errorsubject.onError(error)
         }
     }
 }
+    
+    
+    
+    
+func fetchFilteredProducts(subCat:String){
+    filteredProducts.removeAll()
+    for product in subCategories {
+        if product.productType == subCat {
+            filteredProducts.append(product)
+        }
+    }
+    self.productDatasubject.onNext(filteredProducts)
+    self.Loadingsubject.onNext(false)
+}
+    
+    
+    
+    
+    
+    
+    
     
 //    func fetchCatProducts(mainCat:String,subCat:String){
 //        Loadingsubject.onNext(true)

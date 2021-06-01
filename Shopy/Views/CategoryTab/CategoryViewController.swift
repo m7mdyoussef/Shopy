@@ -20,6 +20,7 @@ class CategoryViewController: UIViewController {
     private var categoryViewModel:CategoryViewModel!
     private var disposeBag:DisposeBag!
     private var mainCat:String = "Men"
+    private var mainCatagoryID:String = "Men"
     private var subCat:String = "T-Shirts"
     private var activityView:UIActivityIndicatorView!
     
@@ -54,7 +55,7 @@ class CategoryViewController: UIViewController {
         //bindingData from viewModel
         categoryViewModel.mainCatDataObservable.bind(to: mainCategoryCollectionView.rx.items(cellIdentifier: Constants.mainCatNibCelln)){ [weak self] row,item,cell in
            let castedCell = cell as! MainCategoriesCollectionViewCell
-            castedCell.mainCategoriesCellLabel.text = item
+            castedCell.mainCategoriesCellLabel.text = item.title
             self?.mainCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: disposeBag)
         
@@ -73,16 +74,19 @@ class CategoryViewController: UIViewController {
         //when item selected
         mainCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
-            self?.mainCat = value
+            self?.mainCatagoryID = value
             self?.subCat = "Tshirt"
-            self?.categoryViewModel.fetchCatProducts(mainCat: self!.mainCat, subCat: self!.subCat)
+         //   collectionId:String,subCat:String
+            self?.categoryViewModel.fetchCatProducts(collectionId: self!.mainCat, subCat: self!.subCat)
 
         }).disposed(by: disposeBag)
         
         subCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
-            self?.subCat = value
-            print(self?.subCat ?? "")
-            self?.categoryViewModel.fetchCatProducts(mainCat: self!.mainCat, subCat: self!.subCat)
+            guard let self = self else {return}
+        //    guard let subCat = value else {return}
+          
+         //   print(self?.subCat ?? "")
+            self.categoryViewModel.fetchFilteredProducts(subCat: value)
 
         }).disposed(by: disposeBag)
 
@@ -103,8 +107,8 @@ class CategoryViewController: UIViewController {
              }
          }).disposed(by: disposeBag)
 
-         categoryViewModel.fetchData()
-         categoryViewModel.fetchCatProducts(mainCat: mainCat, subCat: subCat)
+        // categoryViewModel.fetchData()
+         categoryViewModel.getCollectionData()
         
     }
 

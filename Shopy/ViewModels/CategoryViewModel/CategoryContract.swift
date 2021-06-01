@@ -14,7 +14,7 @@ protocol CategoryContract{
     var errorObservable: Observable<Bool> {get}
     var LoadingObservable: Observable<Bool> {get}
     
-    var mainCatDataObservable:Observable<[String]> {get}
-    var subCatDataObservable:Observable<[String]> {get}
+    var mainCatDataObservable:Observable<[CustomElement]> {get}
+    var subCatDataObservable:Observable<Set<String>> {get}
 
 }
