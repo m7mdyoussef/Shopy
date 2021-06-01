@@ -14,12 +14,16 @@ class CollectionViewController: UIViewController {
     
     var collectionViewModel:HomeViewModel?
     @IBOutlet weak var productsCollectionView: UICollectionView!
+    @IBOutlet weak var productsView: UIView!
+    
+    @IBOutlet weak var adsView: UIView!
     var arrId = [Int]()
     @IBOutlet weak var menuCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
+      //  adsView.roundCorners(corners: .allCorners, radius: 35)
         registerMenuCell()
         registerProductCell()
         collectionViewModel = HomeViewModel()
@@ -27,6 +31,8 @@ class CollectionViewController: UIViewController {
         productsCollectionView.rx.setDelegate(self)
         setUpMenuColllection()
         setupProductCollection()
+        productsView.roundCorners(corners: [.topLeft, .topRight], radius: 35)
+       
     }
     
     func setUpMenuColllection(){

@@ -32,7 +32,6 @@ class HomeViewModel: HomeModelType{
     private var productsErrorSubject = PublishSubject<String>()
 
     
-    
     init() {
         collectionDataObservable = collectionDataSubject.asObserver()
         productsDataObservable  = productDataSubject.asObservable()
@@ -56,7 +55,6 @@ class HomeViewModel: HomeModelType{
                 print(error.code)
             }
         }
-        
     }
     func getAllProduct(id:String){
         api.getProducts(collectionId: id){[weak self](result) in
