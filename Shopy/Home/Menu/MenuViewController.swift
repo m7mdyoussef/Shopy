@@ -12,7 +12,7 @@ import RxSwift
 
 class MenuViewController: UIViewController{
     
-    
+    var arrId = [Int]()
     @IBOutlet weak var menuCollectionView: UICollectionView!
     var collectionViewModel:HomeModelType?
 
@@ -20,19 +20,23 @@ class MenuViewController: UIViewController{
         super.viewDidLoad()
         collectionViewModel = HomeViewModel()
         collectionViewModel?.getCollectionData()
-        
-        // Do any additional setup after loading the view.
         regicterCell()
+        
         collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: "MenuCollectionViewCell")){row, items, cell in
             (cell as? MenuCollectionViewCell)?.title.text=items.title
+            self.arrId.append(items.id)
+            
         }
         
         menuCollectionView.rx.setDelegate(self)
         
-        menuCollectionView.rx.itemSelected.subscribe{_ in
-            print("hello")
+        menuCollectionView.rx.itemSelected.subscribe{value in
+            print(self.arrId[value.element?.item ?? 0])
+            self.collectionViewModel?.getAllProduct(id: String(self.arrId[value.element?.item ?? 0]))
         }
-    }
+        }
+
+    
     
     func regicterCell(){
        var menuCell = UINib(nibName: "MenuCollectionViewCell", bundle: nil)
@@ -42,7 +46,7 @@ class MenuViewController: UIViewController{
 
 extension MenuViewController:UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/3, height: 25)
+        return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/3, height: 35)
     }
     
 }

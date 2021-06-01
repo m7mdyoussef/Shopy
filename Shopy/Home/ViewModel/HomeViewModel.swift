@@ -12,21 +12,25 @@ import RxCocoa
 
 protocol HomeModelType{
     func getCollectionData()
-    func getAllProduct()
+    func getAllProduct(id:String)
     var collectionDataObservable : Observable<[CustomElement]>?{get}
 //    var collectionErrorObservable : PublishSubject<Error>?{get}
-//    var productsDataObservable : Observable<[CustomElement]>?{get}
+    var productsDataObservable : Observable<[ProductElement]>?{get}
 //    var productsErrorObservable : PublishSubject<Error>?{get}
 
 }
 
 class HomeViewModel: HomeModelType{
+    var productsDataObservable: Observable<[ProductElement]>?
+    
     let api = RemoteDataSource()
     var collectionDataObservable : Observable<[CustomElement]>?
     private var collectionDataSubject = PublishSubject<[CustomElement]>()
+    private var productDataSubject = PublishSubject<[ProductElement]>()
     
     init() {
         collectionDataObservable = collectionDataSubject.asObserver()
+        productsDataObservable  = productDataSubject.asObservable()
     }
     
     func getCollectionData(){
@@ -37,6 +41,8 @@ class HomeViewModel: HomeModelType{
             case .success(let response):
                 guard let customCollections = response?.custom_collections else {return}
                 self.collectionDataSubject.asObserver().onNext(customCollections)
+               //self.getAllProduct(id: String(customCollections[0].id))
+                
             case .failure(let error):
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
@@ -44,14 +50,14 @@ class HomeViewModel: HomeModelType{
         }
         
     }
-    func getAllProduct(){
-        api.getProducts(collectionId: "268359631046"){[weak self](result) in
+    func getAllProduct(id:String){
+        api.getProducts(collectionId: id){[weak self](result) in
            guard let self = self else {return}
 
             switch result {
             case .success(let response):
                 guard let products = response?.products else {return}
-              //  self.collectionDataSubject.asObserver().onNext(customCollections)
+                self.productDataSubject.asObserver().onNext(products)
                 print(products[0].productType)
             case .failure(let error):
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")

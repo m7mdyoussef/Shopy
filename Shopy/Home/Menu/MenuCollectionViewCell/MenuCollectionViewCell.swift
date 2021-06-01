@@ -13,6 +13,23 @@ class MenuCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var title: UILabel!
     
+    @IBOutlet weak var menuView: UIView!
+    
+    
+    override var isHighlighted: Bool{
+        didSet{
+            title.textColor = isHighlighted ? #colorLiteral(red: 1, green: 0.2891507945, blue: 0.3121946537, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            menuView.backgroundColor = isHighlighted ? #colorLiteral(red: 1, green: 0.2891507945, blue: 0.3121946537, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }
+    }
+    
+    override var isSelected: Bool{
+        didSet{
+            title.textColor = isSelected ? #colorLiteral(red: 1, green: 0.2891507945, blue: 0.3121946537, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            menuView.backgroundColor = isSelected ? #colorLiteral(red: 1, green: 0.2891507945, blue: 0.3121946537, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

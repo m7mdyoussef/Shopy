@@ -191,6 +191,7 @@
 		9E182D8326503E8100069E6E /* Shopy */ = {
 			isa = PBXGroup;
 			children = (
+				CF4797DC2665A19100B0A64D /* Application */,
 				9E756A1626643A4C000B5D98 /* ViewModels */,
 				9E756A0526642D14000B5D98 /* Views */,
 				CF65719026617D8500C31614 /* Home */,
@@ -321,6 +322,13 @@
 				3B33C7D1FE68BC50FDE5402E /* Pods_ShopyTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF4797DC2665A19100B0A64D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		CF65719026617D8500C31614 /* Home */ = {
@@ -673,11 +681,9 @@
 				D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */,
 				CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */,
 				9E59BDDA2653173C003B113F /* CategoryCollectionViewCell.swift in Sources */,
-
 				9E756A0C266431CB000B5D98 /* MainProductsCollectionViewCell.swift in Sources */,
 				9E756A1926643A94000B5D98 /* CategoryViewModel.swift in Sources */,
 				9E756A1426643208000B5D98 /* MainCategoriesCollectionViewCell.swift in Sources */,
-
 				CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */,
 				D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */,
 				9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */,
