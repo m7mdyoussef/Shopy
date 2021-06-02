@@ -8,16 +8,17 @@
 
 import Foundation
 import FirebaseAuth
-
+import Alamofire
 class EntryViewModel {
     
     public var isAllTextFilld:Bool!
     public var isMailValid:Bool!
+    var remote:RemoteDataSource!
     init() {
         isAllTextFilld = false
         isMailValid = false
+        remote = RemoteDataSource()
     }
-    
     func checkForEmptyTextField(text: String?) -> EntryViewModel? {
         
         guard let myText = text else {return self}
@@ -44,7 +45,7 @@ class EntryViewModel {
         wrappedConf.count == 0 && wrappedPass.count == 0 ? yes(true) : wrappedPass == wrappedConf ? yes(false) : no()
         
     }
-
+    
     func isMailValid(mail:String?,yes:(Bool)->(),no:(Bool)->()){
         guard let wrappedMail = mail else {return}
         let empty = wrappedMail.count == 0
@@ -52,16 +53,55 @@ class EntryViewModel {
         wrappedMail.isValidEmail() ? yes(empty) : no(empty)
     }
     
-    func signUp(email:String,password:String,onSuccess:@escaping ()->(),onFailure:@escaping (String)->()) {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                        
+    func signUp(customer:Customer,pass:String,onSuccess:@escaping ()->(),onFailure:@escaping (String)->()) {
+        Auth.auth().createUser(withEmail: customer.customer.email!, password: pass) { [unowned self] authResult, error in
+            
             if let err = error {
                 onFailure(err.localizedDescription)
             }else{
+                self.registerACustomerInApi(newUser: customer)
                 onSuccess()
             }
-
+            
         }
+    }
+    
+    func registerACustomerInApi(newUser:Customer) {
+        remote.registerACustomer(customer: newUser) { (result) in
+            print(result)
+        }
+        
+        
+//        let urlString = "https://ce751b18c7156bf720ea405ad19614f4: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@itiana.myshopify.com/admin/api/2021-04/customers.json"
+//               guard let url = URL(string: urlString) else {return}
+//               var request = URLRequest(url: url)
+//               request.httpMethod = "POST"
+//               let session = URLSession.shared
+//               request.httpShouldHandleCookies = false
+//               
+//               
+//               do {
+//                request.httpBody = try JSONSerialization.data(withJSONObject: newUser.asDictionary(), options: .prettyPrinted)
+//               } catch let error {
+//                   print(error.localizedDescription)
+//               }
+//
+//               HTTP Headers
+//               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//               request.addValue("application/json", forHTTPHeaderField: "Accept")
+//               
+//        session.dataTask(with: request) { (data, response, error) in
+//            if error != nil {
+//                print(error!)
+//            } else {
+//                if let data = data {
+//                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+//                    print(json)
+//                    print(data)
+//                }
+//            }
+//        }.resume()
+        
     }
     
     func signIn(email:String,password:String,onSuccess:@escaping ()->(),onFailure: @escaping(String)->()) {

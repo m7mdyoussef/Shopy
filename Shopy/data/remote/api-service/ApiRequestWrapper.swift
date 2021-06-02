@@ -13,7 +13,6 @@ enum Endpoint{
     case staticEndpoint
     case dynamicEndPoint(path : String)
 }
-
 enum HttpMethod : String{
     case get    = "GET"
     case post   = "POST"
@@ -24,7 +23,8 @@ enum HttpMethod : String{
 
 enum Task {
     case requestPlain
-    case requestParameters(parameters :[String:String] , encoding : ParameterEncoding)
+//    case requestParameters(parameters :[String:String] , encoding : ParameterEncoding)
+    case requestParameters(parameters :[String:Any] , encoding : ParameterEncoding)
 }
 
 protocol ApiRequestWrapper {
@@ -33,4 +33,5 @@ protocol ApiRequestWrapper {
     var task     : Task             {get}
     var headers  : [String:String]? {get}
     var httpMethod : HttpMethod     {get}
+    var httpBody  : Data?         {get}
 }

@@ -250,7 +250,6 @@
 				9EAE57482657110500BE44C2 /* Utils */,
 				D2745A49265750BB005ABAF2 /* data */,
 				9EAE57452657108100BE44C2 /* ApiService */,
-				D21A3B13265C22210096553A /* model */,
 				9E756A0526642D14000B5D98 /* Views */,
 				9E756A1626643A4C000B5D98 /* ViewModels */,
 				CF65719026617D8500C31614 /* Home */,
@@ -443,6 +442,7 @@
 		D2745A49265750BB005ABAF2 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				D21A3B13265C22210096553A /* model */,
 				D2745A4A265750C4005ABAF2 /* remote */,
 			);
 			path = data;

@@ -104,21 +104,39 @@ class Register: UIViewController,IRounded {
     }
     
     @IBAction func uiSubmit(_ sender: UIButton) {
+        
+//        let hud = JGProgressHUD()
+//        hud.textLabel.text = "Loading"
+//        hud.style = .dark
+//        hud.show(in: self.view)
+//
+//        let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, verifiedEmail: false, addresses: []))
+//
+//        viewModel.registerACustomerInApi(newUser: newCustomer)
+//        hud.dismiss()
+//        onSuccessHud()
+        
+        
         checkEmptyTexts()
         viewModel.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
         yes: {empty in
-            
+
             if empty == true{
                 onFaildHud(text: "Please Fill in The blanks!!")
 
             }else{
-                
+
                 if viewModel.isAllTextFilld && viewModel.isMailValid {
                     let hud = JGProgressHUD()
                     hud.textLabel.text = "Loading"
                     hud.style = .dark
                     hud.show(in: self.view)
-                    viewModel.signUp(email: uiEmail.text!, password: uiPassword.text!,
+//
+                    let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, verifiedEmail: false, addresses: []))
+
+//                    let newCustomer = Customer(customer: CustomerClass(email: uiEmail.text!, phone: uiPhone.text!, lastName: uiLastName.text!, verifiedEmail: true, firstName: uiFirstName.text!, addresses: []))
+
+                    viewModel.signUp(customer:newCustomer,pass: uiPassword.text!,
                     onSuccess: { [unowned self] in
                         hud.dismiss()
                         onSuccessHud()
@@ -128,15 +146,15 @@ class Register: UIViewController,IRounded {
                         hud.dismiss()
                         onFaildHud(text: localizedDescription)
                     });
-                    
+
                 }else if !viewModel.isMailValid {
                     onFaildHud(text: "Please Enter Valid Email!!")
                 }else{
                     onFaildHud(text: "Please Fill in The blanks!!")
                 }
-                
+
             }
-                
+
         }, no: {
             onFaildHud(text: "Please confirm that you enter a valid passwords")
         })

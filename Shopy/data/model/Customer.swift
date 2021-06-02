@@ -7,7 +7,18 @@
 //
 
 import Foundation
-import Foundation
+
+
+extension Encodable {
+  func asDictionary() throws -> [String: Any] {
+    let data = try JSONEncoder().encode(self)
+    guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+      throw NSError()
+    }
+    return dictionary
+  }
+}
+
 
 // MARK: - Customer
 struct Customer: Codable {
@@ -31,8 +42,8 @@ struct CustomerClass: Codable {
 
 // MARK: - Address
 struct Address: Codable {
-    let address1, city, province, phone: String
-    let zip, lastName, firstName, country: String
+    let address1, city, province, phone: String?
+    let zip, lastName, firstName, country: String?
 
     enum CodingKeys: String, CodingKey {
         case address1, city, province, phone, zip
