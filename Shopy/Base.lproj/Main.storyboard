@@ -102,7 +102,11 @@
                     <navigationItem key="navigationItem" id="42v-Re-ciC">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="bag.fill" catalog="system" id="YOM-1J-9Vk"/>
-                            <barButtonItem systemItem="search" id="myx-Ms-PWm"/>
+                            <barButtonItem systemItem="search" id="myx-Ms-PWm">
+                                <connections>
+                                    <action selector="searchCategoryProducts:" destination="xuX-Yf-DFG" id="bbO-5f-rBc"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -114,6 +118,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZt-8K-6W3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2650.7246376811595" y="357.58928571428572"/>
+        </scene>
+        <!--Search Category View Controller-->
+        <scene sceneID="g7f-TC-zvA">
+            <objects>
+                <viewController storyboardIdentifier="SearchCategoryViewController" id="yHy-cE-c9R" customClass="SearchCategoryViewController" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EXf-1R-h8c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQU-CN-Ly8">
+                                <rect key="frame" x="5" y="118" width="404" height="749"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1qZ-WT-6Sh">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RoO-tP-U6f">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pdK-mh-SIf">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="nQU-CN-Ly8" secondAttribute="bottom" constant="29" id="8nU-HF-kj9"/>
+                            <constraint firstItem="nQU-CN-Ly8" firstAttribute="leading" secondItem="pxa-Pe-INW" secondAttribute="leading" constant="5" id="fIE-4D-83t"/>
+                            <constraint firstItem="nQU-CN-Ly8" firstAttribute="top" secondItem="pxa-Pe-INW" secondAttribute="top" constant="74" id="l97-Mc-NWq"/>
+                            <constraint firstAttribute="trailing" secondItem="nQU-CN-Ly8" secondAttribute="trailing" constant="5" id="tQC-hD-B7F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pxa-Pe-INW"/>
+                    </view>
+                    <connections>
+                        <outlet property="categorySearchResultCollectionView" destination="nQU-CN-Ly8" id="gwK-p0-mdg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iY8-vp-Z6P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3852" y="275"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="eRg-hs-s3h">

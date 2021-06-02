@@ -14,16 +14,13 @@ protocol RemoteDataSourceProtocol {
     func getProducts(collectionId:String, completion: @escaping (Result<Product?, NSError>) -> Void)
     
     // MARK: joe
-        func getCategoryProducts(catType:String,completion: @escaping (Result<ProductModel?,NSError>) -> Void)
+        func getCategoryProducts(categoryType:String,completion: @escaping (Result<Product?,NSError>) -> Void)
     //end
 }
 
 class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceProtocol {
 
-    // MARK: joe
-//    static let shared = RemoteDataSource()
-//    private override init() {}
-    // end
+
     
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void) {
         
@@ -39,17 +36,17 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
     }
     
      // MARK: joe
-    func getCategoryProducts(catType: String, completion: @escaping (Result<ProductModel?, NSError>) -> Void) {
+    func getCategoryProducts(categoryType: String, completion: @escaping (Result<Product?, NSError>) -> Void) {
         var targetType:RemoteDataSourceWrapper = .getMenCategoryProducts
-        if(catType == "Men"){  //men
+        if(categoryType == "Men"){  //men
             targetType = .getMenCategoryProducts
-        }else if(catType == "Women"){
+        }else if(categoryType == "Women"){
             targetType = .getWomenCategoryProducts
         }else{
             targetType = .getKidsCategoryProducts
         }
         
-        self.fetchData(target: targetType, responseClass: ProductModel.self) { (result) in
+        self.fetchData(target: targetType, responseClass: Product.self) { (result) in
             completion(result)
         }
         

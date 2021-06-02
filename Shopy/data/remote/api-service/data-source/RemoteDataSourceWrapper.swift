@@ -14,9 +14,9 @@ enum RemoteDataSourceWrapper{
     case getAllproducts(collectionId : String)
     
     // MARK: joe
-   // case getCategoryProducts(collectionId : String)
-//    case getWomenCategoryProducts
-//    case getKidsCategoryProducts
+    case getMenCategoryProducts
+    case getWomenCategoryProducts
+    case getKidsCategoryProducts
     //end
     
 }
@@ -42,12 +42,12 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
           return "/admin/api/2021-04/collections/\(collectionId)/products.json"
            
             // MARK: joe
-//            case .getMenCategoryProducts:
-//                return Constants.menCatPath
-//            case .getWomenCategoryProducts:
-//                return Constants.womenCatPath
-//            case .getKidsCategoryProducts:
-//                return Constants.kidCatPath
+            case .getMenCategoryProducts:
+                return Constants.menCatPath
+            case .getWomenCategoryProducts:
+                return Constants.womenCatPath
+            case .getKidsCategoryProducts:
+                return Constants.kidCatPath
             //end
         }
         
@@ -60,12 +60,12 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             return .requestPlain
             
             // MARK: joe
-//            case .getMenCategoryProducts:
-//                return .requestPlain
-//            case .getWomenCategoryProducts:
-//                return .requestPlain
-//            case .getKidsCategoryProducts:
-//                return .requestPlain
+            case .getMenCategoryProducts:
+                return .requestPlain
+            case .getWomenCategoryProducts:
+                return .requestPlain
+            case .getKidsCategoryProducts:
+                return .requestPlain
             
             //end
         }

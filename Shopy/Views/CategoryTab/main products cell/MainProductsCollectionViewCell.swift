@@ -14,7 +14,7 @@ class MainProductsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     
-    var productObject:CategoryProduct!{
+    var productObject:ProductElement!{
         didSet{
             productName.text = productObject.title
             productImage.sd_setImage(with: URL(string: productObject.image.src), placeholderImage: UIImage(named: "1"))
