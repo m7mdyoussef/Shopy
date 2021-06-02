@@ -39,6 +39,8 @@
 		CF4798072665DC9900B0A64D /* AppCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4798062665DC9900B0A64D /* AppCommon.swift */; };
 		CF4798232666747E00B0A64D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4798222666747E00B0A64D /* Product.swift */; };
 		CF47987D2666CE9800B0A64D /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47987C2666CE9700B0A64D /* ProductDetailsViewController.swift */; };
+		CF47988D2667D23300B0A64D /* SizesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47988B2667D23100B0A64D /* SizesCollectionViewCell.swift */; };
+		CF47988E2667D23300B0A64D /* SizesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF47988C2667D23100B0A64D /* SizesCollectionViewCell.xib */; };
 		CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6571992661966700C31614 /* CollectionViewController.swift */; };
 		CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */; };
 		CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */; };
@@ -115,6 +117,8 @@
 		CF4798062665DC9900B0A64D /* AppCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommon.swift; sourceTree = "<group>"; };
 		CF4798222666747E00B0A64D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		CF47987C2666CE9700B0A64D /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		CF47988B2667D23100B0A64D /* SizesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizesCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF47988C2667D23100B0A64D /* SizesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SizesCollectionViewCell.xib; sourceTree = "<group>"; };
 		CF6571992661966700C31614 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -361,9 +365,19 @@
 		CF4798782666CE4100B0A64D /* ProductDetails */ = {
 			isa = PBXGroup;
 			children = (
+				CF47988A2667D1F000B0A64D /* SizeCell */,
 				CF47987C2666CE9700B0A64D /* ProductDetailsViewController.swift */,
 			);
 			path = ProductDetails;
+			sourceTree = "<group>";
+		};
+		CF47988A2667D1F000B0A64D /* SizeCell */ = {
+			isa = PBXGroup;
+			children = (
+				CF47988B2667D23100B0A64D /* SizesCollectionViewCell.swift */,
+				CF47988C2667D23100B0A64D /* SizesCollectionViewCell.xib */,
+			);
+			path = SizeCell;
 			sourceTree = "<group>";
 		};
 		CF65719026617D8500C31614 /* Home */ = {
@@ -558,6 +572,7 @@
 				9E182D9426503E8300069E6E /* LaunchScreen.storyboard in Resources */,
 				9E59BDDC26531C67003B113F /* GoogleService-Info.plist in Resources */,
 				CF6571AA266197D300C31614 /* ProductCollectionViewCell.xib in Resources */,
+				CF47988E2667D23300B0A64D /* SizesCollectionViewCell.xib in Resources */,
 				CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */,
 				9E182D9126503E8300069E6E /* Assets.xcassets in Resources */,
 				9E182D8C26503E8100069E6E /* Main.storyboard in Resources */,
@@ -704,6 +719,7 @@
 				9E756A10266431EB000B5D98 /* SubCategoriesCollectionViewCell.swift in Sources */,
 				9EAE574A2657114700BE44C2 /* URLs.swift in Sources */,
 				D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */,
+				CF47988D2667D23300B0A64D /* SizesCollectionViewCell.swift in Sources */,
 				CF47987D2666CE9800B0A64D /* ProductDetailsViewController.swift in Sources */,
 				CF4797E62665D3D800B0A64D /* CollectionViewController+FlowLayout.swift in Sources */,
 				CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */,

@@ -12,17 +12,17 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView.tag == 1{
-            return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/2, height: 180)
+            return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/3, height: 220)
         }else
         {
-            return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/2, height: 35)
+            return CGSize(width: (self.view.frame.width)/3, height: 40)
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }

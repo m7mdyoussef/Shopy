@@ -48,7 +48,6 @@ class HomeViewModel: HomeModelType{
         productsErrorObservable = productsErrorSubject.asObserver()
         productElementErrorObservable = productElementErrorSubject.asObserver()
         
-        
     }
     
     func getCollectionData(){
