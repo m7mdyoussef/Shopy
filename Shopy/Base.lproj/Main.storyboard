@@ -243,20 +243,56 @@
             </objects>
             <point key="canvasLocation" x="2486.9565217391305" y="-323.4375"/>
         </scene>
-        <!--View Controller-->
+        <!--Product Details View Controller-->
         <scene sceneID="OpN-RQ-9Mf">
             <objects>
-                <viewController id="WP5-qo-6MJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDetailsViewController" id="WP5-qo-6MJ" customClass="ProductDetailsViewController" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xt0-rS-Li9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nve-kI-LII">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="215"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hta-VJ-K7M">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="215"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="D19-41-AnG"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="H5m-eJ-7pF"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="215" id="HvY-pO-Gan"/>
+                                </constraints>
+                            </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="LNi-z1-8GR">
+                                <rect key="frame" x="145.5" y="215" width="123" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="EA6-xk-xQh"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" red="0.99603980780000001" green="0.57988804579999997" blue="0.64627319569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dXo-6u-eVi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nve-kI-LII" firstAttribute="trailing" secondItem="dXo-6u-eVi" secondAttribute="trailing" id="GW4-Nl-zS6"/>
+                            <constraint firstItem="nve-kI-LII" firstAttribute="leading" secondItem="dXo-6u-eVi" secondAttribute="leading" id="I5n-Lw-Z64"/>
+                            <constraint firstItem="LNi-z1-8GR" firstAttribute="top" secondItem="nve-kI-LII" secondAttribute="bottom" id="Lwn-6x-bcS"/>
+                            <constraint firstItem="LNi-z1-8GR" firstAttribute="centerX" secondItem="xt0-rS-Li9" secondAttribute="centerX" id="jWS-3j-Rz0"/>
+                            <constraint firstItem="nve-kI-LII" firstAttribute="top" secondItem="xt0-rS-Li9" secondAttribute="top" id="rf4-wM-4Zf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageScrollView" destination="hta-VJ-K7M" id="cMh-nk-oe4"/>
+                        <outlet property="pageControl" destination="LNi-z1-8GR" id="uPQ-Du-pMy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLx-KQ-Zjv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3309" y="-323"/>
+            <point key="canvasLocation" x="3308.6956521739135" y="-323.4375"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="x7B-xU-Zxh">

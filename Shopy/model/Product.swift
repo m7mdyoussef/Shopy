@@ -79,16 +79,16 @@ struct Variant: Codable {
     let id, productID: Int
     let title, price, sku: String
     let position: Int
-    let inventoryPolicy: InventoryPolicy
-    let fulfillmentService: FulfillmentService
-    let inventoryManagement: InventoryManagement
+    let inventoryPolicy: String
+    let fulfillmentService: String
+    let inventoryManagement: String
     let option1: String
-    let option2: Option2
+    let option2: String
     let createdAt, updatedAt: String
     let taxable: Bool
     let grams: Int
     let weight: Int
-    let weightUnit: WeightUnit
+    let weightUnit: String
     let inventoryItemID, inventoryQuantity, oldInventoryQuantity: Int
     let requiresShipping: Bool
     let adminGraphqlAPIID: String
@@ -114,22 +114,3 @@ struct Variant: Codable {
     }
 }
 
-enum FulfillmentService: String, Codable {
-    case manual = "manual"
-}
-
-enum InventoryManagement: String, Codable {
-    case shopify = "shopify"
-}
-
-enum InventoryPolicy: String, Codable {
-    case deny = "deny"
-}
-
-enum Option2: String, Codable {
-    case red = "red"
-}
-
-enum WeightUnit: String, Codable {
-    case kg = "kg"
-}

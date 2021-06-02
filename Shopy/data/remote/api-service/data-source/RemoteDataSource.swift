@@ -12,6 +12,7 @@ protocol RemoteDataSourceProtocol {
     
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void)
     func getProducts(collectionId:String, completion: @escaping (Result<Products?, NSError>) -> Void)
+    func getProductElement(productId:String, completion: @escaping (Result<Product?, NSError>) -> Void)
 }
 
 class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceProtocol {
@@ -25,6 +26,12 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
     
     func getProducts(collectionId:String, completion: @escaping (Result<Products?, NSError>) -> Void) {
         self.fetchData(target: .getAllproducts(collectionId: collectionId), responseClass: Products.self){(result) in
+            completion(result)
+        }
+    }
+    
+    func getProductElement(productId: String, completion: @escaping (Result<Product?, NSError>) -> Void) {
+        self.fetchData(target: .getProductElement(productId: productId), responseClass: Product.self){ (result) in
             completion(result)
         }
     }

@@ -12,6 +12,7 @@ import Alamofire
 enum RemoteDataSourceWrapper{
     case getAllCustomCollections
     case getAllproducts(collectionId : String)
+    case getProductElement(productId:String)
     
     
 }
@@ -34,6 +35,8 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
         case .getAllproducts(collectionId: let collectionId):
           return "/admin/api/2021-04/collections/\(collectionId)/products.json"
             
+        case .getProductElement(productId: let productId):
+            return "/admin/api/2021-04/products/\(productId).json"
         }
         
     }
@@ -42,6 +45,8 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
         case .getAllCustomCollections:
             return .requestPlain
         case .getAllproducts(collectionId: let collectionId):
+            return .requestPlain
+        case .getProductElement(productId: let productId):
             return .requestPlain
         }
         
