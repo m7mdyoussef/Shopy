@@ -49,20 +49,23 @@ class CategoryViewController: UIViewController {
         productsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
 
 
-        var item = 0
+        var itemCatageory = 0
+        var itemSubCatageory = 0
         //select first item at initialization
-        let selectedIndexPath = IndexPath(item: item, section: 0)
+        var selectedIndexPath = IndexPath(item: itemCatageory, section: 0)
 
         //bindingData from viewModel
         categoryViewModel.mainCatDataObservable.bind(to: mainCategoryCollectionView.rx.items(cellIdentifier: Constants.mainCatNibCelln)){ [weak self] row,item,cell in
            let castedCell = cell as! MainCategoriesCollectionViewCell
             castedCell.mainCategoriesCellLabel.text = item.title
+            selectedIndexPath = IndexPath(item: itemCatageory, section: 0)
             self?.mainCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: disposeBag)
         
         categoryViewModel.subCatDataObservable.bind(to: subCategoryCollectionView.rx.items(cellIdentifier: Constants.subCatNibCell)){ [weak self] row,item,cell in
            let castedCell = cell as! SubCategoriesCollectionViewCell
             castedCell.subCategorieslabel.text = item
+            selectedIndexPath = IndexPath(item: itemSubCatageory, section: 0)
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: disposeBag)
         
@@ -75,8 +78,9 @@ class CategoryViewController: UIViewController {
         //when item selected
         mainCategoryCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (value) in
             
-            self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
-            item = value.item
+        //    self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
+            itemCatageory = value.item
+       //     selectedIndexPath = IndexPath(item: value.item, section: 0)
            // self?.mainCatagoryID = value
             self?.subCat = "Tshirt"
          //   collectionId:String,subCat:String
