@@ -13,6 +13,8 @@ enum RemoteDataSourceWrapper{
     case getAllCustomCollections
     case getAllproducts(collectionId : String)
     case getProductElement(productId:String)
+    case getPriceRule
+    case getDiscountCode(priceRule: String)
     
     
 }
@@ -37,6 +39,10 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             
         case .getProductElement(productId: let productId):
             return "/admin/api/2021-04/products/\(productId).json"
+        case .getPriceRule:
+            return "/admin/api/2021-04/price_rules.json"
+        case .getDiscountCode(priceRule: let price_rule): //950502654150
+            return "/admin/api/2021-04/price_rules/\(price_rule)/discount_codes.json"
         }
         
     }
@@ -47,6 +53,10 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
         case .getAllproducts(collectionId: let collectionId):
             return .requestPlain
         case .getProductElement(productId: let productId):
+            return .requestPlain
+        case .getPriceRule:
+            return .requestPlain
+        case .getDiscountCode(priceRule: let price_rule):
             return .requestPlain
         }
         

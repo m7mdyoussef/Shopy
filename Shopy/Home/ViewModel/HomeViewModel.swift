@@ -17,6 +17,8 @@ protocol HomeModelType{
     var collectionDataObservable : Observable<[CustomElement]>?{get}
     var productsDataObservable : Observable<[ProductElement]>?{get}
     var productElementObservable : Observable<ProductClass>?{get}
+    var priceRuleObservable: Observable<[PriceRule]>?{get}
+    var priceRuleErrorObservable : PublishSubject<String>?{get}
     var productElementErrorObservable : PublishSubject<String>?{get}
     var collectionErrorObservable : PublishSubject<String>?{get}
     var productsErrorObservable : PublishSubject<String>?{get}
@@ -31,6 +33,8 @@ class HomeViewModel: HomeModelType{
     var productsErrorObservable: PublishSubject<String>?
     var productElementErrorObservable: PublishSubject<String>?
     var productElementObservable: Observable<ProductClass>?
+    var priceRuleObservable: Observable<[PriceRule]>?
+    var priceRuleErrorObservable : PublishSubject<String>?
     
     private var collectionDataSubject = PublishSubject<[CustomElement]>()
     private var productDataSubject = PublishSubject<[ProductElement]>()
@@ -38,6 +42,9 @@ class HomeViewModel: HomeModelType{
     private var collectionErrorSubject = PublishSubject<String>()
     private var productsErrorSubject = PublishSubject<String>()
     private var productElementErrorSubject = PublishSubject<String>()
+    private var PriceRuleDataSubject = PublishSubject<[PriceRule]>()
+    private var PriceRuleErrorSubject = PublishSubject<String>()
+    
    
     
     init() {
@@ -47,7 +54,8 @@ class HomeViewModel: HomeModelType{
         collectionErrorObservable = collectionErrorSubject.asObserver()
         productsErrorObservable = productsErrorSubject.asObserver()
         productElementErrorObservable = productElementErrorSubject.asObserver()
-        
+        priceRuleObservable = PriceRuleDataSubject.asObserver()
+        priceRuleErrorObservable = PriceRuleErrorSubject.asObserver()
     }
     
     func getCollectionData(){
@@ -94,6 +102,23 @@ class HomeViewModel: HomeModelType{
             
             case .failure(let error):
                 self.productElementErrorSubject.asObserver().onNext(error.localizedDescription)
+                print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
+                print(error.code)
+            }
+        }
+    }
+    
+    func getPriceRules(){
+        api.getPriceRules{[weak self](result) in
+            guard let self = self else {return}
+    
+            switch result {
+            case .success(let response):
+                guard let priceRules = response?.priceRules else {return}
+                self.PriceRuleDataSubject.asObserver().onNext(priceRules)
+                print(priceRules[0].id)
+            case .failure(let error):
+                self.PriceRuleErrorSubject.asObserver().onNext(error.localizedDescription)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }

@@ -35,4 +35,11 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
             completion(result)
         }
     }
+    
+    func getPriceRules(completion: @escaping (Result<PriceRules?, NSError>) -> Void) {
+    
+    self.fetchData(target: .getPriceRule, responseClass: PriceRules.self) { (result) in
+        completion(result)
+    }
+ }
 }

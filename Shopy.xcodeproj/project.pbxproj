@@ -41,6 +41,8 @@
 		CF47987D2666CE9800B0A64D /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47987C2666CE9700B0A64D /* ProductDetailsViewController.swift */; };
 		CF47988D2667D23300B0A64D /* SizesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47988B2667D23100B0A64D /* SizesCollectionViewCell.swift */; };
 		CF47988E2667D23300B0A64D /* SizesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF47988C2667D23100B0A64D /* SizesCollectionViewCell.xib */; };
+		CF47989F2669471500B0A64D /* PriceRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47989E2669471300B0A64D /* PriceRules.swift */; };
+		CF4798A42669497C00B0A64D /* DiscountCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4798A32669497B00B0A64D /* DiscountCodes.swift */; };
 		CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6571992661966700C31614 /* CollectionViewController.swift */; };
 		CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */; };
 		CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */; };
@@ -119,6 +121,8 @@
 		CF47987C2666CE9700B0A64D /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		CF47988B2667D23100B0A64D /* SizesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizesCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF47988C2667D23100B0A64D /* SizesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SizesCollectionViewCell.xib; sourceTree = "<group>"; };
+		CF47989E2669471300B0A64D /* PriceRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRules.swift; sourceTree = "<group>"; };
+		CF4798A32669497B00B0A64D /* DiscountCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodes.swift; sourceTree = "<group>"; };
 		CF6571992661966700C31614 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -421,6 +425,8 @@
 				D21A3B14265C22410096553A /* CustomCollection.swift */,
 				CFF7A3CC26652302003D7987 /* Products.swift */,
 				CF4798222666747E00B0A64D /* Product.swift */,
+				CF47989E2669471300B0A64D /* PriceRules.swift */,
+				CF4798A32669497B00B0A64D /* DiscountCodes.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -723,11 +729,13 @@
 				CF47987D2666CE9800B0A64D /* ProductDetailsViewController.swift in Sources */,
 				CF4797E62665D3D800B0A64D /* CollectionViewController+FlowLayout.swift in Sources */,
 				CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */,
+				CF47989F2669471500B0A64D /* PriceRules.swift in Sources */,
 				9E59BDDA2653173C003B113F /* CategoryCollectionViewCell.swift in Sources */,
 				9E756A0C266431CB000B5D98 /* MainProductsCollectionViewCell.swift in Sources */,
 				CF4798232666747E00B0A64D /* Product.swift in Sources */,
 				9E756A1926643A94000B5D98 /* CategoryViewModel.swift in Sources */,
 				9E756A1426643208000B5D98 /* MainCategoriesCollectionViewCell.swift in Sources */,
+				CF4798A42669497C00B0A64D /* DiscountCodes.swift in Sources */,
 				CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */,
 				D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */,
 				9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */,

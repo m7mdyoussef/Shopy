@@ -34,6 +34,11 @@ class CollectionViewController: UIViewController {
         setupProductCollection()
         productsView.roundCorners(corners: [.topLeft, .topRight], radius: 35)
         
+        collectionViewModel?.getPriceRules()
+        collectionViewModel?.priceRuleObservable?.asObservable().subscribe(onNext: { (value) in
+            print(value)
+        })
+        
     }
     
     func setUpMenuColllection(){
