@@ -21,6 +21,13 @@ class MainProductsCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var DetailedProductObject:DetailedProducts!{
+        didSet{
+            productName.text = DetailedProductObject.title
+            productImage.sd_setImage(with: URL(string: DetailedProductObject.image.src), placeholderImage: UIImage(named: "placeholder"))
+        }
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

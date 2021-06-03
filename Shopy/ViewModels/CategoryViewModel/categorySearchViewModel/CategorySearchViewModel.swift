@@ -12,26 +12,77 @@ import RxCocoa
 
 class CategorySearchViewModel{
     private var dB = DisposeBag()
-    var productElements:[ProductElement]!
-    var productsObservable: Observable<[ProductElement]>
-    private var productsSubject = PublishSubject<[ProductElement]>()
+    var productElements:[DetailedProducts]!
+    private var filteredproductElements:[DetailedProducts]!
+    var productsObservable: Observable<[DetailedProducts]>
+    private var productsSubject = PublishSubject<[DetailedProducts]>()
     
     var searchWord : BehaviorRelay<String> = BehaviorRelay(value: "")
     private lazy var searchWordObservable:Observable<String> = searchWord.asObservable()
     
-    init(products:[ProductElement]) {
-        self.productElements = products
+    var errorObservable: Observable<Bool>
+    var LoadingObservable: Observable<Bool>
+    
+    private var errorsubject = PublishSubject<Bool>()
+    private var Loadingsubject = PublishSubject<Bool>()
+    
+    private var api:RemoteDataSourceProtocol!
+
+    init() {
+        api = RemoteDataSource()
+        errorObservable = errorsubject.asObservable()
+        LoadingObservable = Loadingsubject.asObservable()
         productsObservable = productsSubject.asObservable()
+        filteredproductElements = productElements
+        
         searchWordObservable.subscribe(onNext: {[weak self] (value) in
-        let searchedProduct = self?.productElements?.filter({ (product) -> Bool in
-            product.title.lowercased().prefix(value.count) == value.lowercased()
+            self?.filteredproductElements = self?.productElements?.filter({ (product) -> Bool in
+            product.title.lowercased().contains(value.lowercased())
         })
-        self?.productsSubject.onNext(searchedProduct ?? [])
-        }).disposed(by: dB)
+         if(self?.filteredproductElements != nil){
+               if(self!.filteredproductElements!.isEmpty){
+                   self?.filteredproductElements = self?.productElements
+               }
+           }
+           self?.productsSubject.onNext(self?.filteredproductElements ?? [])
+           }).disposed(by: dB)
+    }
+        
+    func fetchData(){
+        Loadingsubject.onNext(true)
+        api.getDetailedProducts {[weak self] (result) in
+            switch result{
+            case .success(let products):
+                self?.productElements = products?.products
+                self?.filteredproductElements = self?.productElements
+                self?.productsSubject.onNext(products?.products ?? [])
+                self?.Loadingsubject.onNext(false)
+            case .failure(let error):
+                self?.Loadingsubject.onNext(false)
+                self?.errorsubject.onError(error)
+            }
+        }
     }
     
-    func fetchData(){
-        productsSubject.onNext(productElements)
+    func sortData(index:Int){
+        switch index {
+        case 0:
+            filteredproductElements = productElements.sorted { (product1, product2) -> Bool in
+                Double(product1.variants[0].price)! > Double(product2.variants[0].price)!
+            }
+        default:
+            filteredproductElements = productElements.sorted { (product1, product2) -> Bool in
+                Double(product1.variants[0].price)! < Double(product2.variants[0].price)!
+            }
+        }
+        productsSubject.onNext(filteredproductElements ?? productElements)
+    }
+    
+    func filterData(word:String){
+        filteredproductElements = productElements.filter({ (product) -> Bool in
+            product.productType.rawValue.lowercased() == word.lowercased()
+            })
+        productsSubject.onNext(filteredproductElements)
     }
     
 }

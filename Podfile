@@ -20,7 +20,7 @@ target 'Shopy' do
 #  pod 'EmptyDataSet-Swift'
 #  pod 'JGProgressHUD'
 #  pod 'PayPal-iOS-SDK'
-
+pod 'DropDown'
   # Pods for Shopy
 
   target 'ShopyTests' do

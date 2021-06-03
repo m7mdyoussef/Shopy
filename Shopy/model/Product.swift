@@ -20,7 +20,7 @@ struct ProductElement: Codable {
     let handle: String
     let updatedAt, publishedAt: String
     let publishedScope, tags, adminGraphqlAPIID: String
-    let options: [Option]
+    let options: [Options]
     let images: [Images]
     let image: Images
 
@@ -61,7 +61,7 @@ struct Images: Codable {
 }
 
 // MARK: - Option
-struct Option: Codable {
+struct Options: Codable {
     let id, productID: Int
     let name: String
     let position: Int

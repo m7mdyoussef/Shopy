@@ -17,6 +17,7 @@ enum RemoteDataSourceWrapper{
     case getMenCategoryProducts
     case getWomenCategoryProducts
     case getKidsCategoryProducts
+    case getDetailedProducts
     //end
     
 }
@@ -48,6 +49,8 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
                 return Constants.womenCatPath
             case .getKidsCategoryProducts:
                 return Constants.kidCatPath
+            case .getDetailedProducts:
+                return Constants.DetailedProductsPath
             //end
         }
         
@@ -66,6 +69,8 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
                 return .requestPlain
             case .getKidsCategoryProducts:
                 return .requestPlain
+            case .getDetailedProducts:
+                 return .requestPlain
             
             //end
         }

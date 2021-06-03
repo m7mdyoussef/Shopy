@@ -128,7 +128,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQU-CN-Ly8">
-                                <rect key="frame" x="5" y="118" width="404" height="749"/>
+                                <rect key="frame" x="5" y="147" width="404" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1qZ-WT-6Sh">
                                     <size key="itemSize" width="128" height="128"/>
@@ -147,23 +147,47 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lsg-cX-slR">
+                                <rect key="frame" x="0.0" y="90" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="esJ-Oa-taS"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="sort" id="Y0B-l2-2iy">
+                                        <connections>
+                                            <action selector="clickSortBtn:" destination="yHy-cE-c9R" id="tsY-Tb-yHh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="filter" id="Zjv-pl-dmD">
+                                        <connections>
+                                            <action selector="clickFilterBtn:" destination="yHy-cE-c9R" id="lkU-p5-ziX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="nQU-CN-Ly8" secondAttribute="bottom" constant="29" id="8nU-HF-kj9"/>
-                            <constraint firstItem="nQU-CN-Ly8" firstAttribute="leading" secondItem="pxa-Pe-INW" secondAttribute="leading" constant="5" id="fIE-4D-83t"/>
-                            <constraint firstItem="nQU-CN-Ly8" firstAttribute="top" secondItem="pxa-Pe-INW" secondAttribute="top" constant="74" id="l97-Mc-NWq"/>
-                            <constraint firstAttribute="trailing" secondItem="nQU-CN-Ly8" secondAttribute="trailing" constant="5" id="tQC-hD-B7F"/>
+                            <constraint firstItem="nQU-CN-Ly8" firstAttribute="top" secondItem="Lsg-cX-slR" secondAttribute="bottom" constant="7" id="AcA-ib-TCf"/>
+                            <constraint firstItem="Lsg-cX-slR" firstAttribute="leading" secondItem="pxa-Pe-INW" secondAttribute="leading" id="AoE-3n-zAB"/>
+                            <constraint firstItem="nQU-CN-Ly8" firstAttribute="leading" secondItem="pxa-Pe-INW" secondAttribute="leading" constant="5" id="Pey-z6-3E6"/>
+                            <constraint firstItem="pxa-Pe-INW" firstAttribute="trailing" secondItem="nQU-CN-Ly8" secondAttribute="trailing" constant="5" id="QeJ-Zn-EYI"/>
+                            <constraint firstAttribute="bottom" secondItem="nQU-CN-Ly8" secondAttribute="bottom" id="XsF-Vu-olk"/>
+                            <constraint firstItem="Lsg-cX-slR" firstAttribute="top" secondItem="pxa-Pe-INW" secondAttribute="top" constant="46" id="nAI-sb-xkL"/>
+                            <constraint firstItem="Lsg-cX-slR" firstAttribute="trailing" secondItem="pxa-Pe-INW" secondAttribute="trailing" id="vD9-hr-TlJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pxa-Pe-INW"/>
                     </view>
                     <connections>
                         <outlet property="categorySearchResultCollectionView" destination="nQU-CN-Ly8" id="gwK-p0-mdg"/>
+                        <outlet property="containingToolBar" destination="Lsg-cX-slR" id="9WK-Xn-nPo"/>
+                        <outlet property="filteringBtn" destination="Zjv-pl-dmD" id="Btu-cD-iRH"/>
+                        <outlet property="sortingBtn" destination="Y0B-l2-2iy" id="tiR-uN-mJ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iY8-vp-Z6P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3852" y="275"/>
+            <point key="canvasLocation" x="3850.7246376811595" y="274.55357142857139"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="eRg-hs-s3h">

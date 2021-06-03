@@ -20,6 +20,8 @@ struct Constants {
     static let womenCatPath = "/admin/api/2021-04/collections/268359631046/products.json"
     static let kidCatPath = "/admin/api/2021-04/collections/268359663814/products.json"
     static let searchCategoryViewController = "SearchCategoryViewController"
+    static let DetailedProductsPath = "/admin/api/2021-04/products.json"
+
     //end
     
 
