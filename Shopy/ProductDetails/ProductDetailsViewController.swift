@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import RxCocoa
 import RxSwift
-import RxRelay
+//import RxRelay
 
 class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     
