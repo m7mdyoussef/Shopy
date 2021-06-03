@@ -17,6 +17,9 @@ class MainCategoriesCollectionViewCell: UICollectionViewCell {
     override var isHighlighted: Bool{
         didSet{
             mainCategoriesCellLabel.textColor = isHighlighted ? UIColor.black : UIColor.gray
+            
+//            mainCategoriesCellLabel.highlightedTextColor = isHighlighted ? UIColor.gray : UIColor.white
+            
             mainCategoriesCellHighLightedView.backgroundColor = isHighlighted ? UIColor.black : UIColor.white
         }
     }
@@ -24,6 +27,8 @@ class MainCategoriesCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool{
         didSet{
             mainCategoriesCellLabel.textColor = isSelected ? UIColor.black : UIColor.gray
+//            mainCategoriesCellLabel.highlightedTextColor = isHighlighted ? UIColor.gray : UIColor.black
+
             mainCategoriesCellHighLightedView.backgroundColor = isSelected ? UIColor.black : UIColor.white
 
         }

@@ -130,6 +130,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQU-CN-Ly8">
                                 <rect key="frame" x="5" y="147" width="404" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="749" id="iVM-9s-2pq"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1qZ-WT-6Sh">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -147,47 +150,92 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lsg-cX-slR">
-                                <rect key="frame" x="0.0" y="90" width="414" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvf-io-7Dl">
+                                <rect key="frame" x="20" y="96" width="88" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWI-vd-mfi">
+                                        <rect key="frame" x="8" y="0.0" width="30" height="30"/>
+                                        <state key="normal" title="sort">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clickToSort:" destination="yHy-cE-c9R" eventType="touchUpInside" id="IWK-vt-ALy"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="sort" translatesAutoresizingMaskIntoConstraints="NO" id="otg-fc-i9Z">
+                                        <rect key="frame" x="46" y="4" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="7CO-g1-Kw0"/>
+                                            <constraint firstAttribute="width" constant="22" id="TWW-6d-Dgk"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="esJ-Oa-taS"/>
+                                    <constraint firstItem="otg-fc-i9Z" firstAttribute="top" secondItem="Jvf-io-7Dl" secondAttribute="top" constant="4" id="2I3-BF-fVI"/>
+                                    <constraint firstItem="otg-fc-i9Z" firstAttribute="leading" secondItem="oWI-vd-mfi" secondAttribute="trailing" constant="8" id="9mR-zR-EGJ"/>
+                                    <constraint firstItem="oWI-vd-mfi" firstAttribute="leading" secondItem="Jvf-io-7Dl" secondAttribute="leading" constant="8" id="HEj-1B-wJk"/>
+                                    <constraint firstAttribute="width" constant="88" id="cmE-Cj-Q7s"/>
+                                    <constraint firstAttribute="bottom" secondItem="otg-fc-i9Z" secondAttribute="bottom" constant="4" id="dlo-vl-SQU"/>
+                                    <constraint firstAttribute="bottom" secondItem="oWI-vd-mfi" secondAttribute="bottom" id="gq9-gp-YZT"/>
+                                    <constraint firstItem="oWI-vd-mfi" firstAttribute="top" secondItem="Jvf-io-7Dl" secondAttribute="top" id="tK8-NB-wHz"/>
                                 </constraints>
-                                <items>
-                                    <barButtonItem title="sort" id="Y0B-l2-2iy">
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6N-j8-3J8">
+                                <rect key="frame" x="306" y="96" width="88" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-Zv-3mD">
+                                        <rect key="frame" x="8" y="0.0" width="32" height="30"/>
+                                        <state key="normal" title="filter">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
-                                            <action selector="clickSortBtn:" destination="yHy-cE-c9R" id="tsY-Tb-yHh"/>
+                                            <action selector="clickToFilter:" destination="yHy-cE-c9R" eventType="touchUpInside" id="2e4-jL-3n5"/>
                                         </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="filter" id="Zjv-pl-dmD">
-                                        <connections>
-                                            <action selector="clickFilterBtn:" destination="yHy-cE-c9R" id="lkU-p5-ziX"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="voN-7k-CXL">
+                                        <rect key="frame" x="48" y="4" width="20" height="22"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="QUg-Zv-3mD" secondAttribute="bottom" id="3cj-Ca-mSc"/>
+                                    <constraint firstItem="voN-7k-CXL" firstAttribute="top" secondItem="a6N-j8-3J8" secondAttribute="top" constant="4" id="EHQ-BH-cnJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="voN-7k-CXL" secondAttribute="trailing" constant="20" id="KGk-xa-E16"/>
+                                    <constraint firstItem="QUg-Zv-3mD" firstAttribute="leading" secondItem="a6N-j8-3J8" secondAttribute="leading" constant="8" id="V6h-PJ-ePW"/>
+                                    <constraint firstAttribute="bottom" secondItem="voN-7k-CXL" secondAttribute="bottom" constant="4" id="Z83-Y2-RZz"/>
+                                    <constraint firstItem="QUg-Zv-3mD" firstAttribute="top" secondItem="a6N-j8-3J8" secondAttribute="top" id="cin-EW-0bF"/>
+                                    <constraint firstAttribute="width" constant="88" id="dyd-9f-bRB"/>
+                                    <constraint firstItem="voN-7k-CXL" firstAttribute="leading" secondItem="QUg-Zv-3mD" secondAttribute="trailing" constant="8" id="jpr-ca-nlO"/>
+                                    <constraint firstItem="voN-7k-CXL" firstAttribute="leading" secondItem="QUg-Zv-3mD" secondAttribute="trailing" constant="8" id="urr-Jk-aGu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="nQU-CN-Ly8" firstAttribute="top" secondItem="Lsg-cX-slR" secondAttribute="bottom" constant="7" id="AcA-ib-TCf"/>
-                            <constraint firstItem="Lsg-cX-slR" firstAttribute="leading" secondItem="pxa-Pe-INW" secondAttribute="leading" id="AoE-3n-zAB"/>
+                            <constraint firstItem="pxa-Pe-INW" firstAttribute="trailing" secondItem="a6N-j8-3J8" secondAttribute="trailing" constant="20" id="0aB-Nk-0Kz"/>
+                            <constraint firstItem="nQU-CN-Ly8" firstAttribute="top" secondItem="a6N-j8-3J8" secondAttribute="bottom" constant="21" id="Dc1-GV-CYe"/>
+                            <constraint firstItem="a6N-j8-3J8" firstAttribute="top" secondItem="pxa-Pe-INW" secondAttribute="top" constant="52" id="EG5-ov-kqS"/>
+                            <constraint firstItem="Jvf-io-7Dl" firstAttribute="top" secondItem="pxa-Pe-INW" secondAttribute="top" constant="52" id="GOH-xz-rNp"/>
                             <constraint firstItem="nQU-CN-Ly8" firstAttribute="leading" secondItem="pxa-Pe-INW" secondAttribute="leading" constant="5" id="Pey-z6-3E6"/>
                             <constraint firstItem="pxa-Pe-INW" firstAttribute="trailing" secondItem="nQU-CN-Ly8" secondAttribute="trailing" constant="5" id="QeJ-Zn-EYI"/>
                             <constraint firstAttribute="bottom" secondItem="nQU-CN-Ly8" secondAttribute="bottom" id="XsF-Vu-olk"/>
-                            <constraint firstItem="Lsg-cX-slR" firstAttribute="top" secondItem="pxa-Pe-INW" secondAttribute="top" constant="46" id="nAI-sb-xkL"/>
-                            <constraint firstItem="Lsg-cX-slR" firstAttribute="trailing" secondItem="pxa-Pe-INW" secondAttribute="trailing" id="vD9-hr-TlJ"/>
+                            <constraint firstItem="nQU-CN-Ly8" firstAttribute="top" secondItem="Jvf-io-7Dl" secondAttribute="bottom" constant="21" id="dQl-Wz-SI2"/>
+                            <constraint firstItem="Jvf-io-7Dl" firstAttribute="leading" secondItem="pxa-Pe-INW" secondAttribute="leading" constant="20" id="tRc-Tr-IUA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pxa-Pe-INW"/>
                     </view>
                     <connections>
                         <outlet property="categorySearchResultCollectionView" destination="nQU-CN-Ly8" id="gwK-p0-mdg"/>
-                        <outlet property="containingToolBar" destination="Lsg-cX-slR" id="9WK-Xn-nPo"/>
-                        <outlet property="filteringBtn" destination="Zjv-pl-dmD" id="Btu-cD-iRH"/>
-                        <outlet property="sortingBtn" destination="Y0B-l2-2iy" id="tiR-uN-mJ8"/>
+                        <outlet property="filter" destination="QUg-Zv-3mD" id="5ze-2g-CQK"/>
+                        <outlet property="filterView" destination="a6N-j8-3J8" id="lun-47-KFr"/>
+                        <outlet property="sortBtn" destination="oWI-vd-mfi" id="mzV-ti-Evv"/>
+                        <outlet property="sortView" destination="Jvf-io-7Dl" id="wWN-P3-KWE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iY8-vp-Z6P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3850.7246376811595" y="274.55357142857139"/>
+            <point key="canvasLocation" x="3850.7246376811595" y="273.88392857142856"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="eRg-hs-s3h">
@@ -402,7 +450,9 @@
     <resources>
         <image name="bag.fill" catalog="system" width="128" height="128"/>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
+        <image name="filter" width="981" height="908"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="sort" width="512" height="512"/>
         <image name="table.fill" catalog="system" width="128" height="93"/>
     </resources>
 </document>

@@ -20,9 +20,11 @@ class SearchCategoryViewController: UIViewController {
     private var sortingMenu:DropDown!
     private var filteringMenu:DropDown!
     
-    @IBOutlet weak var containingToolBar: UIToolbar!
-    @IBOutlet private weak var sortingBtn: UIBarButtonItem!
-    @IBOutlet private weak var filteringBtn: UIBarButtonItem!
+    @IBOutlet weak var filter: UIButton!
+    @IBOutlet weak var filterView: UIView!
+    
+    @IBOutlet weak var sortView: UIView!
+    @IBOutlet weak var sortBtn: UIButton!
     @IBOutlet private weak var categorySearchResultCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -38,14 +40,14 @@ class SearchCategoryViewController: UIViewController {
         //initialize dropList
             sortingMenu = DropDown()
             filteringMenu = DropDown()
-            sortingMenu.anchorView = sortingBtn
-            filteringMenu.anchorView = filteringBtn
+            sortingMenu.anchorView = sortView
+            filteringMenu.anchorView = filterView
             sortingMenu.dataSource = ["Price: Highiest to lowest","Price: Lowest to Highiest"]
             filteringMenu.dataSource = ["T-Shirts","Shoes","Accessories"]
             sortingMenu.direction = .bottom
             filteringMenu.direction = .bottom
-            sortingMenu.bottomOffset = CGPoint(x: 0, y:containingToolBar.frame.height)
-            filteringMenu.bottomOffset = CGPoint(x: 0, y:containingToolBar.frame.height)
+            sortingMenu.bottomOffset = CGPoint(x: 0, y:sortView.plainView.bounds.height)
+            filteringMenu.bottomOffset = CGPoint(x: 0, y:filterView.plainView.bounds.height)
         
         //create search bar in run time
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 25))
@@ -83,14 +85,14 @@ class SearchCategoryViewController: UIViewController {
         
     }
     
-
-    @IBAction func clickSortBtn(_ sender: UIBarButtonItem) {
+    @IBAction func clickToFilter(_ sender: Any) {
+        filteringMenu.show()
+    }
+    @IBAction func clickToSort(_ sender: Any) {
         sortingMenu.show()
     }
     
-    @IBAction func clickFilterBtn(_ sender: UIBarButtonItem) {
-        filteringMenu.show()
-    }
+
 }
 
 
