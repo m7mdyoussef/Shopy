@@ -12,17 +12,17 @@ import Alamofire
 enum RemoteDataSourceWrapper{
     case getAllCustomCollections
     case getAllproducts(collectionId : String)
-    case registerACustomer(myCustomer: Customer)
-    
+    case register(myCustomer: Customer)
+    case allUsers
 }
 
 extension RemoteDataSourceWrapper :ApiRequestWrapper{
     
     var httpMethod: HttpMethod {
-//        return .get
+        //        return .get
         
         switch self {
-        case .registerACustomer(myCustomer: _):
+        case .register(myCustomer: _):
             return .post
         default:
             return .get
@@ -31,10 +31,10 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
     
     var httpBody:Data?{
         switch self {
-        case .registerACustomer(myCustomer: let customer):
+        case .register(myCustomer: let customer):
             var jsonData:Data = Data()
             do {
-             jsonData = try JSONSerialization.data(withJSONObject: customer.asDictionary(), options: .prettyPrinted)
+                jsonData = try JSONSerialization.data(withJSONObject: customer.asDictionary(), options: .prettyPrinted)
                 return jsonData
                 print("json data is \(jsonData)")
             } catch let error {
@@ -55,8 +55,10 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
         case .getAllCustomCollections:
             return "/admin/api/2021-04/custom_collections.json"
         case .getAllproducts(collectionId: let collectionId):
-          return "/admin/api/2021-04/collections/\(collectionId)/products.json"
-        case .registerACustomer:
+            return "/admin/api/2021-04/collections/\(collectionId)/products.json"
+        case .register:
+            return "/admin/api/2021-04/customers.json"
+        case .allUsers:
             return "/admin/api/2021-04/customers.json"
         }
         
@@ -68,23 +70,17 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             return .requestPlain
         case .getAllproducts:
             return .requestPlain
-        case .registerACustomer:
-//            print(try! customer.asDictionary())  try! customer.asDictionary()
-//            var params = [String:Any]()
-//            params["email"] = customer.customer.email
-//            params["first_name"] = customer.customer.firstName
-//            params["last_name"] = customer.customer.lastName
-//            params["phone"] = customer.customer.phone
-//            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
-        
+        case .register:
             return .requestPlain
+        case .allUsers:
+        return .requestPlain
         }
         
     }
     
     var headers: [String : String]? {
         switch self {
-        case .registerACustomer:
+        case .register:
             return ["Content-Type":"application/json"]
         default:
             return nil

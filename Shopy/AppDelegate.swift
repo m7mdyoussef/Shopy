@@ -20,6 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        if let _ = MyUserDefaults.getValue(forKey: .loggedIn){
+            
+        }else{
+            MyUserDefaults.add(val: false, key: .loggedIn)
+        }
+        
+
         return true
     }
 

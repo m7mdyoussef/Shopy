@@ -50,7 +50,7 @@ class ApiServices<T : ApiRequestWrapper>{
                     completion(.failure(error))
                     return
                 }
-                //   print("responseObj---->\(responseObj)")
+//                   print("responsaeObj---->\(responseObj)")
                 completion(Result.success(responseObj))
             } else {
                 // ADD custom error base on status code 404 / 401 /
@@ -62,7 +62,7 @@ class ApiServices<T : ApiRequestWrapper>{
         }
     }
     
-    func registerCustomer(target:T,onSuccess: @escaping (Any)->Void , onFailure: @escaping (Error)->Void) {
+    func postACustomer(target:T,onSuccess: @escaping (Data)->Void , onFailure: @escaping (Error)->Void) {
         let urlString = target.baseURL + target.endpoint
         print("url is \(urlString)")
         guard let url = URL(string: urlString) else {return}
@@ -80,12 +80,14 @@ class ApiServices<T : ApiRequestWrapper>{
                 onFailure(err)
             }else{
                 if let data = data {
-                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    print(json)
-                    print(data)
-                    onSuccess(json)
-                    
+//                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+//                    print(json)
+//                    print(data)
+                    onSuccess(data)
+
                 }
+
+                
             }
         }.resume()
         

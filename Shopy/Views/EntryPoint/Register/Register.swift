@@ -42,8 +42,15 @@ class Register: UIViewController,IRounded {
         self.tabBarController?.tabBar.isHidden = true
         
         viewModel = EntryViewModel()
-    
         setupView()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if let loggedin = MyUserDefaults.getValue(forKey: .loggedIn){
+            print("logged in is \(loggedin)")
+        }else{
+            print("non")
+        }
+        
     }
     func setupView() {
         roundView(uiView: uiView)
@@ -66,98 +73,84 @@ class Register: UIViewController,IRounded {
     
     @objc func checkPassword(){
         viewModel.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
-                    yes: {empty in
-                        
-                        if empty == true{
-                            uiPasswordlbl.isHidden = true
-                        }else{
-                            uiPasswordlbl.isHidden = false
-                            uiPasswordlbl.textColor = .systemGreen
-                            uiPasswordlbl.text = PasswordState.dont.rawValue
-                        }
-                        
-                    }, no: {
-                        uiPasswordlbl.isHidden = false
-                        uiPasswordlbl.text = PasswordState.match.rawValue
-                        uiPasswordlbl.textColor = .systemRed
-                    })
+                                     yes: {empty in
+                                        
+                                        if empty == true{
+                                            uiPasswordlbl.isHidden = true
+                                        }else{
+                                            uiPasswordlbl.isHidden = false
+                                            uiPasswordlbl.textColor = .systemGreen
+                                            uiPasswordlbl.text = PasswordState.dont.rawValue
+                                        }
+                                        
+                                     }, no: {
+                                        uiPasswordlbl.isHidden = false
+                                        uiPasswordlbl.text = PasswordState.match.rawValue
+                                        uiPasswordlbl.textColor = .systemRed
+                                     })
     }
     @objc func checkMail(){
         viewModel.isMailValid(mail: uiEmail.text,
-        yes: { empty in
-            if empty{
-                uiMaillbl.isHidden = true
-            }else{
-                uiMaillbl.isHidden = false
-                uiMaillbl.textColor = .systemGreen
-                uiMaillbl.text = MailState.valid.rawValue
-            }
-        }, no: { empty in
-            if empty{
-                uiMaillbl.isHidden = true
-            }else{
-                uiMaillbl.isHidden = false
-                uiMaillbl.text = MailState.notValid.rawValue
-                uiMaillbl.textColor = .systemRed
-            }
-        })
+                              yes: { empty in
+                                if empty{
+                                    uiMaillbl.isHidden = true
+                                }else{
+                                    uiMaillbl.isHidden = false
+                                    uiMaillbl.textColor = .systemGreen
+                                    uiMaillbl.text = MailState.valid.rawValue
+                                }
+                              }, no: { empty in
+                                if empty{
+                                    uiMaillbl.isHidden = true
+                                }else{
+                                    uiMaillbl.isHidden = false
+                                    uiMaillbl.text = MailState.notValid.rawValue
+                                    uiMaillbl.textColor = .systemRed
+                                }
+                              })
     }
     
     @IBAction func uiSubmit(_ sender: UIButton) {
         
-//        let hud = JGProgressHUD()
-//        hud.textLabel.text = "Loading"
-//        hud.style = .dark
-//        hud.show(in: self.view)
-//
-//        let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, verifiedEmail: false, addresses: []))
-//
-//        viewModel.registerACustomerInApi(newUser: newCustomer)
-//        hud.dismiss()
-//        onSuccessHud()
-        
-        
         checkEmptyTexts()
         viewModel.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
-        yes: {empty in
-
-            if empty == true{
-                onFaildHud(text: "Please Fill in The blanks!!")
-
-            }else{
-
-                if viewModel.isAllTextFilld && viewModel.isMailValid {
-                    let hud = JGProgressHUD()
-                    hud.textLabel.text = "Loading"
-                    hud.style = .dark
-                    hud.show(in: self.view)
-//
-                    let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, verifiedEmail: false, addresses: []))
-
-//                    let newCustomer = Customer(customer: CustomerClass(email: uiEmail.text!, phone: uiPhone.text!, lastName: uiLastName.text!, verifiedEmail: true, firstName: uiFirstName.text!, addresses: []))
-
-                    viewModel.signUp(customer:newCustomer,pass: uiPassword.text!,
-                    onSuccess: { [unowned self] in
-                        hud.dismiss()
-                        onSuccessHud()
-                        //MARK:- redirection
-                    },onFailure: { [unowned self] localizedDescription in
-                        print(localizedDescription)
-                        hud.dismiss()
-                        onFaildHud(text: localizedDescription)
-                    });
-
-                }else if !viewModel.isMailValid {
-                    onFaildHud(text: "Please Enter Valid Email!!")
-                }else{
-                    onFaildHud(text: "Please Fill in The blanks!!")
-                }
-
-            }
-
-        }, no: {
-            onFaildHud(text: "Please confirm that you enter a valid passwords")
-        })
+                                     yes: {empty in
+                                        
+                                        if empty == true{
+                                            onFaildHud(text: "Please Fill in The blanks!!")
+                                            
+                                        }else{
+                                            
+                                            if viewModel.isAllTextFilld && viewModel.isMailValid {
+                                                let hud = JGProgressHUD()
+                                                hud.textLabel.text = "Loading"
+                                                hud.style = .dark
+                                                hud.show(in: self.view)
+                                                
+                                                let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: []))
+                                                
+                                                viewModel.signUp(customer:newCustomer,
+                                                                 onSuccess: { [unowned self] in
+                                                                    hud.dismiss()
+                                                                    onSuccessHud()
+                                                                    //MARK:- redirection
+                                                                 },onFailure: { [unowned self] localizedDescription in
+                                                                    print(localizedDescription)
+                                                                    hud.dismiss()
+                                                                    onFaildHud(text: localizedDescription)
+                                                                 });
+                                                
+                                            }else if !viewModel.isMailValid {
+                                                onFaildHud(text: "Please Enter Valid Email!!")
+                                            }else{
+                                                onFaildHud(text: "Please Fill in The blanks!!")
+                                            }
+                                            
+                                        }
+                                        
+                                     }, no: {
+                                        onFaildHud(text: "Please confirm that you enter a valid passwords")
+                                     })
     }
     
 }
@@ -166,12 +159,12 @@ extension Register: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if ( textField == self.uiPassword && !self.uiPassword.isSecureTextEntry ) {
-             self.uiPassword.isSecureTextEntry = true
+            self.uiPassword.isSecureTextEntry = true
         }else if(textField == self.uiConfirmation && !self.uiConfirmation.isSecureTextEntry){
-             self.uiConfirmation.isSecureTextEntry = true
+            self.uiConfirmation.isSecureTextEntry = true
         }
-
-         return true
+        
+        return true
     }
 }
 

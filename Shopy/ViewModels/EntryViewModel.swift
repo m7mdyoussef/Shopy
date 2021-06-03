@@ -53,65 +53,152 @@ class EntryViewModel {
         wrappedMail.isValidEmail() ? yes(empty) : no(empty)
     }
     
-    func signUp(customer:Customer,pass:String,onSuccess:@escaping ()->(),onFailure:@escaping (String)->()) {
-        Auth.auth().createUser(withEmail: customer.customer.email!, password: pass) { [unowned self] authResult, error in
-            
-            if let err = error {
-                onFailure(err.localizedDescription)
+    func signUp(customer:Customer,onSuccess:@escaping ()->(),onFailure:@escaping (String)->()) {
+        //        Auth.auth().createUser(withEmail: customer.customer.email!, password: pass) { [unowned self] authResult, error in
+        ////            if let err = error {
+        ////                onFailure(err.localizedDescription)
+        ////            }else{
+        //                self.registerACustomerInApi(newUser: customer)
+        //                onSuccess()
+        ////            }
+        //
+        //        }
+        remote.registerACustomer(customer: customer) { (data) in
+            if let decodedResponse = try? JSONDecoder().decode(RegisterResponse.self, from: data) {
+                if let email = decodedResponse.errors?.email{
+                    let err = "email \(email[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }else
+                if let phone = decodedResponse.errors?.phone{
+                    let err = "phone \(phone[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        onSuccess()
+                    }
+                }
+                
             }else{
-                self.registerACustomerInApi(newUser: customer)
-                onSuccess()
+                DispatchQueue.main.async {
+                    onFailure("an Error Occured, Try Again Later")
+                }
+            }
+        } onFailure: { (err) in
+            DispatchQueue.main.async {
+                onFailure(err.localizedDescription)
+                print("error is \(err.localizedDescription)")
             }
             
         }
+        
     }
     
     func registerACustomerInApi(newUser:Customer) {
-        remote.registerACustomer(customer: newUser) { (result) in
-            print(result)
-        }
+        //        remote.registerACustomer(customer: newUser) { (result) in
+        //            if let err = (result as? NSError) {
+        //                print("error is \(err.localizedDescription)")
+        //            }else{
+        //                print("else is  \(result)")
+        //            }
+        //        }
+        
+        //        remote.registerACustomer(customer: newUser) { (data) in
+        //            if let decodedResponse = try? JSONDecoder().decode(RegisterError.self, from: data) {
+        //                if let email = decodedResponse.errors.email{
+        //                    print("email \(email[0])")
+        //                }
+        //                if let phone = decodedResponse.errors.phone{
+        //                    print("phone \(phone[0])")
+        //                }
+        //
+        //            }else{
+        //                print("errrr")
+        //            }
+        //        } onFailure: { (err) in
+        //            print("error is \(err.localizedDescription)")
+        //        }
         
         
-//        let urlString = "https://ce751b18c7156bf720ea405ad19614f4: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@itiana.myshopify.com/admin/api/2021-04/customers.json"
-//               guard let url = URL(string: urlString) else {return}
-//               var request = URLRequest(url: url)
-//               request.httpMethod = "POST"
-//               let session = URLSession.shared
-//               request.httpShouldHandleCookies = false
-//               
-//               
-//               do {
-//                request.httpBody = try JSONSerialization.data(withJSONObject: newUser.asDictionary(), options: .prettyPrinted)
-//               } catch let error {
-//                   print(error.localizedDescription)
-//               }
-//
-//               HTTP Headers
-//               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//               request.addValue("application/json", forHTTPHeaderField: "Accept")
-//               
-//        session.dataTask(with: request) { (data, response, error) in
-//            if error != nil {
-//                print(error!)
-//            } else {
-//                if let data = data {
-//                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-//                    print(json)
-//                    print(data)
-//                }
-//            }
-//        }.resume()
+        
+        //        let urlString = "https://ce751b18c7156bf720ea405ad19614f4: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@itiana.myshopify.com/admin/api/2021-04/customers.json"
+        //               guard let url = URL(string: urlString) else {return}
+        //               var request = URLRequest(url: url)
+        //               request.httpMethod = "POST"
+        //               let session = URLSession.shared
+        //               request.httpShouldHandleCookies = false
+        //
+        //
+        //               do {
+        //                request.httpBody = try JSONSerialization.data(withJSONObject: newUser.asDictionary(), options: .prettyPrinted)
+        //               } catch let error {
+        //                   print(error.localizedDescription)
+        //               }
+        //
+        //               HTTP Headers
+        //               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        //               request.addValue("application/json", forHTTPHeaderField: "Accept")
+        //
+        //        session.dataTask(with: request) { (data, response, error) in
+        //            if error != nil {
+        //                print(error!)
+        //            } else {
+        //                if let data = data {
+        //                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        //                    print(json)
+        //                    print(data)
+        //                }
+        //            }
+        //        }.resume()
         
     }
     
-    func signIn(email:String,password:String,onSuccess:@escaping ()->(),onFailure: @escaping(String)->()) {
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if let err = error{
-                onFailure(err.localizedDescription)
-            }else{
-                print("login successfully")
-                onSuccess()
+    func signIn(email:String,password:String,onSuccess:@escaping ()->(),onFailure: @escaping(String)->Void) {
+        //        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+        //            if let err = error{
+        //                onFailure(err.localizedDescription)
+        //            }else{
+        //                print("login successfully")
+        //                onSuccess()
+        //            }
+        //        }
+        getAllUsers { (allCustomers) in
+            
+            for customer in allCustomers.customers{
+                if let mail = customer.email {
+                    if email == mail && password == customer.password{
+                        MyUserDefaults.add(val: true, key: .loggedIn)
+                        DispatchQueue.main.async {
+                            onSuccess()
+                        }
+                        return
+                    }
+                }
             }
+            
+            DispatchQueue.main.async {
+                print("onfalure")
+                onFailure("Credentials is no valid, Please Try again")
+            }
+            
+        } onError: { (err) in
+            print(err)
+            DispatchQueue.main.async {
+                onFailure(err)
+            }
+        }
+        
+    }
+    
+    func getAllUsers(onFinish: @escaping (AllCustomers)->Void,onError: @escaping (String)->Void) {
+        remote.getAllUsers { (allCustomers) in
+            guard let customer = allCustomers else {return}
+            onFinish(customer)
+        } onError: { (err) in
+            onError(err.localizedDescription)
         }
     }
 }

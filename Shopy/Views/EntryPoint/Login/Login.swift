@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class Login: UIViewController,IRounded{
 
@@ -53,6 +54,12 @@ class Login: UIViewController,IRounded{
     }
 
     @IBAction func uiLogin(_ sender: UIButton) {
+        
+        let hud = JGProgressHUD()
+        hud.textLabel.text = "Loading"
+        hud.style = .dark
+        hud.show(in: self.view)
+        
         guard let mail = uiEmail.text,
               let pass = uiPassword.text else {
             return
@@ -60,9 +67,11 @@ class Login: UIViewController,IRounded{
         
         if !(mail.isEmpty) && !(pass.isEmpty) {
             viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!) { [unowned self] in
+                hud.dismiss()
                 self.onSuccessHud()
                 //MARK:- redirect
             } onFailure: { [unowned self] (string) in
+                hud.dismiss()
                 self.onFaildHud(text: string)
             }
 

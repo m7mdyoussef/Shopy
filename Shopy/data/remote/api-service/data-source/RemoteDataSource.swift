@@ -12,7 +12,9 @@ protocol RemoteDataSourceProtocol {
     
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void)
     func getProducts(collectionId:String, completion: @escaping (Result<Product?, NSError>) -> Void)
-    func registerACustomer(customer:Customer, completion: @escaping (Any) -> Void)
+    func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void)
+    func getAllUsers(onSuccess: @escaping (AllCustomers?)->Void , onError: @escaping (Error)->Void)
+
 }
 
 class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceProtocol {
@@ -30,13 +32,26 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
         }
     }
 
-    func registerACustomer(customer:Customer, completion: @escaping (Any) -> Void) {
-
-        self.registerCustomer(target: .registerACustomer(myCustomer: customer)) { (json) in
-            completion(json)
+    func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) {
+        
+        self.postACustomer(target: .register(myCustomer: customer)) { (data) in
+            onCompletion(data)
         } onFailure: { (error) in
-            completion(error)
+            onFailure(error)
         }
 
+
+    }
+    
+    func getAllUsers(onSuccess: @escaping (AllCustomers?) -> Void, onError: @escaping (Error) -> Void) {
+        self.fetchData(target: .allUsers, responseClass: AllCustomers.self) { (result) in
+           
+            switch result{
+            case .success(let customer):
+                onSuccess(customer)
+            case .failure(let error):
+                onError(error)
+            }
+        }
     }
 }

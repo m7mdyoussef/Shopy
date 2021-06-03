@@ -22,12 +22,17 @@ extension Encodable {
 
 // MARK: - Customer
 struct Customer: Codable {
-    let customer: CustomerClass
+    let customer: CustomerClass    
+}
+
+struct AllCustomers:Codable {
+    let customers: [CustomerClass]
 }
 
 // MARK: - CustomerClass
 struct CustomerClass: Codable {
-    let firstName, lastName, email, phone: String?
+    let firstName, lastName, email,phone: String?
+    let password : String
     let verifiedEmail: Bool
     let addresses: [Address]
 
@@ -37,6 +42,7 @@ struct CustomerClass: Codable {
         case email, phone
         case verifiedEmail = "verified_email"
         case addresses
+        case password = "tags"
     }
 }
 
