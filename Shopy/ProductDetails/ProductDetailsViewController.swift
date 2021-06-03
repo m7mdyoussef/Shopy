@@ -29,6 +29,8 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     var disposeBag = DisposeBag()
     var idProduct = ""
     var arrOption = BehaviorRelay(value: [""])
+    let manager = FavouritesPersistenceManager.shared
+    var productElement : ProductClass?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +51,7 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
         homeViewModel?.getProductElement(idProduct: idProduct ?? "")
         homeViewModel?.productElementObservable?.asObservable().subscribe{[weak self]response in
             guard let self = self else {return}
+            self.productElement = response.element
             print(response.element?.id)
             self.productTitle.text = response.element?.title
             self.productPrice.text = response.element?.variants[0].price
@@ -81,6 +84,18 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     func registerSizeCell(){
         var sizeCell = UINib(nibName: "SizesCollectionViewCell", bundle: nil)
         sizeCollectionView.register(sizeCell, forCellWithReuseIdentifier: "SizesCollectionViewCell")
+    }
+    
+    
+    @IBAction func addToWishList(_ sender: Any) {
+        manager.addToFavourites(favProduct: self.productElement!)
+        
+    }
+    
+    @IBAction func addToCard(_ sender: Any) {
+        let vc = FavouriteProductsVC()
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

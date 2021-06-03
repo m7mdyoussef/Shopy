@@ -335,6 +335,9 @@
                                         <state key="normal">
                                             <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addToWishList:" destination="WP5-qo-6MJ" eventType="touchUpInside" id="00T-e8-qCt"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esA-Fr-bAp">
                                         <rect key="frame" x="16" y="235" width="97" height="40"/>
@@ -368,6 +371,9 @@
                                         <state key="normal" title="ADD TO CARD">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addToCard:" destination="WP5-qo-6MJ" eventType="touchUpInside" id="Agu-Qf-ROT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
