@@ -22,9 +22,13 @@ protocol HomeModelType{
     var productElementErrorObservable : PublishSubject<String>?{get}
     var collectionErrorObservable : PublishSubject<String>?{get}
     var productsErrorObservable : PublishSubject<String>?{get}
+    var discontCodeObservable: Observable<DiscountCodeClass>?{get}
+    var discountCodeErrorObservable : PublishSubject<String>?{get}
 }
 
 class HomeViewModel: HomeModelType{
+    
+    
    
     let api = RemoteDataSource()
     var collectionDataObservable : Observable<[CustomElement]>?
@@ -35,6 +39,8 @@ class HomeViewModel: HomeModelType{
     var productElementObservable: Observable<ProductClass>?
     var priceRuleObservable: Observable<[PriceRule]>?
     var priceRuleErrorObservable : PublishSubject<String>?
+    var discontCodeObservable: Observable<DiscountCodeClass>?
+    var discountCodeErrorObservable: PublishSubject<String>?
     
     private var collectionDataSubject = PublishSubject<[CustomElement]>()
     private var productDataSubject = PublishSubject<[ProductElement]>()
@@ -44,8 +50,9 @@ class HomeViewModel: HomeModelType{
     private var productElementErrorSubject = PublishSubject<String>()
     private var PriceRuleDataSubject = PublishSubject<[PriceRule]>()
     private var PriceRuleErrorSubject = PublishSubject<String>()
+    private var discountCodeDataSubject = PublishSubject<DiscountCodeClass>()
+    private var discountCodeErrorSubject = PublishSubject<String>()
     
-   
     
     init() {
         collectionDataObservable = collectionDataSubject.asObserver()
@@ -119,6 +126,22 @@ class HomeViewModel: HomeModelType{
                 print(priceRules[0].id)
             case .failure(let error):
                 self.PriceRuleErrorSubject.asObserver().onNext(error.localizedDescription)
+                print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
+                print(error.code)
+            }
+        }
+    }
+    
+    func getDiscountCode(priceRule:String){
+        api.getDiscountCode(priceRule: "950837444806"){[weak self](result) in
+            guard let self = self else {return}
+            switch result {
+            case .success(let response):
+                guard let discountCode = response?.discountCode else {return}
+                self.discountCodeDataSubject.asObserver().onNext(discountCode)
+                print(discountCode.id)
+            case .failure(let error):
+                self.discountCodeErrorSubject.asObserver().onNext(error.localizedDescription)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }

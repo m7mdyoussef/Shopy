@@ -14,6 +14,7 @@ import RxSwift
 
 class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet weak var favouriteButton: UIButton!
     @IBOutlet weak var sizeCollectionView: UICollectionView!
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -31,6 +32,7 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     var arrOption = BehaviorRelay(value: [""])
     let manager = FavouritesPersistenceManager.shared
     var productElement : ProductClass?
+    var isFavo: Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,12 +49,17 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        checkFav()
+    }
+    
     func setupScreens(){
         homeViewModel?.getProductElement(idProduct: idProduct ?? "")
         homeViewModel?.productElementObservable?.asObservable().subscribe{[weak self]response in
             guard let self = self else {return}
             self.productElement = response.element
             print(response.element?.id)
+            self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)
             self.productTitle.text = response.element?.title
             self.productPrice.text = response.element?.variants[0].price
             self.productDetails.text = response.element?.bodyHTML
@@ -71,7 +78,6 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
             self.imageScrollView.contentSize = CGSize(width: (self.imageScrollView.frame.size.width * CGFloat(imgs!.count)), height: self.imageScrollView.frame.size.height)
             self.imageScrollView.delegate = self
         }.disposed(by: disposeBag)
-       
     }
 
 
@@ -87,7 +93,17 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
+    func checkFav(){
+        if self.isFavo == true{
+            favouriteButton.tintColor = UIColor.red
+        }else{
+            favouriteButton.tintColor = UIColor.gray
+        }
+    }
+    
+    
     @IBAction func addToWishList(_ sender: Any) {
+        
         manager.addToFavourites(favProduct: self.productElement!)
         
     }

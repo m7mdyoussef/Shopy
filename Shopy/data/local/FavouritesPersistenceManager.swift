@@ -38,8 +38,6 @@ class FavouritesPersistenceManager{
     }
     
     
-    
-    
     func addToFavourites(favProduct  : ProductClass){
         let storedFavProduct = FavouriteProduct(context: self.context)
         storedFavProduct.id  = Int64(favProduct.id)
@@ -61,8 +59,6 @@ class FavouritesPersistenceManager{
                 context.delete(fav)
                 }
         }
-        
-        
     }
     func isFavourited(productID :Int )->Bool{
 //        let fetchRequest=NSFetchRequest<NSManagedObject>(entityName:entityName)
@@ -76,7 +72,6 @@ class FavouritesPersistenceManager{
                 }
         }
         return false
-        
     }
     
     

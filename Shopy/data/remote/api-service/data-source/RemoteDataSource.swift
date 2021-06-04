@@ -42,4 +42,10 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
         completion(result)
     }
  }
+    
+    func getDiscountCode(priceRule: String, completion: @escaping (Result<DiscountCode?, NSError>) -> Void) {
+        self.fetchData(target: .getDiscountCode(priceRule: priceRule), responseClass: DiscountCode.self){ (result) in
+            completion(result)
+        }
+    }
 }
