@@ -93,6 +93,10 @@ class SearchCategoryViewController: UIViewController {
     }
     
 
+    @IBAction func resetSortAndFilter(_ sender: Any) {
+        categorySearchViewModel.clearData()
+        searchBar.text = ""
+    }
 }
 
 

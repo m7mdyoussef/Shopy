@@ -12,8 +12,12 @@ import RxCocoa
 
 class CategorySearchViewModel{
     private var dB = DisposeBag()
-    var productElements:[DetailedProducts]!
+    private var productElements:[DetailedProducts]!
     private var filteredproductElements:[DetailedProducts]!
+    private var sortedproductElements:[DetailedProducts]!
+    private var searchedproductElements:[DetailedProducts]!
+    private var isSorted:Bool = false
+    private var isfiltered:Bool = false
     var productsObservable: Observable<[DetailedProducts]>
     private var productsSubject = PublishSubject<[DetailedProducts]>()
     
@@ -33,18 +37,19 @@ class CategorySearchViewModel{
         errorObservable = errorsubject.asObservable()
         LoadingObservable = Loadingsubject.asObservable()
         productsObservable = productsSubject.asObservable()
-        filteredproductElements = productElements
+        searchedproductElements = productElements
+        //sortedproductElements = productElements
         
         searchWordObservable.subscribe(onNext: {[weak self] (value) in
-            self?.filteredproductElements = self?.productElements?.filter({ (product) -> Bool in
+            self?.searchedproductElements = self?.productElements?.filter({ (product) -> Bool in
             product.title.lowercased().contains(value.lowercased())
         })
-         if(self?.filteredproductElements != nil){
-               if(self!.filteredproductElements!.isEmpty){
-                   self?.filteredproductElements = self?.productElements
-               }
-           }
-           self?.productsSubject.onNext(self?.filteredproductElements ?? [])
+            if(value.isEmpty){
+                 self?.isfiltered = false
+                 self?.isSorted = false
+                 self?.searchedproductElements = self?.productElements
+             }
+           self?.productsSubject.onNext(self?.searchedproductElements ?? [])
            }).disposed(by: dB)
     }
         
@@ -54,7 +59,11 @@ class CategorySearchViewModel{
             switch result{
             case .success(let products):
                 self?.productElements = products?.products
+                
+                self?.searchedproductElements = self?.productElements
+                self?.sortedproductElements = self?.productElements
                 self?.filteredproductElements = self?.productElements
+                
                 self?.productsSubject.onNext(products?.products ?? [])
                 self?.Loadingsubject.onNext(false)
             case .failure(let error):
@@ -65,24 +74,55 @@ class CategorySearchViewModel{
     }
     
     func sortData(index:Int){
-        switch index {
-        case 0:
-            filteredproductElements = productElements.sorted { (product1, product2) -> Bool in
-                Double(product1.variants[0].price)! > Double(product2.variants[0].price)!
-            }
-        default:
-            filteredproductElements = productElements.sorted { (product1, product2) -> Bool in
-                Double(product1.variants[0].price)! < Double(product2.variants[0].price)!
-            }
-        }
-        productsSubject.onNext(filteredproductElements ?? productElements)
+        
+        isSorted = true
+                if(isfiltered){
+                    switch index {
+                    case 0:
+                        sortedproductElements = filteredproductElements.sorted { (product1, product2) -> Bool in
+                            Double(product1.variants[0].price)! > Double(product2.variants[0].price)!
+                        }
+                    default:
+                        sortedproductElements = filteredproductElements.sorted { (product1, product2) -> Bool in
+                            Double(product1.variants[0].price)! < Double(product2.variants[0].price)!
+                        }
+                    }
+                    }else{
+                          switch index {
+                          case 0:
+                              sortedproductElements = searchedproductElements.sorted { (product1, product2) -> Bool in
+                                  Double(product1.variants[0].price)! > Double(product2.variants[0].price)!
+                              }
+                          default:
+                              sortedproductElements = searchedproductElements.sorted { (product1, product2) -> Bool in
+                                  Double(product1.variants[0].price)! < Double(product2.variants[0].price)!
+                              }
+                          }
+                      }
+        productsSubject.onNext(sortedproductElements)
     }
     
     func filterData(word:String){
-        filteredproductElements = productElements.filter({ (product) -> Bool in
-            product.productType.rawValue.lowercased() == word.lowercased()
-            })
-        productsSubject.onNext(filteredproductElements)
-    }
+         isfiltered = true
+         if(isSorted){
+             filteredproductElements = sortedproductElements.filter({ (product) -> Bool in
+             product.productType.rawValue.lowercased() == word.lowercased()
+             })
+         }else{
+             filteredproductElements = searchedproductElements.filter({ (product) -> Bool in
+             product.productType.rawValue.lowercased() == word.lowercased()
+             })
+         }
+         productsSubject.onNext(filteredproductElements)
+     }
+
+     func clearData(){
+         productsSubject.onNext(productElements)
+         self.searchedproductElements = self.productElements
+         self.sortedproductElements = self.productElements
+         self.filteredproductElements = self.productElements
+         isfiltered = false
+         isSorted = false
+     }
     
 }
