@@ -29,7 +29,6 @@ protocol HomeModelType{
 class HomeViewModel: HomeModelType{
     
     
-   
     let api = RemoteDataSource()
     var collectionDataObservable : Observable<[CustomElement]>?
     var productsDataObservable: Observable<[ProductElement]>?
