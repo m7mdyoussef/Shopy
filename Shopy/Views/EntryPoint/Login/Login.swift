@@ -54,18 +54,17 @@ class Login: UIViewController,IRounded{
     }
 
     @IBAction func uiLogin(_ sender: UIButton) {
-        
-        let hud = JGProgressHUD()
-        hud.textLabel.text = "Loading"
-        hud.style = .dark
-        hud.show(in: self.view)
-        
+            
         guard let mail = uiEmail.text,
               let pass = uiPassword.text else {
             return
         }
         
         if !(mail.isEmpty) && !(pass.isEmpty) {
+            let hud = JGProgressHUD()
+            hud.textLabel.text = "Loading"
+            hud.style = .dark
+            hud.show(in: self.view)
             viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!) { [unowned self] in
                 hud.dismiss()
                 self.onSuccessHud()
