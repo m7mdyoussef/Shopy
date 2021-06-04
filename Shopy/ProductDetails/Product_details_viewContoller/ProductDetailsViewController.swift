@@ -12,16 +12,14 @@ import RxCocoa
 import RxSwift
 //import RxRelay
 
-class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
+class ProductDetailsViewController: UIViewController {
     
     @IBOutlet weak var favouriteButton: UIButton!
     @IBOutlet weak var sizeCollectionView: UICollectionView!
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var cardButton: UIButton!
-    
     @IBOutlet weak var productDetails: UITextView!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var productPrice: UILabel!
@@ -34,6 +32,7 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     let manager = FavouritesPersistenceManager.shared
     var productElement : ProductClass?
     var isFavo: Bool?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         showIndicator = ShowIndecator(view: view.self)
@@ -42,16 +41,21 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
         setupScreens()
         imageScrollView.delegate = self
         registerSizeCell()
-       
         sizeCollectionView.rx.setDelegate(self)
         cardButton.roundCorners(corners: .allCorners, radius: 25)
         arrOption.asObservable().bind(to: sizeCollectionView.rx.items(cellIdentifier: "SizesCollectionViewCell")){row, items, cell in
             (cell as? SizesCollectionViewCell)?.productSize.text = String(items)
         }
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         checkFav()
+    }
+    @IBAction func addToWishList(_ sender: Any) {
+        manager.addToFavourites(favProduct: self.productElement!)
+    }
+    @IBAction func addToCard(_ sender: Any) {
+        let vc = FavouriteProductsVC()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupScreens(){
@@ -75,61 +79,18 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
                 let imgView = UIImageView(frame: self.frame)
                 imgView.sd_setImage(with: URL(string: (imgs?[index].src)!), completed: nil)
                 self.imageScrollView.addSubview(imgView)
-               }
-
+            }
+            
             self.imageScrollView.contentSize = CGSize(width: (self.imageScrollView.frame.size.width * CGFloat(imgs!.count)), height: self.imageScrollView.frame.size.height)
             self.imageScrollView.delegate = self
             self.showIndicator?.stopAnimating()
-            
         }.disposed(by: disposeBag)
-    }
-
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
-        pageControl.currentPage = Int(pageNumber)
-    }
-
-    
-    func registerSizeCell(){
-        var sizeCell = UINib(nibName: "SizesCollectionViewCell", bundle: nil)
-        sizeCollectionView.register(sizeCell, forCellWithReuseIdentifier: "SizesCollectionViewCell")
-    }
-    
-    
-    func checkFav(){
-        if self.isFavo == true{
-            favouriteButton.tintColor = UIColor.red
-        }else{
-            favouriteButton.tintColor = UIColor.gray
-        }
-    }
-    
-    
-    @IBAction func addToWishList(_ sender: Any) {
-        
-        manager.addToFavourites(favProduct: self.productElement!)
-        
-    }
-    
-    @IBAction func addToCard(_ sender: Any) {
-        let vc = FavouriteProductsVC()
-        
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-extension ProductDetailsViewController: UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: (self.view.frame.width)/5, height: 25)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
+extension ProductDetailsViewController: UIScrollViewDelegate{
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
+        pageControl.currentPage = Int(pageNumber)
     }
 }

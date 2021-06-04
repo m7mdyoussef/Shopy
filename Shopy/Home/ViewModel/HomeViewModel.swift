@@ -18,25 +18,23 @@ protocol HomeModelType{
     var productsDataObservable : Observable<[ProductElement]>?{get}
     var productElementObservable : Observable<ProductClass>?{get}
     var priceRuleObservable: Observable<[PriceRule]>?{get}
-    var discontCodeObservable: Observable<DiscountCodeClass>?{get}
+    var discontCodeObservable: Observable<[DiscountCodeElement]>?{get}
 }
 
 class HomeViewModel: HomeModelType{
-    
     
     let api = RemoteDataSource()
     var collectionDataObservable : Observable<[CustomElement]>?
     var productsDataObservable: Observable<[ProductElement]>?
     var productElementObservable: Observable<ProductClass>?
     var priceRuleObservable: Observable<[PriceRule]>?
-    var discontCodeObservable: Observable<DiscountCodeClass>?
+    var discontCodeObservable: Observable<[DiscountCodeElement]>?
     
     private var collectionDataSubject = PublishSubject<[CustomElement]>()
     private var productDataSubject = PublishSubject<[ProductElement]>()
     private var productElementDataSubject = PublishSubject<ProductClass>()
     private var PriceRuleDataSubject = PublishSubject<[PriceRule]>()
-    private var discountCodeDataSubject = PublishSubject<DiscountCodeClass>()
-    
+    private var discountCodeDataSubject = PublishSubject<[DiscountCodeElement]>()
     
     init() {
         collectionDataObservable = collectionDataSubject.asObserver()
@@ -87,7 +85,7 @@ class HomeViewModel: HomeModelType{
                 guard let product = response?.product else {return}
                 self.productElementDataSubject.asObserver().onNext(product)
                 print(product.title)
-            
+                
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
@@ -99,7 +97,7 @@ class HomeViewModel: HomeModelType{
     func getPriceRules(){
         api.getPriceRules{[weak self](result) in
             guard let self = self else {return}
-    
+            
             switch result {
             case .success(let response):
                 guard let priceRules = response?.priceRules else {return}
@@ -114,19 +112,18 @@ class HomeViewModel: HomeModelType{
     }
     
     func getDiscountCode(priceRule:String){
-        api.getDiscountCode(priceRule: "950837444806"){[weak self](result) in
+        api.getDiscountCode(priceRule: priceRule){[weak self](result) in
             guard let self = self else {return}
             switch result {
             case .success(let response):
-                guard let discountCode = response?.discountCode else {return}
+                guard let discountCode = response?.discountCodes else {return}
                 self.discountCodeDataSubject.asObserver().onNext(discountCode)
-                print(discountCode.id)
+                print(discountCode[0].code)
             case .failure(let error):
-             //   AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
+                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }
         }
     }
-    
 }

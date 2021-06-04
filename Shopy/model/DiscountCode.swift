@@ -8,17 +8,18 @@
 
 import Foundation
 
+
 // MARK: - DiscountCode
 struct DiscountCode: Codable {
-    let discountCode: DiscountCodeClass
+    let discountCodes: [DiscountCodeElement]
 
     enum CodingKeys: String, CodingKey {
-        case discountCode = "discount_code"
+        case discountCodes = "discount_codes"
     }
 }
 
-// MARK: - DiscountCodeClass
-struct DiscountCodeClass: Codable {
+// MARK: - DiscountCodeElement
+struct DiscountCodeElement: Codable {
     let id, priceRuleID: Int
     let code: String
     let usageCount: Int

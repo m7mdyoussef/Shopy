@@ -18,6 +18,7 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var productsView: UIView!
     @IBOutlet weak var adsView: UIView!
     var arrId = [Int]()
+    var arrDiscountCodes = [String]()
     var arrproductId = [String]()
     @IBOutlet weak var productSearchBar: UISearchBar!
     @IBOutlet weak var menuCollectionView: UICollectionView!
@@ -29,8 +30,7 @@ class CollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showIndicator = ShowIndecator(view: view.self)
-        // self.navigationController?.isNavigationBarHidden = true
-        // adsView.roundCorners(corners: .allCorners, radius: 35)
+        adsView.roundCorners(corners: .allCorners, radius: 35)
         registerMenuCell()
         registerProductCell()
         controlViews(flag: true)
@@ -41,28 +41,25 @@ class CollectionViewController: UIViewController {
         setupProductCollection()
         productsView.roundCorners(corners: [.topLeft, .topRight], radius: 35)
         collectionViewModel?.getPriceRules()
-        collectionViewModel?.getDiscountCode(priceRule: "950837444806")
+        collectionViewModel?.getDiscountCode(priceRule: "951238656198")
         adsButton.setBackgroundImage(UIImage.gif(name: "offer0"), for: .normal)
-       
+        getAllDiscountCodes()
     }
-    
     
     @IBAction func showDiscountCode(_ sender: Any) {
         adsImage.loadGif(name: "black")
         controlViews(flag: false)
-        
     }
     
-    func controlViews(flag:Bool){
-        if (flag == true){
-            adsButton.isHidden = false
-            discountCode.isHidden = true
-            adsImage.isHidden = true
-        }else{
-            adsButton.isHidden = true
-            discountCode.isHidden = false
-            adsImage.isHidden = false
-        }
+    func getAllDiscountCodes(){
+        collectionViewModel?.discontCodeObservable?.asObservable().subscribe(onNext: {[weak self] (response) in
+            guard let self = self else {return}
+            for i in 0..<response.count{
+                print(response[i].code)
+                self.arrDiscountCodes.append(response[i].code)
+            }
+            self.discountCode.text = response[0].code
+        }).disposed(by: disposeBag)
     }
     
     func setUpMenuColllection(){
@@ -73,28 +70,25 @@ class CollectionViewController: UIViewController {
             self.arrId.append(items.id)
         }.disposed(by: disposeBag)
         
-        
-        menuCollectionView.rx.itemSelected.subscribe{value in
+        menuCollectionView.rx.itemSelected.subscribe{[weak self]value in
+            guard let self = self else {return}
             print(self.arrId[value.element?.item ?? 0])
             self.controlViews(flag: true)
             self.showIndicator?.startAnimating()
             self.collectionViewModel?.getAllProduct(id: String(self.arrId[value.element?.item ?? 0]))
             self.arrproductId.removeAll()
-            
+            self.discountCode.text = self.arrDiscountCodes[value.element?.item ?? 0]
         }.disposed(by: disposeBag)
     }
     
     func setupProductCollection(){
-       
         collectionViewModel?.productsDataObservable?.asObservable().bind(to: productsCollectionView.rx.items(cellIdentifier: "ProductCollectionViewCell")){
             row, item, cell in
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
             self.arrproductId.append(String(item.id))
             self.showIndicator?.stopAnimating()
-            
         }.disposed(by: disposeBag)
-        
         
         productsCollectionView.rx.itemSelected.subscribe{value in
             print(value.element?.item)
@@ -103,20 +97,8 @@ class CollectionViewController: UIViewController {
                 self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
                 var detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
-                self.collectionViewModel?.getDiscountCode(priceRule: "950837444806")
-                
                 self.navigationController?.pushViewController(detailsViewController, animated: true)
             }
         }.disposed(by: disposeBag)
-    }
-    
-    func registerProductCell(){
-        var productCell = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
-        productsCollectionView.register(productCell, forCellWithReuseIdentifier: "ProductCollectionViewCell")
-    }
-    
-    func registerMenuCell(){
-        var menuCell = UINib(nibName: "MenuCollectionViewCell", bundle: nil)
-        menuCollectionView.register(menuCell, forCellWithReuseIdentifier: "MenuCollectionViewCell")
     }
 }
