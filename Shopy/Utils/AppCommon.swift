@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SystemConfiguration
+import SwiftMessages
 
 extension UIView {
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
@@ -36,6 +37,7 @@ enum ReachabilityStatus {
 }
 
 class AppCommon: NSObject {
+    static let shared = AppCommon()
  var currentReachabilityStatus: ReachabilityStatus {
     
     var zeroAddress = sockaddr_in()
@@ -72,11 +74,23 @@ class AppCommon: NSObject {
     }
 }
     
+    func showSwiftMessage(title: String = "", message: String = "", theme: Theme = .error) {
+        let view = MessageView.viewFromNib(layout: .centeredView)
+        view.configureTheme(theme)
+        view.configureDropShadow()
+        view.button?.isHidden = true
+        view.configureContent(title: title, body: message)
+        view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+        SwiftMessages.show(view: view)
+        
+    }
+    
     func checkConnectivity() -> Bool {
         if currentReachabilityStatus != .notReachable {
             return true
         } else {
-
+            showSwiftMessage(title: "Error", message: "Please Check Your Internet Connection", theme: .error)
             return false
         }
     }

@@ -18,12 +18,7 @@ protocol HomeModelType{
     var productsDataObservable : Observable<[ProductElement]>?{get}
     var productElementObservable : Observable<ProductClass>?{get}
     var priceRuleObservable: Observable<[PriceRule]>?{get}
-    var priceRuleErrorObservable : PublishSubject<String>?{get}
-    var productElementErrorObservable : PublishSubject<String>?{get}
-    var collectionErrorObservable : PublishSubject<String>?{get}
-    var productsErrorObservable : PublishSubject<String>?{get}
     var discontCodeObservable: Observable<DiscountCodeClass>?{get}
-    var discountCodeErrorObservable : PublishSubject<String>?{get}
 }
 
 class HomeViewModel: HomeModelType{
@@ -32,36 +27,23 @@ class HomeViewModel: HomeModelType{
     let api = RemoteDataSource()
     var collectionDataObservable : Observable<[CustomElement]>?
     var productsDataObservable: Observable<[ProductElement]>?
-    var collectionErrorObservable: PublishSubject<String>?
-    var productsErrorObservable: PublishSubject<String>?
-    var productElementErrorObservable: PublishSubject<String>?
     var productElementObservable: Observable<ProductClass>?
     var priceRuleObservable: Observable<[PriceRule]>?
-    var priceRuleErrorObservable : PublishSubject<String>?
     var discontCodeObservable: Observable<DiscountCodeClass>?
-    var discountCodeErrorObservable: PublishSubject<String>?
     
     private var collectionDataSubject = PublishSubject<[CustomElement]>()
     private var productDataSubject = PublishSubject<[ProductElement]>()
     private var productElementDataSubject = PublishSubject<ProductClass>()
-    private var collectionErrorSubject = PublishSubject<String>()
-    private var productsErrorSubject = PublishSubject<String>()
-    private var productElementErrorSubject = PublishSubject<String>()
     private var PriceRuleDataSubject = PublishSubject<[PriceRule]>()
-    private var PriceRuleErrorSubject = PublishSubject<String>()
     private var discountCodeDataSubject = PublishSubject<DiscountCodeClass>()
-    private var discountCodeErrorSubject = PublishSubject<String>()
     
     
     init() {
         collectionDataObservable = collectionDataSubject.asObserver()
         productsDataObservable  = productDataSubject.asObservable()
         productElementObservable = productElementDataSubject.asObserver()
-        collectionErrorObservable = collectionErrorSubject.asObserver()
-        productsErrorObservable = productsErrorSubject.asObserver()
-        productElementErrorObservable = productElementErrorSubject.asObserver()
         priceRuleObservable = PriceRuleDataSubject.asObserver()
-        priceRuleErrorObservable = PriceRuleErrorSubject.asObserver()
+        discontCodeObservable = discountCodeDataSubject.asObserver()
     }
     
     func getCollectionData(){
@@ -74,7 +56,7 @@ class HomeViewModel: HomeModelType{
                 self.collectionDataSubject.asObserver().onNext(customCollections)
                 self.getAllProduct(id: String(customCollections[0].id))
             case .failure(let error):
-                self.collectionErrorSubject.asObserver().onNext(error.localizedDescription)
+                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }
@@ -89,7 +71,7 @@ class HomeViewModel: HomeModelType{
                 guard let products = response?.products else {return}
                 self.productDataSubject.asObserver().onNext(products)
             case .failure(let error):
-                self.productsErrorSubject.asObserver().onNext(error.localizedDescription)
+                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }
@@ -107,7 +89,7 @@ class HomeViewModel: HomeModelType{
                 print(product.title)
             
             case .failure(let error):
-                self.productElementErrorSubject.asObserver().onNext(error.localizedDescription)
+                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }
@@ -124,7 +106,7 @@ class HomeViewModel: HomeModelType{
                 self.PriceRuleDataSubject.asObserver().onNext(priceRules)
                 print(priceRules[0].id)
             case .failure(let error):
-                self.PriceRuleErrorSubject.asObserver().onNext(error.localizedDescription)
+                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }
@@ -140,7 +122,7 @@ class HomeViewModel: HomeModelType{
                 self.discountCodeDataSubject.asObserver().onNext(discountCode)
                 print(discountCode.id)
             case .failure(let error):
-                self.discountCodeErrorSubject.asObserver().onNext(error.localizedDescription)
+             //   AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }

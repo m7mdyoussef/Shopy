@@ -55,6 +55,9 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
+  - SwiftMessages (9.0.2):
+    - SwiftMessages/App (= 9.0.2)
+  - SwiftMessages/App (9.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
@@ -63,6 +66,7 @@ DEPENDENCIES:
   - RxCocoa (= 6.1.0)
   - RxSwift (= 6.1.0)
   - SDWebImage (~> 5.0)
+  - SwiftMessages
 
 SPEC REPOS:
   trunk:
@@ -81,6 +85,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SwiftMessages
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
@@ -98,7 +103,8 @@ SPEC CHECKSUMS:
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
 
-PODFILE CHECKSUM: b8ca2e4ec1353f242dda020d07f0a8b4c7ed46fb
+PODFILE CHECKSUM: 0604834f8bab8c57158c601a7f2a6a9fd5f81fe1
 
 COCOAPODS: 1.10.1

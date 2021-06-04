@@ -24,9 +24,11 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var adsButton: UIButton!
     @IBOutlet weak var discountCode: UILabel!
     @IBOutlet weak var adsImage: UIImageView!
+    
+    var showIndicator:ShowIndecator?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showIndicator = ShowIndecator(view: view.self)
         // self.navigationController?.isNavigationBarHidden = true
         // adsView.roundCorners(corners: .allCorners, radius: 35)
         registerMenuCell()
@@ -64,9 +66,10 @@ class CollectionViewController: UIViewController {
     }
     
     func setUpMenuColllection(){
-        
+        showIndicator?.startAnimating()
         collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: "MenuCollectionViewCell")){row, items, cell in
             (cell as? MenuCollectionViewCell)?.title.text=items.title
+            self.showIndicator?.stopAnimating()
             self.arrId.append(items.id)
         }.disposed(by: disposeBag)
         
@@ -74,6 +77,7 @@ class CollectionViewController: UIViewController {
         menuCollectionView.rx.itemSelected.subscribe{value in
             print(self.arrId[value.element?.item ?? 0])
             self.controlViews(flag: true)
+            self.showIndicator?.startAnimating()
             self.collectionViewModel?.getAllProduct(id: String(self.arrId[value.element?.item ?? 0]))
             self.arrproductId.removeAll()
             
@@ -81,23 +85,28 @@ class CollectionViewController: UIViewController {
     }
     
     func setupProductCollection(){
+       
         collectionViewModel?.productsDataObservable?.asObservable().bind(to: productsCollectionView.rx.items(cellIdentifier: "ProductCollectionViewCell")){
             row, item, cell in
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
             self.arrproductId.append(String(item.id))
+            self.showIndicator?.stopAnimating()
+            
         }.disposed(by: disposeBag)
         
         
         productsCollectionView.rx.itemSelected.subscribe{value in
             print(value.element?.item)
-            self.controlViews(flag: true)
-            self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
-            var detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
-            detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
-            self.collectionViewModel?.getDiscountCode(priceRule: "950837444806")
-            
-            self.navigationController?.pushViewController(detailsViewController, animated: true)
+            if AppCommon.shared.checkConnectivity() == true{
+                self.controlViews(flag: true)
+                self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+                var detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
+                detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
+                self.collectionViewModel?.getDiscountCode(priceRule: "950837444806")
+                
+                self.navigationController?.pushViewController(detailsViewController, animated: true)
+            }
         }.disposed(by: disposeBag)
     }
     

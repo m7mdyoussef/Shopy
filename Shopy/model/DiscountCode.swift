@@ -19,17 +19,17 @@ struct DiscountCode: Codable {
 
 // MARK: - DiscountCodeClass
 struct DiscountCodeClass: Codable {
-    let id:Int//, priceRuleID: Int
-//    let code: String
-//    let usageCount: Int
-//    let createdAt, updatedAt: String
+    let id, priceRuleID: Int
+    let code: String
+    let usageCount: Int
+    let createdAt, updatedAt: String
 
     enum CodingKeys: String, CodingKey {
         case id
-//        case priceRuleID = "price_rule_id"
-//        case code
-//        case usageCount = "usage_count"
-//        case createdAt = "created_at"
-//        case updatedAt = "updated_at"
+        case priceRuleID = "price_rule_id"
+        case code
+        case usageCount = "usage_count"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }

@@ -25,6 +25,7 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var productDetails: UITextView!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var productPrice: UILabel!
+    var showIndicator: ShowIndecator?
     var homeViewModel : HomeModelType?
     var frame = CGRect.zero
     var disposeBag = DisposeBag()
@@ -35,7 +36,7 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     var isFavo: Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showIndicator = ShowIndecator(view: view.self)
         homeViewModel = HomeViewModel()
         detailsView.roundCorners(corners: [.topLeft, .topRight], radius: 40)
         setupScreens()
@@ -54,6 +55,7 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupScreens(){
+        showIndicator?.startAnimating()
         homeViewModel?.getProductElement(idProduct: idProduct ?? "")
         homeViewModel?.productElementObservable?.asObservable().subscribe{[weak self]response in
             guard let self = self else {return}
@@ -77,6 +79,8 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
 
             self.imageScrollView.contentSize = CGSize(width: (self.imageScrollView.frame.size.width * CGFloat(imgs!.count)), height: self.imageScrollView.frame.size.height)
             self.imageScrollView.delegate = self
+            self.showIndicator?.stopAnimating()
+            
         }.disposed(by: disposeBag)
     }
 

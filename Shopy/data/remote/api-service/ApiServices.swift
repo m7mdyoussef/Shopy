@@ -12,7 +12,7 @@ import Alamofire
 class ApiServices<T : ApiRequestWrapper>{
     
     func fetchData<M :Codable>(target: T,responseClass : M.Type, completion:@escaping (Result<M?, NSError>) -> Void){
-        
+        guard AppCommon.shared.checkConnectivity() else {return}
         let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
          let params = buildParams(task: target.task)
         let method = Alamofire.HTTPMethod(rawValue: target.httpMethod.rawValue)
