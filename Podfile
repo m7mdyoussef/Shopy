@@ -6,10 +6,10 @@ target 'Shopy' do
   use_frameworks!
 
 
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Storage'
+#  pod 'Firebase/Core'
+#  pod 'Firebase/Auth'
+#  pod 'Firebase/Firestore'
+#  pod 'Firebase/Storage'
   pod 'Alamofire', '~> 5.2'
   pod 'NVActivityIndicatorView/AppExtension'
   pod 'RxSwift', '6.1.0'
