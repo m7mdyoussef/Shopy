@@ -29,7 +29,7 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     var disposeBag = DisposeBag()
     var idProduct = ""
     var arrOption = BehaviorRelay(value: [""])
-    let manager = FavouritesPersistenceManager.shared
+    let manager = BagPersistenceManager.shared
     var productElement : ProductClass?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,12 +88,12 @@ class ProductDetailsViewController: UIViewController, UIScrollViewDelegate {
     
     
     @IBAction func addToWishList(_ sender: Any) {
-        manager.addToFavourites(favProduct: self.productElement!)
+        manager.addToBagProducts(bagProduct:  self.productElement!)
         
     }
     
     @IBAction func addToCard(_ sender: Any) {
-        let vc = FavouriteProductsVC()
+        let vc = BagViewController()
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

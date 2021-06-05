@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 extension UIView {
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
@@ -26,5 +27,12 @@ extension UIView {
         self.layer.borderWidth = 0.5
         self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
+    
+    
 }
 
+extension UIImageView{
+    func doenloadImage(url:String){
+        self.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "no-image"))
+    }
+}

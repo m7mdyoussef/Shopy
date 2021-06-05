@@ -43,7 +43,7 @@ class CollectionViewController: UIViewController {
     
     func setUpMenuColllection(){
         
-        collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: "MenuCollectionViewCell")){row, items, cell in
+        collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: "MenuCollectionViewCell")){_, items, cell in
             (cell as? MenuCollectionViewCell)?.title.text=items.title
             self.arrId.append(items.id)
         }.disposed(by: disposeBag)
