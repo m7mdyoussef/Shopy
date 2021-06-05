@@ -79,11 +79,18 @@
 		D2116C712669503F007892B7 /* FavouritesPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116C702669503F007892B7 /* FavouritesPersistenceManager.swift */; };
 		D2116C7626695B86007892B7 /* FavouriteProductsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116C7426695B86007892B7 /* FavouriteProductsVC.swift */; };
 		D2116C7726695B86007892B7 /* FavouriteProductsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2116C7526695B86007892B7 /* FavouriteProductsVC.xib */; };
+		D2116C7A2669767B007892B7 /* FavouriteproductCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116C782669767B007892B7 /* FavouriteproductCVC.swift */; };
+		D2116C7B2669767B007892B7 /* FavouriteproductCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2116C792669767B007892B7 /* FavouriteproductCVC.xib */; };
 		D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A3B11265BF58F0096553A /* RemoteDataSource.swift */; };
 		D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A4726574E06005ABAF2 /* ErrorMessage.swift */; };
 		D2745A4F265751CC005ABAF2 /* ApiRequestWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A4E265751CC005ABAF2 /* ApiRequestWrapper.swift */; };
 		D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A5026575255005ABAF2 /* ApiServices.swift */; };
 		D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A5226575420005ABAF2 /* RemoteDataSourceWrapper.swift */; };
+		D2CA0EB5266BBE90005AB72D /* BagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0EB3266BBE90005AB72D /* BagCollectionViewCell.swift */; };
+		D2CA0EB6266BBE90005AB72D /* BagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CA0EB4266BBE90005AB72D /* BagCollectionViewCell.xib */; };
+		D2CA0EB9266BBEC3005AB72D /* BagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0EB7266BBEC3005AB72D /* BagViewController.swift */; };
+		D2CA0EBA266BBEC3005AB72D /* BagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CA0EB8266BBEC3005AB72D /* BagViewController.xib */; };
+		D2CA0EBC266BC4BD005AB72D /* BagPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0EBB266BC4BD005AB72D /* BagPersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,11 +194,18 @@
 		D2116C702669503F007892B7 /* FavouritesPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesPersistenceManager.swift; sourceTree = "<group>"; };
 		D2116C7426695B86007892B7 /* FavouriteProductsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteProductsVC.swift; sourceTree = "<group>"; };
 		D2116C7526695B86007892B7 /* FavouriteProductsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteProductsVC.xib; sourceTree = "<group>"; };
+		D2116C782669767B007892B7 /* FavouriteproductCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteproductCVC.swift; sourceTree = "<group>"; };
+		D2116C792669767B007892B7 /* FavouriteproductCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteproductCVC.xib; sourceTree = "<group>"; };
 		D21A3B11265BF58F0096553A /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		D2745A4726574E06005ABAF2 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		D2745A4E265751CC005ABAF2 /* ApiRequestWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestWrapper.swift; sourceTree = "<group>"; };
 		D2745A5026575255005ABAF2 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
 		D2745A5226575420005ABAF2 /* RemoteDataSourceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceWrapper.swift; sourceTree = "<group>"; };
+		D2CA0EB3266BBE90005AB72D /* BagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagCollectionViewCell.swift; sourceTree = "<group>"; };
+		D2CA0EB4266BBE90005AB72D /* BagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BagCollectionViewCell.xib; sourceTree = "<group>"; };
+		D2CA0EB7266BBEC3005AB72D /* BagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagViewController.swift; sourceTree = "<group>"; };
+		D2CA0EB8266BBEC3005AB72D /* BagViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BagViewController.xib; sourceTree = "<group>"; };
+		D2CA0EBB266BC4BD005AB72D /* BagPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagPersistenceManager.swift; sourceTree = "<group>"; };
 		EC60D919DA0F486F083773E9 /* Pods-Shopy-ShopyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy-ShopyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Shopy-ShopyUITests/Pods-Shopy-ShopyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -374,7 +388,10 @@
 		9E756A0526642D14000B5D98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+
 				27BBDF3C265D4643009A887D /* EntryPoint */,
+				D2CA0EB0266BBE1F005AB72D /* bag */,
+
 				D2116C6E26694D2A007892B7 /* favourites */,
 				9E756A0626642D22000B5D98 /* CategoryTab */,
 			);
@@ -575,6 +592,7 @@
 			children = (
 				27DDC516266BE4D0002E92A7 /* Userdefaults.swift */,
 				D2116C702669503F007892B7 /* FavouritesPersistenceManager.swift */,
+				D2CA0EBB266BC4BD005AB72D /* BagPersistenceManager.swift */,
 			);
 			path = local;
 			sourceTree = "<group>";
@@ -591,6 +609,8 @@
 		D2116C73266959D6007892B7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D2116C782669767B007892B7 /* FavouriteproductCVC.swift */,
+				D2116C792669767B007892B7 /* FavouriteproductCVC.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -644,6 +664,33 @@
 				D2745A4B265750E2005ABAF2 /* data-source */,
 			);
 			path = "api-service";
+			sourceTree = "<group>";
+		};
+		D2CA0EB0266BBE1F005AB72D /* bag */ = {
+			isa = PBXGroup;
+			children = (
+				D2CA0EB2266BBE3F005AB72D /* cell */,
+				D2CA0EB1266BBE2E005AB72D /* VC */,
+			);
+			path = bag;
+			sourceTree = "<group>";
+		};
+		D2CA0EB1266BBE2E005AB72D /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D2CA0EB7266BBEC3005AB72D /* BagViewController.swift */,
+				D2CA0EB8266BBEC3005AB72D /* BagViewController.xib */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		D2CA0EB2266BBE3F005AB72D /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				D2CA0EB3266BBE90005AB72D /* BagCollectionViewCell.swift */,
+				D2CA0EB4266BBE90005AB72D /* BagCollectionViewCell.xib */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -761,6 +808,7 @@
 				9E59BDDC26531C67003B113F /* GoogleService-Info.plist in Resources */,
 				CF6571AA266197D300C31614 /* ProductCollectionViewCell.xib in Resources */,
 				CF47988E2667D23300B0A64D /* SizesCollectionViewCell.xib in Resources */,
+				D2CA0EB6266BBE90005AB72D /* BagCollectionViewCell.xib in Resources */,
 				CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */,
 				CF78F3E82669C532005B9FE1 /* giftBlack.gif in Resources */,
 				D2116C7726695B86007892B7 /* FavouriteProductsVC.xib in Resources */,
@@ -771,8 +819,12 @@
 				9E182D8C26503E8100069E6E /* Main.storyboard in Resources */,
 				9E756A1526643208000B5D98 /* MainCategoriesCollectionViewCell.xib in Resources */,
 				9E756A0D266431CB000B5D98 /* MainProductsCollectionViewCell.xib in Resources */,
+
 				CF78F3E32669C3A0005B9FE1 /* offer.gif in Resources */,
+				D2116C7B2669767B007892B7 /* FavouriteproductCVC.xib in Resources */,
+
 				9E756A11266431EB000B5D98 /* SubCategoriesCollectionViewCell.xib in Resources */,
+				D2CA0EBA266BBEC3005AB72D /* BagViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,6 +960,7 @@
 				9EAE5747265710BD00BE44C2 /* ApiService.swift in Sources */,
 				CF4798072665DC9900B0A64D /* AppCommon.swift in Sources */,
 				CFF7A3C426644C7B003D7987 /* HomeViewModel.swift in Sources */,
+				D2CA0EB5266BBE90005AB72D /* BagCollectionViewCell.swift in Sources */,
 				D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */,
 				27DDC4E7266BE263002E92A7 /* RegisterResponse.swift in Sources */,
 				9E6172EB2667CBB900E93743 /* CategorySearchViewModel.swift in Sources */,
@@ -922,6 +975,7 @@
 				9EAE574A2657114700BE44C2 /* URLs.swift in Sources */,
 				D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */,
 				CF47988D2667D23300B0A64D /* SizesCollectionViewCell.swift in Sources */,
+				D2116C7A2669767B007892B7 /* FavouriteproductCVC.swift in Sources */,
 				CF47987D2666CE9800B0A64D /* ProductDetailsViewController.swift in Sources */,
 				CF4797E62665D3D800B0A64D /* CollectionViewController+FlowLayout.swift in Sources */,
 				CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */,
@@ -939,7 +993,11 @@
 				9E756A1926643A94000B5D98 /* CategoryViewModel.swift in Sources */,
 				27723528266ABE58004B442D /* AddressVC.swift in Sources */,
 				9E756A1426643208000B5D98 /* MainCategoriesCollectionViewCell.swift in Sources */,
+
 				CF4798A42669497C00B0A64D /* DiscountCode.swift in Sources */,
+				D2CA0EB9266BBEC3005AB72D /* BagViewController.swift in Sources */,
+				D2CA0EBC266BC4BD005AB72D /* BagPersistenceManager.swift in Sources */,
+
 				CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */,
 				27DDC4E8266BE263002E92A7 /* Customer.swift in Sources */,
 				D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */,

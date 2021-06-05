@@ -11,6 +11,8 @@ import UIKit
 import SystemConfiguration
 import SwiftMessages
 
+import SDWebImage
+
 extension UIView {
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
@@ -28,6 +30,8 @@ extension UIView {
         self.layer.borderWidth = 0.5
         self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
+    
+    
 }
 
 enum ReachabilityStatus {
@@ -94,5 +98,11 @@ class AppCommon: NSObject {
             return false
         }
     }
+}
 
+
+extension UIImageView{
+    func doenloadImage(url:String){
+        self.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "no-image"))
+    }
 }

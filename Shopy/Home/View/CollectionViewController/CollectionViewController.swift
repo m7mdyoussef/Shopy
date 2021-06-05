@@ -63,8 +63,10 @@ class CollectionViewController: UIViewController {
     }
     
     func setUpMenuColllection(){
+
         showIndicator?.startAnimating()
         collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: "MenuCollectionViewCell")){row, items, cell in
+
             (cell as? MenuCollectionViewCell)?.title.text=items.title
             self.showIndicator?.stopAnimating()
             self.arrId.append(items.id)
