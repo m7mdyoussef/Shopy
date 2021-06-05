@@ -27,7 +27,7 @@ class ApiServices<T : ApiRequestWrapper>{
                 return
             }
             
-            print("\(response)")
+            // print("\(response)")
             if statusCode == 200 { // 200 reflect success response
                 // Successful request
                 guard let jsonResponse = try? response.result.get() else {
@@ -37,7 +37,7 @@ class ApiServices<T : ApiRequestWrapper>{
                     return
                 }
                 
-                print("jsonResponse---->\(jsonResponse)")
+                // print("jsonResponse---->\(jsonResponse)")
                 guard let theJSONData = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) else {
                     // ADD Custom Error
                     let error = NSError(domain: target.baseURL, code: 200, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
@@ -50,7 +50,7 @@ class ApiServices<T : ApiRequestWrapper>{
                     completion(.failure(error))
                     return
                 }
-//                   print("responsaeObj---->\(responseObj)")
+                // print("responseObj---->\(responseObj)")
                 completion(Result.success(responseObj))
             } else {
                 // ADD custom error base on status code 404 / 401 /
@@ -58,84 +58,72 @@ class ApiServices<T : ApiRequestWrapper>{
                 let message = "Error Message Parsed From backend"
                 let error = NSError(domain: target.baseURL, code: statusCode, userInfo: [NSLocalizedDescriptionKey: message])
                 completion(.failure(error))
-
-           //  print("jsonResponse---->\(jsonResponse)")
-            guard let theJSONData = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) else {
-                 // ADD Custom Error
-                                        let error = NSError(domain: target.baseURL, code: 200, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
-                                        completion(.failure(error))
-                                        return
-            }
-            guard let responseObj = try? JSONDecoder().decode(M.self, from: theJSONData) else {
-                // ADD Custom Error
-                                   let error = NSError(domain: target.baseURL, code: 200, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
-                                   completion(.failure(error))
-                                   return
             }
         }
+        
     }
-    
-    func postACustomer(target:T,onSuccess: @escaping (Data)->Void , onFailure: @escaping (Error)->Void) {
-        let urlString = target.baseURL + target.endpoint
-        print("url is \(urlString)")
-        guard let url = URL(string: urlString) else {return}
-        var request = URLRequest(url: url)
-        request.method = HTTPMethod.post
-        let session = URLSession.shared
-        request.httpShouldHandleCookies = false
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpBody = target.httpBody
-        
-        session.dataTask(with: request) { (data, response, error) in
-            if let err = error{
-                print(err)
-                onFailure(err)
-            }else{
-                if let data = data {
-//                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-//                    print(json)
-//                    print(data)
-                    onSuccess(data)
-
+        func postACustomer(target:T,onSuccess: @escaping (Data)->Void , onFailure: @escaping (Error)->Void) {
+            let urlString = target.baseURL + target.endpoint
+            print("url is \(urlString)")
+            guard let url = URL(string: urlString) else {return}
+            var request = URLRequest(url: url)
+            request.method = HTTPMethod.post
+            let session = URLSession.shared
+            request.httpShouldHandleCookies = false
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.httpBody = target.httpBody
+            
+            session.dataTask(with: request) { (data, response, error) in
+                if let err = error{
+                    print(err)
+                    onFailure(err)
+                }else{
+                    if let data = data {
+                        //                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                        //                    print(json)
+                        //                    print(data)
+                        onSuccess(data)
+                        
+                    }
+                    
+                    
                 }
-
-                
-            }
-        }.resume()
-        
-        
-        
-//        let urlString = "https://ce751b18c7156bf720ea405ad19614f4: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@itiana.myshopify.com/admin/api/2021-04/customers.json"
-//               guard let url = URL(string: urlString) else {return}
-//               var request = URLRequest(url: url)
-//               request.httpMethod = "POST"
-//               let session = URLSession.shared
-//               request.httpShouldHandleCookies = false
-//
-//
-////               do {
-////                request.httpBody = try JSONSerialization.data(withJSONObject: newUser.asDictionary(), options: .prettyPrinted)
-////               } catch let error {
-////                   print(error.localizedDescription)
-////               }
-//               request.httpBody = target.httpBody
-//               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//               request.addValue("application/json", forHTTPHeaderField: "Accept")
-//
-//        session.dataTask(with: request) { (data, response, error) in
-//            if error != nil {
-//                print(error!)
-//            } else {
-//                if let data = data {
-//                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-//                    print(json)
-//                    print(data)
-//                }
-//            }
-//        }.resume()
-        
-        
+            }.resume()
+            
+            
+            
+            //        let urlString = "https://ce751b18c7156bf720ea405ad19614f4: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@itiana.myshopify.com/admin/api/2021-04/customers.json"
+            //               guard let url = URL(string: urlString) else {return}
+            //               var request = URLRequest(url: url)
+            //               request.httpMethod = "POST"
+            //               let session = URLSession.shared
+            //               request.httpShouldHandleCookies = false
+            //
+            //
+            ////               do {
+            ////                request.httpBody = try JSONSerialization.data(withJSONObject: newUser.asDictionary(), options: .prettyPrinted)
+            ////               } catch let error {
+            ////                   print(error.localizedDescription)
+            ////               }
+            //               request.httpBody = target.httpBody
+            //               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            //               request.addValue("application/json", forHTTPHeaderField: "Accept")
+            //
+            //        session.dataTask(with: request) { (data, response, error) in
+            //            if error != nil {
+            //                print(error!)
+            //            } else {
+            //                if let data = data {
+            //                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            //                    print(json)
+            //                    print(data)
+            //                }
+            //            }
+            //        }.resume()
+            
+            
+        }
     }
     
     private func buildParams(task: Task) -> ([String:Any], ParameterEncoding) {
@@ -147,4 +135,3 @@ class ApiServices<T : ApiRequestWrapper>{
         }
     }
     
-}

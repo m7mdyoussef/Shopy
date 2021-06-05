@@ -13,7 +13,7 @@ protocol RemoteDataSourceProtocol {
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void)
     func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void)
     func getAllUsers(onSuccess: @escaping (AllCustomers?)->Void , onError: @escaping (Error)->Void)
-
+    
    // func getProducts(collectionId:String, completion: @escaping (Result<Product?, NSError>) -> Void)
     
     // MARK: joe
@@ -45,6 +45,7 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
     }
 
     func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) {
+        
         
         self.postACustomer(target: .register(myCustomer: customer)) { (data) in
             onCompletion(data)

@@ -64,6 +64,8 @@ struct Image: Codable {
     }
 }
 
+
+
 // MARK: - Option
 struct Option: Codable {
     let id, productID: Int
