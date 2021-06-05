@@ -23,7 +23,7 @@ struct DetailedProducts: Codable {
     let status: Status
     let publishedScope: PublishedScope
     let tags, adminGraphqlAPIID: String
-    let variants: [Variant]
+    let variants: [DetailedVariant]
     let options: [Option]
     let images: [Image]
     let image: Image
@@ -98,7 +98,7 @@ enum Status: String, Codable {
 }
 
 // MARK: - Variant
-struct Variant: Codable {
+struct DetailedVariant: Codable {
     let id, productID: Int
     let title, price, sku: String
     let position: Int

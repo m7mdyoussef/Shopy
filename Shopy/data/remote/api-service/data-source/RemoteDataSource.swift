@@ -15,7 +15,7 @@ protocol RemoteDataSourceProtocol {
    // func getProducts(collectionId:String, completion: @escaping (Result<Product?, NSError>) -> Void)
     
     // MARK: joe
-        func getCategoryProducts(categoryType:String,completion: @escaping (Result<Product?,NSError>) -> Void)
+        func getCategoryProducts(categoryType:String,completion: @escaping (Result<Products?,NSError>) -> Void)
     func getDetailedProducts(completion: @escaping (Result<DetailedProductsModel?, NSError>) -> Void)
 
     //end
@@ -62,7 +62,7 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
     }
     
      // MARK: joe
-    func getCategoryProducts(categoryType: String, completion: @escaping (Result<Product?, NSError>) -> Void) {
+    func getCategoryProducts(categoryType: String, completion: @escaping (Result<Products?, NSError>) -> Void) {
         var targetType:RemoteDataSourceWrapper = .getMenCategoryProducts
         if(categoryType == "Men"){  //men
             targetType = .getMenCategoryProducts
@@ -72,7 +72,7 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
             targetType = .getKidsCategoryProducts
         }
         
-        self.fetchData(target: targetType, responseClass: Product.self) { (result) in
+        self.fetchData(target: targetType, responseClass: Products.self) { (result) in
             completion(result)
         }
     }

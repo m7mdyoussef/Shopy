@@ -7,7 +7,7 @@ target 'Shopy' do
 
 
   # pod 'Firebase/Core'
-  pod 'Firebase/Auth'
+ # pod 'Firebase/Auth'
   # pod 'Firebase/Firestore'
  #  pod 'Firebase/Storage'
   pod 'Alamofire', '~> 5.2'
