@@ -12,7 +12,7 @@ import UIKit
 import NVActivityIndicatorView
 
 class ShowIndecator {
-    
+   
     var activityIndicator : NVActivityIndicatorView?
     var view : UIView?
     init(view:UIView) {

@@ -12,6 +12,9 @@ import Alamofire
 enum RemoteDataSourceWrapper{
     case getAllCustomCollections
     case getAllproducts(collectionId : String)
+    case getProductElement(productId:String)
+    case getPriceRule
+    case getDiscountCode(priceRule: String)
     
     // MARK: joe
     case getMenCategoryProducts
@@ -41,6 +44,7 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             return "/admin/api/2021-04/custom_collections.json"
         case .getAllproducts(collectionId: let collectionId):
           return "/admin/api/2021-04/collections/\(collectionId)/products.json"
+
            
             // MARK: joe
             case .getMenCategoryProducts:
@@ -52,6 +56,15 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             case .getDetailedProducts:
                 return Constants.DetailedProductsPath
             //end
+
+            
+        case .getProductElement(productId: let productId):
+            return "/admin/api/2021-04/products/\(productId).json"
+        case .getPriceRule:
+            return "/admin/api/2021-04/price_rules.json"
+        case .getDiscountCode(priceRule: let price_rule): //950502654150
+            return "/admin/api/2021-04/price_rules/\(price_rule)/discount_codes.json"
+
         }
         
     }
@@ -61,6 +74,7 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             return .requestPlain
         case .getAllproducts(collectionId: let collectionId):
             return .requestPlain
+
             
             // MARK: joe
             case .getMenCategoryProducts:
@@ -73,6 +87,14 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
                  return .requestPlain
             
             //end
+
+        case .getProductElement(productId: let productId):
+            return .requestPlain
+        case .getPriceRule:
+            return .requestPlain
+        case .getDiscountCode(priceRule: let price_rule):
+            return .requestPlain
+
         }
         
     }
