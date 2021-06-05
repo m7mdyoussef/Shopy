@@ -17,9 +17,11 @@
 		2748ECCC266465E800A9DF42 /* EmailValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */; };
 		2759BB6926646F4100AF288D /* ProgressHudExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2759BB6826646F4100AF288D /* ProgressHudExt.swift */; };
 		27647BCB26659E6B00A7BE47 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27647BCA26659E6B00A7BE47 /* Customer.swift */; };
+		27723528266ABE58004B442D /* AddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27723527266ABE58004B442D /* AddressVC.swift */; };
 		277F3A99265D51A000C822D9 /* IRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F3A98265D51A000C822D9 /* IRounded.swift */; };
 		27859D762668A49E00BA576A /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27859D752668A49E00BA576A /* RegisterResponse.swift */; };
 		27B07F16266996480062C204 /* Userdefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B07F15266996480062C204 /* Userdefaults.swift */; };
+		27B4E42B266AD6F9009A55EF /* UIUPdateAddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */; };
 		27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BBDF25265D36DC009A887D /* EntryPointVC.swift */; };
 		9E14BDEF265D45BD000899B9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E14BDEE265D45BD000899B9 /* CategoryViewController.swift */; };
 		9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D8426503E8100069E6E /* AppDelegate.swift */; };
@@ -91,9 +93,11 @@
 		2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationExtension.swift; sourceTree = "<group>"; };
 		2759BB6826646F4100AF288D /* ProgressHudExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHudExt.swift; sourceTree = "<group>"; };
 		27647BCA26659E6B00A7BE47 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		27723527266ABE58004B442D /* AddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVC.swift; sourceTree = "<group>"; };
 		277F3A98265D51A000C822D9 /* IRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRounded.swift; sourceTree = "<group>"; };
 		27859D752668A49E00BA576A /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
 		27B07F15266996480062C204 /* Userdefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefaults.swift; sourceTree = "<group>"; };
+		27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUPdateAddressList.swift; sourceTree = "<group>"; };
 		27BBDF25265D36DC009A887D /* EntryPointVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPointVC.swift; sourceTree = "<group>"; };
 		30DE585536EF363BD795C169 /* Pods_Shopy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B33C7D1FE68BC50FDE5402E /* Pods_ShopyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,10 +181,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2772352F266AC4C6004B442D /* Addresses */ = {
+			isa = PBXGroup;
+			children = (
+				27723527266ABE58004B442D /* AddressVC.swift */,
+			);
+			path = Addresses;
+			sourceTree = "<group>";
+		};
 		277F3A97265D517F00C822D9 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				277F3A98265D51A000C822D9 /* IRounded.swift */,
+				27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -217,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				273FF7D826609D4300A37003 /* Login.swift */,
+				2772352F266AC4C6004B442D /* Addresses */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -740,6 +754,7 @@
 				9EAE5747265710BD00BE44C2 /* ApiService.swift in Sources */,
 				D21A3B15265C22410096553A /* CustomCollection.swift in Sources */,
 				277F3A99265D51A000C822D9 /* IRounded.swift in Sources */,
+				27B4E42B266AD6F9009A55EF /* UIUPdateAddressList.swift in Sources */,
 				CFF7A3C426644C7B003D7987 /* HomeViewModel.swift in Sources */,
 				D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */,
 				9E14BDEF265D45BD000899B9 /* CategoryViewController.swift in Sources */,
@@ -758,6 +773,7 @@
 				27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */,
 				9E756A0C266431CB000B5D98 /* MainProductsCollectionViewCell.swift in Sources */,
 				9E756A1926643A94000B5D98 /* CategoryViewModel.swift in Sources */,
+				27723528266ABE58004B442D /* AddressVC.swift in Sources */,
 				9E756A1426643208000B5D98 /* MainCategoriesCollectionViewCell.swift in Sources */,
 				CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */,
 				D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */,

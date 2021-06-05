@@ -219,6 +219,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - BulletinBoard (5.0.0)
   - Firebase/Auth (7.11.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.11.0)
@@ -363,9 +364,13 @@ PODS:
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - BulletinBoard
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
@@ -374,12 +379,14 @@ DEPENDENCIES:
   - NVActivityIndicatorView/AppExtension
   - RxCocoa (= 6.1.0)
   - RxSwift (= 6.1.0)
+  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - abseil
     - Alamofire
     - BoringSSL-GRPC
+    - BulletinBoard
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -402,11 +409,13 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SDWebImage
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
   Firebase: c121feb35e4126c0b355e3313fa9b487d47319fd
   FirebaseAnalytics: cd3bd84d722a24a8923918af8af8e5236f615d77
   FirebaseAuth: 5fe4585c2ed847319f0ea68bd1d82c77e49ff9a0
@@ -429,7 +438,8 @@ SPEC CHECKSUMS:
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 6f7396e9ed8010ab7ebf220b7985727ec85aad8a
+PODFILE CHECKSUM: f57efde2345b8108eb63a17ed2ef7a8ea61456a8
 
 COCOAPODS: 1.10.1

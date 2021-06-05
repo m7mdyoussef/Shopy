@@ -33,8 +33,10 @@ class Register: UIViewController,IRounded {
     @IBOutlet weak var uiConfirmation: UITextField!
     @IBOutlet weak var uiPasswordlbl: UILabel!
     @IBOutlet weak var uiMaillbl: UILabel!
+    @IBOutlet weak var uiLocationBtn: UIButton!
     
     var viewModel:EntryViewModel!
+    var address:Address?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,7 @@ class Register: UIViewController,IRounded {
         
         viewModel = EntryViewModel()
         setupView()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         if let loggedin = MyUserDefaults.getValue(forKey: .loggedIn){
@@ -59,17 +62,9 @@ class Register: UIViewController,IRounded {
         uiPassword.addTarget(self, action: #selector(checkPassword), for: .editingChanged)
         uiConfirmation.addTarget(self, action: #selector(checkPassword), for: .editingChanged)
         uiEmail.addTarget(self, action: #selector(checkMail), for: .editingChanged)
+     
     }
-    
-    func checkEmptyTexts(){
         
-        let _ = viewModel.checkForEmptyTextField(text: uiFirstName.text)?
-            .checkForEmptyTextField(text: uiLastName.text)?
-            .checkForEmptyTextField(text: uiEmail.text)?
-            .checkForEmptyTextField(text: uiPassword.text)?
-            .checkForEmptyTextField(text: uiConfirmation.text)
-        
-    }
     
     @objc func checkPassword(){
         viewModel.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
@@ -110,51 +105,81 @@ class Register: UIViewController,IRounded {
                               })
     }
     
+    
+    
+    func checkEmptyTexts(){
+        
+        let _ = viewModel.checkForEmptyTextField(text: uiFirstName.text)?
+            .checkForEmptyTextField(text: uiLastName.text)?
+            .checkForEmptyTextField(text: uiEmail.text)?
+            .checkForEmptyTextField(text: uiPassword.text)?
+            .checkForEmptyTextField(text: uiConfirmation.text)
+        
+    }
+    
     @IBAction func uiSubmit(_ sender: UIButton) {
         
         checkEmptyTexts()
         viewModel.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
-                                     yes: {empty in
-                                        
-                                        if empty == true{
-                                            onFaildHud(text: "Please Fill in The blanks!!")
-                                            
-                                        }else{
-                                            
-                                            if viewModel.isAllTextFilld && viewModel.isMailValid {
-                                                let hud = JGProgressHUD()
-                                                hud.textLabel.text = "Loading"
-                                                hud.style = .dark
-                                                hud.show(in: self.view)
-                                                
-                                                let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: []))
-                                                
-                                                viewModel.signUp(customer:newCustomer,
-                                                                 onSuccess: { [unowned self] in
-                                                                    hud.dismiss()
-                                                                    onSuccessHud()
-                                                                    //MARK:- redirection
-                                                                 },onFailure: { [unowned self] localizedDescription in
-                                                                    print(localizedDescription)
-                                                                    hud.dismiss()
-                                                                    onFaildHud(text: localizedDescription)
-                                                                 });
-                                                
-                                            }else if !viewModel.isMailValid {
-                                                onFaildHud(text: "Please Enter Valid Email!!")
-                                            }else{
-                                                onFaildHud(text: "Please Fill in The blanks!!")
-                                            }
-                                            
-                                        }
-                                        
-                                     }, no: {
-                                        onFaildHud(text: "Please confirm that you enter a valid passwords")
-                                     })
+             yes: {empty in
+                
+                if empty == true{
+                    onFaildHud(text: "Please Fill in The blanks!!")
+                    
+                }else{
+                    
+                    if viewModel.isAllTextFilld && viewModel.isMailValid {
+                        let hud = JGProgressHUD()
+                        hud.textLabel.text = "Loading"
+                        hud.style = .dark
+                        hud.show(in: self.view)
+                        
+                        let myAddress:[Address] = address == nil ? [] : [address!]
+                        let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: myAddress))
+                        
+                        viewModel.signUp(customer:newCustomer,
+                                         onSuccess: { [unowned self] in
+                                            hud.dismiss()
+                                            onSuccessHud()
+                                            //MARK:- redirection
+                                         },onFailure: { [unowned self] localizedDescription in
+                                            print(localizedDescription)
+                                            hud.dismiss()
+                                            onFaildHud(text: localizedDescription)
+                                         });
+                        
+                    }else if !viewModel.isMailValid {
+                        onFaildHud(text: "Please Enter Valid Email!!")
+                    }else{
+                        onFaildHud(text: "Please Fill in The blanks!!")
+                    }
+                    
+                }
+                
+             }, no: {
+                onFaildHud(text: "Please confirm that you enter a valid passwords")
+             })
+    }
+    
+    @IBAction func listAddresses(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "ListAddressesVC") as! AddressViewController
+        let nav = UINavigationController(rootViewController: vc)
+        
+        nav.navigationController?.navigationBar.prefersLargeTitles = true
+        nav.navigationController?.navigationItem.largeTitleDisplayMode = .always
+        
+        vc.delegate = self
+        if let address = address{
+            vc.address = address
+        }
+        present(nav, animated: true, completion: nil)
+        
     }
     
 }
 
+
+//MARK:-secured password without suggestion
 extension Register: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -168,3 +193,18 @@ extension Register: UITextFieldDelegate{
     }
 }
 
+
+//MARK:- receiving address list from delegat
+extension Register:UIUPdateAddressList{
+    func receive(address: Address?) {
+        if let address = address{
+            self.address = address
+            uiLocationBtn.setImage(UIImage(systemName: "location.fill"), for: .normal)
+
+        }else{
+            self.address = nil
+            uiLocationBtn.setImage(UIImage(systemName: "location"), for: .normal)
+        }
+        
+    }
+}

@@ -48,13 +48,11 @@ struct CustomerClass: Codable {
 
 // MARK: - Address
 struct Address: Codable {
-    let address1, city, province, phone: String?
-    let zip, lastName, firstName, country: String?
-
+    let title, city: String?
+    let zip, country: String?
+    
     enum CodingKeys: String, CodingKey {
-        case address1, city, province, phone, zip
-        case lastName = "last_name"
-        case firstName = "first_name"
-        case country
+        case title = "address1"
+        case city,zip,country
     }
 }
