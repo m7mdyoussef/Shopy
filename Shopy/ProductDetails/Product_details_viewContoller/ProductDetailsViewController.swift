@@ -29,7 +29,7 @@ class ProductDetailsViewController: UIViewController {
     var disposeBag = DisposeBag()
     var idProduct = ""
     var arrOption = BehaviorRelay(value: [""])
-    let manager = FavouritesPersistenceManager.shared
+    let manager = BagPersistenceManager.shared
     var productElement : ProductClass?
     var isFavo: Bool?
     
@@ -51,10 +51,11 @@ class ProductDetailsViewController: UIViewController {
         checkFav()
     }
     @IBAction func addToWishList(_ sender: Any) {
-        manager.addToFavourites(favProduct: self.productElement!)
+//        manager.addToFavourites(favProduct: self.productElement!)
+        manager.addToBagProducts(bagProduct: self.productElement!)
     }
     @IBAction func addToCard(_ sender: Any) {
-        let vc = FavouriteProductsVC()
+        let vc = BagViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -65,7 +66,7 @@ class ProductDetailsViewController: UIViewController {
             guard let self = self else {return}
             self.productElement = response.element
             print(response.element?.id)
-            self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)
+//            self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)
             self.productTitle.text = response.element?.title
             self.productPrice.text = response.element?.variants[0].price
             self.productDetails.text = response.element?.bodyHTML
