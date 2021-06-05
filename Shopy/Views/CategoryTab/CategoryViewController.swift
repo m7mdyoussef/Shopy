@@ -12,88 +12,107 @@ import RxCocoa
 
 class CategoryViewController: UIViewController {
 
-    @IBOutlet weak var mainCategoryCollectionView: UICollectionView!
+    @IBOutlet private weak var mainCategoryCollectionView: UICollectionView!
     @IBOutlet weak var subCategoryCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
     
+    private var db:DisposeBag!
+    private var mainCategElement:String = "Men"
+    private var subCategElement:String = "T-Shirts"
+    private var activityIndicatorView:UIActivityIndicatorView!
     
     private var categoryViewModel:CategoryViewModel!
-    private var disposeBag:DisposeBag!
-    private var mainCat:String = "Men"
-    private var subCat:String = "tshirt"
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        //register cell nib file
-        let mainCatNibCell = UINib(nibName: Constants.mainCatNibCelln, bundle: nil)
-        mainCategoryCollectionView.register(mainCatNibCell, forCellWithReuseIdentifier: Constants.mainCatNibCelln)
+        //register custom nib file cells
+        let mainCategoryElementCell = UINib(nibName: Constants.mainCategoryElementCell, bundle: nil)
+        mainCategoryCollectionView.register(mainCategoryElementCell, forCellWithReuseIdentifier: Constants.mainCategoryElementCell)
         
-        let subCatNibCell = UINib(nibName: Constants.subCatNibCell, bundle: nil)
-        subCategoryCollectionView.register(subCatNibCell, forCellWithReuseIdentifier: Constants.subCatNibCell)
+        let subCategoryElementCell = UINib(nibName: Constants.subCategoryElementCell, bundle: nil)
+        subCategoryCollectionView.register(subCategoryElementCell, forCellWithReuseIdentifier: Constants.subCategoryElementCell)
         
-        let productNibCell = UINib(nibName: Constants.productNibCell, bundle: nil)
-        productsCollectionView.register(productNibCell, forCellWithReuseIdentifier: Constants.productNibCell)
+        let productCell = UINib(nibName: Constants.productCell, bundle: nil)
+        productsCollectionView.register(productCell, forCellWithReuseIdentifier: Constants.productCell)
         
-        //initialization
+        activityIndicatorView = UIActivityIndicatorView(style: .large)
         categoryViewModel = CategoryViewModel()
-        disposeBag = DisposeBag()
+        db = DisposeBag()
         
-        //setting delegates
-        mainCategoryCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
-        subCategoryCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
-        productsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        // collectionViews Deleget
+        mainCategoryCollectionView.rx.setDelegate(self).disposed(by: db)
+        subCategoryCollectionView.rx.setDelegate(self).disposed(by: db)
+        productsCollectionView.rx.setDelegate(self).disposed(by: db)
 
 
-        //select first item at initialization
+        //first item selected at first
         let selectedIndexPath = IndexPath(item: 0, section: 0)
 
-        //bindingData from viewModel
-        categoryViewModel.mainCatDataObservable.bind(to: mainCategoryCollectionView.rx.items(cellIdentifier: Constants.mainCatNibCelln)){ [weak self] row,item,cell in
-           let castedCell = cell as! MainCategoriesCollectionViewCell
-            castedCell.mainCategoriesCellLabel.text = item
+        //binding viewModel observables
+        categoryViewModel.mainCategoryElementsObservable.bind(to: mainCategoryCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){ [weak self] row,item,cell in
+           let mainCategoryCell = cell as! MainCategoriesCollectionViewCell
+            mainCategoryCell.mainCategoriesCellLabel.text = item
             self?.mainCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
-        }.disposed(by: disposeBag)
+        }.disposed(by: db)
         
-        categoryViewModel.subCatDataObservable.bind(to: subCategoryCollectionView.rx.items(cellIdentifier: Constants.subCatNibCell)){ [weak self] row,item,cell in
-           let castedCell = cell as! SubCategoriesCollectionViewCell
-            castedCell.subCategorieslabel.text = item
+        categoryViewModel.subCategoryElementsObservable.bind(to: subCategoryCollectionView.rx.items(cellIdentifier: Constants.subCategoryElementCell)){ [weak self] row,item,cell in
+           let subCategoryCell = cell as! SubCategoriesCollectionViewCell
+           subCategoryCell.subCategorieslabel.text = item
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
-        }.disposed(by: disposeBag)
+        }.disposed(by: db)
         
-        categoryViewModel.productDataObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: Constants.productNibCell)){ [weak self] row,item,cell in
-           let castedCell = cell as! MainProductsCollectionViewCell
-            castedCell.productName.text = item
-        }.disposed(by: disposeBag)
+        categoryViewModel.productsObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: Constants.productCell)){ [weak self] row,item,cell in
+           let productsCell = cell as! MainProductsCollectionViewCell
+            productsCell.productObject = item
+        }.disposed(by: db)
         
         
-        //when item selected
+        //if i select item from both sub and main cats
         mainCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
-            self?.mainCat = value
-            self?.subCat = "Tshirt"
-            self?.categoryViewModel.fetchCetainData(mainCat: self!.mainCat, subCat: self!.subCat)
-        }).disposed(by: disposeBag)
+            self?.mainCategElement = value
+            self?.subCategElement = "Tshirt"
+            self?.categoryViewModel.fetchFilterdProducts(mainCategoryElement: self!.mainCategElement, subCategoryElement: self!.subCategElement)
+
+        }).disposed(by: db)
         
         subCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
-            self?.subCat = value
-            print(self?.subCat ?? "")
-            self?.categoryViewModel.fetchCetainData(mainCat: self!.mainCat, subCat: self!.subCat)
-        }).disposed(by: disposeBag)
+            self?.subCategElement = value
+            self?.categoryViewModel.fetchFilterdProducts(mainCategoryElement: self!.mainCategElement, subCategoryElement: self!.subCategElement)
+
+        }).disposed(by: db)
 
         productsCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (indexpath) in
-        }).disposed(by: disposeBag)
+        }).disposed(by: db)
 
-        categoryViewModel.fetchData()
-        categoryViewModel.fetchCetainData(mainCat: "Men", subCat: "Tshirt")
+    
+         categoryViewModel.errorObservable.subscribe(onError: {[weak self] (error) in
+             self?.hideLoading()
+             }).disposed(by: db)
+         
+         categoryViewModel.LoadingObservable.subscribe(onNext: {[weak self] (value) in
+             switch value{
+             case true:
+                 self?.showLoading()
+             case false:
+                 self?.hideLoading()
+             }
+         }).disposed(by: db)
+
+         categoryViewModel.fetchData()
+         categoryViewModel.fetchFilterdProducts(mainCategoryElement: mainCategElement, subCategoryElement: subCategElement)
         
     }
 
-
-
-
+    @IBAction func searchCategoryProducts(_ sender: Any) {
+        let searchCategoryViewController = storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
+        searchCategoryViewController.productList = categoryViewModel.ProductElements
+        navigationController?.pushViewController(searchCategoryViewController, animated: true)
+    }
+    
 }
 
 
@@ -109,8 +128,30 @@ extension CategoryViewController : UICollectionViewDelegateFlowLayout {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+    
+}
+
+
+extension CategoryViewController{
+    func showLoading() {
+        activityIndicatorView!.center = self.view.center
+        self.view.addSubview(activityIndicatorView!)
+        activityIndicatorView!.startAnimating()
     }
+    
+    func hideLoading() {
+        activityIndicatorView!.stopAnimating()
+    }
+    
+    func showErrorMessage(errorMessage: String) {
+        let alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel)
+        { action -> Void in
+           
+        })
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     
 }

@@ -6,10 +6,7 @@ target 'Shopy' do
   use_frameworks!
 
 
-#  pod 'Firebase/Core'
-#  pod 'Firebase/Auth'
-#  pod 'Firebase/Firestore'
-#  pod 'Firebase/Storage'
+
   pod 'Alamofire', '~> 5.2'
   pod 'NVActivityIndicatorView/AppExtension'
   pod 'RxSwift', '6.1.0'
@@ -17,12 +14,13 @@ target 'Shopy' do
   pod 'SDWebImage', '~> 5.0'
   pod 'BulletinBoard'
 
+  pod 'SwiftMessages'
 #  pod 'Gallery'
 #  pod 'InstantSearchClient'
 #  pod 'EmptyDataSet-Swift'
   pod 'JGProgressHUD'
 #  pod 'PayPal-iOS-SDK'
-
+pod 'DropDown'
   # Pods for Shopy
 
   target 'ShopyTests' do

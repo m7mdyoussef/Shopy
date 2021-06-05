@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.4.3)
   - BulletinBoard (5.0.0)
+  - DropDown (2.3.13)
   - JGProgressHUD (2.2)
   - NVActivityIndicatorView/AppExtension (4.8.0)
   - RxCocoa (6.1.0):
@@ -12,37 +13,46 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
+  - SwiftMessages (9.0.2):
+    - SwiftMessages/App (= 9.0.2)
+  - SwiftMessages/App (9.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - BulletinBoard
+  - DropDown
   - JGProgressHUD
   - NVActivityIndicatorView/AppExtension
   - RxCocoa (= 6.1.0)
   - RxSwift (= 6.1.0)
   - SDWebImage (~> 5.0)
+  - SwiftMessages
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - BulletinBoard
+    - DropDown
     - JGProgressHUD
     - NVActivityIndicatorView
     - RxCocoa
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SwiftMessages
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
 
-PODFILE CHECKSUM: 5994df5f581ca6165714d568721196d9d25b4928
+PODFILE CHECKSUM: 3220393e4175a1e3bd1cd7fb018e959fe3a039e3
 
 COCOAPODS: 1.10.1

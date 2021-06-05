@@ -12,7 +12,7 @@ import Alamofire
 class ApiServices<T : ApiRequestWrapper>{
     
     func fetchData<M :Codable>(target: T,responseClass : M.Type, completion:@escaping (Result<M?, NSError>) -> Void){
-        
+        guard AppCommon.shared.checkConnectivity() else {return}
         let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
         let params = buildParams(task: target.task)
         let method = Alamofire.HTTPMethod(rawValue: target.httpMethod.rawValue)
@@ -58,6 +58,19 @@ class ApiServices<T : ApiRequestWrapper>{
                 let message = "Error Message Parsed From backend"
                 let error = NSError(domain: target.baseURL, code: statusCode, userInfo: [NSLocalizedDescriptionKey: message])
                 completion(.failure(error))
+
+           //  print("jsonResponse---->\(jsonResponse)")
+            guard let theJSONData = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) else {
+                 // ADD Custom Error
+                                        let error = NSError(domain: target.baseURL, code: 200, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
+                                        completion(.failure(error))
+                                        return
+            }
+            guard let responseObj = try? JSONDecoder().decode(M.self, from: theJSONData) else {
+                // ADD Custom Error
+                                   let error = NSError(domain: target.baseURL, code: 200, userInfo: [NSLocalizedDescriptionKey: ErrorMessage.genericError])
+                                   completion(.failure(error))
+                                   return
             }
         }
     }

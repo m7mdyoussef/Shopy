@@ -10,11 +10,9 @@ import Foundation
 import RxSwift
 
 protocol CategoryContract{
-    func fetchData()
     var errorObservable: Observable<Bool> {get}
     var LoadingObservable: Observable<Bool> {get}
-    
-    var mainCatDataObservable:Observable<[String]> {get}
-    var subCatDataObservable:Observable<[String]> {get}
-
+    var mainCategoryElementsObservable:Observable<[String]> {get}
+    var subCategoryElementsObservable:Observable<[String]> {get}
+    func fetchData()
 }

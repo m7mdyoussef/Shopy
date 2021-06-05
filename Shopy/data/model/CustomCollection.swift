@@ -46,7 +46,7 @@ struct CustomElement: Codable {
 }
 
 // MARK: - Image
-struct Image: Codable {
+struct Imagec: Codable {
     let createdAt: Date
     let width, height: Int
     let src: String

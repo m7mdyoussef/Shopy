@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,6 +20,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEZ-jg-Q0y">
                         <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Ojn-x2-Wy8"/>
                         </constraints>
@@ -27,13 +30,14 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Vd-ty-gL7">
                         <rect key="frame" x="0.0" y="30" width="70" height="5"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="5" id="Di8-D1-Se9"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="0Vd-ty-gL7" firstAttribute="top" secondItem="dEZ-jg-Q0y" secondAttribute="bottom" id="39c-Ru-DeB"/>
                 <constraint firstAttribute="trailing" secondItem="0Vd-ty-gL7" secondAttribute="trailing" id="6Yc-Tx-2xD"/>
@@ -43,7 +47,6 @@
                 <constraint firstItem="0Vd-ty-gL7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jeX-Vk-nlb"/>
                 <constraint firstItem="dEZ-jg-Q0y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pZy-Lr-9Rn"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="mainCategoriesCellHighLightedView" destination="0Vd-ty-gL7" id="JfV-eg-Bbc"/>
                 <outlet property="mainCategoriesCellLabel" destination="dEZ-jg-Q0y" id="Y6t-0p-b9D"/>
@@ -51,4 +54,9 @@
             <point key="canvasLocation" x="34.782608695652179" y="111.49553571428571"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
