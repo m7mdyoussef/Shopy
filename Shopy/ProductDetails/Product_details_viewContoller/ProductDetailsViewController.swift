@@ -29,7 +29,7 @@ class ProductDetailsViewController: UIViewController {
     var disposeBag = DisposeBag()
     var idProduct = ""
     var arrOption = BehaviorRelay(value: [""])
-    let manager = BagPersistenceManager.shared
+    let manager = FavouritesPersistenceManager.shared
     var productElement : ProductClass?
     var isFavo: Bool?
     
@@ -48,11 +48,13 @@ class ProductDetailsViewController: UIViewController {
         }
     }
     override func viewWillAppear(_ animated: Bool) {
-        checkFav()
+        checkColor()
     }
+    
     @IBAction func addToWishList(_ sender: Any) {
-//        manager.addToFavourites(favProduct: self.productElement!)
-        manager.addToBagProducts(bagProduct: self.productElement!)
+        self.isFavo = self.manager.isFavourited(productID: productElement?.id ?? 0)
+        checkFav()
+        //   manager.addToBagProducts(bagProduct: self.productElement!)
     }
     @IBAction func addToCard(_ sender: Any) {
         let vc = BagViewController()
@@ -66,10 +68,11 @@ class ProductDetailsViewController: UIViewController {
             guard let self = self else {return}
             self.productElement = response.element
             print(response.element?.id)
-//            self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)
             self.productTitle.text = response.element?.title
             self.productPrice.text = response.element?.variants[0].price
             self.productDetails.text = response.element?.bodyHTML
+            self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)
+            self.checkColor()
             self.arrOption.accept(((response.element?.options[0].values) ?? []))
             
             var imgs = response.element?.images
@@ -86,6 +89,14 @@ class ProductDetailsViewController: UIViewController {
             self.imageScrollView.delegate = self
             self.showIndicator?.stopAnimating()
         }.disposed(by: disposeBag)
+    }
+    
+    func checkColor(){
+        if self.isFavo == true{
+            self.favouriteButton.tintColor = UIColor.red
+        }else{
+            self.favouriteButton.tintColor = UIColor.gray
+        }
     }
 }
 

@@ -27,10 +27,12 @@ extension ProductDetailsViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func checkFav(){
-        if self.isFavo == true{
+        if self.isFavo == false{
             favouriteButton.tintColor = UIColor.red
+            self.manager.addToFavourites(favProduct: self.productElement!)
         }else{
             favouriteButton.tintColor = UIColor.gray
+            self.manager.removeProduct(productID: self.productElement!.id)
         }
     }
     
