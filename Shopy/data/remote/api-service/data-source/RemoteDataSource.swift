@@ -44,12 +44,13 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
         }
     }
 
-    func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) {
+ func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) {
         
-        
-        self.postACustomer(target: .register(myCustomer: customer)) { (data) in
+    
+ 
+        self.postACustomer(target: .register(myCustomer: customer), onSuccess: { (data) in
             onCompletion(data)
-        } onFailure: { (error) in
+        }) { (error) in
             onFailure(error)
         }
 

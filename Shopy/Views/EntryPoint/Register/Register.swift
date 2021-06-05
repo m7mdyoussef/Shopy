@@ -140,12 +140,12 @@ class Register: UIViewController,IRounded {
                         viewModel.signUp(customer:newCustomer,
                                          onSuccess: { [unowned self] in
                                             hud.dismiss()
-                                            onSuccessHud()
+                                            self.onSuccessHud()
                                             //MARK:- redirection
                                          },onFailure: { [unowned self] localizedDescription in
                                             print(localizedDescription)
                                             hud.dismiss()
-                                            onFaildHud(text: localizedDescription)
+                                            self.onFaildHud(text: localizedDescription)
                                          });
                         
                     }else if !viewModel.isMailValid {

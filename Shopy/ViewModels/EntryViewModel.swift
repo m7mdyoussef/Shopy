@@ -62,7 +62,10 @@ class EntryViewModel {
         ////            }
         //
         //        }
-        remote.registerACustomer(customer: customer) { (data) in
+        
+     
+        
+        remote.registerACustomer(customer: customer,onCompletion: { (data) in
             if let decodedResponse = try? JSONDecoder().decode(RegisterResponse.self, from: data) {
                 if let email = decodedResponse.errors?.email{
                     let err = "email \(email[0])"
@@ -86,7 +89,7 @@ class EntryViewModel {
                     onFailure("an Error Occured, Try Again Later")
                 }
             }
-        } onFailure: { (err) in
+        } ) { (err) in
             DispatchQueue.main.async {
                 onFailure(err.localizedDescription)
                 print("error is \(err.localizedDescription)")
@@ -156,15 +159,10 @@ class EntryViewModel {
     }
     
     func signIn(email:String,password:String,onSuccess:@escaping ()->(),onFailure: @escaping(String)->Void) {
-        //        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-        //            if let err = error{
-        //                onFailure(err.localizedDescription)
-        //            }else{
-        //                print("login successfully")
-        //                onSuccess()
-        //            }
-        //        }
-        getAllUsers { (allCustomers) in
+ 
+   
+        
+        getAllUsers(onFinish:{ (allCustomers) in
             
             for customer in allCustomers.customers{
                 if let mail = customer.email {
@@ -183,7 +181,7 @@ class EntryViewModel {
                 onFailure("Credentials is no valid, Please Try again")
             }
             
-        } onError: { (err) in
+        }) { (err) in
             print(err)
             DispatchQueue.main.async {
                 onFailure(err)
@@ -193,10 +191,12 @@ class EntryViewModel {
     }
     
     func getAllUsers(onFinish: @escaping (AllCustomers)->Void,onError: @escaping (String)->Void) {
-        remote.getAllUsers { (allCustomers) in
+        
+        
+        remote.getAllUsers(onSuccess: { (allCustomers) in
             guard let customer = allCustomers else {return}
             onFinish(customer)
-        } onError: { (err) in
+        }){ (err) in
             onError(err.localizedDescription)
         }
     }

@@ -57,7 +57,7 @@ class ProductDetailsViewController: UIViewController {
         //   manager.addToBagProducts(bagProduct: self.productElement!)
     }
     @IBAction func addToCard(_ sender: Any) {
-        let vc = BagViewController()
+        let vc = FavouriteProductsVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

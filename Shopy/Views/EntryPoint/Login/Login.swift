@@ -65,11 +65,11 @@ class Login: UIViewController,IRounded{
             hud.textLabel.text = "Loading"
             hud.style = .dark
             hud.show(in: self.view)
-            viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!) { [unowned self] in
-                hud.dismiss()
-                self.onSuccessHud()
-                //MARK:- redirect
-            } onFailure: { [unowned self] (string) in
+            
+            viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!, onSuccess: {
+                 hud.dismiss()
+                 self.onSuccessHud()
+            }) { [unowned self] (string) in
                 hud.dismiss()
                 self.onFaildHud(text: string)
             }
