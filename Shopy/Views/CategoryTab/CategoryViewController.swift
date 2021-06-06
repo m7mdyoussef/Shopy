@@ -25,12 +25,31 @@ class CategoryViewController: UIViewController {
     private var subCategElement:String = "T-Shirts"
     private var activityIndicatorView:UIActivityIndicatorView!
     
-    private var categoryViewModel:CategoryViewModel!
-    private var collectionViewModel:HomeViewModel?
+    private var categoryViewModel = CategoryViewModel()
+    private var collectionViewModel = HomeViewModel()
    private var arrproductId = [String]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+//        subCategElement = "T-Shirts"
+//        mainCategElement = "Men"
+//        categoryViewModel.fetchFilterdProducts(mainCategoryElement: mainCategElement, subCategoryElement: subCategElement)
+
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.fromWhere = "category"
+            NoInternetViewController.vcIdentifier = "CategoryViewController"
+            self.present(NoInternetViewController, animated: true, completion: nil)
+           // self.navigationController?.pushViewController(NoInternetViewController, animated: true)
+        }
+        
+        
         self.navigationController?.navigationBar.barTintColor = UIColor.black
 
         
@@ -47,8 +66,8 @@ class CategoryViewController: UIViewController {
         productsCollectionView.register(productCell, forCellWithReuseIdentifier: Constants.productCell)
         
         activityIndicatorView = UIActivityIndicatorView(style: .large)
-        categoryViewModel = CategoryViewModel()
-        collectionViewModel = HomeViewModel()
+//        categoryViewModel = CategoryViewModel()
+//        collectionViewModel = HomeViewModel()
         db = DisposeBag()
         
         // collectionViews Deleget
@@ -98,10 +117,10 @@ class CategoryViewController: UIViewController {
       
         
         productsCollectionView.rx.itemSelected.subscribe{value in
-            print(value.element?.item)
+           // print(value.element?.item)
 //            if AppCommon.shared.checkConnectivity() == true{
                // self.controlViews(flag: true)
-                self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+            self.collectionViewModel.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
             let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
                 self.navigationController?.pushViewController(detailsViewController, animated: true)

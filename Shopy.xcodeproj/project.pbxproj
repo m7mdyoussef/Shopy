@@ -35,6 +35,7 @@
 		9E182D9426503E8300069E6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E182D9226503E8300069E6E /* LaunchScreen.storyboard */; };
 		9E182D9F26503E8300069E6E /* ShopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D9E26503E8300069E6E /* ShopyTests.swift */; };
 		9E182DAA26503E8300069E6E /* ShopyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182DA926503E8300069E6E /* ShopyUITests.swift */; };
+		9E567CCD266D695400AC11C1 /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567CCC266D695400AC11C1 /* NoInternetViewController.swift */; };
 		9E59BDDC26531C67003B113F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E59BDDB26531C66003B113F /* GoogleService-Info.plist */; };
 		9E6172E82667CA3200E93743 /* SearchCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6172E72667CA3200E93743 /* SearchCategoryViewController.swift */; };
 		9E6172EB2667CBB900E93743 /* CategorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6172EA2667CBB900E93743 /* CategorySearchViewModel.swift */; };
@@ -146,6 +147,7 @@
 		9E182DA526503E8300069E6E /* ShopyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShopyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E182DA926503E8300069E6E /* ShopyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopyUITests.swift; sourceTree = "<group>"; };
 		9E182DAB26503E8300069E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E567CCC266D695400AC11C1 /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
 		9E59BDDB26531C66003B113F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E6172E72667CA3200E93743 /* SearchCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryViewController.swift; sourceTree = "<group>"; };
 		9E6172EA2667CBB900E93743 /* CategorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySearchViewModel.swift; sourceTree = "<group>"; };
@@ -347,6 +349,14 @@
 			path = ShopyUITests;
 			sourceTree = "<group>";
 		};
+		9E567CCB266D691600AC11C1 /* NoInternetScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9E567CCC266D695400AC11C1 /* NoInternetViewController.swift */,
+			);
+			path = NoInternetScreen;
+			sourceTree = "<group>";
+		};
 		9E5780A1266C3580005EF36E /* configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +409,7 @@
 		9E756A0526642D14000B5D98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9E567CCB266D691600AC11C1 /* NoInternetScreen */,
 				9E182D8A26503E8100069E6E /* Main.storyboard */,
 				9E182D9226503E8300069E6E /* LaunchScreen.storyboard */,
 				CF65719026617D8500C31614 /* Home */,
@@ -1001,6 +1012,7 @@
 				27DDC4E8266BE263002E92A7 /* Customer.swift in Sources */,
 				D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */,
 				273FF7DE2660A30300A37003 /* EntryNavigator.swift in Sources */,
+				9E567CCD266D695400AC11C1 /* NoInternetViewController.swift in Sources */,
 				9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */,
 				273FF7D42660932400A37003 /* Register.swift in Sources */,
 				D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */,
