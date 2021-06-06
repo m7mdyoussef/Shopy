@@ -20,6 +20,7 @@ class CollectionViewController: UIViewController {
     var arrId = [Int]()
     var arrDiscountCodes = [String]()
     var arrproductId = [String]()
+    private var searchBar:UISearchBar!
     @IBOutlet weak var productSearchBar: UISearchBar!
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var adsButton: UIButton!
@@ -29,8 +30,13 @@ class CollectionViewController: UIViewController {
     var showIndicator:ShowIndecator?
     override func viewDidLoad() {
         super.viewDidLoad()
-        showIndicator = ShowIndecator(view: view.self)
+       
         adsView.roundCorners(corners: .allCorners, radius: 35)
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 280, height: 25))
+        searchBar.placeholder = "Search..."
+        let barButton = UIBarButtonItem(customView:searchBar)
+        self.navigationItem.rightBarButtonItem = barButton
+        showIndicator = ShowIndecator(view: view.self)
         registerMenuCell()
         registerProductCell()
         controlViews(flag: true)
@@ -39,7 +45,7 @@ class CollectionViewController: UIViewController {
         productsCollectionView.rx.setDelegate(self)
         setUpMenuColllection()
         setupProductCollection()
-        productsView.roundCorners(corners: [.topLeft, .topRight], radius: 35)
+        productsView.roundCorners(corners: [.topLeft, .topRight], radius: 45)
         collectionViewModel?.getPriceRules()
         collectionViewModel?.getDiscountCode(priceRule: "951238656198")
         adsButton.setBackgroundImage(UIImage.gif(name: "offer0"), for: .normal)

@@ -13,9 +13,11 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView.tag == 1{
             return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/3, height: 220)
-        }else
+        }else if menuCollectionView.tag == 0
         {
-            return CGSize(width: (self.view.frame.width)/3, height: 40)
+            return CGSize(width: 126, height: 30)
+        }else{
+            return CGSize(width: (self.view.frame.width)/3, height: 30)
         }
     }
     
