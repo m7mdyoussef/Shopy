@@ -53,17 +53,6 @@ class EntryViewModel {
     }
     
     func signUp(customer:Customer,onSuccess:@escaping ()->(),onFailure:@escaping (String)->()) {
-        //        Auth.auth().createUser(withEmail: customer.customer.email!, password: pass) { [unowned self] authResult, error in
-        ////            if let err = error {
-        ////                onFailure(err.localizedDescription)
-        ////            }else{
-        //                self.registerACustomerInApi(newUser: customer)
-        //                onSuccess()
-        ////            }
-        //
-        //        }
-        
-     
         
         remote.registerACustomer(customer: customer,onCompletion: { (data) in
             if let decodedResponse = try? JSONDecoder().decode(RegisterResponse.self, from: data) {
@@ -98,76 +87,15 @@ class EntryViewModel {
         }
         
     }
-    
-    func registerACustomerInApi(newUser:Customer) {
-        //        remote.registerACustomer(customer: newUser) { (result) in
-        //            if let err = (result as? NSError) {
-        //                print("error is \(err.localizedDescription)")
-        //            }else{
-        //                print("else is  \(result)")
-        //            }
-        //        }
         
-        //        remote.registerACustomer(customer: newUser) { (data) in
-        //            if let decodedResponse = try? JSONDecoder().decode(RegisterError.self, from: data) {
-        //                if let email = decodedResponse.errors.email{
-        //                    print("email \(email[0])")
-        //                }
-        //                if let phone = decodedResponse.errors.phone{
-        //                    print("phone \(phone[0])")
-        //                }
-        //
-        //            }else{
-        //                print("errrr")
-        //            }
-        //        } onFailure: { (err) in
-        //            print("error is \(err.localizedDescription)")
-        //        }
-        
-        
-        
-        //        let urlString = "https://ce751b18c7156bf720ea405ad19614f4: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@itiana.myshopify.com/admin/api/2021-04/customers.json"
-        //               guard let url = URL(string: urlString) else {return}
-        //               var request = URLRequest(url: url)
-        //               request.httpMethod = "POST"
-        //               let session = URLSession.shared
-        //               request.httpShouldHandleCookies = false
-        //
-        //
-        //               do {
-        //                request.httpBody = try JSONSerialization.data(withJSONObject: newUser.asDictionary(), options: .prettyPrinted)
-        //               } catch let error {
-        //                   print(error.localizedDescription)
-        //               }
-        //
-        //               HTTP Headers
-        //               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        //               request.addValue("application/json", forHTTPHeaderField: "Accept")
-        //
-        //        session.dataTask(with: request) { (data, response, error) in
-        //            if error != nil {
-        //                print(error!)
-        //            } else {
-        //                if let data = data {
-        //                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-        //                    print(json)
-        //                    print(data)
-        //                }
-        //            }
-        //        }.resume()
-        
-    }
-    
     func signIn(email:String,password:String,onSuccess:@escaping ()->(),onFailure: @escaping(String)->Void) {
  
-   
-        
-        getAllUsers(onFinish:{ (allCustomers) in
+        getAllUsers(onFinish:{ [unowned self] (allCustomers) in
             
             for customer in allCustomers.customers{
                 if let mail = customer.email {
                     if email == mail && password == customer.password{
-                        MyUserDefaults.add(val: true, key: .loggedIn)
+                        saveCredentialsInUserDefaults(email: email, username: customer.firstName!)
                         DispatchQueue.main.async {
                             onSuccess()
                         }
@@ -188,6 +116,12 @@ class EntryViewModel {
             }
         }
         
+    }
+    
+    func saveCredentialsInUserDefaults(email:String,username:String) {
+        MyUserDefaults.add(val: true, key: .loggedIn)
+        MyUserDefaults.add(val: email, key: .email)
+        MyUserDefaults.add(val: username, key: .username)
     }
     
     func getAllUsers(onFinish: @escaping (AllCustomers)->Void,onError: @escaping (String)->Void) {

@@ -10,7 +10,7 @@ import Foundation
 
 enum Keys:String {
     case email = "email"
-    case password = "password"
+    case username = "username"
     case loggedIn = "logedIn"
 }
 class MyUserDefaults {
