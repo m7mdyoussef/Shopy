@@ -27,15 +27,13 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var discountCode: UILabel!
     @IBOutlet weak var adsImage: UIImageView!
     
+    private var categoryViewModel:CategoryViewModel!
     var showIndicator:ShowIndecator?
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+        categoryViewModel = CategoryViewModel()
         adsView.roundCorners(corners: .allCorners, radius: 35)
-        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 280, height: 25))
-        searchBar.placeholder = "Search..."
-        let barButton = UIBarButtonItem(customView:searchBar)
-        self.navigationItem.rightBarButtonItem = barButton
         showIndicator = ShowIndecator(view: view.self)
         registerMenuCell()
         registerProductCell()
@@ -52,6 +50,18 @@ class CollectionViewController: UIViewController {
         getAllDiscountCodes()
     }
     
+    @IBAction func searchOfProducts(_ sender: Any) {
+        let searchCategoryViewController = self.storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
+                  searchCategoryViewController.productList = self.collectionViewModel?.ProductElements
+                  self.navigationController?.pushViewController(searchCategoryViewController, animated: true)
+    }
+    
+    @IBAction func moveToBag(_ sender: Any) {
+    }
+    @IBAction func moveToFavourite(_ sender: Any) {
+        let vc = FavouriteProductsVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     @IBAction func showDiscountCode(_ sender: Any) {
         adsImage.loadGif(name: "black")
         controlViews(flag: false)
@@ -71,9 +81,9 @@ class CollectionViewController: UIViewController {
     func setUpMenuColllection(){
 
         showIndicator?.startAnimating()
-        collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: "MenuCollectionViewCell")){row, items, cell in
+        collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){row, items, cell in
 
-            (cell as? MenuCollectionViewCell)?.title.text=items.title
+            (cell as? MainCategoriesCollectionViewCell)?.mainCategoriesCellLabel.text=items.title
             self.showIndicator?.stopAnimating()
             self.arrId.append(items.id)
         }.disposed(by: disposeBag)

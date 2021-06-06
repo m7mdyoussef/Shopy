@@ -113,6 +113,10 @@ class CategoryViewController: UIViewController {
         navigationController?.pushViewController(searchCategoryViewController, animated: true)
     }
     
+    @IBAction func moveToBag(_ sender: Any) {
+    }
+    
+    
 }
 
 

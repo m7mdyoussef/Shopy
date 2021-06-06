@@ -15,7 +15,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
             return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/3, height: 220)
         }else if menuCollectionView.tag == 0
         {
-            return CGSize(width: 126, height: 30)
+            return CGSize(width: 70, height: 30)
         }else{
             return CGSize(width: (self.view.frame.width)/3, height: 30)
         }
@@ -35,8 +35,8 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func registerMenuCell(){
-        var menuCell = UINib(nibName: "MenuCollectionViewCell", bundle: nil)
-        menuCollectionView.register(menuCell, forCellWithReuseIdentifier: "MenuCollectionViewCell")
+        let mainCategoryElementCell = UINib(nibName: Constants.mainCategoryElementCell, bundle: nil)
+        menuCollectionView.register(mainCategoryElementCell, forCellWithReuseIdentifier: Constants.mainCategoryElementCell)
     }
     
     func controlViews(flag:Bool){

@@ -22,7 +22,7 @@ protocol HomeModelType{
 }
 
 class HomeViewModel: HomeModelType{
-    
+    var ProductElements:[ProductElement]?
     let api = RemoteDataSource()
     var collectionDataObservable : Observable<[CustomElement]>?
     var productsDataObservable: Observable<[ProductElement]>?
@@ -68,6 +68,7 @@ class HomeViewModel: HomeModelType{
             case .success(let response):
                 guard let products = response?.products else {return}
                 self.productDataSubject.asObserver().onNext(products)
+                self.ProductElements = products
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
