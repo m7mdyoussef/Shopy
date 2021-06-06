@@ -12,6 +12,10 @@ import RxCocoa
 
 class CategoryViewController: UIViewController {
 
+    
+    
+    @IBOutlet weak var productView: UIView!
+    @IBOutlet weak var subCatView: UIView!
     @IBOutlet private weak var mainCategoryCollectionView: UICollectionView!
     @IBOutlet weak var subCategoryCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
@@ -22,12 +26,16 @@ class CategoryViewController: UIViewController {
     private var activityIndicatorView:UIActivityIndicatorView!
     
     private var categoryViewModel:CategoryViewModel!
-
-    
+    private var collectionViewModel:HomeViewModel?
+   private var arrproductId = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+
         
+        subCatView.roundCorners(corners: .allCorners, radius: 20)
+         productView.roundCorners(corners: .allCorners, radius: 20)
         //register custom nib file cells
         let mainCategoryElementCell = UINib(nibName: Constants.mainCategoryElementCell, bundle: nil)
         mainCategoryCollectionView.register(mainCategoryElementCell, forCellWithReuseIdentifier: Constants.mainCategoryElementCell)
@@ -40,6 +48,7 @@ class CategoryViewController: UIViewController {
         
         activityIndicatorView = UIActivityIndicatorView(style: .large)
         categoryViewModel = CategoryViewModel()
+        collectionViewModel = HomeViewModel()
         db = DisposeBag()
         
         // collectionViews Deleget
@@ -64,9 +73,10 @@ class CategoryViewController: UIViewController {
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: db)
         
-        categoryViewModel.productsObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: Constants.productCell)){ [weak self] row,item,cell in
+        categoryViewModel.productsObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: Constants.productCell)){ row,item,cell in
            let productsCell = cell as! MainProductsCollectionViewCell
             productsCell.productObject = item
+            self.arrproductId.append(String(item.id))
         }.disposed(by: db)
         
         
@@ -74,19 +84,33 @@ class CategoryViewController: UIViewController {
         mainCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
             self?.mainCategElement = value
-            self?.subCategElement = "Tshirt"
+            self?.subCategElement = "T-Shirts"
             self?.categoryViewModel.fetchFilterdProducts(mainCategoryElement: self!.mainCategElement, subCategoryElement: self!.subCategElement)
-
+            self?.arrproductId.removeAll()
         }).disposed(by: db)
         
         subCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
             self?.subCategElement = value
             self?.categoryViewModel.fetchFilterdProducts(mainCategoryElement: self!.mainCategElement, subCategoryElement: self!.subCategElement)
-
+            self?.arrproductId.removeAll()
         }).disposed(by: db)
 
-        productsCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (indexpath) in
-        }).disposed(by: db)
+      
+        
+        productsCollectionView.rx.itemSelected.subscribe{value in
+            print(value.element?.item)
+//            if AppCommon.shared.checkConnectivity() == true{
+               // self.controlViews(flag: true)
+                self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+            let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
+                detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
+                self.navigationController?.pushViewController(detailsViewController, animated: true)
+           // }
+        }.disposed(by: db)
+        
+        
+//        productsCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (indexpath) in
+//        }).disposed(by: db)
 
     
          categoryViewModel.errorObservable.subscribe(onError: {[weak self] (error) in
@@ -124,7 +148,7 @@ extension CategoryViewController : UICollectionViewDelegateFlowLayout {
         }else if(collectionView.tag == 2){
             return CGSize(width: 126, height: 30)
         }else{
-            return CGSize(width: 128, height: 160)
+            return CGSize(width: 130, height: 175)
         }
     }
     
