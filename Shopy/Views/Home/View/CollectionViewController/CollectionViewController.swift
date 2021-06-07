@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 import SDWebImage
 import ImageIO
+import JGProgressHUD
 class CollectionViewController: UIViewController {
     var disposeBag = DisposeBag()
     var collectionViewModel:HomeViewModel?
@@ -50,6 +51,20 @@ class CollectionViewController: UIViewController {
         collectionViewModel?.getDiscountCode(priceRule: "951238656198")
         adsButton.setBackgroundImage(UIImage.gif(name: "offer0"), for: .normal)
         getAllDiscountCodes()
+        
+        
+        collectionViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
+            let hud = JGProgressHUD()
+            hud.textLabel.text = "Loading"
+            hud.style = .dark
+            hud.show(in: (self?.view)!)
+            switch value{
+            case true:
+                hud.dismiss()
+            case false:
+                hud.dismiss()
+            }
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func searchOfProducts(_ sender: Any) {
@@ -83,12 +98,10 @@ class CollectionViewController: UIViewController {
     func setUpMenuColllection(){
         let selectedIndexPath = IndexPath(item: 0, section: 0)
 
-        showIndicator?.startAnimating()
         collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){row, items, cell in
 
             (cell as? MainCategoriesCollectionViewCell)?.mainCategoriesCellLabel.text=items.title
             self.menuCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
-            self.showIndicator?.stopAnimating()
             self.arrId.append(items.id)
         }.disposed(by: disposeBag)
         
@@ -96,7 +109,6 @@ class CollectionViewController: UIViewController {
             guard let self = self else {return}
             print(self.arrId[value.element?.item ?? 0])
             self.controlViews(flag: true)
-            self.showIndicator?.startAnimating()
             self.collectionViewModel?.getAllProduct(id: String(self.arrId[value.element?.item ?? 0]))
             self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
             self.arrproductId.removeAll()
@@ -110,7 +122,7 @@ class CollectionViewController: UIViewController {
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
             self.arrproductId.append(String(item.id))
-            self.showIndicator?.stopAnimating()
+           // self.showIndicator?.stopAnimating()
         }.disposed(by: disposeBag)
         
         productsCollectionView.rx.itemSelected.subscribe{value in

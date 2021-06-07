@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import JGProgressHUD
 
 class CategoryViewController: UIViewController {
 
@@ -27,7 +28,8 @@ class CategoryViewController: UIViewController {
     
     private var categoryViewModel = CategoryViewModel()
     private var collectionViewModel = HomeViewModel()
-   private var arrproductId = [String]()
+    private var arrproductId = [String]()
+
     
     override func viewWillAppear(_ animated: Bool) {
        // super.viewWillAppear(true)
@@ -54,8 +56,6 @@ class CategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         
         self.navigationController?.navigationBar.barTintColor = UIColor.black
 
@@ -72,7 +72,7 @@ class CategoryViewController: UIViewController {
         let productCell = UINib(nibName: Constants.productCell, bundle: nil)
         productsCollectionView.register(productCell, forCellWithReuseIdentifier: Constants.productCell)
         
-        activityIndicatorView = UIActivityIndicatorView(style: .large)
+   //     activityIndicatorView = UIActivityIndicatorView(style: .large)
 //        categoryViewModel = CategoryViewModel()
 //        collectionViewModel = HomeViewModel()
         db = DisposeBag()
@@ -144,12 +144,16 @@ class CategoryViewController: UIViewController {
              }).disposed(by: db)
          
          categoryViewModel.LoadingObservable.subscribe(onNext: {[weak self] (value) in
-             switch value{
-             case true:
-                 self?.showLoading()
-             case false:
-                 self?.hideLoading()
-             }
+            let hud = JGProgressHUD()
+            hud.textLabel.text = "Loading"
+            hud.style = .dark
+            hud.show(in: (self?.view)!)
+            switch value{
+            case true:
+                hud.dismiss()
+            case false:
+                hud.dismiss()
+            }
          }).disposed(by: db)
 
          categoryViewModel.fetchData()
