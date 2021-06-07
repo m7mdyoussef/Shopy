@@ -26,7 +26,7 @@ class NoInternetViewController: UIViewController {
         print("clicked")
         if AppCommon.shared.checkConnectivity() == true{
             self.dismiss(animated: true, completion: nil)
-            // self.navigationController?.popViewController( animated: true)
+            // self.navigationController?.popViewController(animated: true)
 //            if fromWhere == "category" {
 //                let vc = self.storyboard?.instantiateViewController(identifier: "CategoryViewController") as! CategoryViewController
 //
