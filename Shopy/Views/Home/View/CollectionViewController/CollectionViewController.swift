@@ -18,10 +18,11 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var productsView: UIView!
     @IBOutlet weak var adsView: UIView!
     var arrId = [Int]()
+    var imagesArr = ["home", "kids", "men", "sale", "women"]
     var arrDiscountCodes = [String]()
     var arrproductId = [String]()
     private var searchBar:UISearchBar!
-    @IBOutlet weak var productSearchBar: UISearchBar!
+    
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var adsButton: UIButton!
     @IBOutlet weak var discountCode: UILabel!
@@ -35,6 +36,7 @@ class CollectionViewController: UIViewController {
         categoryViewModel = CategoryViewModel()
         adsView.roundCorners(corners: .allCorners, radius: 35)
         showIndicator = ShowIndecator(view: view.self)
+        adsImage.loadGif(name: imagesArr[0])
         registerMenuCell()
         registerProductCell()
         controlViews(flag: true)
@@ -79,11 +81,13 @@ class CollectionViewController: UIViewController {
     }
     
     func setUpMenuColllection(){
+        let selectedIndexPath = IndexPath(item: 0, section: 0)
 
         showIndicator?.startAnimating()
         collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){row, items, cell in
 
             (cell as? MainCategoriesCollectionViewCell)?.mainCategoriesCellLabel.text=items.title
+            self.menuCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
             self.showIndicator?.stopAnimating()
             self.arrId.append(items.id)
         }.disposed(by: disposeBag)
@@ -94,6 +98,7 @@ class CollectionViewController: UIViewController {
             self.controlViews(flag: true)
             self.showIndicator?.startAnimating()
             self.collectionViewModel?.getAllProduct(id: String(self.arrId[value.element?.item ?? 0]))
+            self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
             self.arrproductId.removeAll()
             self.discountCode.text = self.arrDiscountCodes[value.element?.item ?? 0]
         }.disposed(by: disposeBag)

@@ -15,7 +15,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
             return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width/3, height: 220)
         }else if menuCollectionView.tag == 0
         {
-            return CGSize(width: 70, height: 30)
+            return CGSize(width: (self.view.frame.width)/3, height: 30)
         }else{
             return CGSize(width: (self.view.frame.width)/3, height: 30)
         }
@@ -43,11 +43,11 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
         if (flag == true){
             adsButton.isHidden = false
             discountCode.isHidden = true
-            adsImage.isHidden = true
+           // adsImage.isHidden = true
         }else{
             adsButton.isHidden = true
             discountCode.isHidden = false
-            adsImage.isHidden = false
+            //adsImage.isHidden = false
         }
     }
 }
