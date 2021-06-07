@@ -118,6 +118,7 @@ class EntryViewModel {
         
     }
     
+    
     func saveCredentialsInUserDefaults(email:String,username:String) {
         MyUserDefaults.add(val: true, key: .loggedIn)
         MyUserDefaults.add(val: email, key: .email)

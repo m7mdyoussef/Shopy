@@ -10,11 +10,12 @@ import UIKit
 
 class EntryPointVC: UIViewController {
 
-    @IBOutlet weak var uiSegment: UISegmentedControl!
-    var notificationName:Notification.Name!
+    @IBOutlet private weak var uiSegment: UISegmentedControl!
+    private var notificationName:Notification.Name!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         notificationName = Notification.Name("EntryScreen")
     }
     

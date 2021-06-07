@@ -15,11 +15,13 @@
 		27465D9E26615720000FF0D0 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D9D26615720000FF0D0 /* DismissKeyboard.swift */; };
 		2748ECC0266440F400A9DF42 /* EntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748ECBF266440F400A9DF42 /* EntryViewModel.swift */; };
 		2748ECCC266465E800A9DF42 /* EmailValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */; };
+		274D374C266DA8D9002EF152 /* MeTapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274D374B266DA8D9002EF152 /* MeTapViewModel.swift */; };
 		2759BB6926646F4100AF288D /* ProgressHudExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2759BB6826646F4100AF288D /* ProgressHudExt.swift */; };
 		27723528266ABE58004B442D /* AddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27723527266ABE58004B442D /* AddressVC.swift */; };
 		277F3A99265D51A000C822D9 /* IRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F3A98265D51A000C822D9 /* IRounded.swift */; };
 		27B4E42B266AD6F9009A55EF /* UIUPdateAddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */; };
 		27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BBDF25265D36DC009A887D /* EntryPointVC.swift */; };
+		27C3A857266CAEAA00D16F84 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3A856266CAEAA00D16F84 /* MeVC.swift */; };
 		27DDC4D3266BE1E6002E92A7 /* CustomCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDC4D2266BE1E6002E92A7 /* CustomCollection.swift */; };
 		27DDC4DB266BE22C002E92A7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDC4DA266BE22C002E92A7 /* Product.swift */; };
 		27DDC4E7266BE263002E92A7 /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDC4E5266BE262002E92A7 /* RegisterResponse.swift */; };
@@ -116,11 +118,13 @@
 		27465D9D26615720000FF0D0 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
 		2748ECBF266440F400A9DF42 /* EntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewModel.swift; sourceTree = "<group>"; };
 		2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidationExtension.swift; sourceTree = "<group>"; };
+		274D374B266DA8D9002EF152 /* MeTapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTapViewModel.swift; sourceTree = "<group>"; };
 		2759BB6826646F4100AF288D /* ProgressHudExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHudExt.swift; sourceTree = "<group>"; };
 		27723527266ABE58004B442D /* AddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVC.swift; sourceTree = "<group>"; };
 		277F3A98265D51A000C822D9 /* IRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRounded.swift; sourceTree = "<group>"; };
 		27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUPdateAddressList.swift; sourceTree = "<group>"; };
 		27BBDF25265D36DC009A887D /* EntryPointVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPointVC.swift; sourceTree = "<group>"; };
+		27C3A856266CAEAA00D16F84 /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		27DDC4D2266BE1E6002E92A7 /* CustomCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollection.swift; sourceTree = "<group>"; };
 		27DDC4DA266BE22C002E92A7 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		27DDC4E5266BE262002E92A7 /* RegisterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
@@ -231,6 +235,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		274D374A266DA8BC002EF152 /* MeTap */ = {
+			isa = PBXGroup;
+			children = (
+				274D374B266DA8D9002EF152 /* MeTapViewModel.swift */,
+			);
+			path = MeTap;
+			sourceTree = "<group>";
+		};
 		2772352F266AC4C6004B442D /* Addresses */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +287,14 @@
 				2772352F266AC4C6004B442D /* Addresses */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		27C3A854266CAE7600D16F84 /* MeTap */ = {
+			isa = PBXGroup;
+			children = (
+				27C3A856266CAEAA00D16F84 /* MeVC.swift */,
+			);
+			path = MeTap;
 			sourceTree = "<group>";
 		};
 		900ED897D64BBEF98F5FD341 /* Pods */ = {
@@ -407,6 +427,7 @@
 				D2CA0EB0266BBE1F005AB72D /* bag */,
 				D2116C6E26694D2A007892B7 /* favourites */,
 				9E756A0626642D22000B5D98 /* CategoryTab */,
+				27C3A854266CAE7600D16F84 /* MeTap */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -455,6 +476,7 @@
 			children = (
 				CFF7A3BF26644C4D003D7987 /* HomeViewModel */,
 				9E756A1726643A60000B5D98 /* CategoryViewModel */,
+				274D374A266DA8BC002EF152 /* MeTap */,
 				2748ECBF266440F400A9DF42 /* EntryViewModel.swift */,
 			);
 			path = ViewModels;
@@ -979,6 +1001,7 @@
 				CF47988D2667D23300B0A64D /* SizesCollectionViewCell.swift in Sources */,
 				D2116C7A2669767B007892B7 /* FavouriteproductCVC.swift in Sources */,
 				CF47987D2666CE9800B0A64D /* ProductDetailsViewController.swift in Sources */,
+				27C3A857266CAEAA00D16F84 /* MeVC.swift in Sources */,
 				CF4797E62665D3D800B0A64D /* CollectionViewController+FlowLayout.swift in Sources */,
 				CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */,
 				9E686591266653D3007B0388 /* DetailedProductsModel.swift in Sources */,
@@ -1007,6 +1030,7 @@
 				2748ECCC266465E800A9DF42 /* EmailValidationExtension.swift in Sources */,
 				D2116C712669503F007892B7 /* FavouritesPersistenceManager.swift in Sources */,
 				9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */,
+				274D374C266DA8D9002EF152 /* MeTapViewModel.swift in Sources */,
 				9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */,
 				9E756A1B26643B29000B5D98 /* CategoryContract.swift in Sources */,
 				CF6571A9266197D300C31614 /* ProductCollectionViewCell.swift in Sources */,

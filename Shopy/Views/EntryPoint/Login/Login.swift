@@ -66,9 +66,10 @@ class Login: UIViewController,IRounded{
             hud.style = .dark
             hud.show(in: self.view)
             
-            viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!, onSuccess: {
-                 hud.dismiss()
-                 self.onSuccessHud()
+            viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!, onSuccess: { [unowned self] in
+                hud.dismiss()
+                self.onSuccessHud()
+                self.navigationController?.popViewController(animated: true)
             }) { [unowned self] (string) in
                 hud.dismiss()
                 self.onFaildHud(text: string)

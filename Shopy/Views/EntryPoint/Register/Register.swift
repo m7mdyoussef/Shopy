@@ -42,7 +42,6 @@ class Register: UIViewController,IRounded {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         self.tabBarController?.tabBar.isHidden = true
-        
         viewModel = EntryViewModel()
         setupView()
         
@@ -141,7 +140,7 @@ class Register: UIViewController,IRounded {
                                          onSuccess: { [unowned self] in
                                             hud.dismiss()
                                             self.onSuccessHud()
-                                            //MARK:- redirection
+
                                          },onFailure: { [unowned self] localizedDescription in
                                             print(localizedDescription)
                                             hud.dismiss()
@@ -183,9 +182,9 @@ class Register: UIViewController,IRounded {
 extension Register: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        if ( textField == self.uiPassword && !self.uiPassword.isSecureTextEntry ) {
+        if ( textField == self.uiPassword  ) {
             self.uiPassword.isSecureTextEntry = true
-        }else if(textField == self.uiConfirmation && !self.uiConfirmation.isSecureTextEntry){
+        }else if(textField == self.uiConfirmation ){
             self.uiConfirmation.isSecureTextEntry = true
         }
         

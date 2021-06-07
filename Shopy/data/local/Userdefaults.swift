@@ -16,6 +16,9 @@ enum Keys:String {
 class MyUserDefaults {
     private static var shared = UserDefaults.standard
     
+    private init(){
+        
+    }
     public static func add<T>(val : T,key : Keys){
         shared.setValue(val, forKey: key.rawValue)
     }

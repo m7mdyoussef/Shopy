@@ -4,32 +4,34 @@
 target 'Shopy' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-
-
+  
+  
+  
   pod 'Alamofire', '~> 5.2'
   pod 'NVActivityIndicatorView/AppExtension'
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
   pod 'SDWebImage', '~> 5.0'
   pod 'BulletinBoard'
-
+  pod 'MarqueeLabel'
   pod 'SwiftMessages'
-#  pod 'Gallery'
-#  pod 'InstantSearchClient'
-#  pod 'EmptyDataSet-Swift'
+  pod 'DropDown'
   pod 'JGProgressHUD'
-#  pod 'PayPal-iOS-SDK'
-pod 'DropDown'
-  # Pods for Shopy
+  pod 'HMSegmentedControl'
 
+  #  pod 'Gallery'
+  #  pod 'InstantSearchClient'
+  #  pod 'EmptyDataSet-Swift'
+  #  pod 'PayPal-iOS-SDK'
+  # Pods for Shopy
+  
   target 'ShopyTests' do
     inherit! :search_paths
     # Pods for testing
   end
-
+  
   target 'ShopyUITests' do
     # Pods for testing
   end
-
+  
 end

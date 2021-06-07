@@ -45,6 +45,8 @@ class FavouritesPersistenceManager{
         for fav in favourites {
             if fav.value(forKey: "id") as! Int64 == Int64(productID) {context.delete(fav) }
         }
+        // amin
+        try?self.context.save()
     }
     
     func isFavourited(productID :Int )->Bool{

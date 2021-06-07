@@ -2,7 +2,9 @@ PODS:
   - Alamofire (5.4.3)
   - BulletinBoard (5.0.0)
   - DropDown (2.3.13)
+  - HMSegmentedControl (1.5.6)
   - JGProgressHUD (2.2)
+  - MarqueeLabel (4.0.5)
   - NVActivityIndicatorView/AppExtension (4.8.0)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
@@ -21,7 +23,9 @@ DEPENDENCIES:
   - Alamofire (~> 5.2)
   - BulletinBoard
   - DropDown
+  - HMSegmentedControl
   - JGProgressHUD
+  - MarqueeLabel
   - NVActivityIndicatorView/AppExtension
   - RxCocoa (= 6.1.0)
   - RxSwift (= 6.1.0)
@@ -33,7 +37,9 @@ SPEC REPOS:
     - Alamofire
     - BulletinBoard
     - DropDown
+    - HMSegmentedControl
     - JGProgressHUD
+    - MarqueeLabel
     - NVActivityIndicatorView
     - RxCocoa
     - RxRelay
@@ -45,7 +51,9 @@ SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
+  MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
@@ -53,6 +61,6 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
 
-PODFILE CHECKSUM: 3220393e4175a1e3bd1cd7fb018e959fe3a039e3
+PODFILE CHECKSUM: 2d6af433127fc6ca95f4fb471feca550a4158edc
 
 COCOAPODS: 1.10.1
