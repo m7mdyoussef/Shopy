@@ -37,15 +37,14 @@ class CollectionViewController: UIViewController {
         categoryViewModel = CategoryViewModel()
         adsView.roundCorners(corners: .allCorners, radius: 35)
         showIndicator = ShowIndecator(view: view.self)
-        adsImage.loadGif(name: imagesArr[0])
         registerMenuCell()
         registerProductCell()
         controlViews(flag: true)
         collectionViewModel = HomeViewModel()
         collectionViewModel?.getCollectionData()
-        productsCollectionView.rx.setDelegate(self)
-        setUpMenuColllection()
-        setupProductCollection()
+      //  productsCollectionView.rx.setDelegate(self)
+       // setUpMenuColllection()
+       // setupProductCollection()
         productsView.roundCorners(corners: [.topLeft, .topRight], radius: 45)
         collectionViewModel?.getPriceRules()
         collectionViewModel?.getDiscountCode(priceRule: "951238656198")
@@ -65,6 +64,49 @@ class CollectionViewController: UIViewController {
                 hud.dismiss()
             }
         }).disposed(by: disposeBag)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        adsImage.loadGif(name: imagesArr[0])
+        
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.fromWhere = "home"
+            NoInternetViewController.vcIdentifier = "CollectionViewController"
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+        
+        }else{
+            categoryViewModel = CategoryViewModel()
+            adsView.roundCorners(corners: .allCorners, radius: 35)
+            showIndicator = ShowIndecator(view: view.self)
+            registerMenuCell()
+            registerProductCell()
+            controlViews(flag: true)
+            collectionViewModel = HomeViewModel()
+            collectionViewModel?.getCollectionData()
+            productsCollectionView.rx.setDelegate(self)
+            setUpMenuColllection()
+            setupProductCollection()
+            productsView.roundCorners(corners: [.topLeft, .topRight], radius: 45)
+            collectionViewModel?.getPriceRules()
+            collectionViewModel?.getDiscountCode(priceRule: "951238656198")
+            adsButton.setBackgroundImage(UIImage.gif(name: "offer0"), for: .normal)
+            getAllDiscountCodes()
+            collectionViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
+                let hud = JGProgressHUD()
+                hud.textLabel.text = "Loading"
+                hud.style = .dark
+                hud.show(in: (self?.view)!)
+                switch value{
+                case true:
+                    hud.dismiss()
+                case false:
+                    hud.dismiss()
+                }
+            }).disposed(by: disposeBag)
+            
+        }
+        
     }
     
     @IBAction func searchOfProducts(_ sender: Any) {

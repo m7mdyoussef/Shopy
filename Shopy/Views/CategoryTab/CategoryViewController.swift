@@ -125,13 +125,13 @@ class CategoryViewController: UIViewController {
         
         productsCollectionView.rx.itemSelected.subscribe{value in
            // print(value.element?.item)
-//            if AppCommon.shared.checkConnectivity() == true{
+           if AppCommon.shared.checkConnectivity() == true{
                // self.controlViews(flag: true)
             self.collectionViewModel.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
             let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
                 self.navigationController?.pushViewController(detailsViewController, animated: true)
-           // }
+            }
         }.disposed(by: db)
         
         

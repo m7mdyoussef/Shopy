@@ -344,7 +344,7 @@
         <!--Collection View Controller-->
         <scene sceneID="eRg-hs-s3h">
             <objects>
-                <viewController id="pps-Ya-Y6X" customClass="CollectionViewController" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CollectionViewController" id="pps-Ya-Y6X" customClass="CollectionViewController" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PTB-WN-7db">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
