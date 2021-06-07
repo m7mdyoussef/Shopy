@@ -103,6 +103,9 @@ class MeVC: UIViewController {
             uiWishlistCollection.isHidden = true
         }
     }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        uiWishlistCollection.reloadData()
+    }
 }
 
 extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
@@ -113,11 +116,12 @@ extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let inset = CGFloat(10)
-        return UIEdgeInsets(top: inset, left: 0, bottom: inset, right: inset)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: inset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(view.layer.frame.width / 2), height: CGFloat(uiWishlistCollection.layer.frame.height - ((1/15) * view.layer.frame.height)  ))
+//        return CGSize(width: CGFloat(view.layer.frame.width / 2), height: CGFloat(view.layer.frame.height * 1/4  ))
+        return CGSize(width: CGFloat(200), height: CGFloat(view.layer.frame.height * 1/3.5  ))
     }
     //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     //        return favProductCount

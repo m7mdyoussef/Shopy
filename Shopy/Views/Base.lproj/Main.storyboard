@@ -725,17 +725,17 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pO-s3-pzs">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ALb-qm-kua" userLabel="logged in">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="597.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ALb-qm-kua" userLabel="logged in">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="728.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wishlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rps-2W-D47">
-                                                <rect key="frame" x="10" y="8" width="394" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="10" y="8" width="394" height="56"/>
+                                                <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mwU-BF-yke" userLabel="wishlist">
-                                                <rect key="frame" x="10" y="28.5" width="394" height="269"/>
+                                                <rect key="frame" x="10" y="65" width="394" height="269.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h3l-Ca-UUX">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -745,25 +745,25 @@
                                                 </collectionViewFlowLayout>
                                                 <cells/>
                                             </collectionView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="Uvk-ie-38K">
-                                                <rect key="frame" x="10" y="31" width="394" height="269"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="Uvk-ie-38K" userLabel="empty1">
+                                                <rect key="frame" x="10" y="66" width="394" height="269.5"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PiT-hQ-w5C" userLabel="Orders Kinds">
-                                                <rect key="frame" x="10" y="305" width="394" height="78"/>
+                                                <rect key="frame" x="10" y="337.5" width="394" height="112"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qq-pu-BCF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="78"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="112"/>
+                                                        <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="n0s-q6-IcO">
-                                                <rect key="frame" x="10" y="388" width="394" height="201.5"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="n0s-q6-IcO" userLabel="empty2">
+                                                <rect key="frame" x="10" y="451.5" width="394" height="269"/>
                                             </imageView>
                                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HGL-lX-wD6" userLabel="orders">
-                                                <rect key="frame" x="10" y="589.5" width="394" height="577"/>
+                                                <rect key="frame" x="10" y="720.5" width="394" height="577"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NIk-lr-WLG">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -774,10 +774,6 @@
                                                 <cells/>
                                             </collectionView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="Rps-2W-D47" firstAttribute="height" secondItem="ALb-qm-kua" secondAttribute="height" multiplier="0.03" id="6e4-tH-lTp"/>
-                                            <constraint firstItem="PiT-hQ-w5C" firstAttribute="height" secondItem="ALb-qm-kua" secondAttribute="height" multiplier="0.13" id="QCy-I7-KsS"/>
-                                        </constraints>
                                         <edgeInsets key="layoutMargins" top="8" left="10" bottom="8" right="10"/>
                                     </stackView>
                                 </subviews>
@@ -787,10 +783,12 @@
                                     <constraint firstItem="ALb-qm-kua" firstAttribute="width" secondItem="5pO-s3-pzs" secondAttribute="width" id="CjD-h6-d6p"/>
                                     <constraint firstAttribute="trailing" secondItem="ALb-qm-kua" secondAttribute="trailing" id="GBn-C1-A6n"/>
                                     <constraint firstItem="Uvk-ie-38K" firstAttribute="height" secondItem="5pO-s3-pzs" secondAttribute="height" multiplier="0.4" id="MNx-pd-IKr"/>
+                                    <constraint firstItem="Rps-2W-D47" firstAttribute="height" secondItem="5pO-s3-pzs" secondAttribute="height" multiplier="1:12" id="Sgp-Vk-AXr"/>
                                     <constraint firstItem="ALb-qm-kua" firstAttribute="leading" secondItem="5pO-s3-pzs" secondAttribute="leading" id="Ui1-cY-a9I"/>
                                     <constraint firstAttribute="bottom" secondItem="ALb-qm-kua" secondAttribute="bottom" id="ilU-oG-zBS"/>
+                                    <constraint firstItem="PiT-hQ-w5C" firstAttribute="height" secondItem="5pO-s3-pzs" secondAttribute="height" multiplier="1:6" id="nK6-Ne-mhu"/>
                                     <constraint firstItem="HGL-lX-wD6" firstAttribute="height" secondItem="5pO-s3-pzs" secondAttribute="height" multiplier="9:10.5" id="svY-JO-mql"/>
-                                    <constraint firstItem="n0s-q6-IcO" firstAttribute="height" secondItem="5pO-s3-pzs" secondAttribute="height" multiplier="0.3" id="z6l-MT-r82"/>
+                                    <constraint firstItem="n0s-q6-IcO" firstAttribute="height" secondItem="5pO-s3-pzs" secondAttribute="height" multiplier="0.4" id="z6l-MT-r82"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -822,7 +820,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GiF-3E-xJM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="172" y="-1256"/>
+            <point key="canvasLocation" x="151" y="-1223"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="x7B-xU-Zxh">
