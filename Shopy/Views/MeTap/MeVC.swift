@@ -104,7 +104,7 @@ class MeVC: UIViewController {
         }
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        uiWishlistCollection.reloadData()
+      //  uiWishlistCollection.reloadData()
     }
 }
 

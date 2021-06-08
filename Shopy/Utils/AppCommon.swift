@@ -22,7 +22,7 @@ extension UIView {
     }
     
     func circular() {
-        self.layer.cornerRadius = self.frame.height/2
+        self.layer.cornerRadius = self.frame.height
     }
     
     func collectionCellLayout(){

@@ -173,7 +173,7 @@ class CategoryViewController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        productsCollectionView.reloadData()
+       // productsCollectionView.reloadData()
         view.setNeedsLayout()
     }
     
