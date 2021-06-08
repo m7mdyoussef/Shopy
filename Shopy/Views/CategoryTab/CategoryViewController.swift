@@ -15,7 +15,7 @@ class CategoryViewController: UIViewController {
 
     
     
-    @IBOutlet weak var productView: UIView!
+//    @IBOutlet weak var productView: UIView!
     @IBOutlet weak var subCatView: UIView!
     @IBOutlet private weak var mainCategoryCollectionView: UICollectionView!
     @IBOutlet weak var subCategoryCollectionView: UICollectionView!
@@ -61,8 +61,10 @@ class CategoryViewController: UIViewController {
 
         
         subCatView.roundCorners(corners: .allCorners, radius: 20)
-         productView.roundCorners(corners: .allCorners, radius: 20)
+       //  productView.roundCorners(corners: .allCorners, radius: 20)
         //register custom nib file cells
+        productsCollectionView.layer.cornerRadius = 20
+        productsCollectionView.clipsToBounds = true
         let mainCategoryElementCell = UINib(nibName: Constants.mainCategoryElementCell, bundle: nil)
         mainCategoryCollectionView.register(mainCategoryElementCell, forCellWithReuseIdentifier: Constants.mainCategoryElementCell)
         
@@ -170,6 +172,12 @@ class CategoryViewController: UIViewController {
     @IBAction func moveToBag(_ sender: Any) {
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        productsCollectionView.reloadData()
+        view.setNeedsLayout()
+    }
+    
+    
     
 }
 
@@ -184,6 +192,10 @@ extension CategoryViewController : UICollectionViewDelegateFlowLayout {
         }else{
             return CGSize(width: 130, height: 175)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8)
     }
     
     
