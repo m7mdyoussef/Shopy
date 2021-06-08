@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SystemConfiguration
 import SwiftMessages
-
+import JGProgressHUD
 import SDWebImage
 
 extension UIView {
@@ -97,6 +97,13 @@ class AppCommon: NSObject {
             showSwiftMessage(title: "Error", message: "Please Check Your Internet Connection", theme: .error)
             return false
         }
+    }
+    
+    func progressHUD(view:UIView){
+        let hud = JGProgressHUD()
+        hud.textLabel.text = "Loading"
+        hud.style = .dark
+        hud.show(in: view)
     }
 }
 

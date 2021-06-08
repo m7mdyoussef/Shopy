@@ -23,7 +23,8 @@ class MainProductsCollectionViewCell: UICollectionViewCell {
     
     var DetailedProductObject:DetailedProducts!{
         didSet{
-            productName.text = DetailedProductObject.variants[0].price
+            productName.text = DetailedProductObject.variants[0].price + " LE"
+            productName.font = UIFont.boldSystemFont(ofSize: 17)
             productImage.sd_setImage(with: URL(string: DetailedProductObject.image.src), placeholderImage: UIImage(named: "placeholder"))
         }
     }
@@ -32,6 +33,10 @@ class MainProductsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        self.layer.cornerRadius = 20
+//        self.layer.borderWidth = 0.5
+//        self.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.collectionCellLayout()
     
     }
 

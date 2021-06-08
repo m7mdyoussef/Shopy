@@ -15,23 +15,32 @@ class SearchCategoryViewController: UIViewController {
     
     var productList:[ProductElement]!
     var categorySearchViewModel:CategorySearchViewModel!
+    var collectionViewModel:HomeViewModel?
     private var searchBar:UISearchBar!
     private var db:DisposeBag!
     private var sortingMenu:DropDown!
     private var filteringMenu:DropDown!
     
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var filter: UIButton!
     @IBOutlet weak var filterView: UIView!
     
+    @IBOutlet weak var resetView: UIView!
     @IBOutlet weak var sortView: UIView!
     @IBOutlet weak var sortBtn: UIButton!
     @IBOutlet private weak var categorySearchResultCollectionView: UICollectionView!
     
+    private var arrproductId = [String]()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-         
-  
-        
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+  filterView.roundCorners(corners: .allCorners, radius: 8)
+  sortView.roundCorners(corners: .allCorners, radius: 8)
+  resetView.roundCorners(corners: .allCorners, radius: 8)
+  mainView.roundCorners(corners: [.topLeft, .topRight], radius: 35)
+
         // register product nib cell
         let productCell = UINib(nibName: Constants.productCell, bundle: nil)
         categorySearchResultCollectionView.register(productCell, forCellWithReuseIdentifier: Constants.productCell)
@@ -50,12 +59,16 @@ class SearchCategoryViewController: UIViewController {
             filteringMenu.bottomOffset = CGPoint(x: 0, y:filterView.plainView.bounds.height)
         
         //create search bar in run time
-        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 25))
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 42))
         searchBar.placeholder = "Search..."
         let barButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.rightBarButtonItem = barButton
-        
+        self.searchBar.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.searchBar.roundCorners(corners: .allCorners, radius: 6)
+
         categorySearchViewModel = CategorySearchViewModel()
+        collectionViewModel = HomeViewModel()
+
         db = DisposeBag()
         
         categorySearchResultCollectionView.rx.setDelegate(self).disposed(by: db)
@@ -66,6 +79,7 @@ class SearchCategoryViewController: UIViewController {
         categorySearchViewModel.productsObservable.bind(to: categorySearchResultCollectionView.rx.items(cellIdentifier: Constants.productCell)){row,item,cell in
            let productCell = cell as! MainProductsCollectionViewCell
             productCell.DetailedProductObject = item
+            self.arrproductId.append(String(item.id))
         }.disposed(by: db)
         
         categorySearchViewModel.fetchData()
@@ -83,19 +97,33 @@ class SearchCategoryViewController: UIViewController {
 
         }
         
+        categorySearchResultCollectionView.rx.itemSelected.subscribe{value in
+                    print(value.element?.item)
+        //            if AppCommon.shared.checkConnectivity() == true{
+                       // self.controlViews(flag: true)
+                        self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+                    let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
+                        detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
+                        self.navigationController?.pushViewController(detailsViewController, animated: true)
+                   // }
+                }.disposed(by: db)
+        
     }
     
     @IBAction func clickToFilter(_ sender: Any) {
         filteringMenu.show()
+        arrproductId.removeAll()
     }
     @IBAction func clickToSort(_ sender: Any) {
         sortingMenu.show()
+        arrproductId.removeAll()
     }
     
 
     @IBAction func resetSortAndFilter(_ sender: Any) {
         categorySearchViewModel.clearData()
         searchBar.text = ""
+        arrproductId.removeAll()
     }
 }
 

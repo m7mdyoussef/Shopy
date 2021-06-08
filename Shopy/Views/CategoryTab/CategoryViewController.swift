@@ -9,9 +9,14 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import JGProgressHUD
 
 class CategoryViewController: UIViewController {
 
+    
+    
+//    @IBOutlet weak var productView: UIView!
+    @IBOutlet weak var subCatView: UIView!
     @IBOutlet private weak var mainCategoryCollectionView: UICollectionView!
     @IBOutlet weak var subCategoryCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
@@ -21,14 +26,45 @@ class CategoryViewController: UIViewController {
     private var subCategElement:String = "T-Shirts"
     private var activityIndicatorView:UIActivityIndicatorView!
     
-    private var categoryViewModel:CategoryViewModel!
+    private var categoryViewModel = CategoryViewModel()
+    private var collectionViewModel = HomeViewModel()
+    private var arrproductId = [String]()
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+       // super.viewWillAppear(true)
+        
+        
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.fromWhere = "category"
+            NoInternetViewController.vcIdentifier = "CategoryViewController"
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+           // self.navigationController?.pushViewController(NoInternetViewController, animated: true)
+        }else{
+            subCategElement = "T-Shirts"
+            mainCategElement = "Men"
+            categoryViewModel.fetchData()
+            categoryViewModel.fetchFilterdProducts(mainCategoryElement: mainCategElement, subCategoryElement: subCategElement)
+        }
+        
+
+
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
 
         
+        subCatView.roundCorners(corners: .allCorners, radius: 20)
+       //  productView.roundCorners(corners: .allCorners, radius: 20)
         //register custom nib file cells
+        productsCollectionView.layer.cornerRadius = 20
+        productsCollectionView.clipsToBounds = true
         let mainCategoryElementCell = UINib(nibName: Constants.mainCategoryElementCell, bundle: nil)
         mainCategoryCollectionView.register(mainCategoryElementCell, forCellWithReuseIdentifier: Constants.mainCategoryElementCell)
         
@@ -38,8 +74,9 @@ class CategoryViewController: UIViewController {
         let productCell = UINib(nibName: Constants.productCell, bundle: nil)
         productsCollectionView.register(productCell, forCellWithReuseIdentifier: Constants.productCell)
         
-        activityIndicatorView = UIActivityIndicatorView(style: .large)
-        categoryViewModel = CategoryViewModel()
+   //     activityIndicatorView = UIActivityIndicatorView(style: .large)
+//        categoryViewModel = CategoryViewModel()
+//        collectionViewModel = HomeViewModel()
         db = DisposeBag()
         
         // collectionViews Deleget
@@ -64,9 +101,10 @@ class CategoryViewController: UIViewController {
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: db)
         
-        categoryViewModel.productsObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: Constants.productCell)){ [weak self] row,item,cell in
+        categoryViewModel.productsObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: Constants.productCell)){ row,item,cell in
            let productsCell = cell as! MainProductsCollectionViewCell
             productsCell.productObject = item
+            self.arrproductId.append(String(item.id))
         }.disposed(by: db)
         
         
@@ -74,19 +112,33 @@ class CategoryViewController: UIViewController {
         mainCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
             self?.mainCategElement = value
-            self?.subCategElement = "Tshirt"
+            self?.subCategElement = "T-Shirts"
             self?.categoryViewModel.fetchFilterdProducts(mainCategoryElement: self!.mainCategElement, subCategoryElement: self!.subCategElement)
-
+            self?.arrproductId.removeAll()
         }).disposed(by: db)
         
         subCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
             self?.subCategElement = value
             self?.categoryViewModel.fetchFilterdProducts(mainCategoryElement: self!.mainCategElement, subCategoryElement: self!.subCategElement)
-
+            self?.arrproductId.removeAll()
         }).disposed(by: db)
 
-        productsCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (indexpath) in
-        }).disposed(by: db)
+      
+        
+        productsCollectionView.rx.itemSelected.subscribe{value in
+           // print(value.element?.item)
+           if AppCommon.shared.checkConnectivity() == true{
+               // self.controlViews(flag: true)
+            self.collectionViewModel.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+            let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
+                detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
+                self.navigationController?.pushViewController(detailsViewController, animated: true)
+            }
+        }.disposed(by: db)
+        
+        
+//        productsCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (indexpath) in
+//        }).disposed(by: db)
 
     
          categoryViewModel.errorObservable.subscribe(onError: {[weak self] (error) in
@@ -94,12 +146,16 @@ class CategoryViewController: UIViewController {
              }).disposed(by: db)
          
          categoryViewModel.LoadingObservable.subscribe(onNext: {[weak self] (value) in
-             switch value{
-             case true:
-                 self?.showLoading()
-             case false:
-                 self?.hideLoading()
-             }
+            let hud = JGProgressHUD()
+            hud.textLabel.text = "Loading"
+            hud.style = .dark
+            hud.show(in: (self?.view)!)
+            switch value{
+            case true:
+                hud.dismiss()
+            case false:
+                hud.dismiss()
+            }
          }).disposed(by: db)
 
          categoryViewModel.fetchData()
@@ -113,6 +169,16 @@ class CategoryViewController: UIViewController {
         navigationController?.pushViewController(searchCategoryViewController, animated: true)
     }
     
+    @IBAction func moveToBag(_ sender: Any) {
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        productsCollectionView.reloadData()
+        view.setNeedsLayout()
+    }
+    
+    
+    
 }
 
 
@@ -124,8 +190,12 @@ extension CategoryViewController : UICollectionViewDelegateFlowLayout {
         }else if(collectionView.tag == 2){
             return CGSize(width: 126, height: 30)
         }else{
-            return CGSize(width: 128, height: 160)
+            return CGSize(width: 130, height: 175)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8)
     }
     
     

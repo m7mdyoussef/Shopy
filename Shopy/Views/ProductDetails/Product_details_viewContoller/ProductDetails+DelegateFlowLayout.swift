@@ -35,5 +35,4 @@ extension ProductDetailsViewController: UICollectionViewDelegateFlowLayout{
             self.manager.removeProduct(productID: self.productElement!.id)
         }
     }
-    
 }

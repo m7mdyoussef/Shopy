@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 import SDWebImage
 import ImageIO
+import JGProgressHUD
 class CollectionViewController: UIViewController {
     var disposeBag = DisposeBag()
     var collectionViewModel:HomeViewModel?
@@ -18,34 +19,90 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var productsView: UIView!
     @IBOutlet weak var adsView: UIView!
     var arrId = [Int]()
+    var imagesArr = ["home", "kids", "men", "sale", "women"]
     var arrDiscountCodes = [String]()
     var arrproductId = [String]()
-    @IBOutlet weak var productSearchBar: UISearchBar!
+    private var searchBar:UISearchBar!
+    var isConnect = true
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var adsButton: UIButton!
     @IBOutlet weak var discountCode: UILabel!
     @IBOutlet weak var adsImage: UIImageView!
     
+    private var categoryViewModel:CategoryViewModel!
     var showIndicator:ShowIndecator?
     override func viewDidLoad() {
         super.viewDidLoad()
-        showIndicator = ShowIndecator(view: view.self)
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+        startPoint()
+    }
+    
+    func startPoint(){
+        categoryViewModel = CategoryViewModel()
         adsView.roundCorners(corners: .allCorners, radius: 35)
+        showIndicator = ShowIndecator(view: view.self)
         registerMenuCell()
         registerProductCell()
+        productsCollectionView.rx.setDelegate(self)
+        menuCollectionView.rx.setDelegate(self)
         controlViews(flag: true)
         collectionViewModel = HomeViewModel()
         collectionViewModel?.getCollectionData()
-        productsCollectionView.rx.setDelegate(self)
+      //
         setUpMenuColllection()
         setupProductCollection()
-        productsView.roundCorners(corners: [.topLeft, .topRight], radius: 35)
+        productsView.roundCorners(corners: [.topLeft, .topRight], radius: 45)
         collectionViewModel?.getPriceRules()
         collectionViewModel?.getDiscountCode(priceRule: "951238656198")
         adsButton.setBackgroundImage(UIImage.gif(name: "offer0"), for: .normal)
         getAllDiscountCodes()
+        
+        
+        collectionViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
+            let hud = JGProgressHUD()
+            hud.textLabel.text = "Loading"
+            hud.style = .dark
+            hud.show(in: (self?.view)!)
+            switch value{
+            case true:
+                hud.dismiss()
+            case false:
+                hud.dismiss()
+            }
+        }).disposed(by: disposeBag)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        adsImage.loadGif(name: imagesArr[0])
+        
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.fromWhere = "home"
+            NoInternetViewController.vcIdentifier = "CollectionViewController"
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+        
+        }else{
+            
+            collectionViewModel?.getCollectionData()
+            collectionViewModel?.getPriceRules()
+            collectionViewModel?.getDiscountCode(priceRule: "951238656198")
+            getAllDiscountCodes()
+        }
+        
     }
     
+    @IBAction func searchOfProducts(_ sender: Any) {
+        let searchCategoryViewController = self.storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
+                  searchCategoryViewController.productList = self.collectionViewModel?.ProductElements
+                  self.navigationController?.pushViewController(searchCategoryViewController, animated: true)
+    }
+    
+    @IBAction func moveToBag(_ sender: Any) {
+    }
+    @IBAction func moveToFavourite(_ sender: Any) {
+        let vc = FavouriteProductsVC()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     @IBAction func showDiscountCode(_ sender: Any) {
         adsImage.loadGif(name: "black")
         controlViews(flag: false)
@@ -63,12 +120,12 @@ class CollectionViewController: UIViewController {
     }
     
     func setUpMenuColllection(){
+        let selectedIndexPath = IndexPath(item: 0, section: 0)
 
-        showIndicator?.startAnimating()
-        collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: "MenuCollectionViewCell")){row, items, cell in
+        collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){row, items, cell in
 
-            (cell as? MenuCollectionViewCell)?.title.text=items.title
-            self.showIndicator?.stopAnimating()
+            (cell as? MainCategoriesCollectionViewCell)?.mainCategoriesCellLabel.text=items.title
+            self.menuCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
             self.arrId.append(items.id)
         }.disposed(by: disposeBag)
         
@@ -76,8 +133,8 @@ class CollectionViewController: UIViewController {
             guard let self = self else {return}
             print(self.arrId[value.element?.item ?? 0])
             self.controlViews(flag: true)
-            self.showIndicator?.startAnimating()
             self.collectionViewModel?.getAllProduct(id: String(self.arrId[value.element?.item ?? 0]))
+            self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
             self.arrproductId.removeAll()
             self.discountCode.text = self.arrDiscountCodes[value.element?.item ?? 0]
         }.disposed(by: disposeBag)
@@ -89,7 +146,7 @@ class CollectionViewController: UIViewController {
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
             self.arrproductId.append(String(item.id))
-            self.showIndicator?.stopAnimating()
+           // self.showIndicator?.stopAnimating()
         }.disposed(by: disposeBag)
         
         productsCollectionView.rx.itemSelected.subscribe{value in

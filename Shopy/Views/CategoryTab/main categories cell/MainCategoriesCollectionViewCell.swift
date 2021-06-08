@@ -13,23 +13,27 @@ class MainCategoriesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mainCategoriesCellLabel: UILabel!
     @IBOutlet weak var mainCategoriesCellHighLightedView: UIView!
     
+    @IBOutlet weak var mainCatView: UIView!
     
     override var isHighlighted: Bool{
         didSet{
-            mainCategoriesCellLabel.textColor = isHighlighted ? UIColor.black : UIColor.gray
+            mainCategoriesCellLabel.textColor = isHighlighted ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : UIColor.gray
             
-//            mainCategoriesCellLabel.highlightedTextColor = isHighlighted ? UIColor.gray : UIColor.white
-            
-            mainCategoriesCellHighLightedView.backgroundColor = isHighlighted ? UIColor.black : UIColor.white
+
+            mainCategoriesCellLabel.layer.backgroundColor = isHighlighted ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+         //   mainCatView.backgroundColor = isHighlighted ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : UIColor.white
+           mainCategoriesCellHighLightedView.backgroundColor = isHighlighted ? #colorLiteral(red: 1, green: 0.4701387882, blue: 0.4451708794, alpha: 1) : UIColor.white
         }
     }
     
     override var isSelected: Bool{
         didSet{
-            mainCategoriesCellLabel.textColor = isSelected ? UIColor.black : UIColor.gray
-//            mainCategoriesCellLabel.highlightedTextColor = isHighlighted ? UIColor.gray : UIColor.black
+            mainCategoriesCellLabel.textColor = isSelected ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : UIColor.gray
+            
+         //   mainCatView.backgroundColor = isSelected ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : UIColor.white
 
-            mainCategoriesCellHighLightedView.backgroundColor = isSelected ? UIColor.black : UIColor.white
+            mainCategoriesCellLabel.layer.backgroundColor = isSelected ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            mainCategoriesCellHighLightedView.backgroundColor = isSelected ? #colorLiteral(red: 1, green: 0.4701387882, blue: 0.4451708794, alpha: 1) : UIColor.white
 
         }
     }
@@ -37,6 +41,9 @@ class MainCategoriesCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        mainCategoriesCellLabel.layer.cornerRadius = 8
+
+       // mainCatView.roundCorners(corners: [.topRight,.topLeft], radius: 10)
     }
 
 }
