@@ -31,17 +31,28 @@ class MeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
-        if viewModel.isUserLoggedIn() {
-            showGreatingMessage()
-            viewModel.favProducts?.drive(onNext: { [unowned self] (favProducts) in
-                resetViews(count:favProducts.count)
-                uiWishlistCollection.reloadData()
-            }).disposed(by: bag)
-            viewModel.fetchFavProducts()
+        
+        
+
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+
         }else{
-            let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-            navigationController?.pushViewController(vc, animated: true)
+            if viewModel.isUserLoggedIn() {
+                showGreatingMessage()
+                viewModel.favProducts?.drive(onNext: { [unowned self] (favProducts) in
+                    resetViews(count:favProducts.count)
+                    uiWishlistCollection.reloadData()
+                }).disposed(by: bag)
+                viewModel.fetchFavProducts()
+            }else{
+                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
+        
     }
     
     func registerWishlistCell() {

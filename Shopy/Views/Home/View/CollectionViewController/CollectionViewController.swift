@@ -51,7 +51,7 @@ class CollectionViewController: UIViewController {
         adsView.layer.cornerRadius = 25
         setUpMenuColllection()
         setupProductCollection()
-      // productsCollectionView.roundCorners(corners: [.topLeft, .topRight], radius: 45)
+     // productsCollectionView.roundCorners(corners: [.topLeft, .topRight], radius: 45)
         collectionViewModel?.getPriceRules()
         collectionViewModel?.getDiscountCode(priceRule: "951238656198")
         adsButton.setBackgroundImage(UIImage.gif(name: "offer0"), for: .normal)
@@ -72,11 +72,10 @@ class CollectionViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     override func viewWillAppear(_ animated: Bool) {
+        arrproductId.removeAll()
         adsImage.loadGif(name: imagesArr[0])
         if AppCommon.shared.checkConnectivity() == false{
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
-            NoInternetViewController.fromWhere = "home"
-            NoInternetViewController.vcIdentifier = "CollectionViewController"
             NoInternetViewController.modalPresentationStyle = .fullScreen
             self.present(NoInternetViewController, animated: true, completion: nil)
         
@@ -110,7 +109,9 @@ class CollectionViewController: UIViewController {
     @IBAction func showDiscountCode(_ sender: Any) {
         adsImage.loadGif(name: "black")
         adsImage.contentMode = .scaleAspectFill
-
+        adsView.layer.cornerRadius = 25
+        adsView.clipsToBounds = true
+        adsImage.layer.masksToBounds = true
         controlViews(flag: false)
     }
     

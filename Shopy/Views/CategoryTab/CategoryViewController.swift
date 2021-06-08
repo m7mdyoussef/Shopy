@@ -13,9 +13,6 @@ import JGProgressHUD
 
 class CategoryViewController: UIViewController {
 
-    
-    
-//    @IBOutlet weak var productView: UIView!
     @IBOutlet weak var subCatView: UIView!
     @IBOutlet private weak var mainCategoryCollectionView: UICollectionView!
     @IBOutlet weak var subCategoryCollectionView: UICollectionView!
@@ -34,15 +31,15 @@ class CategoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
        // super.viewWillAppear(true)
         
-        
         if AppCommon.shared.checkConnectivity() == false{
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
             NoInternetViewController.fromWhere = "category"
             NoInternetViewController.vcIdentifier = "CategoryViewController"
             NoInternetViewController.modalPresentationStyle = .fullScreen
             self.present(NoInternetViewController, animated: true, completion: nil)
-           // self.navigationController?.pushViewController(NoInternetViewController, animated: true)
+           
         }else{
+            arrproductId.removeAll()
             subCategElement = "T-Shirts"
             mainCategElement = "Men"
             categoryViewModel.fetchData()
@@ -176,8 +173,6 @@ class CategoryViewController: UIViewController {
        // productsCollectionView.reloadData()
         view.setNeedsLayout()
     }
-    
-    
     
 }
 
