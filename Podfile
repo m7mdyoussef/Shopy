@@ -18,6 +18,12 @@ target 'Shopy' do
   pod 'DropDown'
   pod 'JGProgressHUD'
   pod 'HMSegmentedControl'
+  pod "ImageSlideshow"
+  pod "ImageSlideshow/AFURL"
+  pod "ImageSlideshow/Alamofire"
+  pod "ImageSlideshow/SDWebImage"
+  pod "ImageSlideshow/Kingfisher"
+
 
   #  pod 'Gallery'
   #  pod 'InstantSearchClient'

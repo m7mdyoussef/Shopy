@@ -51,12 +51,10 @@ class CollectionViewController: UIViewController {
         adsView.layer.cornerRadius = 25
         setUpMenuColllection()
         setupProductCollection()
-     // productsCollectionView.roundCorners(corners: [.topLeft, .topRight], radius: 45)
         collectionViewModel?.getPriceRules()
         collectionViewModel?.getDiscountCode(priceRule: "951238656198")
         adsButton.setBackgroundImage(UIImage.gif(name: "offer0"), for: .normal)
         getAllDiscountCodes()
-        
         
         collectionViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
             let hud = JGProgressHUD()
@@ -155,7 +153,6 @@ class CollectionViewController: UIViewController {
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
             self.arrproductId.append(String(item.id))
-           // self.showIndicator?.stopAnimating()
         }.disposed(by: disposeBag)
         
         productsCollectionView.rx.itemSelected.subscribe{value in

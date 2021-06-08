@@ -633,29 +633,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nve-kI-LII">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nve-kI-LII" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                 <rect key="frame" x="0.0" y="44" width="414" height="230"/>
-                                <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hta-VJ-K7M">
-                                        <rect key="frame" x="0.0" y="-8" width="414" height="230"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <viewLayoutGuide key="contentLayoutGuide" id="D19-41-AnG"/>
-                                        <viewLayoutGuide key="frameLayoutGuide" id="H5m-eJ-7pF"/>
-                                    </scrollView>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="HLI-hl-7Eu"/>
                                 </constraints>
                             </view>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="LNi-z1-8GR">
-                                <rect key="frame" x="146" y="44" width="122.5" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="4xr-tC-ihd"/>
-                                </constraints>
-                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="currentPageIndicatorTintColor" red="0.99603980780000001" green="0.57988804579999997" blue="0.64627319569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Tk-gp-Jfk">
                                 <rect key="frame" x="0.0" y="290" width="414" height="606"/>
                                 <subviews>
@@ -784,13 +768,11 @@
                         <viewLayoutGuide key="safeArea" id="dXo-6u-eVi"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="LNi-z1-8GR" firstAttribute="top" secondItem="xt0-rS-Li9" secondAttribute="topMargin" id="1EI-CS-uaU"/>
                             <constraint firstItem="nve-kI-LII" firstAttribute="leading" secondItem="dXo-6u-eVi" secondAttribute="leading" id="1wR-bZ-oCl"/>
                             <constraint firstAttribute="bottom" secondItem="8Tk-gp-Jfk" secondAttribute="bottom" id="C9b-Jq-7u9"/>
                             <constraint firstItem="8Tk-gp-Jfk" firstAttribute="top" secondItem="nve-kI-LII" secondAttribute="bottom" constant="16" id="DA1-2N-fS1"/>
                             <constraint firstItem="nve-kI-LII" firstAttribute="top" secondItem="dXo-6u-eVi" secondAttribute="top" id="J1g-Mf-1Mx"/>
                             <constraint firstItem="nve-kI-LII" firstAttribute="trailing" secondItem="dXo-6u-eVi" secondAttribute="trailing" id="mAd-ab-7sj"/>
-                            <constraint firstItem="LNi-z1-8GR" firstAttribute="centerX" secondItem="xt0-rS-Li9" secondAttribute="centerX" id="oXk-Yc-ffp"/>
                             <constraint firstItem="8Tk-gp-Jfk" firstAttribute="trailing" secondItem="dXo-6u-eVi" secondAttribute="trailing" id="uXJ-Rj-5Id"/>
                             <constraint firstItem="8Tk-gp-Jfk" firstAttribute="leading" secondItem="dXo-6u-eVi" secondAttribute="leading" id="uZI-Y8-cdS"/>
                         </constraints>
@@ -799,12 +781,11 @@
                         <outlet property="cardButton" destination="NAX-bf-kll" id="mkW-dA-d0A"/>
                         <outlet property="detailsView" destination="8Tk-gp-Jfk" id="K1E-bD-Zju"/>
                         <outlet property="favouriteButton" destination="KUk-Fr-IHs" id="IvE-zw-hGb"/>
-                        <outlet property="imageScrollView" destination="hta-VJ-K7M" id="cMh-nk-oe4"/>
-                        <outlet property="pageControl" destination="LNi-z1-8GR" id="uPQ-Du-pMy"/>
                         <outlet property="productDetails" destination="NSL-sr-X4e" id="4tC-w3-f9V"/>
                         <outlet property="productPrice" destination="3hN-h3-nrE" id="d9p-xQ-R7c"/>
                         <outlet property="productTitle" destination="yNh-7S-fON" id="R2c-ab-kXS"/>
                         <outlet property="sizeCollectionView" destination="Dbw-Ep-xnJ" id="tvj-T5-bvn"/>
+                        <outlet property="slideShow" destination="nve-kI-LII" id="Ck7-ot-jJH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLx-KQ-Zjv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
