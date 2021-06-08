@@ -483,7 +483,7 @@
         <!--Entry PointVC-->
         <scene sceneID="zxU-RP-unS">
             <objects>
-                <viewController id="aGa-bo-GIK" customClass="EntryPointVC" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EntryPointVC" id="aGa-bo-GIK" customClass="EntryPointVC" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FWJ-zb-mrU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1025,6 +1025,9 @@
                                                 <rect key="frame" x="10" y="220" width="394" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="32K-2O-Nxq" id="A4j-Zi-4iP"/>
+                                                </connections>
                                             </textField>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3H1-9e-2EX" userLabel="confirmation stack">
                                                 <rect key="frame" x="10" y="274" width="394" height="34"/>
