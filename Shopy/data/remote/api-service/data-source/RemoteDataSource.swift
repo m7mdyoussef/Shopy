@@ -10,56 +10,54 @@ import Foundation
 
 protocol RemoteDataSourceProtocol {
     
+    //amin
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void)
     func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void)
     func getAllUsers(onSuccess: @escaping (AllCustomers?)->Void , onError: @escaping (Error)->Void)
+    func fetchOrders(financialStatus:FinancialStatus , completion: @escaping (Result<Orders?,NSError>) -> Void )
+    //end amin
     
-   // func getProducts(collectionId:String, completion: @escaping (Result<Product?, NSError>) -> Void)
     
     // MARK: joe
-        func getCategoryProducts(categoryType:String,completion: @escaping (Result<Products?,NSError>) -> Void)
+    func getCategoryProducts(categoryType:String,completion: @escaping (Result<Products?,NSError>) -> Void)
     func getDetailedProducts(completion: @escaping (Result<DetailedProductsModel?, NSError>) -> Void)
-
+    
     //end
-
+    
     func getProducts(collectionId:String, completion: @escaping (Result<Products?, NSError>) -> Void)
     func getProductElement(productId:String, completion: @escaping (Result<Product?, NSError>) -> Void)
-
+    
 }
 
 class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceProtocol {
-
-
+    
+    
     
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void) {
         
         self.fetchData(target: .getAllCustomCollections, responseClass: CustomCollection.self) { (result) in
             completion(result)
         }
-     }
+    }
     
     func getProducts(collectionId:String, completion: @escaping (Result<Products?, NSError>) -> Void) {
         self.fetchData(target: .getAllproducts(collectionId: collectionId), responseClass: Products.self){(result) in
             completion(result)
         }
     }
-
- func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) {
-        
     
- 
+    // amin
+    func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) {
         self.postACustomer(target: .register(myCustomer: customer), onSuccess: { (data) in
             onCompletion(data)
         }) { (error) in
             onFailure(error)
         }
-
-
     }
     
     func getAllUsers(onSuccess: @escaping (AllCustomers?) -> Void, onError: @escaping (Error) -> Void) {
         self.fetchData(target: .allUsers, responseClass: AllCustomers.self) { (result) in
-           
+            
             switch result{
             case .success(let customer):
                 onSuccess(customer)
@@ -69,6 +67,12 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
         }
     }
     
+    func fetchOrders(financialStatus: FinancialStatus, completion: @escaping (Result<Orders?, NSError>) -> Void) {
+        self.fetchData(target: .getOrders(financialState: financialStatus), responseClass: Orders.self) { (result) in
+            completion(result)
+        }
+    }
+    // end amin
     func getProductElement(productId: String, completion: @escaping (Result<Product?, NSError>) -> Void) {
         self.fetchData(target: .getProductElement(productId: productId), responseClass: Product.self){ (result) in
             completion(result)
@@ -76,11 +80,11 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
     }
     
     func getPriceRules(completion: @escaping (Result<PriceRules?, NSError>) -> Void) {
-    
-    self.fetchData(target: .getPriceRule, responseClass: PriceRules.self) { (result) in
-        completion(result)
+        
+        self.fetchData(target: .getPriceRule, responseClass: PriceRules.self) { (result) in
+            completion(result)
+        }
     }
- }
     
     func getDiscountCode(priceRule: String, completion: @escaping (Result<DiscountCode?, NSError>) -> Void) {
         self.fetchData(target: .getDiscountCode(priceRule: priceRule), responseClass: DiscountCode.self){ (result) in
@@ -88,7 +92,7 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
         }
     }
     
-     // MARK: joe
+    // MARK: joe
     func getCategoryProducts(categoryType: String, completion: @escaping (Result<Products?, NSError>) -> Void) {
         var targetType:RemoteDataSourceWrapper = .getMenCategoryProducts
         if(categoryType == "Men"){  //men

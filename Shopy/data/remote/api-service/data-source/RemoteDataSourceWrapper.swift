@@ -12,8 +12,13 @@ import Alamofire
 enum RemoteDataSourceWrapper{
     case getAllCustomCollections
     case getAllproducts(collectionId : String)
+    
+    // amin
     case register(myCustomer: Customer)
     case allUsers
+    case getOrders(financialState: FinancialStatus)
+    // end amin
+    
     case getProductElement(productId:String)
     case getPriceRule
     case getDiscountCode(priceRule: String)
@@ -47,7 +52,6 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             do {
                 jsonData = try JSONSerialization.data(withJSONObject: customer.asDictionary(), options: .prettyPrinted)
                 return jsonData
-                print("json data is \(jsonData)")
             } catch let error {
                 print(error.localizedDescription)
             }
@@ -73,6 +77,8 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             return "/admin/api/2021-04/customers.json"
         case .allUsers:
             return "/admin/api/2021-04/customers.json"
+        case .getOrders(financialState: let state):
+            return "/admin/api/2021-04/orders.json?financial_status=\(state.rawValue)"
             
         // MARK: joe
         case .getMenCategoryProducts:
@@ -106,6 +112,8 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
         case .register:
             return .requestPlain
         case .allUsers:
+            return .requestPlain
+        case .getOrders:
             return .requestPlain
             
             

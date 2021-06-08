@@ -13,21 +13,28 @@ import RxCocoa
 protocol MeModelType{
     
     func fetchFavProducts()
+    func getUserName() -> String
+    func fetchOrders(status: FinancialStatus)
+    
     var favProducts: Driver<[FavouriteProduct]>?{get}
+    var orders: Driver<[Order]>?{get}
 }
 
 class MeTapViewModel:MeModelType {
-    //    var favProducts: [FavouriteProduct]! {
-    //        didSet{
-    //            resetViews()
-    //        }
-    //    }
+
     var favProducts: Driver<[FavouriteProduct]>?
+    var orders: Driver<[Order]>?
     
     private var favProductsSubject = PublishSubject<[FavouriteProduct]>()
+    private var ordersSubject = PublishSubject<[Order]>()
     
+    
+    var remote:RemoteDataSource!
+
     init() {
         favProducts = favProductsSubject.asDriver(onErrorJustReturn: [])
+        orders = ordersSubject.asDriver(onErrorJustReturn: [])
+        remote = RemoteDataSource()
     }
     
     func fetchFavProducts() {
@@ -37,6 +44,26 @@ class MeTapViewModel:MeModelType {
         }
         self.favProductsSubject.asObserver().onNext(favourites)
     }
+    
+    func fetchOrders(status: FinancialStatus)  {
+        remote.fetchOrders(financialStatus: status) { [unowned self] (result) in
+            
+            switch result{
+            case .success(let response):
+                guard let orders = response?.orders else {return}
+                print("success")
+                self.ordersSubject.asObserver().onNext(orders)
+//                self.Loadingsubject.onNext(false)
+
+            case .failure(let error):
+                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
+//                self.Loadingsubject.onNext(false)
+
+            }
+            
+        }
+    }
+    
     
     func isUserLoggedIn() -> Bool {
         let value = MyUserDefaults.getValue(forKey: .loggedIn)

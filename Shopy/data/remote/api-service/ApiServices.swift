@@ -62,76 +62,37 @@ class ApiServices<T : ApiRequestWrapper>{
         }
         
     }
-        func postACustomer(target:T,onSuccess: @escaping (Data)->Void , onFailure: @escaping (Error)->Void) {
-                let urlString = target.baseURL + target.endpoint
-                print("url is \(urlString)")
-                guard let url = URL(string: urlString) else {return}
-                var request = URLRequest(url: url)
-                request.method = HTTPMethod.post
-                let session = URLSession.shared
-                request.httpShouldHandleCookies = false
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
-                request.httpBody = target.httpBody
-                
-                session.dataTask(with: request) { (data, response, error) in
-                    if let err = error{
-                        print(err)
-                        onFailure(err)
-                    }else{
-                        if let data = data {
-                            //                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                            //                    print(json)
-                            //                    print(data)
-                            onSuccess(data)
-                            
-                        }
-                        
-                        
-                    }
-                }.resume()
-                
-                
-                
-                //        let urlString = "https://ce751b18c7156bf720ea405ad19614f4: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@itiana.myshopify.com/admin/api/2021-04/customers.json"
-                //               guard let url = URL(string: urlString) else {return}
-                //               var request = URLRequest(url: url)
-                //               request.httpMethod = "POST"
-                //               let session = URLSession.shared
-                //               request.httpShouldHandleCookies = false
-                //
-                //
-                ////               do {
-                ////                request.httpBody = try JSONSerialization.data(withJSONObject: newUser.asDictionary(), options: .prettyPrinted)
-                ////               } catch let error {
-                ////                   print(error.localizedDescription)
-                ////               }
-                //               request.httpBody = target.httpBody
-                //               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                //               request.addValue("application/json", forHTTPHeaderField: "Accept")
-                //
-                //        session.dataTask(with: request) { (data, response, error) in
-                //            if error != nil {
-                //                print(error!)
-                //            } else {
-                //                if let data = data {
-                //                 let json = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                //                    print(json)
-                //                    print(data)
-                //                }
-                //            }
-                //        }.resume()
-                
-                
+    func postACustomer(target:T,onSuccess: @escaping (Data)->Void , onFailure: @escaping (Error)->Void) {
+        let urlString = target.baseURL + target.endpoint
+        print("url is \(urlString)")
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.method = HTTPMethod.post
+        let session = URLSession.shared
+        request.httpShouldHandleCookies = false
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpBody = target.httpBody
+        
+        session.dataTask(with: request) { (data, response, error) in
+            if let err = error{
+                print(err)
+                onFailure(err)
+            }else{
+                if let data = data {
+                    onSuccess(data)
+                }
             }
-}
-    
-    private func buildParams(task: Task) -> ([String:Any], ParameterEncoding) {
-        switch task {
-        case .requestPlain:
-            return ([:], URLEncoding.default)
-        case .requestParameters(parameters: let parameters, encoding: let encoding):
-            return (parameters, encoding)
-        }
+        }.resume()
     }
-    
+}
+
+private func buildParams(task: Task) -> ([String:Any], ParameterEncoding) {
+    switch task {
+    case .requestPlain:
+        return ([:], URLEncoding.default)
+    case .requestParameters(parameters: let parameters, encoding: let encoding):
+        return (parameters, encoding)
+    }
+}
+
