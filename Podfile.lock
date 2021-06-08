@@ -1,42 +1,15 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
-    - AFNetworking/NSURLSession
   - Alamofire (5.4.3)
-  - AlamofireImage (4.2.0):
-    - Alamofire (~> 5.4)
   - BulletinBoard (5.0.0)
   - DropDown (2.3.13)
   - HMSegmentedControl (1.5.6)
   - ImageSlideshow (1.9.2):
     - ImageSlideshow/Core (= 1.9.2)
-  - ImageSlideshow/AFURL (1.9.2):
-    - AFNetworking (~> 3.0)
-    - ImageSlideshow/Core
-  - ImageSlideshow/Alamofire (1.9.2):
-    - AlamofireImage (~> 4.0)
-    - ImageSlideshow/Core
   - ImageSlideshow/Core (1.9.2)
-  - ImageSlideshow/Kingfisher (1.9.2):
-    - ImageSlideshow/Core
-    - Kingfisher (> 3.0)
   - ImageSlideshow/SDWebImage (1.9.2):
     - ImageSlideshow/Core
     - SDWebImage (>= 3.7)
   - JGProgressHUD (2.2)
-  - Kingfisher (6.3.0)
   - MarqueeLabel (4.0.5)
   - NVActivityIndicatorView/AppExtension (4.8.0)
   - RxCocoa (6.1.0):
@@ -58,9 +31,6 @@ DEPENDENCIES:
   - DropDown
   - HMSegmentedControl
   - ImageSlideshow
-  - ImageSlideshow/AFURL
-  - ImageSlideshow/Alamofire
-  - ImageSlideshow/Kingfisher
   - ImageSlideshow/SDWebImage
   - JGProgressHUD
   - MarqueeLabel
@@ -72,15 +42,12 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - AFNetworking
     - Alamofire
-    - AlamofireImage
     - BulletinBoard
     - DropDown
     - HMSegmentedControl
     - ImageSlideshow
     - JGProgressHUD
-    - Kingfisher
     - MarqueeLabel
     - NVActivityIndicatorView
     - RxCocoa
@@ -90,15 +57,12 @@ SPEC REPOS:
     - SwiftMessages
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
-  AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
   BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
-  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
@@ -107,6 +71,6 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
 
-PODFILE CHECKSUM: 01a5daaddaab1610777aa73f334f50f35216b8b5
+PODFILE CHECKSUM: 109d9b92528dcfeb33e9adf8715f2df03137cfeb
 
 COCOAPODS: 1.10.1

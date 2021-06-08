@@ -201,11 +201,11 @@ extension CategoryViewController{
     func showLoading() {
         activityIndicatorView!.center = self.view.center
         self.view.addSubview(activityIndicatorView!)
-        activityIndicatorView!.startAnimating()
+        activityIndicatorView?.startAnimating()
     }
     
     func hideLoading() {
-        activityIndicatorView!.stopAnimating()
+        activityIndicatorView?.stopAnimating()
     }
     
     func showErrorMessage(errorMessage: String) {

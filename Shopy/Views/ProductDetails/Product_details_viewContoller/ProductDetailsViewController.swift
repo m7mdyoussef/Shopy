@@ -10,10 +10,7 @@ import UIKit
 import SDWebImage
 import RxCocoa
 import RxSwift
-//import RxRelay
 import ImageSlideshow
-import AlamofireImage
-import Alamofire
 
 
 class ProductDetailsViewController: UIViewController {
@@ -40,9 +37,17 @@ class ProductDetailsViewController: UIViewController {
     var imagesArr = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let pageIndicator = UIPageControl()
+        pageIndicator.currentPageIndicatorTintColor = UIColor.lightGray
+        pageIndicator.pageIndicatorTintColor = UIColor.black
+        slideShow.pageIndicator = pageIndicator
+        slideShow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .left(padding: 20), vertical: .bottom)
+        
         showIndicator = ShowIndecator(view: view.self)
         homeViewModel = HomeViewModel()
-        detailsView.roundCorners(corners: [.topLeft, .topRight], radius: 40)
+       // detailsView.roundCorners(corners: [.topLeft, .topRight], radius: 40)
         setupScreens()
      //   imageScrollView.delegate = self
        
@@ -106,6 +111,13 @@ class ProductDetailsViewController: UIViewController {
             let recognizer = UITapGestureRecognizer(target: self, action: #selector(ProductDetailsViewController.didTap))
             self.slideShow.addGestureRecognizer(recognizer)
             
+            self.showIndicator?.stopAnimating()
+            
+            
+            
+            
+
+
             
             
          //   slideshow.setImageInputs(imag)
@@ -142,6 +154,6 @@ extension ProductDetailsViewController: UIScrollViewDelegate{
 
 extension ProductDetailsViewController: ImageSlideshowDelegate {
     func imageSlideshow(_ imageSlideshow: ImageSlideshow, didChangeCurrentPageTo page: Int) {
-        print("current page:", page)
+      //  print("current page:", page)
     }
 }

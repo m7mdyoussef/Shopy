@@ -43,8 +43,8 @@ class MeVC: UIViewController {
             if viewModel.isUserLoggedIn() {
                 showGreatingMessage()
                 viewModel.favProducts?.drive(onNext: { [unowned self] (favProducts) in
-                    resetViews(count:favProducts.count)
-                    uiWishlistCollection.reloadData()
+                    self.resetViews(count:favProducts.count)
+                    self.uiWishlistCollection.reloadData()
                 }).disposed(by: bag)
                 viewModel.fetchFavProducts()
             }else{
@@ -83,7 +83,7 @@ class MeVC: UIViewController {
             row,item,cell in
             (cell as? FavouriteproductCVC)?.favProduct = item
             (cell as? FavouriteproductCVC)?.deleteFromFavourites = { [unowned self] in
-                deletFromFavourites(productID: Int(item.id ))
+                self.deletFromFavourites(productID: Int(item.id ))
             }
             
         }.disposed(by: bag)
