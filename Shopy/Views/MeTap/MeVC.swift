@@ -166,6 +166,10 @@ class MeVC: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         uiWishlistCollection.reloadData()
     }
+    @IBAction func settingsAction(_ sender: Any) {
+       let settingsVC = SettingsVC()
+        navigationController?.pushViewController(settingsVC , animated: true)
+    }
 }
 
 extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{

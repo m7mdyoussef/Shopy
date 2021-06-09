@@ -97,6 +97,10 @@
 		D2CA0EB9266BBEC3005AB72D /* BagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0EB7266BBEC3005AB72D /* BagViewController.swift */; };
 		D2CA0EBA266BBEC3005AB72D /* BagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CA0EB8266BBEC3005AB72D /* BagViewController.xib */; };
 		D2CA0EBC266BC4BD005AB72D /* BagPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0EBB266BC4BD005AB72D /* BagPersistenceManager.swift */; };
+		D2CA0F242670AFFD005AB72D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0F222670AFFD005AB72D /* SettingsVC.swift */; };
+		D2CA0F252670AFFD005AB72D /* SettingsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CA0F232670AFFD005AB72D /* SettingsVC.xib */; };
+		D2CA0F292670B81D005AB72D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0F272670B81D005AB72D /* SettingsTableViewCell.swift */; };
+		D2CA0F2A2670B81D005AB72D /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CA0F282670B81D005AB72D /* SettingsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +222,10 @@
 		D2CA0EB7266BBEC3005AB72D /* BagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagViewController.swift; sourceTree = "<group>"; };
 		D2CA0EB8266BBEC3005AB72D /* BagViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BagViewController.xib; sourceTree = "<group>"; };
 		D2CA0EBB266BC4BD005AB72D /* BagPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagPersistenceManager.swift; sourceTree = "<group>"; };
+		D2CA0F222670AFFD005AB72D /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		D2CA0F232670AFFD005AB72D /* SettingsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsVC.xib; sourceTree = "<group>"; };
+		D2CA0F272670B81D005AB72D /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		D2CA0F282670B81D005AB72D /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		EC60D919DA0F486F083773E9 /* Pods-Shopy-ShopyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy-ShopyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Shopy-ShopyUITests/Pods-Shopy-ShopyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -451,6 +459,7 @@
 		9E756A0526642D14000B5D98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D2CA0F202670AC4A005AB72D /* settings */,
 				9E567CCB266D691600AC11C1 /* NoInternetScreen */,
 				9E182D8A26503E8100069E6E /* Main.storyboard */,
 				9E182D9226503E8300069E6E /* LaunchScreen.storyboard */,
@@ -757,6 +766,33 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		D2CA0F202670AC4A005AB72D /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				D2CA0F262670B765005AB72D /* cell */,
+				D2CA0F212670AC56005AB72D /* VC */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		D2CA0F212670AC56005AB72D /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D2CA0F222670AFFD005AB72D /* SettingsVC.swift */,
+				D2CA0F232670AFFD005AB72D /* SettingsVC.xib */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		D2CA0F262670B765005AB72D /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				D2CA0F272670B81D005AB72D /* SettingsTableViewCell.swift */,
+				D2CA0F282670B81D005AB72D /* SettingsTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -878,6 +914,7 @@
 				CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */,
 				D2116C7726695B86007892B7 /* FavouriteProductsVC.xib in Resources */,
 				CF08214C266DDC9C00064DB9 /* kids2.gif in Resources */,
+				D2CA0F2A2670B81D005AB72D /* SettingsTableViewCell.xib in Resources */,
 				9E182D9126503E8300069E6E /* Assets.xcassets in Resources */,
 				CF78F3F22669D018005B9FE1 /* offer0.gif in Resources */,
 				CF78F3F72669D03C005B9FE1 /* black.gif in Resources */,
@@ -891,6 +928,7 @@
 				D2116C7B2669767B007892B7 /* FavouriteproductCVC.xib in Resources */,
 				9E756A11266431EB000B5D98 /* SubCategoriesCollectionViewCell.xib in Resources */,
 				D2CA0EBA266BBEC3005AB72D /* BagViewController.xib in Resources */,
+				D2CA0F252670AFFD005AB72D /* SettingsVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,6 +1090,7 @@
 				27DDC4ED266BE275002E92A7 /* Products.swift in Sources */,
 				27DDC4D3266BE1E6002E92A7 /* CustomCollection.swift in Sources */,
 				2748ECC0266440F400A9DF42 /* EntryViewModel.swift in Sources */,
+				D2CA0F292670B81D005AB72D /* SettingsTableViewCell.swift in Sources */,
 				27465D9E26615720000FF0D0 /* DismissKeyboard.swift in Sources */,
 				2759BB6926646F4100AF288D /* ProgressHudExt.swift in Sources */,
 				27DDC4DB266BE22C002E92A7 /* Product.swift in Sources */,
@@ -1070,6 +1109,7 @@
 				9E567CCD266D695400AC11C1 /* NoInternetViewController.swift in Sources */,
 				9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */,
 				273FF7D42660932400A37003 /* Register.swift in Sources */,
+				D2CA0F242670AFFD005AB72D /* SettingsVC.swift in Sources */,
 				D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */,
 				2748ECCC266465E800A9DF42 /* EmailValidationExtension.swift in Sources */,
 				D2116C712669503F007892B7 /* FavouritesPersistenceManager.swift in Sources */,
