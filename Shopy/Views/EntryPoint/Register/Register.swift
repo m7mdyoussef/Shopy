@@ -128,22 +128,25 @@ class Register: UIViewController,IRounded {
                 }else{
                     
                     if viewModel.isAllTextFilld && viewModel.isMailValid {
-                        let hud = JGProgressHUD()
-                        hud.textLabel.text = "Loading"
-                        hud.style = .dark
-                        hud.show(in: self.view)
+//                        let hud = JGProgressHUD()
+//                        hud.textLabel.text = "Loading"
+//                        hud.style = .dark
+//                        hud.show(in: self.view)
                         
+                        let hud = loadingHud(text: "loading", style: .dark)
                         let myAddress:[Address] = address == nil ? [] : [address!]
                         let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: myAddress))
                         
                         viewModel.signUp(customer:newCustomer,
                                          onSuccess: { [unowned self] in
-                                            hud.dismiss()
+//                                            hud.dismiss()
+                                            dismissLoadingHud(hud: hud)
                                             self.onSuccessHud()
 
                                          },onFailure: { [unowned self] localizedDescription in
                                             print(localizedDescription)
-                                            hud.dismiss()
+//                                            hud.dismiss()
+                                            dismissLoadingHud(hud: hud)
                                             self.onFaildHud(text: localizedDescription)
                                          });
                         

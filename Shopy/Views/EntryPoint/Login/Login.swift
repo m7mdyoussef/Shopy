@@ -61,17 +61,18 @@ class Login: UIViewController,IRounded{
         }
         
         if !(mail.isEmpty) && !(pass.isEmpty) {
-            let hud = JGProgressHUD()
-            hud.textLabel.text = "Loading"
-            hud.style = .dark
-            hud.show(in: self.view)
-            
+//            let hud = JGProgressHUD()
+//            hud.textLabel.text = "Loading"
+//            hud.style = .dark
+//            hud.show(in: self.view)
+            let hud = loadingHud(text: "Loading", style: .dark)
             viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!, onSuccess: { [unowned self] in
-                hud.dismiss()
+                dismissLoadingHud(hud: hud)
                 self.onSuccessHud()
                 self.navigationController?.popViewController(animated: true)
             }) { [unowned self] (string) in
-                hud.dismiss()
+//                hud.dismiss()
+                dismissLoadingHud(hud: hud)
                 self.onFaildHud(text: string)
             }
 

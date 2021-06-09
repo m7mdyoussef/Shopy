@@ -25,7 +25,6 @@ class MeVC: UIViewController {
     var segmentsArray: [(state:FinancialStatus,value:String)] = []
     
     var bag = DisposeBag()
-    var dispatchGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +39,10 @@ class MeVC: UIViewController {
         setupOrdersCollectionView()
         uiWishlistCollection.rx.setDelegate(self).disposed(by: bag)
         uiOrdersCollection.rx.setDelegate(self).disposed(by: bag)
+        
+        viewModel.loadingObservable.asObservable().subscribe{ value in
+            
+        }.disposed(by: bag)
     }
     
     func registerCollectionViewCells() {
@@ -78,7 +81,7 @@ class MeVC: UIViewController {
     }
     
     func setupWishlistCollectionView()  {
-        viewModel.favProducts?.asObservable().bind(to: uiWishlistCollection.rx.items(cellIdentifier: "FavouriteproductCVC")){
+        viewModel.favProductsObservable?.asObservable().bind(to: uiWishlistCollection.rx.items(cellIdentifier: "FavouriteproductCVC")){
             row,item,cell in
             (cell as? FavouriteproductCVC)?.favProduct = item
             (cell as? FavouriteproductCVC)?.deleteFromFavourites = { [unowned self] in
@@ -95,7 +98,7 @@ class MeVC: UIViewController {
     }
     
     func setupOrdersCollectionView() {
-        viewModel.orders?.asObservable().bind(to: uiOrdersCollection.rx.items(cellIdentifier: "OrderCell")){
+        viewModel.ordersObservable?.asObservable().bind(to: uiOrdersCollection.rx.items(cellIdentifier: "OrderCell")){
             row,item,cell in
             (cell as? OrderCell)?.orderData = item
         }.disposed(by: bag)
@@ -115,12 +118,12 @@ class MeVC: UIViewController {
         if viewModel.isUserLoggedIn() {
             showGreatingMessage()
             
-            viewModel.favProducts?.drive(onNext: { [unowned self] (favProducts) in
+            viewModel.favProductsObservable?.drive(onNext: { [unowned self] (favProducts) in
                 resetWishListViews(count:favProducts.count)
                 uiWishlistCollection.reloadData()
             }).disposed(by: bag)
             
-            viewModel.orders?.drive(onNext: { [unowned self] (orders) in
+            viewModel.ordersObservable?.drive(onNext: { [unowned self] (orders) in
                 resetOrdersListViews(count: orders.count)
                 uiOrdersCollection.reloadData()
             }).disposed(by: bag)

@@ -16,24 +16,27 @@ protocol MeModelType{
     func getUserName() -> String
     func fetchOrders(status: FinancialStatus)
     
-    var favProducts: Driver<[FavouriteProduct]>?{get}
-    var orders: Driver<[Order]>?{get}
+    var favProductsObservable: Driver<[FavouriteProduct]>?{get}
+    var ordersObservable: Driver<[Order]>?{get}
+    var loadingObservable: Driver<Bool>{get}
 }
 
 class MeTapViewModel:MeModelType {
 
-    var favProducts: Driver<[FavouriteProduct]>?
-    var orders: Driver<[Order]>?
+    var favProductsObservable: Driver<[FavouriteProduct]>?
+    var ordersObservable: Driver<[Order]>?
+    var loadingObservable: Driver<Bool>
     
     private var favProductsSubject = PublishSubject<[FavouriteProduct]>()
     private var ordersSubject = PublishSubject<[Order]>()
-    
+    private var loadingSubject = PublishSubject<Bool>()
     
     var remote:RemoteDataSource!
 
     init() {
-        favProducts = favProductsSubject.asDriver(onErrorJustReturn: [])
-        orders = ordersSubject.asDriver(onErrorJustReturn: [])
+        favProductsObservable = favProductsSubject.asDriver(onErrorJustReturn: [])
+        ordersObservable = ordersSubject.asDriver(onErrorJustReturn: [])
+        loadingObservable = loadingSubject.asDriver(onErrorJustReturn: true)
         remote = RemoteDataSource()
     }
     
@@ -46,18 +49,19 @@ class MeTapViewModel:MeModelType {
     }
     
     func fetchOrders(status: FinancialStatus)  {
+        
+        loadingSubject.asObserver().onNext(true)
         remote.fetchOrders(financialStatus: status) { [unowned self] (result) in
-            
             switch result{
             case .success(let response):
                 guard let orders = response?.orders else {return}
                 print("success")
-                self.ordersSubject.asObserver().onNext(orders)
-//                self.Loadingsubject.onNext(false)
+                ordersSubject.asObserver().onNext(orders)
+                loadingSubject.onNext(false)
 
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
-//                self.Loadingsubject.onNext(false)
+                loadingSubject.onNext(false)
 
             }
             

@@ -19,8 +19,8 @@ class OrderCell: UICollectionViewCell {
         
         didSet{
             guard let orderData = orderData else {return}
-//            uiOrderIdLabel.text = String(orderData.orderNumber)
-//            uiCountLabel.text = "\(orderData.lineItems.count) item/s in the order"
+            uiOrderIdLabel.text = String(orderData.orderNumber)
+            uiCountLabel.text = "\(orderData.lineItems.count) item/s in the order"
             uiTotalLabel.text = "Total : \(orderData.totalPrice)"
         }
     }
