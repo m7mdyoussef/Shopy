@@ -46,8 +46,8 @@
                                 <rect key="frame" x="129" y="231" width="156" height="21.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gc-8C-S7b">
-                                        <rect key="frame" x="0.0" y="0.5" width="78" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.5" width="78" height="21"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -60,15 +60,15 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 item/s in the order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3k-FW-C6x" userLabel="number of items">
-                                <rect key="frame" x="8" y="252" width="152.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 item/s in the order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3k-FW-C6x" userLabel="number of items" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="8" y="252.5" width="152.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total 250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65d-cY-FY0" userLabel="number of items">
-                                <rect key="frame" x="335.5" y="252" width="71.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total 250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65d-cY-FY0" userLabel="number of items" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="328" y="252.5" width="79" height="21"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -104,9 +104,17 @@
                 <outlet property="uiOrderIdLabel" destination="GkN-Lj-r53" id="8JR-zT-RzS"/>
                 <outlet property="uiTotalLabel" destination="65d-cY-FY0" id="aOF-Mu-HZD"/>
             </connections>
-            <point key="canvasLocation" x="-296.37681159420293" y="14.397321428571427"/>
+            <point key="canvasLocation" x="-747" y="28"/>
         </collectionViewCell>
     </objects>
+    <designables>
+        <designable name="65d-cY-FY0">
+            <size key="intrinsicContentSize" width="79" height="21"/>
+        </designable>
+        <designable name="c3k-FW-C6x">
+            <size key="intrinsicContentSize" width="152.5" height="20.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="order" width="238" height="250"/>
         <systemColor name="systemBackgroundColor">

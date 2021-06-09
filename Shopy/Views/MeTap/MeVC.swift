@@ -8,6 +8,7 @@
 
 import UIKit
 import HMSegmentedControl
+import JGProgressHUD
 import RxSwift
 import RxCocoa
 
@@ -18,6 +19,8 @@ class MeVC: UIViewController {
     @IBOutlet weak var uiEmptyWishListImage: UIImageView!
     @IBOutlet weak var uiEmptyOrdersListImage: UIImageView!
     @IBOutlet weak var uiStack: UIStackView!
+    @IBOutlet weak var uiScrollViewHeigh: NSLayoutConstraint!
+    @IBOutlet weak var uiScrollView: UIScrollView!
     
     var viewModel:MeTapViewModel!
     
@@ -25,6 +28,8 @@ class MeVC: UIViewController {
     var segmentsArray: [(state:FinancialStatus,value:String)] = []
     
     var bag = DisposeBag()
+    
+    var hud : JGProgressHUD!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +45,13 @@ class MeVC: UIViewController {
         uiWishlistCollection.rx.setDelegate(self).disposed(by: bag)
         uiOrdersCollection.rx.setDelegate(self).disposed(by: bag)
         
-        viewModel.loadingObservable.asObservable().subscribe{ value in
-            
+        viewModel.loadingObservable.asObservable().subscribe{ [unowned self] value in
+            guard let value = value.element else {return}
+            if value {
+                hud = loadingHud(text: "Loading", style: .dark)
+            }else{
+                dismissLoadingHud(hud: hud)
+            }
         }.disposed(by: bag)
     }
     
@@ -109,7 +119,7 @@ class MeVC: UIViewController {
 //
         uiOrdersCollection.rx.modelSelected(Order.self).subscribe{
             value in
-            print(value.element?.email ?? "test")
+            
         }.disposed(by: bag)
     }
     
@@ -124,8 +134,8 @@ class MeVC: UIViewController {
             }).disposed(by: bag)
             
             viewModel.ordersObservable?.drive(onNext: { [unowned self] (orders) in
-                resetOrdersListViews(count: orders.count)
                 uiOrdersCollection.reloadData()
+                resetOrdersListViews(count: orders.count)
             }).disposed(by: bag)
             
             viewModel.fetchFavProducts()
@@ -161,6 +171,10 @@ class MeVC: UIViewController {
         if count > 0 {
             uiEmptyOrdersListImage.isHidden = true
             uiOrdersCollection.isHidden = false
+//            uiScrollViewHeigh.constant = uiOrdersCollection.contentSize.height + uiOrdersCollection.contentSize.height
+            uiScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 700)
+            uiOrdersCollection.contentSize = CGSize(width: self.view.frame.size.width, height: uiOrdersCollection.contentSize.height)
+
         }else{
             uiEmptyOrdersListImage.isHidden = false
             uiOrdersCollection.isHidden = true
@@ -186,24 +200,7 @@ extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
         //        return CGSize(width: CGFloat(view.layer.frame.width / 2), height: CGFloat(view.layer.frame.height * 1/4  ))
         return CGSize(width: CGFloat(200), height: CGFloat(view.layer.frame.height * 1/3.5  ))
     }
-    //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    //        return favProductCount
-    //    }
-    
-    //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    //
-    //        let cell = uiWishlistCollection.dequeueReusableCell(withReuseIdentifier: "FavouriteproductCVC", for: indexPath) as! FavouriteproductCVC
-    //
-    //        cell.favProduct = favProducts[indexPath.item]
-    //        cell.deleteFromFavourites = {[unowned self] in
-    //            deletFromFavourites(productID: Int(favProducts[indexPath.item].id ))
-    //        }
-    //        return cell
-    //
-    //    }
-    
-    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //        print("navigate to item \(favProducts[indexPath.row])")
-    //    }
     
 }
+
+
