@@ -57,7 +57,7 @@ class MeVC: UIViewController {
         segmentsArray.append((state: .paid, value: FinancialStatus.paid.rawValue))
         segmentsArray.append((state: .partiallyRefunded, value: FinancialStatus.partiallyPaid.rawValue))
         segmentsArray.append((state: .voided, value: FinancialStatus.voided.rawValue))
-    
+        
         let segmentsNames = segmentsArray.map{$0.value}
         segmentedControl = HMSegmentedControl(sectionTitles: segmentsNames)
         segmentedControl.borderWidth = CGFloat(1)
@@ -100,10 +100,10 @@ class MeVC: UIViewController {
             (cell as? OrderCell)?.orderData = item
         }.disposed(by: bag)
         
-//        uiOrdersCollection.rx.itemSelected.subscribe{value in
-////            print(value.element.ite)
-//        }.disposed(by: bag)
-//
+        //        uiOrdersCollection.rx.itemSelected.subscribe{value in
+        ////            print(value.element.ite)
+        //        }.disposed(by: bag)
+        //
         uiOrdersCollection.rx.modelSelected(Order.self).subscribe{
             value in
             print(value.element?.email ?? "test")
@@ -167,8 +167,8 @@ class MeVC: UIViewController {
         uiWishlistCollection.reloadData()
     }
     @IBAction func settingsAction(_ sender: Any) {
-       let settingsVC = SettingsVC()
-        navigationController?.pushViewController(settingsVC , animated: true)
+               let settingsVC = SettingsVC()
+            navigationController?.pushViewController(settingsVC , animated: true)
     }
 }
 

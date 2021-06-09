@@ -18,7 +18,7 @@ target 'Shopy' do
   pod 'DropDown'
   pod 'JGProgressHUD'
   pod 'HMSegmentedControl'
-
+  pod "MOLH"
   #  pod 'Gallery'
   #  pod 'InstantSearchClient'
   #  pod 'EmptyDataSet-Swift'

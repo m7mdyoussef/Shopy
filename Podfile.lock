@@ -5,6 +5,7 @@ PODS:
   - HMSegmentedControl (1.5.6)
   - JGProgressHUD (2.2)
   - MarqueeLabel (4.0.5)
+  - MOLH (1.4.3)
   - NVActivityIndicatorView/AppExtension (4.8.0)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - HMSegmentedControl
   - JGProgressHUD
   - MarqueeLabel
+  - MOLH
   - NVActivityIndicatorView/AppExtension
   - RxCocoa (= 6.1.0)
   - RxSwift (= 6.1.0)
@@ -40,6 +42,7 @@ SPEC REPOS:
     - HMSegmentedControl
     - JGProgressHUD
     - MarqueeLabel
+    - MOLH
     - NVActivityIndicatorView
     - RxCocoa
     - RxRelay
@@ -54,6 +57,7 @@ SPEC CHECKSUMS:
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
+  MOLH: e45827d200aeb1310641090fd8cd03ad2b42ae72
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
@@ -61,6 +65,6 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
 
-PODFILE CHECKSUM: 2d6af433127fc6ca95f4fb471feca550a4158edc
+PODFILE CHECKSUM: 8c446b1ed777d030c978b9ed7eb636546d778485
 
 COCOAPODS: 1.10.1

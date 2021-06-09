@@ -1,0 +1,141 @@
+
+/* Class = "UILabel"; text = "Orders"; ObjectID = "1pz-5r-tbZ"; */
+"1pz-5r-tbZ.text" = "Orders";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3hN-h3-nrE"; */
+"3hN-h3-nrE.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "48Y-Mh-82s"; */
+"48Y-Mh-82s.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Zip"; ObjectID = "5PN-OT-u2h"; */
+"5PN-OT-u2h.placeholder" = "Zip";
+
+/* Class = "UITabBarItem"; title = "Category"; ObjectID = "5qg-HU-feb"; */
+"5qg-HU-feb.title" = "الفئات";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "71I-Ef-Otv"; */
+"71I-Ef-Otv.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Email is not valid"; ObjectID = "8dK-Du-F7C"; */
+"8dK-Du-F7C.text" = "Email is not valid";
+
+/* Class = "UITextField"; placeholder = "First name"; ObjectID = "BkM-BD-dL1"; */
+"BkM-BD-dL1.placeholder" = "First name";
+
+/* Class = "UIButton"; normalTitle = "Try again"; ObjectID = "FPk-3d-nCS"; */
+"FPk-3d-nCS.normalTitle" = "Try again";
+
+/* Class = "UIButton"; normalTitle = "Reset"; ObjectID = "IKD-dC-tCG"; */
+"IKD-dC-tCG.normalTitle" = "Reset";
+
+/* Class = "UILabel"; text = "password doesn't match"; ObjectID = "ILG-GZ-sQd"; */
+"ILG-GZ-sQd.text" = "password doesn't match";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "J3t-68-hBr"; */
+"J3t-68-hBr.normalTitle" = "Save";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "JOt-ht-q1q"; */
+"JOt-ht-q1q.normalTitle" = "Submit";
+
+/* Class = "UITextField"; placeholder = "City"; ObjectID = "Jhb-ST-4EM"; */
+"Jhb-ST-4EM.placeholder" = "City";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "KsQ-hv-CxE"; */
+"KsQ-hv-CxE.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "ADD TO CARD"; ObjectID = "NAX-bf-kll"; */
+"NAX-bf-kll.normalTitle" = "ADD TO CARD";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "NSL-sr-X4e"; */
+"NSL-sr-X4e.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Wishlist"; ObjectID = "NlE-Lr-67d"; */
+"NlE-Lr-67d.text" = "Wishlist";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "Oki-pT-uuE"; */
+"Oki-pT-uuE.placeholder" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Filter"; ObjectID = "QUg-Zv-3mD"; */
+"QUg-Zv-3mD.normalTitle" = "Filter";
+
+/* Class = "UILabel"; text = "OOPS!"; ObjectID = "REX-dq-AK9"; */
+"REX-dq-AK9.text" = "OOPS!";
+
+/* Class = "UINavigationItem"; title = "Addresses"; ObjectID = "RYn-NU-fDN"; */
+"RYn-NU-fDN.title" = "Addresses";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "SeT-W0-llJ"; */
+"SeT-W0-llJ.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Email is not valid"; ObjectID = "TPJ-UP-Krv"; */
+"TPJ-UP-Krv.text" = "Email is not valid";
+
+/* Class = "UITabBarItem"; title = "Category"; ObjectID = "VeF-P8-bY1"; */
+"VeF-P8-bY1.title" = "Category";
+
+/* Class = "UILabel"; text = "0000"; ObjectID = "W4L-VT-Qsd"; */
+"W4L-VT-Qsd.text" = "0000";
+
+/* Class = "UITextField"; placeholder = "Confirmation"; ObjectID = "WCY-yA-peb"; */
+"WCY-yA-peb.placeholder" = "Confirmation";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "YOM-1J-9Vk"; */
+"YOM-1J-9Vk.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "YSp-Nz-10G"; */
+"YSp-Nz-10G.placeholder" = "Password";
+
+/* Class = "UIViewController"; title = "Network issue"; ObjectID = "ZQB-My-7yU"; */
+"ZQB-My-7yU.title" = "Network issue";
+
+/* Class = "UITextField"; placeholder = "Phone"; ObjectID = "cFu-FE-EJ9"; */
+"cFu-FE-EJ9.placeholder" = "Phone";
+
+/* Class = "UITextField"; placeholder = "Country"; ObjectID = "dTk-ob-f8n"; */
+"dTk-ob-f8n.placeholder" = "Country";
+
+/* Class = "UILabel"; text = "Description:"; ObjectID = "esA-Fr-bAp"; */
+"esA-Fr-bAp.text" = "Description:";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "ffj-Bx-fuL"; */
+"ffj-Bx-fuL.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "gUj-Ob-0pR"; */
+"gUj-Ob-0pR.placeholder" = "Password";
+
+/* Class = "UISegmentedControl"; iuU-Hd-Vls.segmentTitles[0] = "Register"; ObjectID = "iuU-Hd-Vls"; */
+"iuU-Hd-Vls.segmentTitles[0]" = "Register";
+
+/* Class = "UISegmentedControl"; iuU-Hd-Vls.segmentTitles[1] = "Login"; ObjectID = "iuU-Hd-Vls"; */
+"iuU-Hd-Vls.segmentTitles[1]" = "Login";
+
+/* Class = "UILabel"; text = "Sizes:"; ObjectID = "oLx-RJ-T8e"; */
+"oLx-RJ-T8e.text" = "Sizes:";
+
+/* Class = "UITextField"; placeholder = "Last name"; ObjectID = "oVc-6Y-zot"; */
+"oVc-6Y-zot.placeholder" = "Last name";
+
+/* Class = "UIButton"; normalTitle = "Sort"; ObjectID = "oWI-vd-mfi"; */
+"oWI-vd-mfi.normalTitle" = "Sort";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "pC6-Re-cN0"; */
+"pC6-Re-cN0.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "No Internet Connection"; ObjectID = "sIJ-al-sHm"; */
+"sIJ-al-sHm.text" = "No Internet Connection";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "svw-dM-pW3"; */
+"svw-dM-pW3.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "yNh-7S-fON"; */
+"yNh-7S-fON.text" = "Label";
+
+/* Class = "UILabel"; text = "Shopy"; ObjectID = "yaI-41-4Lu"; */
+"yaI-41-4Lu.text" = "محلي";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "yc5-Sb-4kN"; */
+"yc5-Sb-4kN.title" = "Item";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "zd6-fC-ru2"; */
+"zd6-fC-ru2.title" = "Item";

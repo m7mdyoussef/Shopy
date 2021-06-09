@@ -8,10 +8,15 @@
 
 import UIKit
 import CoreData
-
+import MOLH
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
+    func reset() {
+        let rootViewController: UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "RootTabController")
+    }
 
 
 
@@ -86,6 +91,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    @available(iOS 13.0, *)
+            func swichRoot(){
+                //Flip Animation before changing rootView
+                animateView()
+
+                // switch root view controllers
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let nav = storyboard.instantiateViewController(withIdentifier: "RootTabController")
+                
+                let scene = UIApplication.shared.connectedScenes.first
+                if let sd : SceneDelegate = (scene?.delegate as? SceneDelegate) {
+                    sd.window!.rootViewController = nav
+                }
+                
+            }
+           @available(iOS 13.0, *)
+            func animateView() {
+                var transition = UIView.AnimationOptions.transitionFlipFromRight
+                if !MOLHLanguage.isRTLLanguage() {
+                    transition = .transitionFlipFromLeft
+                }
+               animateView(transition: transition)
+            }
+            
+            @available(iOS 13.0, *)
+            func animateView(transition: UIView.AnimationOptions) {
+                if let delegate = UIApplication.shared.connectedScenes.first?.delegate {
+                    UIView.transition(with: (((delegate as? SceneDelegate)!.window)!), duration: 0.5, options: transition, animations: {}) { (f) in
+                    }
+                }
+            }
 
 }
 
