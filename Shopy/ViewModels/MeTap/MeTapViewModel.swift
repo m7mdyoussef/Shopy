@@ -18,6 +18,7 @@ protocol MeModelType{
     
     var favProductsObservable: Driver<[FavouriteProduct]>?{get}
     var ordersObservable: Driver<[Order]>?{get}
+    var orderProductsObservable : Driver<[Product]>?{get}
     var loadingObservable: Driver<Bool>{get}
 }
 
@@ -25,19 +26,23 @@ class MeTapViewModel:MeModelType {
 
     var favProductsObservable: Driver<[FavouriteProduct]>?
     var ordersObservable: Driver<[Order]>?
+    var orderProductsObservable: Driver<[Product]>?
     var loadingObservable: Driver<Bool>
     
     private var favProductsSubject = PublishSubject<[FavouriteProduct]>()
     private var ordersSubject = PublishSubject<[Order]>()
+    private var orderProductSubject = PublishSubject<[Product]>()
     private var loadingSubject = PublishSubject<Bool>()
     
     var remote:RemoteDataSource!
-
+    var dispatchGroup : DispatchGroup!
     init() {
         favProductsObservable = favProductsSubject.asDriver(onErrorJustReturn: [])
         ordersObservable = ordersSubject.asDriver(onErrorJustReturn: [])
+        orderProductsObservable = orderProductSubject.asDriver(onErrorJustReturn: [])
         loadingObservable = loadingSubject.asDriver(onErrorJustReturn: true)
         remote = RemoteDataSource()
+        dispatchGroup = DispatchGroup()
     }
     
     func fetchFavProducts() {
@@ -78,6 +83,35 @@ class MeTapViewModel:MeModelType {
     
     func getUserName() -> String {
         return MyUserDefaults.getValue(forKey: .username) as! String
+    }
+    
+    func fetchOrderProducts(orderLineItems: [LineItems]) {
+        
+        var products = [Product]()
+        
+        for item in orderLineItems{
+            guard let id = item.productID else {return}
+            dispatchGroup.enter()
+            remote.getProductElement(productId: String(id)) { [unowned self] (result) in
+                
+                dispatchGroup.leave()
+                switch result{
+                    case .success(let product):
+                        guard let product = product else {return}
+                        products.append(product)
+                        print(products)
+                    case .failure(let error):
+                        print(error)
+                    
+                }
+            }
+            
+        }
+        
+        dispatchGroup.notify(queue:.main) { [unowned self] in
+            orderProductSubject.asObserver().onNext(products)
+//            print(products.count)
+        }
     }
     
 }

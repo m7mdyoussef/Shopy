@@ -19,8 +19,7 @@ class MeVC: UIViewController {
     @IBOutlet weak var uiEmptyWishListImage: UIImageView!
     @IBOutlet weak var uiEmptyOrdersListImage: UIImageView!
     @IBOutlet weak var uiStack: UIStackView!
-    @IBOutlet weak var uiScrollViewHeigh: NSLayoutConstraint!
-    @IBOutlet weak var uiScrollView: UIScrollView!
+    @IBOutlet weak var uiOrderCollectionHeight: NSLayoutConstraint!
     
     var viewModel:MeTapViewModel!
     
@@ -117,14 +116,18 @@ class MeVC: UIViewController {
 ////            print(value.element.ite)
 //        }.disposed(by: bag)
 //
-        uiOrdersCollection.rx.modelSelected(Order.self).subscribe{
-            value in
-            
+        uiOrdersCollection.rx.modelSelected(Order.self).subscribe{ [unowned self] value in
+            let vc = storyboard?.instantiateViewController(identifier: "OrderDetailsVC") as! OrderDetailsVC
+            vc.order = value.element
+            present(vc, animated: true, completion: nil)
         }.disposed(by: bag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
+        
+        uiOrdersCollection.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+        
         if viewModel.isUserLoggedIn() {
             showGreatingMessage()
             
@@ -143,6 +146,19 @@ class MeVC: UIViewController {
         }else{
             let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        uiOrdersCollection.removeObserver(self, forKeyPath: "contentSize")
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "contentSize"{
+            if let newValue = change?[.newKey] {
+                let newSize = newValue as! CGSize
+                self.uiOrderCollectionHeight.constant = newSize.height
+            }
         }
     }
     
@@ -171,9 +187,6 @@ class MeVC: UIViewController {
         if count > 0 {
             uiEmptyOrdersListImage.isHidden = true
             uiOrdersCollection.isHidden = false
-//            uiScrollViewHeigh.constant = uiOrdersCollection.contentSize.height + uiOrdersCollection.contentSize.height
-            uiScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 700)
-            uiOrdersCollection.contentSize = CGSize(width: self.view.frame.size.width, height: uiOrdersCollection.contentSize.height)
 
         }else{
             uiEmptyOrdersListImage.isHidden = false
@@ -192,13 +205,26 @@ extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let inset = CGFloat(10)
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: inset)
+        
+        switch collectionView {
+        case uiWishlistCollection:
+            let inset = CGFloat(10)
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: inset)
+        case uiOrdersCollection:
+            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        default:
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //        return CGSize(width: CGFloat(view.layer.frame.width / 2), height: CGFloat(view.layer.frame.height * 1/4  ))
-        return CGSize(width: CGFloat(200), height: CGFloat(view.layer.frame.height * 1/3.5  ))
+        
+        if collectionView == uiWishlistCollection{
+            return CGSize(width: CGFloat(200), height: CGFloat(view.layer.frame.height * 1/3.5  ))
+        }else {
+            return CGSize(width: CGFloat(150), height: CGFloat(200))
+        }
     }
     
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class OrderCell: UICollectionViewCell {
 
+    @IBOutlet weak var uiContainerView: UIView!
+    @IBOutlet weak var uiContentView: UIView!
     @IBOutlet private weak var uiBagImage: UIImageView!
     @IBOutlet private weak var uiOrderIdLabel: UILabel!
     @IBOutlet private weak var uiCountLabel: UILabel!
@@ -19,13 +21,25 @@ class OrderCell: UICollectionViewCell {
         
         didSet{
             guard let orderData = orderData else {return}
-            uiOrderIdLabel.text = String(orderData.orderNumber)
+            uiOrderIdLabel.text = "ID : \(String(orderData.orderNumber))"
             uiCountLabel.text = "\(orderData.lineItems.count) item/s"
             uiTotalLabel.text = "Total : \(orderData.totalPrice)"
+            
+//            self.uiContentView.layer.cornerRadius = 12.69
+//            self.uiContentView.layer.masksToBounds = true
+//            
+//            let bezierPath = UIBezierPath.init(roundedRect: self.uiContainerView.bounds, cornerRadius: 12.69)
+//            self.uiContainerView.layer.shadowPath = bezierPath.cgPath
+//            self.uiContainerView.layer.masksToBounds = false
+//            self.uiContainerView.layer.shadowColor = UIColor.black.cgColor
+//            self.uiContainerView.layer.shadowRadius = 3.0
+//            self.uiContainerView.layer.shadowOffset = CGSize.init(width: 0, height: 3)
+//            self.uiContainerView.layer.shadowOpacity = 0.3
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+
     }
 
 }

@@ -1296,10 +1296,10 @@
             </objects>
             <point key="canvasLocation" x="1155" y="-1223"/>
         </scene>
-        <!--View Controller-->
+        <!--Order DetailsVC-->
         <scene sceneID="DKe-gZ-EN2">
             <objects>
-                <viewController id="Ua2-xa-5Xt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderDetailsVC" id="Ua2-xa-5Xt" customClass="OrderDetailsVC" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nZ9-qH-ol4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1379,10 +1379,10 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="I1G-ms-mFN" userLabel="empty2">
                                                 <rect key="frame" x="10" y="494.5" width="394" height="290"/>
                                             </imageView>
-                                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Fa-4k-rLy" userLabel="orders">
+                                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Fa-4k-rLy" userLabel="orders">
                                                 <rect key="frame" x="10" y="784.5" width="394" height="621"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JYc-ia-loy">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JYc-ia-loy">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1395,7 +1395,6 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="673" id="3QI-8m-OjL"/>
                                     <constraint firstItem="4JW-3x-lBj" firstAttribute="height" secondItem="c0G-Vf-0xe" secondAttribute="height" multiplier="5:6" id="6ix-yJ-XmQ"/>
                                     <constraint firstItem="2Fa-4k-rLy" firstAttribute="height" secondItem="c0G-Vf-0xe" secondAttribute="height" multiplier="9:10.5" id="7cZ-lk-xoJ"/>
                                     <constraint firstItem="NlE-Lr-67d" firstAttribute="height" secondItem="c0G-Vf-0xe" secondAttribute="height" multiplier="1:12" id="B7T-3v-kw5"/>
@@ -1433,9 +1432,8 @@
                     <connections>
                         <outlet property="uiEmptyOrdersListImage" destination="I1G-ms-mFN" id="IoZ-vz-73B"/>
                         <outlet property="uiEmptyWishListImage" destination="Y1g-wz-FBf" id="wit-Ee-Sbb"/>
+                        <outlet property="uiOrderCollectionHeight" destination="7cZ-lk-xoJ" id="40O-SE-WPA"/>
                         <outlet property="uiOrdersCollection" destination="2Fa-4k-rLy" id="1bv-xU-Ofz"/>
-                        <outlet property="uiScrollView" destination="c0G-Vf-0xe" id="55Q-KD-46m"/>
-                        <outlet property="uiScrollViewHeigh" destination="3QI-8m-OjL" id="rze-DS-R20"/>
                         <outlet property="uiStack" destination="Qjf-zm-6hH" id="8bt-FM-3n6"/>
                         <outlet property="uiWishlistCollection" destination="oVi-At-Qa9" id="GPH-Zw-osm"/>
                     </connections>

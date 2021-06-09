@@ -51,7 +51,7 @@ class ApiServices<T : ApiRequestWrapper>{
                     return
                 }
                 // print("responseObj---->\(responseObj)")
-                completion(Result.success(responseObj))
+                    completion(Result.success(responseObj))
             } else {
                 // ADD custom error base on status code 404 / 401 /
                 // Error Parsing for the error message from the BE
