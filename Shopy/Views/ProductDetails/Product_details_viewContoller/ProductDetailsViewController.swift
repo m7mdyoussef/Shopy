@@ -29,6 +29,7 @@ class ProductDetailsViewController: UIViewController {
     var idProduct = ""
     var arrOption = BehaviorRelay(value: [""])
     let manager = FavouritesPersistenceManager.shared
+    let bagManager = BagPersistenceManager.shared
     var productElement : ProductClass?
     var isFavo: Bool?
     var imagesArr = [String]()
@@ -67,8 +68,10 @@ class ProductDetailsViewController: UIViewController {
         checkFav()
     }
     @IBAction func addToCard(_ sender: Any) {
-        let vc = FavouriteProductsVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = FavouriteProductsVC()
+//        self.navigationController?.pushViewController(vc, animated: true)
+        bagManager.addToBagProducts(bagProduct: productElement!)
+        onSuccessHud()
     }
     
     func setupScreens(){
