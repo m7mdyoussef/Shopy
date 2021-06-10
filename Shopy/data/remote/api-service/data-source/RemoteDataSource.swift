@@ -14,7 +14,8 @@ protocol RemoteDataSourceProtocol {
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void)
     func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void)
     func getAllUsers(onSuccess: @escaping (AllCustomers?)->Void , onError: @escaping (Error)->Void)
-    func fetchOrders(financialStatus:FinancialStatus , completion: @escaping (Result<Orders?,NSError>) -> Void )
+    func fetchOrders( completion: @escaping (Result<Orders?,NSError>) -> Void )
+    func postOrder(order:PostOrderRequest , onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) 
     //end amin
     
     
@@ -30,8 +31,6 @@ protocol RemoteDataSourceProtocol {
 }
 
 class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceProtocol {
-    
-    
     
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void) {
         
@@ -67,11 +66,23 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
         }
     }
     
-    func fetchOrders(financialStatus: FinancialStatus, completion: @escaping (Result<Orders?, NSError>) -> Void) {
-        self.fetchData(target: .getOrders(financialState: financialStatus), responseClass: Orders.self) { (result) in
+    func fetchOrders( completion: @escaping (Result<Orders?, NSError>) -> Void) {
+        self.fetchData(target: .getOrders, responseClass: Orders.self) { (result) in
             completion(result)
         }
     }
+    
+    
+    func postOrder(order:PostOrderRequest , onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) {
+        self.postACustomer(target: .postOrder(order: order), onSuccess: { (data) in
+//        print(String(decoding: data, as: UTF8.self))
+            onCompletion(data)
+        }) { (error) in
+            onFailure(error)
+        }
+    }
+    
+    
     // end amin
     func getProductElement(productId: String, completion: @escaping (Result<Product?, NSError>) -> Void) {
         self.fetchData(target: .getProductElement(productId: productId), responseClass: Product.self){ (result) in

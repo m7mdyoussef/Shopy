@@ -16,7 +16,8 @@ enum RemoteDataSourceWrapper{
     // amin
     case register(myCustomer: Customer)
     case allUsers
-    case getOrders(financialState: FinancialStatus)
+    case getOrders
+    case postOrder(order:PostOrderRequest)
     // end amin
     
     case getProductElement(productId:String)
@@ -56,6 +57,17 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
                 print(error.localizedDescription)
             }
             return nil
+            
+        case .postOrder(order: let order):
+            var jsonData:Data = Data()
+            do {
+                jsonData = try JSONSerialization.data(withJSONObject: order.asDictionary(), options: .prettyPrinted)
+//                let str = String(decoding: jsonData, as: UTF8.self)
+                return jsonData
+            } catch let error {
+                print("post order error\(error.localizedDescription)")
+            }
+            return nil
         default:
             return nil
         }
@@ -77,8 +89,11 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             return "/admin/api/2021-04/customers.json"
         case .allUsers:
             return "/admin/api/2021-04/customers.json"
-        case .getOrders(financialState: let state):
-            return "/admin/api/2021-04/orders.json?financial_status=\(state.rawValue)"
+        case .getOrders:
+            return "/admin/api/2021-04/orders.json?status=any"
+            
+        case .postOrder:
+            return "/admin/api/2021-04/orders.json"
             
         // MARK: joe
         case .getMenCategoryProducts:
@@ -103,40 +118,41 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
         
     }
     var task: Task {
-        
-        switch self {
-        case .getAllCustomCollections:
-            return .requestPlain
-        case .getAllproducts:
-            return .requestPlain
-        case .register:
-            return .requestPlain
-        case .allUsers:
-            return .requestPlain
-        case .getOrders:
-            return .requestPlain
             
-            
-        // MARK: joe
-        case .getMenCategoryProducts:
-            return .requestPlain
-        case .getWomenCategoryProducts:
-            return .requestPlain
-        case .getKidsCategoryProducts:
-            return .requestPlain
-        case .getDetailedProducts:
-            return .requestPlain
-            
-        //end
-        
-        case .getProductElement(productId: let productId):
-            return .requestPlain
-        case .getPriceRule:
-            return .requestPlain
-        case .getDiscountCode(priceRule: let price_rule):
-            return .requestPlain
-            
-        }
+        return .requestPlain
+//        switch self {
+//        case .getAllCustomCollections:
+//            return .requestPlain
+//        case .getAllproducts:
+//            return .requestPlain
+//        case .register:
+//            return .requestPlain
+//        case .allUsers:
+//            return .requestPlain
+//        case .getOrders:
+//            return .requestPlain
+//
+//
+//        // MARK: joe
+//        case .getMenCategoryProducts:
+//            return .requestPlain
+//        case .getWomenCategoryProducts:
+//            return .requestPlain
+//        case .getKidsCategoryProducts:
+//            return .requestPlain
+//        case .getDetailedProducts:
+//            return .requestPlain
+//
+//        //end
+//
+//        case .getProductElement(productId: let productId):
+//            return .requestPlain
+//        case .getPriceRule:
+//            return .requestPlain
+//        case .getDiscountCode(priceRule: let price_rule):
+//            return .requestPlain
+//
+//        }
         
     }
     

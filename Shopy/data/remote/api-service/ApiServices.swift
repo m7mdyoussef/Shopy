@@ -73,7 +73,7 @@ class ApiServices<T : ApiRequestWrapper>{
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.httpBody = target.httpBody
-        
+//        print("body \(try! request.httpBody?.asDictionary())")
         session.dataTask(with: request) { (data, response, error) in
             if let err = error{
                 print(err)

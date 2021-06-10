@@ -1513,7 +1513,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="imV-Y6-OSu">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="406.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="442.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OrderID# " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceI-T1-ChN" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                 <rect key="frame" x="8" y="0.0" width="398" height="24.5"/>
@@ -1560,35 +1560,59 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Products " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNA-fB-Jx7">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ySq-YV-obN">
                                                 <rect key="frame" x="8" y="75.5" width="398" height="21"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="financial state :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T43-be-xYo">
+                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Verdana-Italic" family="Verdana" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="financial state :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNW-3U-CEb" userLabel="financial" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                                        <rect key="frame" x="199" y="0.0" width="199" height="21"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="Verdana-Italic" family="Verdana" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Products " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNA-fB-Jx7">
+                                                <rect key="frame" x="8" y="111.5" width="398" height="21"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Italic" family="Verdana" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0SI-3S-gT0">
-                                                <rect key="frame" x="8" y="111.5" width="398" height="200"/>
+                                                <rect key="frame" x="8" y="147.5" width="398" height="200"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="Dat-mC-3Cd"/>
                                                 </constraints>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2y8-nD-PKP" userLabel="horizontal Line">
-                                                <rect key="frame" x="8" y="326.5" width="398" height="1"/>
+                                                <rect key="frame" x="8" y="362.5" width="398" height="1"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="IMb-Sp-Q8g"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEZ-je-ot0" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="8" y="342.5" width="398" height="24.5"/>
+                                                <rect key="frame" x="8" y="378.5" width="398" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nd2-iN-Lho" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="8" y="382" width="398" height="24.5"/>
+                                                <rect key="frame" x="8" y="418" width="398" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1624,6 +1648,7 @@
                     <connections>
                         <outlet property="uiCreatedAt" destination="jzb-mm-4tO" id="WlR-Pg-VSZ"/>
                         <outlet property="uiDiscount" destination="vEZ-je-ot0" id="LKg-Qn-mNz"/>
+                        <outlet property="uiFinancialState" destination="fNW-3U-CEb" id="9fv-p3-iUc"/>
                         <outlet property="uiOrderId" destination="ceI-T1-ChN" id="oec-1f-dxF"/>
                         <outlet property="uiOrderProductsCount" destination="iNA-fB-Jx7" id="Qc3-up-S80"/>
                         <outlet property="uiProductsTableView" destination="0SI-3S-gT0" id="8Rp-Q4-WV3"/>
@@ -1818,6 +1843,9 @@
         </designable>
         <designable name="ceI-T1-ChN">
             <size key="intrinsicContentSize" width="116" height="24.5"/>
+        </designable>
+        <designable name="fNW-3U-CEb">
+            <size key="intrinsicContentSize" width="133.5" height="21"/>
         </designable>
         <designable name="jEw-yg-TeX">
             <size key="intrinsicContentSize" width="78.5" height="24.5"/>

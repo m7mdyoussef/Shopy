@@ -19,6 +19,7 @@ class OrderDetailsVC: UIViewController {
     @IBOutlet weak var uiTotalPrice: MarqueeLabel!
     @IBOutlet weak var uiDiscount: MarqueeLabel!
 
+    @IBOutlet weak var uiFinancialState: MarqueeLabel!
     
     var order : Order!
     var viewModel:MeTapViewModel!
@@ -40,6 +41,7 @@ class OrderDetailsVC: UIViewController {
         
         uiTotalPrice.text! += order.totalPrice
         uiDiscount.text! += order.totalDiscounts
+        uiFinancialState.text = order.financialStatus
 
     }
     

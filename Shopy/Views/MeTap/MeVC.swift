@@ -38,7 +38,7 @@ class MeVC: UIViewController {
     
     func setupViews()  {
         registerCollectionViewCells()
-        addingOrdersStatusSegments()
+//        addingOrdersStatusSegments()
         setupWishlistCollectionView()
         setupOrdersCollectionView()
         uiWishlistCollection.rx.setDelegate(self).disposed(by: bag)
@@ -85,8 +85,8 @@ class MeVC: UIViewController {
     }
     
     func fetchOrders() {
-        let financialState = segmentsArray[Int(segmentedControl.selectedSegmentIndex)].state
-        viewModel.fetchOrders(status: financialState)
+//        let financialState = sgmentsArray[Int(segmentedControl.selectedSegmentIndex)].state
+        viewModel.fetchOrders()
     }
     
     func setupWishlistCollectionView()  {

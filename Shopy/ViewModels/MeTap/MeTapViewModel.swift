@@ -14,7 +14,7 @@ protocol MeModelType{
     
     func fetchFavProducts()
     func getUserName() -> String
-    func fetchOrders(status: FinancialStatus)
+    func fetchOrders()
     func getFormattedDate(date:String) -> String?
     
     var favProductsObservable: Driver<[FavouriteProduct]>?{get}
@@ -54,15 +54,16 @@ class MeTapViewModel:MeModelType {
         self.favProductsSubject.asObserver().onNext(favourites)
     }
     
-    func fetchOrders(status: FinancialStatus)  {
+    func fetchOrders()  {
         
         loadingSubject.asObserver().onNext(true)
-        remote.fetchOrders(financialStatus: status) { [unowned self] (result) in
+        remote.fetchOrders() { [unowned self] (result) in
             switch result{
             case .success(let response):
                 guard let orders = response?.orders else {return}
                 print("success")
-                ordersSubject.asObserver().onNext(orders)
+                
+                ordersSubject.asObserver().onNext(getOrdersWithEmail(orders: orders))
                 loadingSubject.onNext(false)
 
             case .failure(let error):
@@ -72,6 +73,17 @@ class MeTapViewModel:MeModelType {
             }
             
         }
+    }
+    
+    private func getOrdersWithEmail(orders:[Order])-> [Order] {
+        let email = MyUserDefaults.getValue(forKey: .email) as! String
+        var array = [Order]()
+        for i in orders{
+            if email == i.email{
+                array.append(i)
+            }
+        }
+        return array
     }
     
     

@@ -92,10 +92,13 @@ class EntryViewModel {
  
         getAllUsers(onFinish:{ [unowned self] (allCustomers) in
             
-            for customer in allCustomers.customers{
-                if let mail = customer.email {
-                    if email == mail && password == customer.password{
-                        self.saveCredentialsInUserDefaults(email: email, username: customer.firstName!)
+            for i in allCustomers.customers{
+                print(i.email)
+
+                if let mail = i.email {
+                    
+                    if email == mail , password == i.password{
+                        self.saveCredentialsInUserDefaults(email: email, username: i.firstName!)
                         DispatchQueue.main.async {
                             onSuccess()
                         }
@@ -117,6 +120,7 @@ class EntryViewModel {
         }
         
     }
+    
     
     
     func saveCredentialsInUserDefaults(email:String,username:String) {
