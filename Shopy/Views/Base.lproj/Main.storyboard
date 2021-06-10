@@ -1277,11 +1277,11 @@
             </objects>
             <point key="canvasLocation" x="1255" y="-118"/>
         </scene>
-        <!--Item-->
+        <!--Me-->
         <scene sceneID="E89-CH-hy4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0EF-az-ylQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="person.crop.circle" catalog="system" selectedImage="person.crop.circle.fill" id="yc5-Sb-4kN"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="person.crop.circle" catalog="system" selectedImage="person.crop.circle.fill" id="yc5-Sb-4kN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="cGT-UU-pCi">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -1307,22 +1307,100 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMj-gG-pd5">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="imV-Y6-OSu">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="imV-Y6-OSu">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="406.5"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0SI-3S-gT0">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OrderID# " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceI-T1-ChN" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                                <rect key="frame" x="8" y="0.0" width="398" height="24.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Ywg-yP-gww">
+                                                <rect key="frame" x="8" y="39.5" width="398" height="21"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created At : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wz6-Kt-dpY" userLabel="CreatedAt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created At : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jzb-mm-4tO" userLabel="CreatedAtlbl" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                                        <rect key="frame" x="199" y="0.0" width="199" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Products " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNA-fB-Jx7">
+                                                <rect key="frame" x="8" y="75.5" width="398" height="21"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Italic" family="Verdana" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0SI-3S-gT0">
+                                                <rect key="frame" x="8" y="111.5" width="398" height="200"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="Dat-mC-3Cd"/>
                                                 </constraints>
                                             </tableView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2y8-nD-PKP" userLabel="horizontal Line">
+                                                <rect key="frame" x="8" y="326.5" width="398" height="1"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="IMb-Sp-Q8g"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEZ-je-ot0" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                                <rect key="frame" x="8" y="342.5" width="398" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nd2-iN-Lho" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                                <rect key="frame" x="8" y="382" width="398" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
                                         </subviews>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="imV-Y6-OSu" firstAttribute="leading" secondItem="VMj-gG-pd5" secondAttribute="leading" id="19E-8M-Aa1"/>
-                                    <constraint firstItem="imV-Y6-OSu" firstAttribute="top" secondItem="VMj-gG-pd5" secondAttribute="top" id="89r-E0-Quf"/>
+                                    <constraint firstItem="imV-Y6-OSu" firstAttribute="top" secondItem="VMj-gG-pd5" secondAttribute="top" constant="50" id="89r-E0-Quf"/>
                                     <constraint firstItem="imV-Y6-OSu" firstAttribute="width" secondItem="VMj-gG-pd5" secondAttribute="width" id="F2t-dG-5ji"/>
                                     <constraint firstAttribute="bottom" secondItem="imV-Y6-OSu" secondAttribute="bottom" id="FfS-CC-GdJ"/>
                                     <constraint firstAttribute="trailing" secondItem="imV-Y6-OSu" secondAttribute="trailing" id="USB-F9-aJN"/>
@@ -1330,7 +1408,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sr8-L7-U0A"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="VMj-gG-pd5" firstAttribute="top" secondItem="Sr8-L7-U0A" secondAttribute="top" id="1RQ-uK-tqf"/>
                             <constraint firstItem="Sr8-L7-U0A" firstAttribute="trailing" secondItem="VMj-gG-pd5" secondAttribute="trailing" id="Lbc-nS-xuW"/>
@@ -1339,11 +1417,55 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="uiCreatedAt" destination="jzb-mm-4tO" id="WlR-Pg-VSZ"/>
+                        <outlet property="uiDiscount" destination="vEZ-je-ot0" id="LKg-Qn-mNz"/>
+                        <outlet property="uiOrderId" destination="ceI-T1-ChN" id="oec-1f-dxF"/>
+                        <outlet property="uiOrderProductsCount" destination="iNA-fB-Jx7" id="Qc3-up-S80"/>
                         <outlet property="uiProductsTableView" destination="0SI-3S-gT0" id="8Rp-Q4-WV3"/>
                         <outlet property="uiProductsTableViewHeight" destination="Dat-mC-3Cd" id="rVE-hY-0zV"/>
+                        <outlet property="uiTotalPrice" destination="nd2-iN-Lho" id="7NA-4V-NP1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ykF-4P-uUh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SQ8-Up-0Xp" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="24.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jEw-yg-TeX" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="24.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G5i-ae-D24" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="24.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
             </objects>
             <point key="canvasLocation" x="-699" y="-701"/>
         </scene>
@@ -1479,6 +1601,29 @@
             <point key="canvasLocation" x="162" y="-1223"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="G5i-ae-D24">
+            <size key="intrinsicContentSize" width="78.5" height="24.5"/>
+        </designable>
+        <designable name="SQ8-Up-0Xp">
+            <size key="intrinsicContentSize" width="78.5" height="24.5"/>
+        </designable>
+        <designable name="ceI-T1-ChN">
+            <size key="intrinsicContentSize" width="116" height="24.5"/>
+        </designable>
+        <designable name="jEw-yg-TeX">
+            <size key="intrinsicContentSize" width="78.5" height="24.5"/>
+        </designable>
+        <designable name="jzb-mm-4tO">
+            <size key="intrinsicContentSize" width="111" height="21"/>
+        </designable>
+        <designable name="nd2-iN-Lho">
+            <size key="intrinsicContentSize" width="78.5" height="24.5"/>
+        </designable>
+        <designable name="vEZ-je-ot0">
+            <size key="intrinsicContentSize" width="120.5" height="24.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="circle.grid.2x2" catalog="system" width="128" height="112"/>
@@ -1516,6 +1661,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

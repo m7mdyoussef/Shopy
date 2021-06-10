@@ -25,6 +25,7 @@ struct Orders: Codable {
 // MARK: - currencyOrderClass
 struct Order: Codable {
     let id: Int
+    let createdAt: String
     let totalDiscounts, totalPrice, totalTax, totalPriceUsd: String
     let discountCodes: [OrderDiscountCode]?
     let email, financialStatus, name: String
@@ -35,6 +36,7 @@ struct Order: Codable {
 
     enum CodingKeys: String, CodingKey {
         case id
+        case createdAt = "created_at"
         case totalDiscounts = "total_discounts"
         case totalPrice = "total_price"
         case totalTax = "total_tax"

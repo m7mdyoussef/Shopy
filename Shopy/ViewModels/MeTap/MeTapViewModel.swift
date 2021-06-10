@@ -15,6 +15,7 @@ protocol MeModelType{
     func fetchFavProducts()
     func getUserName() -> String
     func fetchOrders(status: FinancialStatus)
+    func getFormattedDate(date:String) -> String?
     
     var favProductsObservable: Driver<[FavouriteProduct]>?{get}
     var ordersObservable: Driver<[Order]>?{get}
@@ -110,8 +111,18 @@ class MeTapViewModel:MeModelType {
         
         dispatchGroup.notify(queue:.main) { [unowned self] in
             orderProductSubject.asObserver().onNext(products)
-//            print(products.count)
         }
+    }
+    
+    func getFormattedDate(date: String) -> String? {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // api iso format
+        if let date = formatter.date(from: date) {
+            formatter.dateFormat = "EEEE, MMM d, yyyy"
+            return formatter.string(from: date)
+        }
+        return nil
     }
     
 }
