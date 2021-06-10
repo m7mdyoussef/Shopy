@@ -16,7 +16,9 @@ enum RemoteDataSourceWrapper{
     // amin
     case register(myCustomer: Customer)
     case allUsers
+
     case getOrders
+
     case postOrder(order:PostOrderRequest)
     // end amin
     
@@ -91,6 +93,9 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             return "/admin/api/2021-04/customers.json"
         case .getOrders:
             return "/admin/api/2021-04/orders.json?status=any"
+            
+        case .postOrder:
+            return "/admin/api/2021-04/orders.json"
             
         case .postOrder:
             return "/admin/api/2021-04/orders.json"

@@ -14,6 +14,7 @@ protocol RemoteDataSourceProtocol {
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void)
     func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void)
     func getAllUsers(onSuccess: @escaping (AllCustomers?)->Void , onError: @escaping (Error)->Void)
+
     func fetchOrders( completion: @escaping (Result<Orders?,NSError>) -> Void )
     func postOrder(order:PostOrderRequest , onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) 
     //end amin
