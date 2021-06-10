@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        initializePayPal()
+        initializeStripe()
         
         if let _ = MyUserDefaults.getValue(forKey: .loggedIn){
             
@@ -90,8 +90,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //MARK: - PayPal init
-    func initializePayPal() {
-        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction : "AcFLk06rh9mGnKYTllcUZzZQAJt4duY6zauXHzfgqQioxr4Mp-drroSgMQAm7peVZg1vvmrewVKo3Ln0", PayPalEnvironmentSandbox : "sb-hpokh6468512@business.example.com" ])
+    func  initializeStripe() {
+        STPPaymentConfiguration.shared.publishableKey = Constants.publishkeyStripe
+        StripeClient.sharedClient.baseURLString = Constants.baseUrlStripe
+        
     }
 
 }

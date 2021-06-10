@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Stripe
+import JGProgressHUD
 
 struct pay {
     var title = "shoes"
@@ -24,73 +26,83 @@ class PayPalViewController: UIViewController {
     var paymentVC: PayPalPaymentViewController?
     let allItems = [pay(title: "jdhk", price: 50, id: 1),pay(title: "jddhg", price: 150, id: 2)]
     var purchasedItemId = [Int]()
-    var environment: String = PayPalEnvironmentNoNetwork {
-        willSet (newEnvironment){
-            if (newEnvironment != environment ) {
-                PayPalMobile.preconnect(withEnvironment: newEnvironment)
-            }
-        }
-    }
-    
-    var payPalConfig = PayPalConfiguration()
-    
+
+    var totalPrice = 0
+    let hud = JGProgressHUD(style: .dark)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setUpPayPal()
     }
 
 
     @IBAction func checkOut(_ sender: Any) {
         
-        payBtnpressed()
+     // show action sheet
+        showPaymentOptins()
     }
     
-    private func payBtnpressed(){
+    private func finishPayment(token: STPToken){
         
         var itemsToBuy : [PayPalItem] = []
+        self.totalPrice = 0
         for item in allItems {
-            let tempitem = PayPalItem(name: item.title, withQuantity: 1, withPrice: NSDecimalNumber(value: Int(item.price) ?? 20), withCurrency: "USD", withSku: nil)
+            self.totalPrice += item.price
             purchasedItemId.append(item.id)
             
-            itemsToBuy.append(tempitem)
+        }
+        self.totalPrice = self.totalPrice * 100
+        
+        StripeClient.sharedClient.createAndConfirmPayment(token, amount: totalPrice) { (error) in
+            
+            if error == nil {
+                //self.emptyTheBasket()
+               // self.addItemsToPurchaseHistory(self.purchasedItemIds)
+                self.showNotification(text: "Payment Successful", isError: false)
+            } else {
+                self.showNotification(text: error!.localizedDescription, isError: true)
+                print("error gegdgjgdjjhgejgfjhghrgjdhegejgfjegdjhgejfgjdhgjf ", error!.localizedDescription)
+            }
         }
         
-        let subTotal = PayPalItem.totalPrice(forItems: itemsToBuy)
-        
-        //optional
-        let shippingCost = NSDecimalNumber(string: "50.0")
-        let tax = NSDecimalNumber(string: "5.0")
-
-        let paymentdetails = PayPalPaymentDetails(subtotal: subTotal, withShipping: shippingCost, withTax: tax)
-        let total = subTotal.adding(shippingCost).adding(tax)
-        
-        let payment = PayPalPayment(amount: total, currencyCode: "USD", shortDescription: "Payment to Shopy", intent: .sale)
-        payment.items = itemsToBuy
-        payment.paymentDetails = paymentdetails
-        
-        
-        if payment.processable {
-            paymentVC = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self)!
-            
-            present(paymentVC!, animated: true, completion: nil)
-            
-        }else{
-            print("payment not processible")
-        }
+ 
     }
     
-    func setUpPayPal(){
-        payPalConfig.acceptCreditCards = false
-        payPalConfig.merchantName = "iti"
-        payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
-        payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
-        payPalConfig.languageOrLocale = Locale.preferredLanguages[0]
-        payPalConfig.payPalShippingAddressOption = .both
+    private func showNotification(text: String, isError: Bool) {
         
+        if isError {
+            self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        } else {
+            self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        }
+        
+        self.hud.textLabel.text = text
+        self.hud.show(in: self.view)
+        self.hud.dismiss(afterDelay: 2.0)
     }
-
+    
+    
+    private func showPaymentOptins() {
+        
+        let alertController = UIAlertController(title: "Payment Options", message: "Choose prefered payment option", preferredStyle: .actionSheet)
+        
+        let cardAction = UIAlertAction(title: "Pay with Card", style: .default) { (action) in
+            
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CarInfoViewController
+            
+            vc.delegate = self
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertController.addAction(cardAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 
@@ -105,6 +117,20 @@ extension PayPalViewController: PayPalPaymentDelegate {
         
         
         paymentVC!.dismiss(animated: true)
+    }
+    
+    
+}
+
+extension PayPalViewController: CardInfoViewControllerDelegate {
+    func didClickDone(_ token: STPToken) {
+        print("we have a token ", token)
+        finishPayment(token: token)
+    }
+    
+    func didClickCancel() {
+        print("user canceled the payment")
+        showNotification(text: "you canceled the payment", isError: true)
     }
     
     

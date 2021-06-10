@@ -9,6 +9,14 @@
 import Foundation
 
 struct Constants {
+     // MARK: joe stripe
+static let publishkeyStripe = "pk_test_51J0nV4I81iqgxxzf9u3DSZvwTUzQmP0kxl1puCtET3Pox6nV2omshJJiCEF1llB06lI6n7slEFAXnMbgdgFrhenZ00NFPFPXSF"
+static let baseUrlStripe = "http://localhost:3000/"
+static let defaultCurrencyStripe = "usd"
+static let defaultDescriptionStripe = "purchase from market"
+    
+    // end
+    
     
     // MARK: joe
     static let genericError = "error in networkLayer"

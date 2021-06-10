@@ -140,13 +140,13 @@ class Register: UIViewController,IRounded {
                         viewModel.signUp(customer:newCustomer,
                                          onSuccess: { [unowned self] in
 //                                            hud.dismiss()
-                                            dismissLoadingHud(hud: hud)
+                                            self.dismissLoadingHud(hud: hud)
                                             self.onSuccessHud()
 
                                          },onFailure: { [unowned self] localizedDescription in
                                             print(localizedDescription)
 //                                            hud.dismiss()
-                                            dismissLoadingHud(hud: hud)
+                                            self.dismissLoadingHud(hud: hud)
                                             self.onFaildHud(text: localizedDescription)
                                          });
                         

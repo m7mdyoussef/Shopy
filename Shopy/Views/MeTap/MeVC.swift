@@ -47,9 +47,9 @@ class MeVC: UIViewController {
         viewModel.loadingObservable.asObservable().subscribe{ [unowned self] value in
             guard let value = value.element else {return}
             if value {
-                hud = loadingHud(text: "Loading", style: .dark)
+                self.hud = self.loadingHud(text: "Loading", style: .dark)
             }else{
-                dismissLoadingHud(hud: hud)
+                self.dismissLoadingHud(hud: self.hud)
             }
         }.disposed(by: bag)
     }
@@ -117,9 +117,9 @@ class MeVC: UIViewController {
 //        }.disposed(by: bag)
 //
         uiOrdersCollection.rx.modelSelected(Order.self).subscribe{ [unowned self] value in
-            let vc = storyboard?.instantiateViewController(identifier: "OrderDetailsVC") as! OrderDetailsVC
+            let vc = self.storyboard?.instantiateViewController(identifier: "OrderDetailsVC") as! OrderDetailsVC
             vc.order = value.element
-            present(vc, animated: true, completion: nil)
+            self.present(vc, animated: true, completion: nil)
         }.disposed(by: bag)
     }
     
@@ -139,13 +139,13 @@ class MeVC: UIViewController {
                 showGreatingMessage()
                 
                 viewModel.favProductsObservable?.drive(onNext: { [unowned self] (favProducts) in
-                    resetWishListViews(count:favProducts.count)
-                    uiWishlistCollection.reloadData()
+                    self.resetWishListViews(count:favProducts.count)
+                    self.uiWishlistCollection.reloadData()
                 }).disposed(by: bag)
                 
                 viewModel.ordersObservable?.drive(onNext: { [unowned self] (orders) in
-                    uiOrdersCollection.reloadData()
-                    resetOrdersListViews(count: orders.count)
+                    self.uiOrdersCollection.reloadData()
+                    self.resetOrdersListViews(count: orders.count)
                 }).disposed(by: bag)
                 
                 viewModel.fetchFavProducts()
