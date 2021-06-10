@@ -17,7 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-                
+        
+        initializePayPal()
+        
         if let _ = MyUserDefaults.getValue(forKey: .loggedIn){
             
         }else{
@@ -85,6 +87,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    //MARK: - PayPal init
+    func initializePayPal() {
+        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction : "AcFLk06rh9mGnKYTllcUZzZQAJt4duY6zauXHzfgqQioxr4Mp-drroSgMQAm7peVZg1vvmrewVKo3Ln0", PayPalEnvironmentSandbox : "sb-hpokh6468512@business.example.com" ])
     }
 
 }

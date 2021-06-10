@@ -16,7 +16,6 @@ class CollectionViewController: UIViewController {
     var disposeBag = DisposeBag()
     var collectionViewModel:HomeViewModel?
     @IBOutlet weak var productsCollectionView: UICollectionView!
-    @IBOutlet weak var productsView: UIView!
     @IBOutlet weak var adsView: UIView!
     var arrId = [Int]()
     var imagesArr = ["home", "kids", "men", "sale", "women"]
@@ -39,7 +38,7 @@ class CollectionViewController: UIViewController {
     
     func startPoint(){
         categoryViewModel = CategoryViewModel()
-        adsView.roundCorners(corners: .allCorners, radius: 35)
+        //adsView.roundCorners(corners: .allCorners, radius: 35)
         showIndicator = ShowIndecator(view: view.self)
         registerMenuCell()
         registerProductCell()
@@ -48,15 +47,14 @@ class CollectionViewController: UIViewController {
         controlViews(flag: true)
         collectionViewModel = HomeViewModel()
         collectionViewModel?.getCollectionData()
-      //
+        productsCollectionView.layer.cornerRadius = 25
+        adsView.layer.cornerRadius = 25
         setUpMenuColllection()
         setupProductCollection()
-        productsView.roundCorners(corners: [.topLeft, .topRight], radius: 45)
         collectionViewModel?.getPriceRules()
         collectionViewModel?.getDiscountCode(priceRule: "951238656198")
         adsButton.setBackgroundImage(UIImage.gif(name: "offer0"), for: .normal)
         getAllDiscountCodes()
-        
         
         collectionViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
             let hud = JGProgressHUD()
@@ -72,12 +70,10 @@ class CollectionViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     override func viewWillAppear(_ animated: Bool) {
+        arrproductId.removeAll()
         adsImage.loadGif(name: imagesArr[0])
-        
         if AppCommon.shared.checkConnectivity() == false{
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
-            NoInternetViewController.fromWhere = "home"
-            NoInternetViewController.vcIdentifier = "CollectionViewController"
             NoInternetViewController.modalPresentationStyle = .fullScreen
             self.present(NoInternetViewController, animated: true, completion: nil)
         
@@ -89,6 +85,11 @@ class CollectionViewController: UIViewController {
             getAllDiscountCodes()
         }
         
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+       // productsCollectionView.reloadData()
+        view.setNeedsLayout()
     }
     
     @IBAction func searchOfProducts(_ sender: Any) {
@@ -105,6 +106,10 @@ class CollectionViewController: UIViewController {
     }
     @IBAction func showDiscountCode(_ sender: Any) {
         adsImage.loadGif(name: "black")
+        adsImage.contentMode = .scaleAspectFill
+        adsView.layer.cornerRadius = 25
+        adsView.clipsToBounds = true
+        adsImage.layer.masksToBounds = true
         controlViews(flag: false)
     }
     
@@ -130,6 +135,8 @@ class CollectionViewController: UIViewController {
         }.disposed(by: disposeBag)
         
         menuCollectionView.rx.itemSelected.subscribe{[weak self]value in
+            self?.adsImage.contentMode = .scaleAspectFit
+
             guard let self = self else {return}
             print(self.arrId[value.element?.item ?? 0])
             self.controlViews(flag: true)
@@ -146,7 +153,6 @@ class CollectionViewController: UIViewController {
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
             self.arrproductId.append(String(item.id))
-           // self.showIndicator?.stopAnimating()
         }.disposed(by: disposeBag)
         
         productsCollectionView.rx.itemSelected.subscribe{value in

@@ -21,13 +21,6 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
     
     func registerProductCell(){
         var productCell = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
@@ -43,11 +36,13 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
         if (flag == true){
             adsButton.isHidden = false
             discountCode.isHidden = true
-           // adsImage.isHidden = true
         }else{
             adsButton.isHidden = true
             discountCode.isHidden = false
-            //adsImage.isHidden = false
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 16, bottom: 0, right: 16)
     }
 }

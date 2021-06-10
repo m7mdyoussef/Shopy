@@ -94,7 +94,7 @@ class MeVC: UIViewController {
             row,item,cell in
             (cell as? FavouriteproductCVC)?.favProduct = item
             (cell as? FavouriteproductCVC)?.deleteFromFavourites = { [unowned self] in
-                deletFromFavourites(productID: Int(item.id ))
+                self.deletFromFavourites(productID: Int(item.id ))
             }
             
         }.disposed(by: bag)
@@ -125,27 +125,35 @@ class MeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
-        
         uiOrdersCollection.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
-        if viewModel.isUserLoggedIn() {
-            showGreatingMessage()
-            
-            viewModel.favProductsObservable?.drive(onNext: { [unowned self] (favProducts) in
-                resetWishListViews(count:favProducts.count)
-                uiWishlistCollection.reloadData()
-            }).disposed(by: bag)
-            
-            viewModel.ordersObservable?.drive(onNext: { [unowned self] (orders) in
-                uiOrdersCollection.reloadData()
-                resetOrdersListViews(count: orders.count)
-            }).disposed(by: bag)
-            
-            viewModel.fetchFavProducts()
-            fetchOrders()
+        
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+
         }else{
-            let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-            navigationController?.pushViewController(vc, animated: true)
+            
+            if viewModel.isUserLoggedIn() {
+                showGreatingMessage()
+                
+                viewModel.favProductsObservable?.drive(onNext: { [unowned self] (favProducts) in
+                    resetWishListViews(count:favProducts.count)
+                    uiWishlistCollection.reloadData()
+                }).disposed(by: bag)
+                
+                viewModel.ordersObservable?.drive(onNext: { [unowned self] (orders) in
+                    uiOrdersCollection.reloadData()
+                    resetOrdersListViews(count: orders.count)
+                }).disposed(by: bag)
+                
+                viewModel.fetchFavProducts()
+                fetchOrders()
+            }else{
+                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
@@ -194,7 +202,7 @@ class MeVC: UIViewController {
         }
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        uiWishlistCollection.reloadData()
+      //  uiWishlistCollection.reloadData()
     }
 }
 

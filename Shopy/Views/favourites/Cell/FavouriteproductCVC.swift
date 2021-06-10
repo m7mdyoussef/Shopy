@@ -21,7 +21,7 @@ class FavouriteproductCVC: UICollectionViewCell {
     var favProduct : FavouriteProduct? {
         didSet{
             guard let price = favProduct?.price else {return}
-            self.productPrice.text = "\(price)$"
+            self.productPrice.text = "\(price)LE"
             self.productTitle.text = favProduct?.title
             self.productImage.doenloadImage(url: favProduct?.image ?? "")
         }

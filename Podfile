@@ -18,6 +18,9 @@ target 'Shopy' do
   pod 'DropDown'
   pod 'JGProgressHUD'
   pod 'HMSegmentedControl'
+  pod "ImageSlideshow"
+  pod "ImageSlideshow/SDWebImage"
+  pod 'PayPal-iOS-SDK'
 
   #  pod 'Gallery'
   #  pod 'InstantSearchClient'

@@ -95,7 +95,7 @@ class EntryViewModel {
             for customer in allCustomers.customers{
                 if let mail = customer.email {
                     if email == mail && password == customer.password{
-                        saveCredentialsInUserDefaults(email: email, username: customer.firstName!)
+                        self.saveCredentialsInUserDefaults(email: email, username: customer.firstName!)
                         DispatchQueue.main.async {
                             onSuccess()
                         }

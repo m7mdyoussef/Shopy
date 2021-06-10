@@ -48,6 +48,8 @@
 		9E6172E82667CA3200E93743 /* SearchCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6172E72667CA3200E93743 /* SearchCategoryViewController.swift */; };
 		9E6172EB2667CBB900E93743 /* CategorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6172EA2667CBB900E93743 /* CategorySearchViewModel.swift */; };
 		9E686591266653D3007B0388 /* DetailedProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E686590266653D3007B0388 /* DetailedProductsModel.swift */; };
+		9E70BABF267178EF0099FB70 /* PayPalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70BABD267178EF0099FB70 /* PayPalViewController.swift */; };
+		9E70BAC0267178EF0099FB70 /* PayPalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E70BABE267178EF0099FB70 /* PayPalViewController.xib */; };
 		9E756A0C266431CB000B5D98 /* MainProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E756A0A266431CB000B5D98 /* MainProductsCollectionViewCell.swift */; };
 		9E756A0D266431CB000B5D98 /* MainProductsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E756A0B266431CB000B5D98 /* MainProductsCollectionViewCell.xib */; };
 		9E756A10266431EB000B5D98 /* SubCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E756A0E266431EB000B5D98 /* SubCategoriesCollectionViewCell.swift */; };
@@ -171,6 +173,9 @@
 		9E6172E72667CA3200E93743 /* SearchCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryViewController.swift; sourceTree = "<group>"; };
 		9E6172EA2667CBB900E93743 /* CategorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySearchViewModel.swift; sourceTree = "<group>"; };
 		9E686590266653D3007B0388 /* DetailedProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProductsModel.swift; sourceTree = "<group>"; };
+		9E70BABB267175ED0099FB70 /* Shopy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shopy-Bridging-Header.h"; sourceTree = "<group>"; };
+		9E70BABD267178EF0099FB70 /* PayPalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPalViewController.swift; sourceTree = "<group>"; };
+		9E70BABE267178EF0099FB70 /* PayPalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayPalViewController.xib; sourceTree = "<group>"; };
 		9E756A0A266431CB000B5D98 /* MainProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		9E756A0B266431CB000B5D98 /* MainProductsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainProductsCollectionViewCell.xib; sourceTree = "<group>"; };
 		9E756A0E266431EB000B5D98 /* SubCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -384,6 +389,7 @@
 		9E182D8326503E8100069E6E /* Shopy */ = {
 			isa = PBXGroup;
 			children = (
+				9E70BABA267175910099FB70 /* payPalBridgeFiles */,
 				9E5780A3266C365F005EF36E /* core data */,
 				9E5780A2266C35BC005EF36E /* resourses */,
 				9E5780A1266C3580005EF36E /* configuration */,
@@ -470,6 +476,16 @@
 				9E6172EA2667CBB900E93743 /* CategorySearchViewModel.swift */,
 			);
 			path = categorySearchViewModel;
+			sourceTree = "<group>";
+		};
+		9E70BABA267175910099FB70 /* payPalBridgeFiles */ = {
+			isa = PBXGroup;
+			children = (
+				9E70BABB267175ED0099FB70 /* Shopy-Bridging-Header.h */,
+				9E70BABD267178EF0099FB70 /* PayPalViewController.swift */,
+				9E70BABE267178EF0099FB70 /* PayPalViewController.xib */,
+			);
+			path = payPalBridgeFiles;
 			sourceTree = "<group>";
 		};
 		9E756A0526642D14000B5D98 /* Views */ = {
@@ -855,6 +871,7 @@
 				TargetAttributes = {
 					9E182D8026503E8100069E6E = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
 					};
 					9E182D9926503E8300069E6E = {
 						CreatedOnToolsVersion = 11.4;
@@ -911,6 +928,7 @@
 				CF08214A266DDC9C00064DB9 /* women.gif in Resources */,
 				2730285B267102AB004273CF /* OrderCell.xib in Resources */,
 				9E756A1526643208000B5D98 /* MainCategoriesCollectionViewCell.xib in Resources */,
+				9E70BAC0267178EF0099FB70 /* PayPalViewController.xib in Resources */,
 				9E756A0D266431CB000B5D98 /* MainProductsCollectionViewCell.xib in Resources */,
 				CF78F3E32669C3A0005B9FE1 /* offer.gif in Resources */,
 				CF08214B266DDC9C00064DB9 /* men.gif in Resources */,
@@ -1106,6 +1124,7 @@
 				9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */,
 				9E756A1B26643B29000B5D98 /* CategoryContract.swift in Sources */,
 				CF6571A9266197D300C31614 /* ProductCollectionViewCell.swift in Sources */,
+				9E70BABF267178EF0099FB70 /* PayPalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1279,6 +1298,7 @@
 			baseConfigurationReference = A3CABA92B1A37A7896D62DF3 /* Pods-Shopy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Shopy/configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1287,6 +1307,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.iti.Shopy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Shopy/payPalBridgeFiles/Shopy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1297,6 +1319,7 @@
 			baseConfigurationReference = 4920382F047EDE4839325372 /* Pods-Shopy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Shopy/configuration/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1305,6 +1328,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.iti.Shopy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Shopy/payPalBridgeFiles/Shopy-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
