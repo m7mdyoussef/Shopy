@@ -8,6 +8,7 @@
 
 import UIKit
 import MarqueeLabel
+import SDWebImage
 
 class OrderProductsCell: UITableViewCell {
 
@@ -18,9 +19,13 @@ class OrderProductsCell: UITableViewCell {
     
     var product:Product!{
         willSet{
-            uiImage.image = #imageLiteral(resourceName: "1")
+            uiImage.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            uiImage.sd_imageIndicator?.startAnimatingIndicator()
+            uiImage.sd_setImage(with: URL(string: newValue.product.image.src), completed: { (image,error,cache,url) in
+                self.uiImage.sd_imageIndicator?.stopAnimatingIndicator()
+            })
+            
             uiTitle.text = newValue.product.title
-//            uiCount.text =
         }
     }
     

@@ -8,10 +8,16 @@
 
 import UIKit
 import RxSwift
+import MarqueeLabel
 class OrderDetailsVC: UIViewController {
 
     @IBOutlet weak var uiProductsTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var uiProductsTableView: UITableView!
+    @IBOutlet weak var uiOrderId: UILabel!
+    @IBOutlet weak var uiOrderProductsCount: UILabel!
+    @IBOutlet weak var uiCreatedAt: MarqueeLabel!
+    @IBOutlet weak var uiTotalPrice: MarqueeLabel!
+    
     var order : Order!
     var viewModel:MeTapViewModel!
     var bag:DisposeBag!
@@ -19,38 +25,49 @@ class OrderDetailsVC: UIViewController {
         super.viewDidLoad()
         viewModel = MeTapViewModel()
         bag = DisposeBag()
+        setupViews()
+
+        uiOrderId.text! += String(order.id)
+        uiOrderProductsCount.text! += "(\(order.lineItems.count))"
+        
+        if let formatted = viewModel.getFormattedDate(date: order.createdAt){
+            uiCreatedAt.text! = formatted
+        }else{
+            uiCreatedAt.isHidden = true
+        }
+        
+        uiTotalPrice.text! += order.totalPrice
+    }
+    
+    func setupViews() {
         registerCell()
-        viewModel.orderProductsObservable?.asObservable().bind(to: uiProductsTableView.rx.items(cellIdentifier: "orderProductsCell")){
-            row,item,cell in
-            
+        setupProductsTableView()
+    }
+    func setupProductsTableView() {
+        uiProductsTableView.rx.setDelegate(self).disposed(by: bag)
+        viewModel.orderProductsObservable?.asObservable().bind(to: uiProductsTableView.rx.items(cellIdentifier: "orderProductsCell")){ [unowned self] row,item,cell in
             if let cell = (cell as? OrderProductsCell){
                 cell.product = item
                 cell.item = self.order.lineItems[row]
             }
-            
-            
         }.disposed(by: bag)
-
+        
+//        viewModel.orderProductsObservable?.drive(onNext: { [unowned self] (products) in
+//            uiProductsTableView.reloadData()
+//        }).disposed(by: bag)
+        viewModel.fetchOrderProducts(orderLineItems: order!.lineItems)
     }
-    
     func registerCell() {
         let cell = UINib(nibName: "OrderProductsCell", bundle: nil)
         uiProductsTableView.register(cell, forCellReuseIdentifier: "orderProductsCell")
     }
     override func viewWillAppear(_ animated: Bool) {
         uiProductsTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
-        viewModel.orderProductsObservable?.drive(onNext: { [unowned self] (products) in
-            uiProductsTableView.reloadData()
-        }).disposed(by: bag)
-        viewModel.fetchOrderProducts(orderLineItems: order!.lineItems)
     }
     override func viewWillDisappear(_ animated: Bool) {
         uiProductsTableView.removeObserver(self, forKeyPath: "contentSize")
     }
     
-    // add observer on the table view in viewWillAppear
-    // remove the observer in viewWillDissappear
-    // turn table view isScrollable = false
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentSize"{
             if let newValue = change?[.newKey] {
@@ -61,3 +78,8 @@ class OrderDetailsVC: UIViewController {
     }
 }
 
+extension OrderDetailsVC: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
