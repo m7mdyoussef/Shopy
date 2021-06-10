@@ -7,24 +7,56 @@
 //
 
 import UIKit
+import RxSwift
+import JGProgressHUD
 
 class BagViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
-    
     @IBOutlet weak var bagProductsCollectionView: UICollectionView!{
         didSet{
             bagProductsCollectionView.delegate = self
             bagProductsCollectionView.dataSource = self
         }
     }
-
+    var viewModel : BagViewModel!
     var bagProducts = [BagProduct]()
+    var bag = DisposeBag()
+    var hud:JGProgressHUD!
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = BagViewModel()
         navigationItem.title = "Bag Products"
         let favProductCell = UINib(nibName: "BagCollectionViewCell", bundle: nil)
         bagProductsCollectionView.register(favProductCell, forCellWithReuseIdentifier: "BagCollectionViewCell")
-       fetchBagProducts()
+        
+        viewModel.loading.asObservable().subscribe{ [weak self] value in
+            guard let self = self else {return}
+            print(value.element!)
+            
+            if value.element == true {
+                self.hud = self.loadingHud(text: "Please Wait", style: .dark)
+            }else{
+                self.dismissLoadingHud(hud: self.hud)
+                self.emptyBag()
+            }
+        }.disposed(by: bag)
+        
+        viewModel.error.asObservable().subscribe{[weak self] value in
+            guard let self = self else {return}
+            self.onFaildHud(text: "An Error Occured, Try Again later ...")
+        }.disposed(by: bag)
+        
+    }
+    
+    func emptyBag()  {
+        for item in bagProducts{
+            deletFromBagProducts(productID: Int(item.id))
+        }
+        fetchBagProducts()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchBagProducts()
     }
 
     func fetchBagProducts() {
@@ -75,8 +107,12 @@ class BagViewController: UIViewController {
         }
        
     }
-}
+    
+    @IBAction func uiCheckout(_ sender: Any) {
+        viewModel.checkout(product: bagProducts)
+    }
 
+}
 
 extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

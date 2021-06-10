@@ -55,6 +55,9 @@
                                     <state key="normal" title="Checkout">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="uiCheckout:" destination="-1" eventType="touchUpInside" id="IGs-z1-LuY"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>
