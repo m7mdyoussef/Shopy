@@ -23,7 +23,7 @@ class OrderCell: UICollectionViewCell {
             guard let orderData = orderData else {return}
             uiOrderIdLabel.text = "ID : \(String(orderData.orderNumber))"
             uiCountLabel.text = "\(orderData.lineItems.count) item/s"
-            uiTotalLabel.text = "Total : \(orderData.totalPrice)"
+            uiTotalLabel.text = "Total : \(orderData.totalPrice) LE"
             
 //            self.uiContentView.layer.cornerRadius = 12.69
 //            self.uiContentView.layer.masksToBounds = true

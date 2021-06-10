@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderProductsCell" rowHeight="285" id="KGk-i7-Jjw" customClass="OrderProductsCell" customModule="Shopy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="536" height="285"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="536" height="285"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gfo-iw-qUv">
+                        <rect key="frame" x="8" y="8" width="214.5" height="269"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdf asdfasdfasdf asdfasdfasdf asdfasdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4le-q2-QJr" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                        <rect key="frame" x="247" y="28" width="277" height="21"/>
+                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNa-Y6-GUS">
+                        <rect key="frame" x="230.5" y="69" width="293.5" height="21"/>
+                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAe-dp-S0b">
+                        <rect key="frame" x="230.5" y="112" width="293.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Gfo-iw-qUv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="CWw-wh-lZe"/>
+                    <constraint firstAttribute="trailing" secondItem="4le-q2-QJr" secondAttribute="trailing" constant="12" id="CfD-UB-tpJ"/>
+                    <constraint firstItem="cAe-dp-S0b" firstAttribute="leading" secondItem="TNa-Y6-GUS" secondAttribute="leading" id="Gn6-Bn-CPP"/>
+                    <constraint firstItem="TNa-Y6-GUS" firstAttribute="leading" secondItem="Gfo-iw-qUv" secondAttribute="trailing" constant="8" id="IrA-H4-TU1"/>
+                    <constraint firstItem="cAe-dp-S0b" firstAttribute="trailing" secondItem="TNa-Y6-GUS" secondAttribute="trailing" id="Vc2-qc-sEb"/>
+                    <constraint firstAttribute="bottom" secondItem="Gfo-iw-qUv" secondAttribute="bottom" constant="8" id="Wkw-NF-Ccu"/>
+                    <constraint firstItem="4le-q2-QJr" firstAttribute="leading" secondItem="Gfo-iw-qUv" secondAttribute="trailing" constant="24.5" id="Xdw-5o-cqj"/>
+                    <constraint firstItem="Gfo-iw-qUv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="g2i-cL-Rzd"/>
+                    <constraint firstItem="cAe-dp-S0b" firstAttribute="top" secondItem="TNa-Y6-GUS" secondAttribute="bottom" constant="22" id="gNt-nQ-YLm"/>
+                    <constraint firstItem="4le-q2-QJr" firstAttribute="top" secondItem="Gfo-iw-qUv" secondAttribute="top" constant="20" id="lns-ee-Y07"/>
+                    <constraint firstItem="TNa-Y6-GUS" firstAttribute="trailing" secondItem="4le-q2-QJr" secondAttribute="trailing" id="mmz-P8-DgK"/>
+                    <constraint firstItem="TNa-Y6-GUS" firstAttribute="top" secondItem="4le-q2-QJr" secondAttribute="bottom" constant="20" id="rwE-sa-KsD"/>
+                    <constraint firstItem="Gfo-iw-qUv" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.4" id="xB2-0c-xd8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="uiCount" destination="cAe-dp-S0b" id="l2y-PV-dUu"/>
+                <outlet property="uiImage" destination="Gfo-iw-qUv" id="mdC-pe-KOb"/>
+                <outlet property="uiPrice" destination="TNa-Y6-GUS" id="J1G-aj-jsO"/>
+                <outlet property="uiTitle" destination="4le-q2-QJr" id="hpG-zK-aha"/>
+            </connections>
+            <point key="canvasLocation" x="-171.01449275362319" y="47.209821428571423"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="4le-q2-QJr">
+            <size key="intrinsicContentSize" width="339" height="21"/>
+        </designable>
+    </designables>
+</document>

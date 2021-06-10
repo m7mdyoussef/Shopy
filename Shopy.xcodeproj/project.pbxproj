@@ -32,6 +32,8 @@
 		27DDC4E8266BE263002E92A7 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDC4E6266BE262002E92A7 /* Customer.swift */; };
 		27DDC4ED266BE275002E92A7 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDC4EC266BE275002E92A7 /* Products.swift */; };
 		27DDC517266BE4D0002E92A7 /* Userdefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DDC516266BE4D0002E92A7 /* Userdefaults.swift */; };
+		27DED85E2671E2C300870B9A /* OrderProductsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27DED85C2671E2C300870B9A /* OrderProductsCell.swift */; };
+		27DED85F2671E2C300870B9A /* OrderProductsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DED85D2671E2C300870B9A /* OrderProductsCell.xib */; };
 		9E14BDEF265D45BD000899B9 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E14BDEE265D45BD000899B9 /* CategoryViewController.swift */; };
 		9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D8426503E8100069E6E /* AppDelegate.swift */; };
 		9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D8626503E8100069E6E /* SceneDelegate.swift */; };
@@ -143,6 +145,8 @@
 		27DDC4E6266BE262002E92A7 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		27DDC4EC266BE275002E92A7 /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		27DDC516266BE4D0002E92A7 /* Userdefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefaults.swift; sourceTree = "<group>"; };
+		27DED85C2671E2C300870B9A /* OrderProductsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProductsCell.swift; sourceTree = "<group>"; };
+		27DED85D2671E2C300870B9A /* OrderProductsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderProductsCell.xib; sourceTree = "<group>"; };
 		30DE585536EF363BD795C169 /* Pods_Shopy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B33C7D1FE68BC50FDE5402E /* Pods_ShopyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShopyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4920382F047EDE4839325372 /* Pods-Shopy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy.release.xcconfig"; path = "Target Support Files/Pods-Shopy/Pods-Shopy.release.xcconfig"; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 		2729B1012670F0D300FCA983 /* OrderDetails */ = {
 			isa = PBXGroup;
 			children = (
+				27DED8632671E2CA00870B9A /* OrderProductsCell */,
 				2729B1022670F11000FCA983 /* OrderDetailsVC.swift */,
 			);
 			path = OrderDetails;
@@ -329,6 +334,15 @@
 				27C3A856266CAEAA00D16F84 /* MeVC.swift */,
 			);
 			path = MeTap;
+			sourceTree = "<group>";
+		};
+		27DED8632671E2CA00870B9A /* OrderProductsCell */ = {
+			isa = PBXGroup;
+			children = (
+				27DED85C2671E2C300870B9A /* OrderProductsCell.swift */,
+				27DED85D2671E2C300870B9A /* OrderProductsCell.xib */,
+			);
+			path = OrderProductsCell;
 			sourceTree = "<group>";
 		};
 		900ED897D64BBEF98F5FD341 /* Pods */ = {
@@ -889,6 +903,7 @@
 				D2116C7726695B86007892B7 /* FavouriteProductsVC.xib in Resources */,
 				CF08214C266DDC9C00064DB9 /* kids2.gif in Resources */,
 				9E182D9126503E8300069E6E /* Assets.xcassets in Resources */,
+				27DED85F2671E2C300870B9A /* OrderProductsCell.xib in Resources */,
 				CF78F3F22669D018005B9FE1 /* offer0.gif in Resources */,
 				CF78F3F72669D03C005B9FE1 /* black.gif in Resources */,
 				CF08214D266DDC9C00064DB9 /* home.gif in Resources */,
@@ -1049,6 +1064,7 @@
 				CF78F436266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift in Sources */,
 				9E756A10266431EB000B5D98 /* SubCategoriesCollectionViewCell.swift in Sources */,
 				2766A920266F5F3E0036F78C /* Order.swift in Sources */,
+				27DED85E2671E2C300870B9A /* OrderProductsCell.swift in Sources */,
 				9EAE574A2657114700BE44C2 /* URLs.swift in Sources */,
 				D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */,
 				2766A92F266F84A80036F78C /* OrderCell.swift in Sources */,
