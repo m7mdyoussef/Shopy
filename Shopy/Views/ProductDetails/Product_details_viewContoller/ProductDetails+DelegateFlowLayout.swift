@@ -28,9 +28,11 @@ extension ProductDetailsViewController: UICollectionViewDelegateFlowLayout{
     
     func checkFav(){
         if self.isFavo == false{
+            self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the whishlist🎉🎉", buttonTitle: "OK")
             favouriteButton.tintColor = UIColor.red
             self.manager.addToFavourites(favProduct: self.productElement!)
         }else{
+            self.presentGFAlertOnMainThread(title: "Success", message: "Successfully removed from the whishlist", buttonTitle: "OK")
             favouriteButton.tintColor = UIColor.gray
             self.manager.removeProduct(productID: self.productElement!.id)
         }

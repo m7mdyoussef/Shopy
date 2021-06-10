@@ -102,6 +102,8 @@
 		D2CA0EB9266BBEC3005AB72D /* BagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0EB7266BBEC3005AB72D /* BagViewController.swift */; };
 		D2CA0EBA266BBEC3005AB72D /* BagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2CA0EB8266BBEC3005AB72D /* BagViewController.xib */; };
 		D2CA0EBC266BC4BD005AB72D /* BagPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0EBB266BC4BD005AB72D /* BagPersistenceManager.swift */; };
+		D2CA0F5A26729640005AB72D /* ViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0F5926729640005AB72D /* ViewController+Ext.swift */; };
+		D2CA0F5C26729664005AB72D /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA0F5B26729664005AB72D /* AlertVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +231,8 @@
 		D2CA0EB7266BBEC3005AB72D /* BagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagViewController.swift; sourceTree = "<group>"; };
 		D2CA0EB8266BBEC3005AB72D /* BagViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BagViewController.xib; sourceTree = "<group>"; };
 		D2CA0EBB266BC4BD005AB72D /* BagPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagPersistenceManager.swift; sourceTree = "<group>"; };
+		D2CA0F5926729640005AB72D /* ViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Ext.swift"; sourceTree = "<group>"; };
+		D2CA0F5B26729664005AB72D /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
 		EC60D919DA0F486F083773E9 /* Pods-Shopy-ShopyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shopy-ShopyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Shopy-ShopyUITests/Pods-Shopy-ShopyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -569,6 +573,7 @@
 		9EAE57482657110500BE44C2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D2CA0F582672960E005AB72D /* viewController+Ext */,
 				CF082149266DDC9C00064DB9 /* sale.gif */,
 				CF082148266DDC9B00064DB9 /* kids.gif */,
 				CF082144266DDC9900064DB9 /* women.gif */,
@@ -796,6 +801,15 @@
 				D2CA0EB4266BBE90005AB72D /* BagCollectionViewCell.xib */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		D2CA0F582672960E005AB72D /* viewController+Ext */ = {
+			isa = PBXGroup;
+			children = (
+				D2CA0F5926729640005AB72D /* ViewController+Ext.swift */,
+				D2CA0F5B26729664005AB72D /* AlertVC.swift */,
+			);
+			path = "viewController+Ext";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1065,6 +1079,7 @@
 				273FF7D926609D4300A37003 /* Login.swift in Sources */,
 				277F3A99265D51A000C822D9 /* IRounded.swift in Sources */,
 				27B4E42B266AD6F9009A55EF /* UIUPdateAddressList.swift in Sources */,
+				D2CA0F5C26729664005AB72D /* AlertVC.swift in Sources */,
 				9E6172E82667CA3200E93743 /* SearchCategoryViewController.swift in Sources */,
 				9E756A1D26644277000B5D98 /* Constants.swift in Sources */,
 				CF4798072665DC9900B0A64D /* AppCommon.swift in Sources */,
@@ -1076,6 +1091,7 @@
 				CF78F3C32669B5C7005B9FE1 /* GifFile.swift in Sources */,
 				9E14BDEF265D45BD000899B9 /* CategoryViewController.swift in Sources */,
 				27DDC517266BE4D0002E92A7 /* Userdefaults.swift in Sources */,
+				D2CA0F5A26729640005AB72D /* ViewController+Ext.swift in Sources */,
 				D2745A4F265751CC005ABAF2 /* ApiRequestWrapper.swift in Sources */,
 				9E182D8F26503E8100069E6E /* Shopy.xcdatamodeld in Sources */,
 				D2116C7626695B86007892B7 /* FavouriteProductsVC.swift in Sources */,
