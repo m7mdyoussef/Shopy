@@ -29,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
             MyUserDefaults.add(val: false, key: .loggedIn)
         }
         
-
+        MOLHLanguage.setDefaultLanguage("ar")
+                MOLH.shared.activate(true)
         return true
     }
 

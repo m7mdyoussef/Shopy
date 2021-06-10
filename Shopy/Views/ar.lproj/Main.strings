@@ -12,7 +12,7 @@
 "5PN-OT-u2h.placeholder" = "Zip";
 
 /* Class = "UITabBarItem"; title = "Category"; ObjectID = "5qg-HU-feb"; */
-"5qg-HU-feb.title" = "الفئات";
+"5qg-HU-feb.title" = "Category";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "71I-Ef-Otv"; */
 "71I-Ef-Otv.placeholder" = "Email";
@@ -72,7 +72,7 @@
 "TPJ-UP-Krv.text" = "Email is not valid";
 
 /* Class = "UITabBarItem"; title = "Category"; ObjectID = "VeF-P8-bY1"; */
-"VeF-P8-bY1.title" = "Category";
+"VeF-P8-bY1.title" = "الفئات";
 
 /* Class = "UILabel"; text = "0000"; ObjectID = "W4L-VT-Qsd"; */
 "W4L-VT-Qsd.text" = "0000";
@@ -132,7 +132,7 @@
 "yNh-7S-fON.text" = "Label";
 
 /* Class = "UILabel"; text = "Shopy"; ObjectID = "yaI-41-4Lu"; */
-"yaI-41-4Lu.text" = "محلي";
+"yaI-41-4Lu.text" = "Shopy";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "yc5-Sb-4kN"; */
 "yc5-Sb-4kN.title" = "Item";
