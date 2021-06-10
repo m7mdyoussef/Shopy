@@ -167,6 +167,8 @@ class CategoryViewController: UIViewController {
     }
     
     @IBAction func moveToBag(_ sender: Any) {
+        let bag = BagViewController()
+        navigationController?.pushViewController(bag, animated: true)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

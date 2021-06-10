@@ -204,6 +204,12 @@ class MeVC: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
       //  uiWishlistCollection.reloadData()
     }
+    
+    @IBAction func uiCardButton(_ sender: Any) {
+        let bag = BagViewController()
+        navigationController?.pushViewController(bag, animated: true)
+    }
+    
 }
 
 extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{

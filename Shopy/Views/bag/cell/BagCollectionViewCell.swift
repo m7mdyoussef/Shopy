@@ -20,7 +20,7 @@ class BagCollectionViewCell: UICollectionViewCell {
     var bagProduct : BagProduct? {
         didSet{
             guard let price = bagProduct?.price else {return}
-            self.price.text = "\(price)$"
+            self.price.text = "\(price)"
             self.title.text = bagProduct?.title
             self.count.text = "\(bagProduct?.count ?? 1)"
             self.countNumber = Int(bagProduct!.count)

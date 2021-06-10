@@ -99,6 +99,8 @@ class CollectionViewController: UIViewController {
     }
     
     @IBAction func moveToBag(_ sender: Any) {
+        let bag = BagViewController()
+        navigationController?.pushViewController(bag, animated: true)
     }
     @IBAction func moveToFavourite(_ sender: Any) {
         let vc = FavouriteProductsVC()

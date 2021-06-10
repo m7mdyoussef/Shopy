@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -35,24 +35,24 @@
                     <rect key="frame" x="5" y="764.5" width="404" height="71.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="Kly-Rl-EKg">
-                            <rect key="frame" x="0.0" y="0.0" width="404" height="71.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="404" height="61.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQA-ts-3GD">
-                                    <rect key="frame" x="0.0" y="0.0" width="93.5" height="71.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="93.5" height="61.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFd-km-FhX">
-                                    <rect key="frame" x="98.5" y="0.0" width="44.5" height="71.5"/>
+                                    <rect key="frame" x="98.5" y="0.0" width="44.5" height="61.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7t-QO-bFK">
-                                    <rect key="frame" x="202" y="0.0" width="202" height="71.5"/>
+                                    <rect key="frame" x="202" y="0.0" width="202" height="61.5"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="Button">
+                                    <state key="normal" title="Checkout">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                 </button>
@@ -68,7 +68,7 @@
                         <constraint firstItem="Kly-Rl-EKg" firstAttribute="leading" secondItem="pcQ-JL-A52" secondAttribute="leading" id="98h-yk-C6b"/>
                         <constraint firstItem="Kly-Rl-EKg" firstAttribute="top" secondItem="pcQ-JL-A52" secondAttribute="top" id="Zyf-zm-HcE"/>
                         <constraint firstAttribute="trailing" secondItem="Kly-Rl-EKg" secondAttribute="trailing" id="dal-fC-up3"/>
-                        <constraint firstAttribute="bottom" secondItem="Kly-Rl-EKg" secondAttribute="bottom" id="kpC-Lq-kUa"/>
+                        <constraint firstAttribute="bottom" secondItem="Kly-Rl-EKg" secondAttribute="bottom" constant="10" id="kpC-Lq-kUa"/>
                     </constraints>
                 </view>
             </subviews>

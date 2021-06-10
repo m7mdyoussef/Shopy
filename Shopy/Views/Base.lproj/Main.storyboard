@@ -118,6 +118,9 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="cart.fill" catalog="system" id="YOM-1J-9Vk">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="moveToBag:" destination="xuX-Yf-DFG" id="di4-Tw-vIK"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="search" id="myx-Ms-PWm">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1786,6 +1789,9 @@
                             </barButtonItem>
                             <barButtonItem image="cart.fill" catalog="system" id="uII-Zb-p3Z">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="uiCardButton:" destination="Wfi-LV-jbC" id="w0m-w1-9HR"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
