@@ -125,6 +125,7 @@ class MeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
+        tabBarController?.tabBar.isHidden = false
         uiOrdersCollection.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         

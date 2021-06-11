@@ -45,6 +45,8 @@ class BagPersistenceManager{
         storedBagProduct.title = bagProduct.title
         storedBagProduct.price = bagProduct.variants[0].price
         storedBagProduct.variantId = Int64(bagProduct.variants[0].id)
+
+        storedBagProduct.availableCount = Int64(bagProduct.variants[0].inventoryQuantity)
         try?self.context.save()
         print("added successfully")
     }

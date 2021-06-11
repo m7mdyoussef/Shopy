@@ -12,6 +12,8 @@ import JGProgressHUD
 
 class BagViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var checkoutView: UIView!
+    
     @IBOutlet weak var bagProductsCollectionView: UICollectionView!{
         didSet{
             bagProductsCollectionView.delegate = self
@@ -20,6 +22,7 @@ class BagViewController: UIViewController {
     }
     var viewModel : BagViewModel!
     var bagProducts = [BagProduct]()
+
     var bag = DisposeBag()
     var hud:JGProgressHUD!
     override func viewDidLoad() {
@@ -27,6 +30,7 @@ class BagViewController: UIViewController {
         viewModel = BagViewModel()
         navigationItem.title = "Bag Products"
         let favProductCell = UINib(nibName: "BagCollectionViewCell", bundle: nil)
+      //  checkoutView.collectionCellLayout()
         bagProductsCollectionView.register(favProductCell, forCellWithReuseIdentifier: "BagCollectionViewCell")
         
         viewModel.loading.asObservable().subscribe{ [weak self] value in
@@ -58,6 +62,8 @@ class BagViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fetchBagProducts()
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     func fetchBagProducts() {
@@ -123,12 +129,31 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BagCollectionViewCell", for: indexPath) as! BagCollectionViewCell
         cell.bagProduct = bagProducts[indexPath.item]
         cell.deleteFromBagProducts = {[weak self] in
-            self?.deletFromBagProducts(productID: Int(self?.bagProducts[indexPath.item].id ?? 0))
-            self?.fetchBagProducts()
+            guard let self = self else {return}
+            let alert = UIAlertController(title: "Confirmatiom", message: "Do you want to delete it?", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Yes", style: .destructive) { _ in
+                self.deletFromBagProducts(productID: Int(self.bagProducts[indexPath.item].id ))
+                self.fetchBagProducts()
+            }
+            let no = UIAlertAction(title: "No", style: .default) { _ in
+            }
+            
+            alert.addAction(no)
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+            
+            
+           
          }
-        cell.updateSavedCount = {[weak self](count) in
-            self?.updateCount(productID: Int(self?.bagProducts[indexPath.item].id ?? 0), count: count)
-            self?.fetchBagProducts()
+        cell.updateSavedCount = {[weak self](count , available) in
+            if available {
+                self?.updateCount(productID: Int(self?.bagProducts[indexPath.item].id ?? 0), count: count)
+                self?.fetchBagProducts()
+            }
+            else{
+                self?.presentGFAlertOnMainThread(title: "Error", message: "Sorry , this product isn't available with this amount", buttonTitle: "OK")
+            }
+        
         }
         return cell
     }

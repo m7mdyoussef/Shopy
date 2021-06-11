@@ -68,10 +68,20 @@ class ProductDetailsViewController: UIViewController {
         checkFav()
     }
     @IBAction func addToCard(_ sender: Any) {
+
 //        let vc = FavouriteProductsVC()
 //        self.navigationController?.pushViewController(vc, animated: true)
-        bagManager.addToBagProducts(bagProduct: productElement!)
-        onSuccessHud()
+
+       let isStored = bagManager.isBagProduct(productID: productElement!.id)
+        if isStored {
+            self.presentGFAlertOnMainThread(title: "Success", message: "This product is already in card", buttonTitle: "OK")
+        }else{
+            self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the card🎉🎉", buttonTitle: "OK")
+            bagManager.addToBagProducts(bagProduct: productElement!)
+        }
+        
+       // onSuccessHud()
+
     }
     
     func setupScreens(){
