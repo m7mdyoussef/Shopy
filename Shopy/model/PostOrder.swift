@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - discount_codePostOrder
 struct PostOrderRequest: Codable {
-    let order: PostOrder
+    let order: PostNewOrder
 }
 
 // MARK: - discount_codeOrder
@@ -23,6 +23,24 @@ struct PostOrder: Codable {
         case lineItems = "line_items"
     }
 }
+// new
+struct PostNewOrder:Codable {
+    let lineItems: [PostLineItem]
+        let customer: discount_codeCustomer
+        let financialStatus: String
+
+        enum CodingKeys: String, CodingKey {
+            case lineItems = "line_items"
+            case customer
+            case financialStatus = "financial_status"
+        }
+}
+
+struct discount_codeCustomer: Codable {
+    let id: Int
+}
+
+//new
 
 struct PostCustomer: Codable {
     let id: Int

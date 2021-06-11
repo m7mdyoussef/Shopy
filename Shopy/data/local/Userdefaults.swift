@@ -12,6 +12,7 @@ enum Keys:String {
     case email = "email"
     case username = "username"
     case loggedIn = "logedIn"
+    case id = "id"
 }
 class MyUserDefaults {
     private static var shared = UserDefaults.standard

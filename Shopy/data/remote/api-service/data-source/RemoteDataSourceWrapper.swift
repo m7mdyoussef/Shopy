@@ -16,10 +16,9 @@ enum RemoteDataSourceWrapper{
     // amin
     case register(myCustomer: Customer)
     case allUsers
-
     case getOrders
-
     case postOrder(order:PostOrderRequest)
+    case removeOrder(id: Int)
     // end amin
     
     case getProductElement(productId:String)
@@ -43,6 +42,8 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
         switch self {
         case .register(myCustomer: _):
             return .post
+        case .removeOrder:
+            return .delete
         default:
             return .get
         }
@@ -64,7 +65,8 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             var jsonData:Data = Data()
             do {
                 jsonData = try JSONSerialization.data(withJSONObject: order.asDictionary(), options: .prettyPrinted)
-//                let str = String(decoding: jsonData, as: UTF8.self)
+                let str = String(decoding: jsonData, as: UTF8.self)
+                print("http body \(str)")
                 return jsonData
             } catch let error {
                 print("post order error\(error.localizedDescription)")
@@ -96,9 +98,9 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             
         case .postOrder:
             return "/admin/api/2021-04/orders.json"
+        case .removeOrder(id: let id):
+            return "/admin/api/2021-04/orders/\(id).json"
             
-        case .postOrder:
-            return "/admin/api/2021-04/orders.json"
             
         // MARK: joe
         case .getMenCategoryProducts:

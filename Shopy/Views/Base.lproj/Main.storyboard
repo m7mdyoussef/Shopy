@@ -1708,19 +1708,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0G-Vf-0xe">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wao-NR-ddP" userLabel="logged in">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="737.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="792.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wishlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlE-Lr-67d">
-                                                <rect key="frame" x="10" y="8" width="394" height="56"/>
+                                                <rect key="frame" x="10" y="8" width="394" height="60.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oVi-At-Qa9" userLabel="wishlist">
-                                                <rect key="frame" x="10" y="66.5" width="394" height="269.5"/>
+                                                <rect key="frame" x="10" y="71" width="394" height="290"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LoA-R9-C4R">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -1731,45 +1731,43 @@
                                                 <cells/>
                                             </collectionView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="Y1g-wz-FBf" userLabel="empty1">
-                                                <rect key="frame" x="10" y="69" width="394" height="269.5"/>
+                                                <rect key="frame" x="10" y="73.5" width="394" height="290"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Qjf-zm-6hH" userLabel="Orders Kinds">
-                                                <rect key="frame" x="10" y="343.5" width="394" height="112"/>
+                                                <rect key="frame" x="10" y="368.5" width="394" height="121"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pz-5r-tbZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="112"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="121"/>
                                                         <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4JW-3x-lBj">
-                                                <rect key="frame" x="10" y="458" width="394" height="561"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J9u-VL-3JP">
-                                                    <size key="itemSize" width="128" height="128"/>
-                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                </collectionViewFlowLayout>
-                                                <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="87L-gz-lbw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9gQ-Ne-p4u">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </collectionViewCellContentView>
-                                                    </collectionViewCell>
-                                                </cells>
-                                            </collectionView>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzs-5A-Bv9">
+                                                <rect key="frame" x="10" y="492" width="394" height="0.0"/>
+                                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                <state key="normal" title="Delete All Orders">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="uiRemoveAllOrders:" destination="Wfi-LV-jbC" eventType="touchUpInside" id="l6s-cI-TgJ"/>
+                                                </connections>
+                                            </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="I1G-ms-mFN" userLabel="empty2">
-                                                <rect key="frame" x="10" y="460.5" width="394" height="269"/>
+                                                <rect key="frame" x="10" y="494.5" width="394" height="290"/>
                                             </imageView>
                                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Fa-4k-rLy" userLabel="orders">
-                                                <rect key="frame" x="10" y="729.5" width="394" height="577"/>
+                                                <rect key="frame" x="10" y="784.5" width="394" height="0.0"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="JNG-ir-BVu"/>
+                                                </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JYc-ia-loy">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1783,8 +1781,6 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="4JW-3x-lBj" firstAttribute="height" secondItem="c0G-Vf-0xe" secondAttribute="height" multiplier="5:6" id="6ix-yJ-XmQ"/>
-                                    <constraint firstItem="2Fa-4k-rLy" firstAttribute="height" secondItem="c0G-Vf-0xe" secondAttribute="height" multiplier="9:10.5" id="7cZ-lk-xoJ"/>
                                     <constraint firstItem="NlE-Lr-67d" firstAttribute="height" secondItem="c0G-Vf-0xe" secondAttribute="height" multiplier="1:12" id="B7T-3v-kw5"/>
                                     <constraint firstAttribute="trailing" secondItem="wao-NR-ddP" secondAttribute="trailing" id="LID-UH-oJd"/>
                                     <constraint firstItem="wao-NR-ddP" firstAttribute="leading" secondItem="c0G-Vf-0xe" secondAttribute="leading" id="OQN-ve-gh8"/>
@@ -1823,8 +1819,9 @@
                     <connections>
                         <outlet property="uiEmptyOrdersListImage" destination="I1G-ms-mFN" id="IoZ-vz-73B"/>
                         <outlet property="uiEmptyWishListImage" destination="Y1g-wz-FBf" id="wit-Ee-Sbb"/>
-                        <outlet property="uiOrderCollectionHeight" destination="7cZ-lk-xoJ" id="40O-SE-WPA"/>
+                        <outlet property="uiOrderCollectionHeight" destination="JNG-ir-BVu" id="axo-yE-ysd"/>
                         <outlet property="uiOrdersCollection" destination="2Fa-4k-rLy" id="1bv-xU-Ofz"/>
+                        <outlet property="uiRemoveAllOrders" destination="Rzs-5A-Bv9" id="2el-KC-TAM"/>
                         <outlet property="uiStack" destination="Qjf-zm-6hH" id="8bt-FM-3n6"/>
                         <outlet property="uiWishlistCollection" destination="oVi-At-Qa9" id="GPH-Zw-osm"/>
                     </connections>

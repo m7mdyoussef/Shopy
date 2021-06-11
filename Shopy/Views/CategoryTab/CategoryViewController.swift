@@ -30,7 +30,7 @@ class CategoryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
        // super.viewWillAppear(true)
-        
+        tabBarController?.tabBar.isHidden = false
         if AppCommon.shared.checkConnectivity() == false{
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
             NoInternetViewController.fromWhere = "category"

@@ -135,6 +135,7 @@ class CollectionViewController: UIViewController {
             (cell as? MainCategoriesCollectionViewCell)?.mainCategoriesCellLabel.text=items.title
             self.menuCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
             self.arrId.append(items.id)
+            
         }.disposed(by: disposeBag)
         
         menuCollectionView.rx.itemSelected.subscribe{[weak self]value in
@@ -156,6 +157,7 @@ class CollectionViewController: UIViewController {
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
             self.arrproductId.append(String(item.id))
+            
         }.disposed(by: disposeBag)
         
         productsCollectionView.rx.itemSelected.subscribe{value in

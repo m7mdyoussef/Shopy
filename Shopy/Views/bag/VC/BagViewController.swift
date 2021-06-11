@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 import JGProgressHUD
+import Stripe
+
 
 class BagViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -25,6 +27,15 @@ class BagViewController: UIViewController {
 
     var bag = DisposeBag()
     var hud:JGProgressHUD!
+    
+    
+    let allItems = [pay(title: "jdhk", price: 50, id: 1),pay(title: "jddhg", price: 150, id: 2)]
+    var purchasedItemId = [Int]()
+
+    var totalPrice = 0
+//    let hud = JGProgressHUD(style: .dark)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = BagViewModel()
@@ -116,8 +127,79 @@ class BagViewController: UIViewController {
     }
     
     @IBAction func uiCheckout(_ sender: Any) {
-        viewModel.checkout(product: bagProducts)
+//        viewModel.checkout(product: bagProducts)
+        showPaymentOptins()
+        
     }
+    
+    
+    
+    private func showPaymentOptins() {
+        
+        let alertController = UIAlertController(title: "Payment Options", message: "Choose prefered payment option", preferredStyle: .actionSheet)
+        
+        let cardAction = UIAlertAction(title: "Pay with Card", style: .default) { (action) in
+            
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CarInfoViewController
+            
+            vc.delegate = self
+            self.present(vc, animated: true, completion: nil)
+            self.viewModel.checkout(product: self.bagProducts,status: .paid)
+        }
+        
+        let cashOnDelivery = UIAlertAction(title: "Cash on delivery", style: .default) { [weak self] (action) in
+            guard let self = self else {return}
+            self.viewModel.checkout(product: self.bagProducts,status: .pending)
+        }
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cardAction)
+        alertController.addAction(cancelAction)
+        alertController.addAction(cashOnDelivery)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showNotification(text: String, isError: Bool) {
+        hud = JGProgressHUD(style: .dark)
+        if isError {
+            self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        } else {
+            self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        }
+        
+        self.hud.textLabel.text = text
+        self.hud.show(in: self.view)
+        self.hud.dismiss(afterDelay: 2.0)
+    }
+    
+    private func finishPayment(token: STPToken){
+        
+//        var itemsToBuy : [PayPalItem] = []
+        self.totalPrice = 0
+        for item in allItems {
+            self.totalPrice += item.price
+            purchasedItemId.append(item.id)
+            
+        }
+        self.totalPrice = self.totalPrice * 100
+        
+        StripeClient.sharedClient.createAndConfirmPayment(token, amount: totalPrice) { (error) in
+            
+            if error == nil {
+                //self.emptyTheBasket()
+               // self.addItemsToPurchaseHistory(self.purchasedItemIds)
+                self.showNotification(text: "Payment Successful", isError: false)
+            } else {
+                self.showNotification(text: error!.localizedDescription, isError: true)
+                print("error gegdgjgdjjhgejgfjhghrgjdhegejgfjegdjhgejfgjdhgjf ", error!.localizedDescription)
+            }
+        }
+        
+ 
+    }
+
 
 }
 
@@ -172,5 +254,20 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
+    
+}
+
+
+extension BagViewController: CardInfoViewControllerDelegate {
+    func didClickDone(_ token: STPToken) {
+        print("we have a token ", token)
+        finishPayment(token: token)
+    }
+    
+    func didClickCancel() {
+        print("user canceled the payment")
+        showNotification(text: "you canceled the payment", isError: true)
+    }
+    
     
 }

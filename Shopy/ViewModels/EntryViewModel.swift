@@ -93,12 +93,10 @@ class EntryViewModel {
         getAllUsers(onFinish:{ [unowned self] (allCustomers) in
             
             for i in allCustomers.customers{
-                print(i.email)
-
                 if let mail = i.email {
                     
                     if email == mail , password == i.password{
-                        self.saveCredentialsInUserDefaults(email: email, username: i.firstName!)
+                        self.saveCredentialsInUserDefaults(email: email, username: i.firstName!,id: i.id)
                         DispatchQueue.main.async {
                             onSuccess()
                         }
@@ -123,10 +121,11 @@ class EntryViewModel {
     
     
     
-    func saveCredentialsInUserDefaults(email:String,username:String) {
+    func saveCredentialsInUserDefaults(email:String,username:String,id:Int) {
         MyUserDefaults.add(val: true, key: .loggedIn)
         MyUserDefaults.add(val: email, key: .email)
         MyUserDefaults.add(val: username, key: .username)
+        MyUserDefaults.add(val: id, key: .id)
     }
     
     func getAllUsers(onFinish: @escaping (AllCustomers)->Void,onError: @escaping (String)->Void) {

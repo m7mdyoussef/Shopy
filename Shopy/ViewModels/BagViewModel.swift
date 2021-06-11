@@ -9,6 +9,12 @@
 import Foundation
 import RxCocoa
 import RxSwift
+
+enum CheckoutStatus:String {
+    case pending = "pending"
+    case paid = "paid"
+}
+
 protocol BagViewModelType {
     var loading: Driver<Bool>{get}
     var error: Driver<Bool>{get}
@@ -27,12 +33,15 @@ class BagViewModel: BagViewModelType {
         error = errorSubject.asDriver(onErrorJustReturn: false)
     }
     
-    func checkout(product: [BagProduct]) {
+    func checkout(product: [BagProduct],status:CheckoutStatus) {
         
-        let email = MyUserDefaults.getValue(forKey: .email) as! String
-        let order = PostOrder(email: email, fulfillmentStatus: "fulfilled", lineItems: retreiveLineItems(products: product))
-
+//        let email = MyUserDefaults.getValue(forKey: .email) as! String
+//        let order = PostOrder(email: email, fulfillmentStatus: "fulfilled", lineItems: retreiveLineItems(products: product))
+        let id = MyUserDefaults.getValue(forKey: .id) as! Int
+        let order = PostNewOrder(lineItems: retreiveLineItems(products: product), customer: discount_codeCustomer(id: id), financialStatus: status.rawValue)
+        
         let postOrder = PostOrderRequest(order: order)
+    
         loadingSubject.asObserver().onNext(true)
         remote.postOrder(order: postOrder) { [weak self] (data) in
             guard let self = self else {return}
