@@ -67,12 +67,12 @@ class Login: UIViewController,IRounded{
 //            hud.show(in: self.view)
             let hud = loadingHud(text: "Loading", style: .dark)
             viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!, onSuccess: { [unowned self] in
-                dismissLoadingHud(hud: hud)
+                self.dismissLoadingHud(hud: hud)
                 self.onSuccessHud()
                 self.navigationController?.popViewController(animated: true)
             }) { [unowned self] (string) in
 //                hud.dismiss()
-                dismissLoadingHud(hud: hud)
+                self.dismissLoadingHud(hud: hud)
                 self.onFaildHud(text: string)
             }
 

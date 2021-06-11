@@ -7,7 +7,7 @@ target 'Shopy' do
   
   
   
-  pod 'Alamofire', '~> 5.2'
+  pod 'Alamofire'
   pod 'NVActivityIndicatorView/AppExtension'
   pod 'RxSwift', '6.1.0'
   pod 'RxCocoa', '6.1.0'
@@ -21,7 +21,10 @@ target 'Shopy' do
   pod "ImageSlideshow"
   pod "ImageSlideshow/SDWebImage"
   pod 'PayPal-iOS-SDK'
+  pod 'Stripe'
+  pod 'JGProgressHUD'
 
+  
   #  pod 'Gallery'
   #  pod 'InstantSearchClient'
   #  pod 'EmptyDataSet-Swift'

@@ -62,13 +62,12 @@ class MeTapViewModel:MeModelType {
             case .success(let response):
                 guard let orders = response?.orders else {return}
                 print("success")
-                
-                ordersSubject.asObserver().onNext(getOrdersWithEmail(orders: orders))
-                loadingSubject.onNext(false)
+                self.ordersSubject.asObserver().onNext(orders)
+                self.loadingSubject.onNext(false)
 
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
-                loadingSubject.onNext(false)
+                self.loadingSubject.onNext(false)
 
             }
             
@@ -107,7 +106,7 @@ class MeTapViewModel:MeModelType {
             dispatchGroup.enter()
             remote.getProductElement(productId: String(id)) { [unowned self] (result) in
                 
-                dispatchGroup.leave()
+                self.dispatchGroup.leave()
                 switch result{
                     case .success(let product):
                         guard let product = product else {return}
@@ -122,7 +121,7 @@ class MeTapViewModel:MeModelType {
         }
         
         dispatchGroup.notify(queue:.main) { [unowned self] in
-            orderProductSubject.asObserver().onNext(products)
+            self.orderProductSubject.asObserver().onNext(products)
         }
     }
     
