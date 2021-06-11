@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5fp-RI-bTg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5fp-RI-bTg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +21,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YLx-Qq-InQ">
                                 <rect key="frame" x="8" y="94" width="398" height="40"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OQX-M2-98i"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="vkW-t4-ZE7"/>
@@ -46,7 +48,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fst-6j-jRy">
                                         <rect key="frame" x="0.0" y="20" width="100" height="131"/>
-                                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="US0-C0-YHL">
                                             <size key="itemSize" width="100" height="30"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -65,7 +67,7 @@
                                         </cells>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="fst-6j-jRy" firstAttribute="leading" secondItem="XNA-Ei-9rd" secondAttribute="leading" id="O4u-Un-tWV"/>
                                     <constraint firstItem="fst-6j-jRy" firstAttribute="top" secondItem="XNA-Ei-9rd" secondAttribute="top" constant="20" id="QDG-ef-eA0"/>
@@ -77,7 +79,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j9n-0F-scP">
                                 <rect key="frame" x="114" y="142" width="292" height="754"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="scrollIndicatorInsets" minX="10" minY="10" maxX="0.0" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="t2d-Rr-bJF">
                                     <size key="itemSize" width="125" height="175"/>
@@ -97,7 +99,8 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="ziB-kN-zvP"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YLx-Qq-InQ" firstAttribute="top" secondItem="ziB-kN-zvP" secondAttribute="top" constant="6" id="28u-vs-o0I"/>
                             <constraint firstItem="YLx-Qq-InQ" firstAttribute="leading" secondItem="Ppq-1w-gZp" secondAttribute="leading" constant="8" id="5rh-WP-bbJ"/>
@@ -110,7 +113,6 @@
                             <constraint firstAttribute="bottom" secondItem="j9n-0F-scP" secondAttribute="bottom" id="kHW-ha-u5L"/>
                             <constraint firstAttribute="trailing" secondItem="j9n-0F-scP" secondAttribute="trailing" constant="8" id="uHn-gl-Zsn"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ziB-kN-zvP"/>
                     </view>
                     <navigationItem key="navigationItem" id="42v-Re-ciC">
                         <rightBarButtonItems>
@@ -152,7 +154,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQU-CN-Ly8">
                                         <rect key="frame" x="10" y="10" width="374" height="720"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1qZ-WT-6Sh">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -171,7 +173,7 @@
                                         </cells>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="nQU-CN-Ly8" secondAttribute="trailing" constant="10" id="Nyp-Og-tcL"/>
                                     <constraint firstItem="nQU-CN-Ly8" firstAttribute="leading" secondItem="UW5-jZ-Wvp" secondAttribute="leading" constant="10" id="Uyk-Ei-STY"/>
@@ -185,7 +187,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvf-io-7Dl">
                                         <rect key="frame" x="0.0" y="0.0" width="88" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWI-vd-mfi">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWI-vd-mfi">
                                                 <rect key="frame" x="8" y="5" width="30" height="30"/>
                                                 <state key="normal" title="Sort">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -214,7 +216,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rN9-mt-zvc">
                                         <rect key="frame" x="143" y="0.0" width="88" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKD-dC-tCG">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKD-dC-tCG">
                                                 <rect key="frame" x="8" y="5" width="39" height="30"/>
                                                 <state key="normal" title="Reset">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -248,7 +250,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6N-j8-3J8">
                                         <rect key="frame" x="286" y="0.0" width="88" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-Zv-3mD">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUg-Zv-3mD">
                                                 <rect key="frame" x="8" y="5" width="35" height="30"/>
                                                 <state key="normal" title="Filter">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -275,7 +277,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstItem="Jvf-io-7Dl" firstAttribute="leading" secondItem="tDG-SL-3nq" secondAttribute="leading" id="1RX-Rn-kqO"/>
                                     <constraint firstItem="a6N-j8-3J8" firstAttribute="top" secondItem="tDG-SL-3nq" secondAttribute="top" id="5K8-g4-JiB"/>
@@ -296,6 +298,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="pxa-Pe-INW"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tDG-SL-3nq" firstAttribute="leading" secondItem="pxa-Pe-INW" secondAttribute="leading" constant="20" id="15b-hA-SNY"/>
@@ -311,7 +314,6 @@
                             <constraint firstItem="UW5-jZ-Wvp" firstAttribute="bottom" secondItem="pxa-Pe-INW" secondAttribute="bottom" id="kBH-f5-CUi"/>
                             <constraint firstItem="pxa-Pe-INW" firstAttribute="trailing" secondItem="UW5-jZ-Wvp" secondAttribute="trailing" constant="10" id="qbf-MP-RTq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="pxa-Pe-INW"/>
                     </view>
                     <connections>
                         <outlet property="categorySearchResultCollectionView" destination="nQU-CN-Ly8" id="gwK-p0-mdg"/>
@@ -340,7 +342,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Icz-pd-63y">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3c7-FQ-qUX"/>
                                         </constraints>
@@ -367,7 +369,7 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K0y-Ji-7hR">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="214"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjm-Et-rX6">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjm-Et-rX6">
                                                 <rect key="frame" x="8" y="154.5" width="52" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="52" id="BLo-63-4Wh"/>
@@ -379,13 +381,13 @@
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4L-VT-Qsd">
                                                 <rect key="frame" x="39.5" y="82" width="319" height="50"/>
-                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="319" id="JS3-Mx-Vod"/>
                                                     <constraint firstAttribute="height" constant="50" id="JqX-dX-hdE"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -403,7 +405,7 @@
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vnv-No-N9c">
                                         <rect key="frame" x="0.0" y="270" width="398" height="538"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ZmW-cG-jB8">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -413,7 +415,7 @@
                                         <view key="backgroundView" contentMode="scaleToFill" id="CG2-5a-FLe">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="538"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         </view>
                                         <cells/>
                                     </collectionView>
@@ -428,14 +430,14 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="e1H-wE-Tag"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6ja-fQ-DxS" firstAttribute="leading" secondItem="PTB-WN-7db" secondAttribute="leading" constant="8" id="MvA-2I-y4Y"/>
                             <constraint firstItem="6ja-fQ-DxS" firstAttribute="top" secondItem="e1H-wE-Tag" secondAttribute="top" id="Ztl-Oz-K6g"/>
                             <constraint firstAttribute="bottom" secondItem="6ja-fQ-DxS" secondAttribute="bottom" id="cQH-UX-r44"/>
                             <constraint firstAttribute="trailing" secondItem="6ja-fQ-DxS" secondAttribute="trailing" constant="8" id="ysN-pE-0dB"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="e1H-wE-Tag"/>
                     </view>
                     <navigationItem key="navigationItem" id="cdO-NU-hyx">
                         <nil key="title"/>
@@ -447,14 +449,14 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="cart.fill" catalog="system" id="ffj-Bx-fuL">
-                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <connections>
                                     <action selector="moveToBag:" destination="pps-Ya-Y6X" id="fdZ-MH-aQu"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" id="48Y-Mh-82s">
-                            <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                             <connections>
                                 <action selector="searchOfProducts:" destination="pps-Ya-Y6X" id="S9X-xS-fom"/>
                             </connections>
@@ -517,6 +519,7 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="U9G-UK-SXv"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qTC-IV-iBv" firstAttribute="leading" secondItem="U9G-UK-SXv" secondAttribute="leading" id="1LV-NC-q4I"/>
@@ -531,7 +534,6 @@
                             <constraint firstItem="qTC-IV-iBv" firstAttribute="height" secondItem="FWJ-zb-mrU" secondAttribute="height" multiplier="1:3" id="qW4-8F-nN6"/>
                             <constraint firstItem="Gyy-No-IAY" firstAttribute="top" secondItem="qTC-IV-iBv" secondAttribute="bottom" id="xdX-9O-xmX"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="U9G-UK-SXv"/>
                     </view>
                     <connections>
                         <outlet property="uiSegment" destination="iuU-Hd-Vls" id="8Fd-Tt-QKX"/>
@@ -569,7 +571,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="PUD-5K-fff" firstAttribute="leading" secondItem="Rgi-Kp-ZF9" secondAttribute="leading" constant="107" id="8m3-65-7XD"/>
                                                             <constraint firstItem="PUD-5K-fff" firstAttribute="top" secondItem="Rgi-Kp-ZF9" secondAttribute="top" constant="62" id="IY7-HI-2n5"/>
@@ -591,7 +593,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="4B2-C3-dU7"/>
                                                             <constraint firstItem="Ifb-34-miL" firstAttribute="centerX" secondItem="e4W-bq-fzB" secondAttribute="centerX" id="A5s-hh-0mj"/>
@@ -611,7 +613,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="7bd-p1-h8w" firstAttribute="centerX" secondItem="ow7-sJ-Ekq" secondAttribute="centerX" id="F26-0N-aeO"/>
                                                             <constraint firstAttribute="trailing" secondItem="7bd-p1-h8w" secondAttribute="trailing" constant="20" id="Ncg-V4-nJD"/>
@@ -623,7 +625,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cqC-SW-o1R">
                                                         <rect key="frame" x="0.0" y="400" width="414" height="60"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9h-J5-MPg">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9h-J5-MPg">
                                                                 <rect key="frame" x="57" y="0.0" width="300" height="60"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
@@ -639,7 +641,7 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="m9h-J5-MPg" secondAttribute="bottom" id="9oP-Uz-4OB"/>
                                                             <constraint firstItem="m9h-J5-MPg" firstAttribute="centerX" secondItem="cqC-SW-o1R" secondAttribute="centerX" id="AJq-YP-s0K"/>
@@ -649,7 +651,7 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAg-AS-gnF">
                                                         <rect key="frame" x="0.0" y="480" width="414" height="320"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
@@ -660,7 +662,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="y60-Fq-lUL" firstAttribute="top" secondItem="MvL-GU-GLR" secondAttribute="top" id="GrI-gZ-vG2"/>
                                             <constraint firstAttribute="bottom" secondItem="y60-Fq-lUL" secondAttribute="bottom" id="Lxq-6N-Jfc"/>
@@ -681,14 +683,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="9hH-Mr-Teu"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="c3a-o7-bTq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Us7-V2-XbK" firstAttribute="top" secondItem="c3a-o7-bTq" secondAttribute="top" id="HQs-gs-oDT"/>
                             <constraint firstItem="Us7-V2-XbK" firstAttribute="leading" secondItem="c3a-o7-bTq" secondAttribute="leading" id="NBW-H6-cjn"/>
                             <constraint firstItem="Us7-V2-XbK" firstAttribute="trailing" secondItem="c3a-o7-bTq" secondAttribute="trailing" id="tMn-1k-TJO"/>
                             <constraint firstAttribute="bottom" secondItem="Us7-V2-XbK" secondAttribute="bottom" id="u7T-eB-nP9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="c3a-o7-bTq"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZ4-Wq-ovh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -714,7 +716,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VP-NP-dxy" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="230" id="5Bf-An-Nr0"/>
                                                         </constraints>
@@ -732,7 +734,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="aiI-ap-99O" firstAttribute="top" secondItem="OM3-V9-UX0" secondAttribute="top" constant="8" id="AjE-Yb-ga9"/>
                                                             <constraint firstItem="aiI-ap-99O" firstAttribute="leading" secondItem="OM3-V9-UX0" secondAttribute="leading" constant="16" id="Ylj-7Y-qtr"/>
@@ -753,7 +755,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="Fn5-Ye-ryD" secondAttribute="bottom" constant="8" id="GR0-ug-Lpd"/>
                                                             <constraint firstItem="Fn5-Ye-ryD" firstAttribute="top" secondItem="F0a-Gt-fff" secondAttribute="top" constant="8" id="bay-lS-Vmn"/>
@@ -775,7 +777,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="FlI-xa-8O0" firstAttribute="leading" secondItem="4N4-Ro-50Z" secondAttribute="leading" constant="32" id="1Ab-Yf-QjD"/>
                                                             <constraint firstAttribute="trailing" secondItem="FlI-xa-8O0" secondAttribute="trailing" constant="16" id="6Tu-4L-TqV"/>
@@ -789,7 +791,7 @@
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Us-O1-zUV">
                                                                 <rect key="frame" x="16" y="8" width="382" height="92"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="phJ-4G-WkO">
                                                                     <size key="itemSize" width="128" height="128"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -799,7 +801,7 @@
                                                                 <cells/>
                                                             </collectionView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="4Us-O1-zUV" firstAttribute="top" secondItem="J3c-bb-tDV" secondAttribute="top" constant="8" id="6kh-Il-H1i"/>
                                                             <constraint firstItem="4Us-O1-zUV" firstAttribute="leading" secondItem="J3c-bb-tDV" secondAttribute="leading" constant="16" id="9DL-yy-NYf"/>
@@ -821,7 +823,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="r0B-w1-fKk" firstAttribute="top" secondItem="k3l-ij-XrS" secondAttribute="top" constant="8" id="IzW-6K-iC4"/>
                                                             <constraint firstAttribute="height" constant="35" id="WcK-dn-MG9"/>
@@ -835,15 +837,15 @@
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RyN-O2-DzH">
                                                                 <rect key="frame" x="32" y="8" width="350" height="164"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <color key="textColor" systemColor="labelColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                             </textView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="RyN-O2-DzH" firstAttribute="leading" secondItem="RF1-3p-gNh" secondAttribute="leading" constant="32" id="Hig-qh-vA7"/>
                                                             <constraint firstAttribute="trailing" secondItem="RyN-O2-DzH" secondAttribute="trailing" constant="32" id="NsW-ZH-Ytp"/>
@@ -863,7 +865,7 @@
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v9m-SO-vmN">
                                                                                 <rect key="frame" x="8" y="8" width="54" height="54"/>
-                                                                                <color key="tintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <color key="tintColor" systemColor="opaqueSeparatorColor"/>
                                                                                 <state key="normal" image="heart.fill" catalog="system">
                                                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                                 </state>
@@ -872,7 +874,7 @@
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <constraints>
                                                                             <constraint firstItem="v9m-SO-vmN" firstAttribute="top" secondItem="4Ck-Jn-MEY" secondAttribute="top" constant="8" id="4Od-cN-dZ1"/>
                                                                             <constraint firstAttribute="width" constant="70" id="4QV-wA-KsJ"/>
@@ -884,19 +886,19 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLQ-T7-bMB">
                                                                         <rect key="frame" x="70" y="0.0" width="336" height="70"/>
                                                                         <subviews>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRL-Ch-XAJ">
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRL-Ch-XAJ">
                                                                                 <rect key="frame" x="8" y="8" width="320" height="54"/>
                                                                                 <color key="backgroundColor" red="1" green="0.451376426" blue="0.44647590479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                                 <state key="normal" title="ADD TO CARD">
-                                                                                    <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                                                 </state>
                                                                                 <connections>
                                                                                     <action selector="addToCard:" destination="WP5-qo-6MJ" eventType="touchUpInside" id="FfL-zt-0bz"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                         <constraints>
                                                                             <constraint firstItem="BRL-Ch-XAJ" firstAttribute="top" secondItem="lLQ-T7-bMB" secondAttribute="top" constant="8" id="7ae-Sj-cE1"/>
                                                                             <constraint firstAttribute="trailing" secondItem="BRL-Ch-XAJ" secondAttribute="trailing" constant="8" id="DJp-LU-F7O"/>
@@ -916,7 +918,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="MQ2-dF-1lb" firstAttribute="leading" secondItem="mXP-ig-UUA" secondAttribute="leading" constant="8" id="1Nv-sE-YgS"/>
                                                             <constraint firstAttribute="trailing" secondItem="MQ2-dF-1lb" secondAttribute="trailing" id="3qO-ek-X0B"/>
@@ -927,7 +929,7 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KeF-Q0-aq0">
                                                         <rect key="frame" x="0.0" y="745" width="414" height="155"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
@@ -958,14 +960,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="ovn-qo-xgQ"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="dXo-6u-eVi"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="QDg-w3-Npi" firstAttribute="trailing" secondItem="dXo-6u-eVi" secondAttribute="trailing" id="4bG-wf-Uo8"/>
                             <constraint firstItem="QDg-w3-Npi" firstAttribute="top" secondItem="dXo-6u-eVi" secondAttribute="top" id="DhQ-14-3pZ"/>
                             <constraint firstItem="QDg-w3-Npi" firstAttribute="leading" secondItem="dXo-6u-eVi" secondAttribute="leading" id="XDm-0i-aZH"/>
                             <constraint firstAttribute="bottom" secondItem="QDg-w3-Npi" secondAttribute="bottom" id="dhJ-2m-v4f"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dXo-6u-eVi"/>
                     </view>
                     <size key="freeformSize" width="414" height="896"/>
                     <connections>
@@ -1057,7 +1059,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xSF-9b-wJR">
                                                 <rect key="frame" x="10" y="196" width="394" height="37"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9j-dS-taS">
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9j-dS-taS">
                                                         <rect key="frame" x="0.0" y="0.0" width="131.5" height="37"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -1065,7 +1067,7 @@
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-68-hBr">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-68-hBr">
                                                         <rect key="frame" x="131.5" y="0.0" width="131" height="37"/>
                                                         <color key="backgroundColor" red="1" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -1077,7 +1079,7 @@
                                                             <action selector="uiSubmit:" destination="32K-2O-Nxq" eventType="touchUpInside" id="8tJ-aK-kcB"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYL-gR-ffy">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYL-gR-ffy">
                                                         <rect key="frame" x="262.5" y="0.0" width="131.5" height="37"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -1100,14 +1102,14 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="zi3-Sq-Jll"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zi3-Sq-Jll" firstAttribute="trailing" secondItem="oBe-Rk-89V" secondAttribute="trailing" id="7JG-pt-ckm"/>
                             <constraint firstItem="oBe-Rk-89V" firstAttribute="top" secondItem="zi3-Sq-Jll" secondAttribute="top" id="SNJ-Ad-bgB"/>
                             <constraint firstItem="zi3-Sq-Jll" firstAttribute="bottom" secondItem="oBe-Rk-89V" secondAttribute="bottom" id="sa4-Nc-dKR"/>
                             <constraint firstItem="oBe-Rk-89V" firstAttribute="leading" secondItem="zi3-Sq-Jll" secondAttribute="leading" id="wiq-FL-Smw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zi3-Sq-Jll"/>
                     </view>
                     <navigationItem key="navigationItem" title="Addresses" id="RYn-NU-fDN"/>
                     <connections>
@@ -1127,7 +1129,7 @@
             <objects>
                 <viewController id="32K-2O-Nxq" customClass="Register" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCY-aF-Eyn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="597"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="597.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAq-WB-fwL">
@@ -1139,7 +1141,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="lgO-TN-EPj">
                                                 <rect key="frame" x="10" y="8" width="394" height="30"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNP-VH-TTS">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNP-VH-TTS">
                                                         <rect key="frame" x="0.0" y="0.0" width="354.5" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </button>
@@ -1179,7 +1181,7 @@
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email is not valid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dK-Du-F7C">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
-                                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1206,7 +1208,7 @@
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password doesn't match" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILG-GZ-sQd">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
-                                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1219,7 +1221,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CqR-0X-2aI">
                                                 <rect key="frame" x="10" y="382" width="394" height="37"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLT-L6-Uzr">
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLT-L6-Uzr">
                                                         <rect key="frame" x="0.0" y="0.0" width="131.5" height="37"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -1227,7 +1229,7 @@
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOt-ht-q1q">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOt-ht-q1q">
                                                         <rect key="frame" x="131.5" y="0.0" width="131" height="37"/>
                                                         <color key="backgroundColor" red="1" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -1238,7 +1240,7 @@
                                                             <action selector="uiSubmit:" destination="32K-2O-Nxq" eventType="touchUpInside" id="obd-th-Rbl"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdQ-nc-h8f">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IdQ-nc-h8f">
                                                         <rect key="frame" x="262.5" y="0.0" width="131.5" height="37"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -1261,14 +1263,14 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="80b-dk-8KN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vAq-WB-fwL" firstAttribute="leading" secondItem="80b-dk-8KN" secondAttribute="leading" id="4Bk-s7-Vgq"/>
                             <constraint firstItem="vAq-WB-fwL" firstAttribute="top" secondItem="80b-dk-8KN" secondAttribute="top" id="FeQ-1L-BNF"/>
                             <constraint firstItem="80b-dk-8KN" firstAttribute="trailing" secondItem="vAq-WB-fwL" secondAttribute="trailing" id="MsI-Xq-cLm"/>
                             <constraint firstItem="80b-dk-8KN" firstAttribute="bottom" secondItem="vAq-WB-fwL" secondAttribute="bottom" id="l0w-y7-qQ8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="80b-dk-8KN"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="svw-dM-pW3"/>
                     <connections>
@@ -1297,7 +1299,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXb-W9-OJC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXb-W9-OJC">
                                 <rect key="frame" x="54" y="412" width="257" height="94"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1315,14 +1317,14 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Md6-Ie-59G"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="VXb-W9-OJC" firstAttribute="leading" secondItem="Md6-Ie-59G" secondAttribute="leading" constant="54" id="FWM-xL-OYt"/>
                             <constraint firstItem="Md6-Ie-59G" firstAttribute="trailing" secondItem="VXb-W9-OJC" secondAttribute="trailing" constant="103" id="er8-1f-eCJ"/>
                             <constraint firstItem="Md6-Ie-59G" firstAttribute="bottom" secondItem="VXb-W9-OJC" secondAttribute="bottom" constant="356" id="kRt-2v-Tap"/>
                             <constraint firstItem="VXb-W9-OJC" firstAttribute="top" secondItem="Md6-Ie-59G" secondAttribute="top" constant="368" id="qab-Uy-rWq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Md6-Ie-59G"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKw-ID-ddP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1355,7 +1357,7 @@
             <objects>
                 <viewController id="q6x-kp-74i" customClass="Login" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sc0-f0-Y81">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="597"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="597.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xde-EO-g0k">
@@ -1378,7 +1380,7 @@
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email is not valid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPJ-UP-Krv">
                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="10"/>
-                                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -1394,7 +1396,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="muJ-7z-IIp">
                                                 <rect key="frame" x="10" y="116" width="394" height="37"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2M-B6-ijb">
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2M-B6-ijb">
                                                         <rect key="frame" x="0.0" y="0.0" width="131.5" height="37"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -1402,7 +1404,7 @@
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeT-W0-llJ">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeT-W0-llJ">
                                                         <rect key="frame" x="131.5" y="0.0" width="131" height="37"/>
                                                         <color key="backgroundColor" red="1" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -1414,7 +1416,7 @@
                                                             <action selector="uiSubmit:" destination="32K-2O-Nxq" eventType="touchUpInside" id="slv-wv-PM6"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUp-Le-CWU">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUp-Le-CWU">
                                                         <rect key="frame" x="262.5" y="0.0" width="131.5" height="37"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -1437,14 +1439,14 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="WLp-me-wx1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WLp-me-wx1" firstAttribute="bottom" secondItem="xde-EO-g0k" secondAttribute="bottom" id="9KO-3g-5cL"/>
                             <constraint firstItem="xde-EO-g0k" firstAttribute="leading" secondItem="WLp-me-wx1" secondAttribute="leading" id="Xve-KH-kMV"/>
                             <constraint firstItem="WLp-me-wx1" firstAttribute="trailing" secondItem="xde-EO-g0k" secondAttribute="trailing" id="vbX-DY-qZw"/>
                             <constraint firstItem="xde-EO-g0k" firstAttribute="top" secondItem="WLp-me-wx1" secondAttribute="top" id="xVf-wd-gjv"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="WLp-me-wx1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="KsQ-hv-CxE"/>
                     <connections>
@@ -1634,14 +1636,14 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Sr8-L7-U0A"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="VMj-gG-pd5" firstAttribute="top" secondItem="Sr8-L7-U0A" secondAttribute="top" id="1RQ-uK-tqf"/>
                             <constraint firstItem="Sr8-L7-U0A" firstAttribute="trailing" secondItem="VMj-gG-pd5" secondAttribute="trailing" id="Lbc-nS-xuW"/>
                             <constraint firstItem="Sr8-L7-U0A" firstAttribute="bottom" secondItem="VMj-gG-pd5" secondAttribute="bottom" id="VGY-ML-C1A"/>
                             <constraint firstItem="VMj-gG-pd5" firstAttribute="leading" secondItem="Sr8-L7-U0A" secondAttribute="leading" id="ny8-yV-SEm"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Sr8-L7-U0A"/>
                     </view>
                     <connections>
                         <outlet property="uiCreatedAt" destination="jzb-mm-4tO" id="WlR-Pg-VSZ"/>
@@ -1719,7 +1721,7 @@
                                             </label>
                                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oVi-At-Qa9" userLabel="wishlist">
                                                 <rect key="frame" x="10" y="66.5" width="394" height="269.5"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LoA-R9-C4R">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1744,7 +1746,7 @@
                                             </stackView>
                                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4JW-3x-lBj">
                                                 <rect key="frame" x="10" y="458" width="394" height="561"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J9u-VL-3JP">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1767,7 +1769,7 @@
                                             </imageView>
                                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Fa-4k-rLy" userLabel="orders">
                                                 <rect key="frame" x="10" y="729.5" width="394" height="577"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JYc-ia-loy">
                                                     <size key="itemSize" width="128" height="128"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1796,14 +1798,14 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6KG-4u-yi7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="c0G-Vf-0xe" firstAttribute="leading" secondItem="6KG-4u-yi7" secondAttribute="leading" id="9TC-Bh-WZk"/>
                             <constraint firstItem="c0G-Vf-0xe" firstAttribute="top" secondItem="6KG-4u-yi7" secondAttribute="top" id="Jji-Sc-OGj"/>
                             <constraint firstItem="6KG-4u-yi7" firstAttribute="trailing" secondItem="c0G-Vf-0xe" secondAttribute="trailing" id="RLX-St-vwi"/>
                             <constraint firstItem="6KG-4u-yi7" firstAttribute="bottom" secondItem="c0G-Vf-0xe" secondAttribute="bottom" id="aiZ-pc-Yb3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6KG-4u-yi7"/>
                     </view>
                     <navigationItem key="navigationItem" id="ubZ-JV-C1s">
                         <rightBarButtonItems>
@@ -1839,7 +1841,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlq-43-5Z3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlq-43-5Z3">
                                 <rect key="frame" x="20" y="79" width="84" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9zm-t0-eKi"/>
@@ -1850,7 +1852,7 @@
                                     <action selector="cancelButtonPressed:" destination="aAN-LB-bs3" eventType="touchUpInside" id="d8a-WY-SYF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ka3-T3-Pro">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ka3-T3-Pro">
                                 <rect key="frame" x="310" y="79" width="84" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="2lz-Jd-rVZ"/>
@@ -1862,14 +1864,14 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="q8r-0c-Cg3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="q8r-0c-Cg3" firstAttribute="trailing" secondItem="ka3-T3-Pro" secondAttribute="trailing" constant="20" id="KiL-dK-iNs"/>
                             <constraint firstItem="ka3-T3-Pro" firstAttribute="top" secondItem="q8r-0c-Cg3" secondAttribute="top" constant="35" id="TMf-Si-53N"/>
                             <constraint firstItem="vlq-43-5Z3" firstAttribute="leading" secondItem="q8r-0c-Cg3" secondAttribute="leading" constant="20" id="WY7-Be-lTd"/>
                             <constraint firstItem="vlq-43-5Z3" firstAttribute="top" secondItem="q8r-0c-Cg3" secondAttribute="top" constant="35" id="aEN-tH-xEd"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="q8r-0c-Cg3"/>
                     </view>
                     <connections>
                         <outlet property="doneButtonOutlet" destination="ka3-T3-Pro" id="Lzk-PD-l06"/>
@@ -1913,9 +1915,9 @@
         <image name="empty" width="800" height="600"/>
         <image name="filter" width="981" height="908"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="location" catalog="system" width="128" height="115"/>
+        <image name="location" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="noconnection" width="2000" height="2000"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
@@ -1925,5 +1927,32 @@
         <namedColor name="buttonColors">
             <color red="1" green="0.4699999988079071" blue="0.44499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
