@@ -592,18 +592,8 @@
 		9EAE57482657110500BE44C2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CFE2264126736FE500952274 /* GIFs */,
 				D2CA0F582672960E005AB72D /* viewController+Ext */,
-				CF082149266DDC9C00064DB9 /* sale.gif */,
-				CF082148266DDC9B00064DB9 /* kids.gif */,
-				CF082144266DDC9900064DB9 /* women.gif */,
-				CF082146266DDC9A00064DB9 /* kids2.gif */,
-				CF082145266DDC9A00064DB9 /* men.gif */,
-				CF082147266DDC9B00064DB9 /* home.gif */,
-				CF78F3FB2669D08C005B9FE1 /* specialoffers.gif */,
-				CF78F3F62669D03C005B9FE1 /* black.gif */,
-				CF78F3F12669D016005B9FE1 /* offer0.gif */,
-				CF78F3E22669C39F005B9FE1 /* offer.gif */,
-				CF78F3C22669B5C6005B9FE1 /* GifFile.swift */,
 				9EAE57492657114700BE44C2 /* URLs.swift */,
 				9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */,
 				D2745A4726574E06005ABAF2 /* ErrorMessage.swift */,
@@ -696,6 +686,24 @@
 				CF78F435266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift */,
 			);
 			path = Product_details_viewContoller;
+			sourceTree = "<group>";
+		};
+		CFE2264126736FE500952274 /* GIFs */ = {
+			isa = PBXGroup;
+			children = (
+				CF78F3C22669B5C6005B9FE1 /* GifFile.swift */,
+				CF082149266DDC9C00064DB9 /* sale.gif */,
+				CF082148266DDC9B00064DB9 /* kids.gif */,
+				CF082144266DDC9900064DB9 /* women.gif */,
+				CF082146266DDC9A00064DB9 /* kids2.gif */,
+				CF082145266DDC9A00064DB9 /* men.gif */,
+				CF082147266DDC9B00064DB9 /* home.gif */,
+				CF78F3FB2669D08C005B9FE1 /* specialoffers.gif */,
+				CF78F3F62669D03C005B9FE1 /* black.gif */,
+				CF78F3F12669D016005B9FE1 /* offer0.gif */,
+				CF78F3E22669C39F005B9FE1 /* offer.gif */,
+			);
+			path = GIFs;
 			sourceTree = "<group>";
 		};
 		CFF7A3BF26644C4D003D7987 /* HomeViewModel */ = {

@@ -119,7 +119,10 @@ class MeVC: UIViewController {
         uiOrdersCollection.rx.modelSelected(Order.self).subscribe{ [unowned self] value in
             let vc = self.storyboard?.instantiateViewController(identifier: "OrderDetailsVC") as! OrderDetailsVC
             vc.order = value.element
-            self.present(vc, animated: true, completion: nil)
+            if AppCommon.shared.checkConnectivity() == true{
+                self.present(vc, animated: true, completion: nil)
+            }
+           
         }.disposed(by: bag)
     }
     

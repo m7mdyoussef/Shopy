@@ -11,7 +11,7 @@ import SDWebImage
 import RxCocoa
 import RxSwift
 import ImageSlideshow
-
+import JGProgressHUD
 
 class ProductDetailsViewController: UIViewController {
     
@@ -22,7 +22,6 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var cardButton: UIButton!
     @IBOutlet weak var productDetails: UITextView!
     @IBOutlet weak var productPrice: UILabel!
-    var showIndicator: ShowIndecator?
     var homeViewModel : HomeModelType?
     var frame = CGRect.zero
     var disposeBag = DisposeBag()
@@ -33,6 +32,7 @@ class ProductDetailsViewController: UIViewController {
     var productElement : ProductClass?
     var isFavo: Bool?
     var imagesArr = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,27 +41,20 @@ class ProductDetailsViewController: UIViewController {
         pageIndicator.pageIndicatorTintColor = UIColor.black
         slideShow.pageIndicator = pageIndicator
         slideShow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .left(padding: 20), vertical: .bottom)
-        
-        showIndicator = ShowIndecator(view: view.self)
         homeViewModel = HomeViewModel()
         setupScreens()
-       
         registerSizeCell()
+        showLoading()
         sizeCollectionView.rx.setDelegate(self)
         cardButton.layer.cornerRadius = 25
         arrOption.asObservable().bind(to: sizeCollectionView.rx.items(cellIdentifier: "SizesCollectionViewCell")){row, items, cell in
             (cell as? SizesCollectionViewCell)?.productSize.text = String(items)
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         checkColor()
         tabBarController?.tabBar.isHidden = true
-    }
-   
-    @objc func didTap() {
-        let fullScreenController = slideShow.presentFullScreenController(from: self)
-       
-        fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: .white, color: nil)
     }
     
     @IBAction func addToWishList(_ sender: Any) {
@@ -69,11 +62,8 @@ class ProductDetailsViewController: UIViewController {
         checkFav()
     }
     @IBAction func addToCard(_ sender: Any) {
-
-//        let vc = FavouriteProductsVC()
-//        self.navigationController?.pushViewController(vc, animated: true)
-
-       let isStored = bagManager.isBagProduct(productID: productElement!.id)
+        
+        let isStored = bagManager.isBagProduct(productID: productElement!.id)
         if isStored {
             self.presentGFAlertOnMainThread(title: "Warning !!", message: "This product is already in card", buttonTitle: "OK")
         }else{
@@ -81,42 +71,6 @@ class ProductDetailsViewController: UIViewController {
             bagManager.addToBagProducts(bagProduct: productElement!)
         }
         
-       // onSuccessHud()
-
-    }
-    
-    func setupScreens(){
-        showIndicator?.startAnimating()
-        homeViewModel?.getProductElement(idProduct: idProduct ?? "")
-        homeViewModel?.productElementObservable?.asObservable().subscribe{[weak self]response in
-            guard let self = self else {return}
-            self.productElement = response.element
-            print(response.element?.id)
-            self.productTitle.text = response.element?.title
-            self.productPrice.text = response.element?.variants[0].price
-            self.productDetails.text = response.element?.bodyHTML
-            self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)
-            self.checkColor()
-            self.arrOption.accept(((response.element?.options[0].values) ?? []))
-            var imgs = response.element?.images
-            self.slideShow.slideshowInterval = 3.0
-            self.slideShow.pageIndicatorPosition = .init(horizontal: .center, vertical: .under)
-            self.slideShow.contentScaleMode = UIViewContentMode.scaleAspectFit
-
-            self.slideShow.activityIndicator = DefaultActivityIndicator()
-            self.slideShow.delegate = self
-            
-            var arr = [InputSource]()
-            for index in 0..<(imgs?.count)! {
-                arr.append(SDWebImageSource(url: URL(string: (imgs?[index].src)!)!) as! InputSource)
-                
-            }
-            self.slideShow.setImageInputs(arr)
-            let recognizer = UITapGestureRecognizer(target: self, action: #selector(ProductDetailsViewController.didTap))
-            self.slideShow.addGestureRecognizer(recognizer)
-            self.showIndicator?.stopAnimating()
-            
-       }.disposed(by: disposeBag)
     }
     
     func checkColor(){
@@ -126,10 +80,58 @@ class ProductDetailsViewController: UIViewController {
             self.favouriteButton.tintColor = UIColor.gray
         }
     }
+    
+    func showLoading(){
+        homeViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
+            let hud = JGProgressHUD()
+            hud.textLabel.text = "Loading"
+            hud.style = .dark
+            hud.show(in: (self?.view)!)
+            switch value{
+            case true:
+                hud.dismiss()
+            case false:
+                hud.dismiss()
+            }
+        }).disposed(by: disposeBag)
+        
+    }
 }
 
 extension ProductDetailsViewController: ImageSlideshowDelegate {
-    func imageSlideshow(_ imageSlideshow: ImageSlideshow, didChangeCurrentPageTo page: Int) {
-      //  print("current page:", page)
+    
+    func setupScreens(){
+        homeViewModel?.getProductElement(idProduct: idProduct )
+        homeViewModel?.productElementObservable?.asObservable().subscribe{[weak self]response in
+            guard let self = self else {return}
+            self.productElement = response.element
+            self.productTitle.text = response.element?.title
+            self.productPrice.text = response.element?.variants[0].price
+            self.productDetails.text = response.element?.bodyHTML
+            self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)
+            self.checkColor()
+            self.arrOption.accept(((response.element?.options[0].values) ?? []))
+            let imgs = response.element?.images
+            self.slideShow.slideshowInterval = 2.0
+            self.slideShow.pageIndicatorPosition = .init(horizontal: .center, vertical: .under)
+            self.slideShow.pageIndicator?.view.backgroundColor = #colorLiteral(red: 1, green: 0.451376426, blue: 0.4464759048, alpha: 1)
+            self.slideShow.pageIndicator?.view.layer.cornerRadius = 15
+            self.slideShow.contentScaleMode = UIViewContentMode.scaleAspectFit
+            self.slideShow.activityIndicator = DefaultActivityIndicator()
+            self.slideShow.delegate = self
+            var arr = [InputSource]()
+            for index in 0..<(imgs?.count)! {
+                arr.append(SDWebImageSource(url: URL(string: (imgs?[index].src)!)!) as InputSource)
+            }
+            self.slideShow.setImageInputs(arr)
+            let recognizer = UITapGestureRecognizer(target: self, action: #selector(ProductDetailsViewController.didTap))
+            self.slideShow.addGestureRecognizer(recognizer)
+            
+        }.disposed(by: disposeBag)
+    }
+    @objc func didTap() {
+        let fullScreenController = slideShow.presentFullScreenController(from: self)
+        
+        fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: .white, color: nil)
     }
 }
