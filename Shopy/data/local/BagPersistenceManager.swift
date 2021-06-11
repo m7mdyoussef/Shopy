@@ -31,13 +31,34 @@ class BagPersistenceManager{
     func isBagProduct(productID :Int )->Bool{
         guard let favourites = self.retrievebagProducts() else { return false}
         for fav in favourites {
-            if fav.value(forKey: "id") as! Int64 == Int64(productID) {return true }
+            
+            if fav.value(forKey: "id") as! Int64 == Int64(productID){return true }
         }
         return false
         
     }
     
-    func addToBagProducts(bagProduct  : ProductClass , count : Int = 1){
+    func isSizeFound(productID :Int, size: String )->Bool{
+    guard let favourites = self.retrievebagProducts() else { return false}
+    for fav in favourites {
+        var isFound = true
+        let data = fav.value(forKey: "sizes")
+        let arrSizes = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as? [String]
+        for index in arrSizes!{
+            print(index)
+            if index == size{
+                isFound == true
+            } else {
+                isFound == false
+            }
+        }
+        if (fav.value(forKey: "id") as! Int64 == Int64(productID) && isFound == true){return true }
+    }
+    return false
+    
+}
+    
+    func addToBagProducts(bagProduct  : ProductClass , size: String, count : Int = 1){
         let storedBagProduct = BagProduct(context: self.context)
         storedBagProduct.id  = Int64(bagProduct.id)
         storedBagProduct.count = Int64(count)
@@ -45,6 +66,9 @@ class BagPersistenceManager{
         storedBagProduct.title = bagProduct.title
         storedBagProduct.price = bagProduct.variants[0].price
         storedBagProduct.variantId = Int64(bagProduct.variants[0].id)
+        storedBagProduct.sizeProduct = size
+        let data = NSKeyedArchiver.archivedData(withRootObject: bagProduct.options[0].values)
+        storedBagProduct.sizes = data
 
         storedBagProduct.availableCount = Int64(bagProduct.variants[0].inventoryQuantity)
         try?self.context.save()

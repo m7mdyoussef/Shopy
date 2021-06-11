@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="BagProduct" representedClassName="BagProduct" syncable="YES" codeGenerationType="class">
         <attribute name="availableCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="count" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="price" optional="YES" attributeType="String"/>
+        <attribute name="sizeProduct" optional="YES" attributeType="String"/>
+        <attribute name="sizes" optional="YES" attributeType="Binary"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="variantId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
@@ -16,7 +18,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="BagProduct" positionX="-54" positionY="18" width="128" height="119"/>
+        <element name="BagProduct" positionX="-54" positionY="18" width="128" height="178"/>
         <element name="FavouriteProduct" positionX="-54" positionY="-9" width="128" height="89"/>
     </elements>
 </model>

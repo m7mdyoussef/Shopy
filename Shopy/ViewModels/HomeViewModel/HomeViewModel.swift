@@ -14,13 +14,15 @@ protocol HomeModelType{
     func getCollectionData()
     func getAllProduct(id:String)
     func getProductElement(idProduct:String)
+    func getPriceRules()
+    func getDiscountCode(priceRule:String)
     var collectionDataObservable : Observable<[CustomElement]>?{get}
     var productsDataObservable : Observable<[ProductElement]>?{get}
     var productElementObservable : Observable<ProductClass>?{get}
     var priceRuleObservable: Observable<[PriceRule]>?{get}
     var discontCodeObservable: Observable<[DiscountCodeElement]>?{get}
     var LoadingObservable: Observable<Bool>?{get}
-
+    
 }
 
 class HomeViewModel: HomeModelType{
@@ -40,6 +42,7 @@ class HomeViewModel: HomeModelType{
     private var PriceRuleDataSubject = PublishSubject<[PriceRule]>()
     private var discountCodeDataSubject = PublishSubject<[DiscountCodeElement]>()
     private var Loadingsubject = PublishSubject<Bool>()
+    private var dispatchGroup : DispatchGroup!
 
     
     init() {
@@ -49,20 +52,21 @@ class HomeViewModel: HomeModelType{
         priceRuleObservable = PriceRuleDataSubject.asObserver()
         discontCodeObservable = discountCodeDataSubject.asObserver()
         LoadingObservable = Loadingsubject.asObservable()
+        dispatchGroup = DispatchGroup()
 
     }
     
     func getCollectionData(){
         Loadingsubject.onNext(true)
+        dispatchGroup.enter()
         api.customCollections{[weak self](result) in
             guard let self = self else {return}
-            
+            self.dispatchGroup.leave()
             switch result {
             case .success(let response):
                 guard let customCollections = response?.custom_collections else {return}
                 self.collectionDataSubject.asObserver().onNext(customCollections)
                 self.getAllProduct(id: String(customCollections[0].id))
-                self.Loadingsubject.onNext(false)
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 self.Loadingsubject.onNext(false)
@@ -71,18 +75,18 @@ class HomeViewModel: HomeModelType{
             }
         }
     }
+    
     func getAllProduct(id:String){
         Loadingsubject.onNext(true)
+        dispatchGroup.enter()
         api.getProducts(collectionId: id){[weak self](result) in
             guard let self = self else {return}
-            
+            self.dispatchGroup.leave()
             switch result {
             case .success(let response):
                 guard let products = response?.products else {return}
                 self.productDataSubject.asObserver().onNext(products)
                 self.ProductElements = products
-                self.Loadingsubject.onNext(false)
-
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 self.Loadingsubject.onNext(false)
@@ -103,7 +107,6 @@ class HomeViewModel: HomeModelType{
                 self.productElementDataSubject.asObserver().onNext(product)
                 print(product.title)
                 self.Loadingsubject.onNext(false)
-
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 self.Loadingsubject.onNext(false)
@@ -115,14 +118,14 @@ class HomeViewModel: HomeModelType{
     
     func getPriceRules(){
         Loadingsubject.onNext(true)
+        dispatchGroup.enter()
         api.getPriceRules{[weak self](result) in
             guard let self = self else {return}
-            
+            self.dispatchGroup.leave()
             switch result {
             case .success(let response):
                 guard let priceRules = response?.priceRules else {return}
                 self.PriceRuleDataSubject.asObserver().onNext(priceRules)
-                self.Loadingsubject.onNext(false)
                 print(priceRules[0].id)
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
@@ -135,20 +138,26 @@ class HomeViewModel: HomeModelType{
     
     func getDiscountCode(priceRule:String){
         Loadingsubject.onNext(true)
+        dispatchGroup.enter()
         api.getDiscountCode(priceRule: priceRule){[weak self](result) in
             guard let self = self else {return}
+            self.dispatchGroup.leave()
             switch result {
             case .success(let response):
                 guard let discountCode = response?.discountCodes else {return}
                 self.discountCodeDataSubject.asObserver().onNext(discountCode)
-                self.Loadingsubject.onNext(false)
                 print(discountCode[0].code)
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
-                self.Loadingsubject.onNext(false)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }
         }
+        dispatchGroup.notify(queue:.main) { [weak self] in
+            guard let self = self else {return}
+            self.Loadingsubject.onNext(false)
+        }
     }
+    
+   
 }

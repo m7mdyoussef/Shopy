@@ -66,6 +66,7 @@ class ApiServices<T : ApiRequestWrapper>{
         let urlString = target.baseURL + target.endpoint
         print("url is \(urlString)")
         guard let url = URL(string: urlString) else {return}
+        guard AppCommon.shared.checkConnectivity() else {return}
         var request = URLRequest(url: url)
         request.method = HTTPMethod.post
         let session = URLSession.shared

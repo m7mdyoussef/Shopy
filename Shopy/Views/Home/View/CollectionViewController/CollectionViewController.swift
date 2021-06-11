@@ -22,7 +22,8 @@ class CollectionViewController: UIViewController {
     var arrDiscountCodes = [String]()
     var arrproductId = [String]()
     private var searchBar:UISearchBar!
-    var isConnect = true
+
+    var isDiscount = false
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var adsButton: UIButton!
     @IBOutlet weak var discountCode: UILabel!
@@ -34,6 +35,7 @@ class CollectionViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor.black
         startPoint()
+      
     }
     
     func startPoint(){
@@ -57,15 +59,18 @@ class CollectionViewController: UIViewController {
         getAllDiscountCodes()
         
         collectionViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
+            guard let self = self else {return}
             let hud = JGProgressHUD()
             hud.textLabel.text = "Loading"
             hud.style = .dark
-            hud.show(in: (self?.view)!)
+            hud.show(in: (self.view)!)
             switch value{
             case true:
                 hud.dismiss()
+                self.view.isUserInteractionEnabled = false
             case false:
                 hud.dismiss()
+                self.view.isUserInteractionEnabled = true
             }
         }).disposed(by: disposeBag)
     }
@@ -108,6 +113,8 @@ class CollectionViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func showDiscountCode(_ sender: Any) {
+        isDiscount = true
+        MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         adsImage.loadGif(name: "black")
         adsImage.contentMode = .scaleAspectFill
         adsView.layer.cornerRadius = 25
