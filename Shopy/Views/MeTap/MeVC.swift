@@ -49,8 +49,10 @@ class MeVC: UIViewController {
             guard let value = value.element else {return}
             if value {
                 self.hud = self.loadingHud(text: "Loading", style: .dark)
+                view.isUserInteractionEnabled = false
             }else{
                 self.dismissLoadingHud(hud: self.hud)
+                view.isUserInteractionEnabled = true
             }
         }.disposed(by: bag)
     }
