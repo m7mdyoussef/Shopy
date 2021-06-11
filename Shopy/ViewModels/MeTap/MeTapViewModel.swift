@@ -35,8 +35,8 @@ class MeTapViewModel:MeModelType {
     private var orderProductSubject = PublishSubject<[Product]>()
     private var loadingSubject = PublishSubject<Bool>()
     
-    var remote:RemoteDataSource!
-    var dispatchGroup : DispatchGroup!
+    private var remote:RemoteDataSource!
+    private var dispatchGroup : DispatchGroup!
     init() {
         favProductsObservable = favProductsSubject.asDriver(onErrorJustReturn: [])
         ordersObservable = ordersSubject.asDriver(onErrorJustReturn: [])
@@ -62,7 +62,7 @@ class MeTapViewModel:MeModelType {
             case .success(let response):
                 guard let orders = response?.orders else {return}
                 print("success")
-                self.ordersSubject.asObserver().onNext(orders)
+                self.ordersSubject.asObserver().onNext(getOrdersWithEmail(orders: orders))
                 self.loadingSubject.onNext(false)
 
             case .failure(let error):
@@ -114,7 +114,6 @@ class MeTapViewModel:MeModelType {
                         print(products)
                     case .failure(let error):
                         print(error)
-                    
                 }
             }
             
@@ -134,6 +133,33 @@ class MeTapViewModel:MeModelType {
             return formatter.string(from: date)
         }
         return nil
+    }
+    
+    func removeAllOrders(completion: @escaping ()->Void) {
+        loadingSubject.asObserver().onNext(true)
+        
+        remote.fetchOrders { [weak self] (result) in
+            guard let self = self else {return}
+            switch result{
+            case .success(let response):
+                guard let orders = response?.orders else {return}
+                print("success")
+                
+                let myOrders = self.getOrdersWithEmail(orders: orders)
+                for order in myOrders{
+//                    self.dispatchGroup.enter()
+                    self.remote.removeOrder(id:order.id)
+                }
+                
+                self.loadingSubject.onNext(false)
+                completion()
+                
+            case .failure(let error):
+                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
+                self.loadingSubject.onNext(false)
+                self.loadingSubject.asObserver().onNext(false)
+            }
+        }
     }
     
 }

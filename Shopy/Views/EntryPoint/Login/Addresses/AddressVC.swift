@@ -44,13 +44,13 @@ class AddressViewController: UIViewController {
     @IBAction func saveBtn(_ sender: Any) {
         if uiTitle.text?.isEmpty != true && uiCity.text?.isEmpty != true &&  uiZip.text?.isEmpty != true &&
             uiCountry.text?.isEmpty != true {
-            
             delegate.receive(address: Address(title: uiTitle.text, city: uiCity.text, zip: uiZip.text, country: uiCountry.text))
-        }else{
-            delegate.receive(address: nil)
+            dismiss(animated: true, completion: nil)
 
+        }else{
+//            delegate.receive(address: nil)
+            onFaildHud(text: "Please fill Address Details ")
         }
-        dismiss(animated: true, completion: nil)
         
     }
     

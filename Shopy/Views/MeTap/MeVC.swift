@@ -20,6 +20,7 @@ class MeVC: UIViewController {
     @IBOutlet weak var uiEmptyOrdersListImage: UIImageView!
     @IBOutlet weak var uiStack: UIStackView!
     @IBOutlet weak var uiOrderCollectionHeight: NSLayoutConstraint!
+    @IBOutlet weak var uiRemoveAllOrders: UIButton!
     
     var viewModel:MeTapViewModel!
     
@@ -48,8 +49,10 @@ class MeVC: UIViewController {
             guard let value = value.element else {return}
             if value {
                 self.hud = self.loadingHud(text: "Loading", style: .dark)
+                view.isUserInteractionEnabled = false
             }else{
                 self.dismissLoadingHud(hud: self.hud)
+                view.isUserInteractionEnabled = true
             }
         }.disposed(by: bag)
     }
@@ -95,6 +98,16 @@ class MeVC: UIViewController {
             (cell as? FavouriteproductCVC)?.favProduct = item
             (cell as? FavouriteproductCVC)?.deleteFromFavourites = { [unowned self] in
                 self.deletFromFavourites(productID: Int(item.id ))
+                
+                let alert = UIAlertController(title: "Remove Favourite", message: "Are you sure you want to remove the product from the wishlist ?", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+                    viewModel.fetchFavProducts()
+                }
+                let action2 = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                
+                alert.addAction(action)
+                alert.addAction(action2)
+                present(alert, animated: true, completion: nil)
             }
             
         }.disposed(by: bag)
@@ -200,10 +213,11 @@ class MeVC: UIViewController {
         if count > 0 {
             uiEmptyOrdersListImage.isHidden = true
             uiOrdersCollection.isHidden = false
-
+            uiRemoveAllOrders.isHidden = false
         }else{
             uiEmptyOrdersListImage.isHidden = false
             uiOrdersCollection.isHidden = true
+            uiRemoveAllOrders.isHidden = true
         }
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -213,6 +227,22 @@ class MeVC: UIViewController {
     @IBAction func uiCardButton(_ sender: Any) {
         let bag = BagViewController()
         navigationController?.pushViewController(bag, animated: true)
+    }
+    
+    
+    @IBAction func uiRemoveAllOrders(_ sender: Any) {
+        let alert = UIAlertController(title: "Remove All Orders", message: "Are you Sure you want to remove all orders", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let ok = UIAlertAction(title: "Yes", style: .destructive) { [weak self] (action) in
+            guard let self = self else {return}
+            self.viewModel.removeAllOrders { [weak self] in
+                guard let self = self else {return}
+                self.resetOrdersListViews(count: 0)
+            }
+        }
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     
 }

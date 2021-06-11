@@ -86,6 +86,39 @@ class ApiServices<T : ApiRequestWrapper>{
             }
         }.resume()
     }
+    
+    
+//    func createAndConfirmPayment(target:T,onSuccess: @escaping (Data)->Void , onFailure: @escaping (Error)->Void) {
+//
+//        let url = target.baseURL + target.endpoint
+//            
+//        
+//        let params: [String : Any] = ["stripeToken" : token.tokenId, "amount" : amount, "description" : Constants.defaultDescriptionStripe, "currency" : Constants.defaultCurrencyStripe]
+//
+//        
+//        let serializer = DataResponseSerializer(emptyResponseCodes: Set([200, 204, 205]))
+//        
+//        AF.request(url, method: .post, parameters: params).validate().response(responseSerializer: serializer) { (response) in
+//        
+////        AF.request(url, method: .post, parameters: params)
+////            .validate(statusCode: 200..<300)
+////            .responseData(completionHandler: { (response) in
+//
+//                switch response.result {
+//                case .success( _):
+//                    print("Payment successful")
+//                    completion(nil)
+//                case .failure(let error):
+//                    if (response.data?.count)! > 0 {print(error)}
+//                    completion(error)
+//                }
+//            }
+//        //)
+//        
+//    }
+    
+    
+    
 }
 
 private func buildParams(task: Task) -> ([String:Any], ParameterEncoding) {

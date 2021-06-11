@@ -16,7 +16,7 @@ protocol RemoteDataSourceProtocol {
     func getAllUsers(onSuccess: @escaping (AllCustomers?)->Void , onError: @escaping (Error)->Void)
 
     func fetchOrders( completion: @escaping (Result<Orders?,NSError>) -> Void )
-    func postOrder(order:PostOrderRequest , onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) 
+    func postOrder(order:PostOrderRequest , onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void)
     //end amin
     
     
@@ -83,6 +83,16 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
         }
     }
     
+    func removeOrder(id:Int) {
+        self.fetchData(target: .removeOrder(id: id), responseClass: RemoveOrderResponse.self) { (result) in
+            switch result{
+            case .success(let response):
+                print("(success \(String(describing: response))")
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
     
     // end amin
     func getProductElement(productId: String, completion: @escaping (Result<Product?, NSError>) -> Void) {

@@ -56,6 +56,7 @@ class EntryViewModel {
         
         remote.registerACustomer(customer: customer,onCompletion: { (data) in
             if let decodedResponse = try? JSONDecoder().decode(RegisterResponse.self, from: data) {
+                print(String(decoding: data, as: UTF8.self))
                 if let email = decodedResponse.errors?.email{
                     let err = "email \(email[0])"
                     DispatchQueue.main.async {
@@ -67,7 +68,25 @@ class EntryViewModel {
                     DispatchQueue.main.async {
                         onFailure(err)
                     }
-                }else{
+                }else
+                if let city = decodedResponse.errors?.addressesCity{
+                    let err = "City \(city[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }else if let zip = decodedResponse.errors?.addressesZip{
+                    let err = "Zip code \(zip[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }else if let country = decodedResponse.errors?.addressesCountry{
+                    let err = "Country \(country[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }
+                
+                else{
                     DispatchQueue.main.async {
                         onSuccess()
                     }
@@ -93,12 +112,10 @@ class EntryViewModel {
         getAllUsers(onFinish:{ [unowned self] (allCustomers) in
             
             for i in allCustomers.customers{
-                print(i.email)
-
                 if let mail = i.email {
                     
                     if email == mail , password == i.password{
-                        self.saveCredentialsInUserDefaults(email: email, username: i.firstName!)
+                        self.saveCredentialsInUserDefaults(email: email, username: i.firstName!,id: i.id)
                         DispatchQueue.main.async {
                             onSuccess()
                         }
@@ -123,10 +140,11 @@ class EntryViewModel {
     
     
     
-    func saveCredentialsInUserDefaults(email:String,username:String) {
+    func saveCredentialsInUserDefaults(email:String,username:String,id:Int) {
         MyUserDefaults.add(val: true, key: .loggedIn)
         MyUserDefaults.add(val: email, key: .email)
         MyUserDefaults.add(val: username, key: .username)
+        MyUserDefaults.add(val: id, key: .id)
     }
     
     func getAllUsers(onFinish: @escaping (AllCustomers)->Void,onError: @escaping (String)->Void) {

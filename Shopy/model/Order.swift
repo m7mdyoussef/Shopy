@@ -18,6 +18,14 @@ enum FinancialStatus:String {
 }
 
 
+
+// MARK: - discount_codeEmpty
+struct RemoveOrderResponse: Codable {
+    let errors: String?
+}
+
+
+
 struct Orders: Codable {
     let orders: [Order]
 }
