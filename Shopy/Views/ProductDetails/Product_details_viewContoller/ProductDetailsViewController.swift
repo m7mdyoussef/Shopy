@@ -32,6 +32,7 @@ class ProductDetailsViewController: UIViewController {
     var productElement : ProductClass?
     var isFavo: Bool?
     var imagesArr = [String]()
+    var sizeProduct = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +48,17 @@ class ProductDetailsViewController: UIViewController {
         showLoading()
         sizeCollectionView.rx.setDelegate(self)
         cardButton.layer.cornerRadius = 25
+        setUpSizeCollection()
+    }
+    
+    func setUpSizeCollection(){
         arrOption.asObservable().bind(to: sizeCollectionView.rx.items(cellIdentifier: "SizesCollectionViewCell")){row, items, cell in
             (cell as? SizesCollectionViewCell)?.productSize.text = String(items)
+        }
+        sizeCollectionView.rx.modelSelected(String.self).subscribe{ [weak self] value in
+            guard let self = self else {return}
+            print(value.element!)
+            self.sizeProduct = value.element ?? ""
         }
     }
     
@@ -62,13 +72,16 @@ class ProductDetailsViewController: UIViewController {
         checkFav()
     }
     @IBAction func addToCard(_ sender: Any) {
-        
+        if(sizeProduct == ""){
+            self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please, Choose your size.", buttonTitle: "OK")
+        }else{
         let isStored = bagManager.isBagProduct(productID: productElement!.id)
         if isStored {
             self.presentGFAlertOnMainThread(title: "Warning !!", message: "This product is already in card", buttonTitle: "OK")
         }else{
             self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the card🎉🎉", buttonTitle: "OK")
-            bagManager.addToBagProducts(bagProduct: productElement!)
+            bagManager.addToBagProducts(bagProduct: productElement!, size: sizeProduct)
+        }
         }
         
     }

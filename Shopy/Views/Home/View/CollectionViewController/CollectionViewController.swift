@@ -59,15 +59,18 @@ class CollectionViewController: UIViewController {
         getAllDiscountCodes()
         
         collectionViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
+            guard let self = self else {return}
             let hud = JGProgressHUD()
             hud.textLabel.text = "Loading"
             hud.style = .dark
-            hud.show(in: (self?.view)!)
+            hud.show(in: (self.view)!)
             switch value{
             case true:
                 hud.dismiss()
+                self.view.isUserInteractionEnabled = false
             case false:
                 hud.dismiss()
+                self.view.isUserInteractionEnabled = true
             }
         }).disposed(by: disposeBag)
     }

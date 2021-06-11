@@ -77,6 +77,7 @@ class SearchCategoryViewController: UIViewController {
         .orEmpty.distinctUntilChanged().bind(to: categorySearchViewModel.searchWord).disposed(by: db)
         
         categorySearchViewModel.productsObservable.bind(to: categorySearchResultCollectionView.rx.items(cellIdentifier: Constants.productCell)){row,item,cell in
+            
            let productCell = cell as! MainProductsCollectionViewCell
             productCell.DetailedProductObject = item
             self.arrproductId.append(String(item.id))
@@ -97,16 +98,24 @@ class SearchCategoryViewController: UIViewController {
 
         }
         
-        categorySearchResultCollectionView.rx.itemSelected.subscribe{value in
-                    print(value.element?.item)
-        //            if AppCommon.shared.checkConnectivity() == true{
-                       // self.controlViews(flag: true)
-                        self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
-                    let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
-                        detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
-                        self.navigationController?.pushViewController(detailsViewController, animated: true)
-                   // }
-                }.disposed(by: db)
+        categorySearchResultCollectionView.rx.modelSelected(DetailedProducts.self).subscribe{[weak self]value in
+            guard let self = self else {return}
+            print(value.element?.id)
+            let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
+                detailsViewController.idProduct = String(value.element?.id ?? 0)
+                 
+                self.navigationController?.pushViewController(detailsViewController, animated: true)
+        }.disposed(by: db)
+        
+//        categorySearchResultCollectionView.rx.itemSelected.subscribe{value in
+//
+//                    print(value.element?.item)
+//        //            if AppCommon.shared.checkConnectivity() == true{
+//                       // self.controlViews(flag: true)
+//                        //self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+//
+//                   // }
+//                }.disposed(by: db)
         
     }
     
