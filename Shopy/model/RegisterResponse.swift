@@ -16,5 +16,23 @@ struct RegisterResponse: Codable {
 
 // MARK: - Errors
 struct Errors: Codable {
-    let email, phone: [String]?
+    let email, phone,addressesCountry,addressesZip,addressesCity,addressesTitle: [String]?
+    
+    enum CodingKeys: String, CodingKey {
+        case email,phone
+        case addressesCountry = "addresses.country"
+        case addressesZip = "addresses.zip"
+        case addressesCity = "addresses.city"
+        case addressesTitle = "addresses.address1"
+    }
+    
+//    let addresses:[AddressResponse]?
 }
+//struct AddressResponse:Codable {
+//    let title,city,country,zip : [String]?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case title = "address1"
+//        case city,country,zip
+//    }
+//}

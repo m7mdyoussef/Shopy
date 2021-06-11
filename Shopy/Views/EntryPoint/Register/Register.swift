@@ -133,8 +133,13 @@ class Register: UIViewController,IRounded {
 //                        hud.style = .dark
 //                        hud.show(in: self.view)
                         
+                        guard let address = address else {
+                            onFaildHud(text: "Please insert Address Data")
+                            return
+                        }
+                        
                         let hud = loadingHud(text: "loading", style: .dark)
-                        let myAddress:[Address] = address == nil ? [] : [address!]
+                        let myAddress:[Address] = [address]
                         let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: myAddress))
                         
                         viewModel.signUp(customer:newCustomer,

@@ -55,6 +55,7 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             var jsonData:Data = Data()
             do {
                 jsonData = try JSONSerialization.data(withJSONObject: customer.asDictionary(), options: .prettyPrinted)
+                print(String(decoding: jsonData, as: UTF8.self))
                 return jsonData
             } catch let error {
                 print(error.localizedDescription)

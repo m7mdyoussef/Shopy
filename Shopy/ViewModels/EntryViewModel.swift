@@ -56,6 +56,7 @@ class EntryViewModel {
         
         remote.registerACustomer(customer: customer,onCompletion: { (data) in
             if let decodedResponse = try? JSONDecoder().decode(RegisterResponse.self, from: data) {
+                print(String(decoding: data, as: UTF8.self))
                 if let email = decodedResponse.errors?.email{
                     let err = "email \(email[0])"
                     DispatchQueue.main.async {
@@ -67,7 +68,25 @@ class EntryViewModel {
                     DispatchQueue.main.async {
                         onFailure(err)
                     }
-                }else{
+                }else
+                if let city = decodedResponse.errors?.addressesCity{
+                    let err = "City \(city[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }else if let zip = decodedResponse.errors?.addressesZip{
+                    let err = "Zip code \(zip[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }else if let country = decodedResponse.errors?.addressesCountry{
+                    let err = "Country \(country[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }
+                
+                else{
                     DispatchQueue.main.async {
                         onSuccess()
                     }
