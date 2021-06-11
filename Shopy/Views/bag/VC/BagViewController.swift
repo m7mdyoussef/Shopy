@@ -14,6 +14,7 @@ class BagViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var checkoutView: UIView!
     
+    @IBOutlet weak var afterDiscountLabel: UILabel!
     @IBOutlet weak var bagProductsCollectionView: UICollectionView!{
         didSet{
             bagProductsCollectionView.delegate = self
@@ -81,9 +82,15 @@ class BagViewController: UIViewController {
         }
         DispatchQueue.main.async {
             self.bagProductsCollectionView.reloadData()
-            self.totalPriceLabel.text = "\(totalPrice) $"
+            let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool
+            if discount == true{
+                self.totalPriceLabel.text = "\(totalPrice) LE"
+                self.afterDiscountLabel.text = "\(totalPrice - (totalPrice * 0.10)) LE"
+            }else{
+                self.totalPriceLabel.text = "\(totalPrice) LE"
+                self.afterDiscountLabel.text = "\(totalPrice) LE"
+            }
         }
-       
     }
     func deletFromBagProducts(productID : Int) {
         let localData = BagPersistenceManager.shared
