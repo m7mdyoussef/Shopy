@@ -55,6 +55,7 @@ class ProductDetailsViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         checkColor()
+        tabBarController?.tabBar.isHidden = true
     }
    
     @objc func didTap() {
@@ -74,7 +75,7 @@ class ProductDetailsViewController: UIViewController {
 
        let isStored = bagManager.isBagProduct(productID: productElement!.id)
         if isStored {
-            self.presentGFAlertOnMainThread(title: "Success", message: "This product is already in card", buttonTitle: "OK")
+            self.presentGFAlertOnMainThread(title: "Warning !!", message: "This product is already in card", buttonTitle: "OK")
         }else{
             self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the card🎉🎉", buttonTitle: "OK")
             bagManager.addToBagProducts(bagProduct: productElement!)

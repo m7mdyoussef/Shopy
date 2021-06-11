@@ -70,6 +70,7 @@ class CollectionViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
     override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
         arrproductId.removeAll()
         adsImage.loadGif(name: imagesArr[0])
         if AppCommon.shared.checkConnectivity() == false{

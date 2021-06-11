@@ -20,7 +20,6 @@ target 'Shopy' do
   pod 'HMSegmentedControl'
   pod "ImageSlideshow"
   pod "ImageSlideshow/SDWebImage"
-  pod 'PayPal-iOS-SDK'
   pod 'Stripe'
   pod 'JGProgressHUD'
 

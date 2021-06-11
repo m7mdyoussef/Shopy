@@ -23,7 +23,7 @@ struct pay {
 
 class PayPalViewController: UIViewController {
 
-    var paymentVC: PayPalPaymentViewController?
+//    var paymentVC: PayPalPaymentViewController?
     let allItems = [pay(title: "jdhk", price: 50, id: 1),pay(title: "jddhg", price: 150, id: 2)]
     var purchasedItemId = [Int]()
 
@@ -45,7 +45,7 @@ class PayPalViewController: UIViewController {
     
     private func finishPayment(token: STPToken){
         
-        var itemsToBuy : [PayPalItem] = []
+//        var itemsToBuy : [PayPalItem] = []
         self.totalPrice = 0
         for item in allItems {
             self.totalPrice += item.price
@@ -106,21 +106,21 @@ class PayPalViewController: UIViewController {
 }
 
 
-extension PayPalViewController: PayPalPaymentDelegate {
-    
-    func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
-        print("payment cancelled")
-        paymentVC!.dismiss(animated: true, completion: nil)
-    }
-    
-    func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
-        
-        
-        paymentVC!.dismiss(animated: true)
-    }
-    
-    
-}
+//extension PayPalViewController: PayPalPaymentDelegate {
+//
+//    func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
+//        print("payment cancelled")
+//        paymentVC!.dismiss(animated: true, completion: nil)
+//    }
+//
+//    func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
+//
+//
+//        paymentVC!.dismiss(animated: true)
+//    }
+//
+//
+//}
 
 extension PayPalViewController: CardInfoViewControllerDelegate {
     func didClickDone(_ token: STPToken) {

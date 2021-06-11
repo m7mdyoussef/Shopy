@@ -72,7 +72,5 @@ class BagPersistenceManager{
         }
         try?self.context.save()
     }
-  
-    
-    
+   
 }
