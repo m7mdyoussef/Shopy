@@ -11,6 +11,7 @@ import HMSegmentedControl
 import JGProgressHUD
 import RxSwift
 import RxCocoa
+import ViewAnimator
 
 class MeVC: UIViewController {
     
@@ -35,6 +36,14 @@ class MeVC: UIViewController {
         super.viewDidLoad()
         viewModel = MeTapViewModel()
         setupViews()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let animation = AnimationType.from(direction: .left, offset: 300)
+        view.animate(animations: [animation])
+        
+        UIView.animate(views: uiWishlistCollection.visibleCells, animations: [animation],delay: 0.5,duration: 2)
     }
     
     func setupViews()  {
@@ -221,7 +230,7 @@ class MeVC: UIViewController {
         }
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-      //  uiWishlistCollection.reloadData()
+        uiWishlistCollection.reloadData()
     }
     
     @IBAction func uiCardButton(_ sender: Any) {

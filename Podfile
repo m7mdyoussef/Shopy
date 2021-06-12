@@ -22,6 +22,7 @@ target 'Shopy' do
   pod "ImageSlideshow/SDWebImage"
   pod 'Stripe'
   pod 'JGProgressHUD'
+  pod 'ViewAnimator', '2.7.0'
 
   
   #  pod 'Gallery'
