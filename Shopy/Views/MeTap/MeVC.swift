@@ -11,6 +11,7 @@ import HMSegmentedControl
 import JGProgressHUD
 import RxSwift
 import RxCocoa
+import BadgeHub
 import ViewAnimator
 import MOLH
 
@@ -23,6 +24,13 @@ class MeVC: UIViewController {
     @IBOutlet weak var uiStack: UIStackView!
     @IBOutlet weak var uiOrderCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var uiRemoveAllOrders: UIButton!
+    
+    @IBOutlet weak var favouriteBtn: UIBarButtonItem!
+    @IBOutlet weak var bagBtn: UIBarButtonItem!
+    var hubBag: BadgeHub!
+    var hubFavourite: BadgeHub!
+    let manager = FavouritesPersistenceManager.shared
+    let bagManager = BagPersistenceManager.shared
     
     var viewModel:MeTapViewModel!
     
@@ -214,7 +222,8 @@ class MeVC: UIViewController {
             
             if viewModel.isUserLoggedIn() {
                 showGreatingMessage()
-                
+               AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
+//                AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
                 viewModel.favProductsObservable?.drive(onNext: { [unowned self] (favProducts) in
                     self.resetWishListViews(count:favProducts.count)
                     self.uiWishlistCollection.reloadData()
@@ -237,6 +246,7 @@ class MeVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         uiOrdersCollection.removeObserver(self, forKeyPath: "contentSize")
     }
+    
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentSize"{

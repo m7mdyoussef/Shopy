@@ -144,7 +144,7 @@ class EntryViewModel {
         MyUserDefaults.add(val: customer.email!, key: .email)
         MyUserDefaults.add(val: customer.firstName, key: .username)
         MyUserDefaults.add(val: customer.id, key: .id)
-        MyUserDefaults.add(val: true, key: .isDisconut)
+//        MyUserDefaults.add(val: true, key: .isDisconut)
         MyUserDefaults.add(val: customer.addresses[0].title, key: .title)
         MyUserDefaults.add(val: customer.addresses[0].city, key: .city)
         MyUserDefaults.add(val: customer.addresses[0].country, key: .country)

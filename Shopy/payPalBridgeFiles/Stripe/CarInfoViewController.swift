@@ -64,7 +64,7 @@ class CarInfoViewController: UIViewController {
         uiItemCount.text! = String(describing: orderObject.products.count)
         uiSubtotal.text = "\(orderObject.subTotal)"
         uiDiscount.text = "$\(orderObject.discount)"
-        uiTotal.text = "\(orderObject.total)"
+        uiTotal.text = "\(orderObject.subTotal - orderObject.discount)"
     }
     
     

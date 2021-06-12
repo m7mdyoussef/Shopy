@@ -10,14 +10,23 @@ import UIKit
 import RxSwift
 import RxCocoa
 import JGProgressHUD
+import BadgeHub
 
 class CategoryViewController: UIViewController,ICanLogin {
+
 
     @IBOutlet weak var subCatView: UIView!
     @IBOutlet private weak var mainCategoryCollectionView: UICollectionView!
     @IBOutlet weak var subCategoryCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
     
+    @IBOutlet weak var favouriteBtn: UIBarButtonItem!
+    @IBOutlet weak var bagBtn: UIBarButtonItem!
+    
+    var hubBag: BadgeHub!
+    var hubFavourite: BadgeHub!
+    let manager = FavouritesPersistenceManager.shared
+    let bagManager = BagPersistenceManager.shared
     private var db:DisposeBag!
     private var mainCategElement:String = "Men"
     private var subCategElement:String = "T-Shirts"
@@ -26,11 +35,12 @@ class CategoryViewController: UIViewController,ICanLogin {
     private var categoryViewModel = CategoryViewModel()
     private var collectionViewModel = HomeViewModel()
     private var arrproductId = [String]()
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
-       // super.viewWillAppear(true)
+        super.viewWillAppear(true)
         navigationController?.navigationBar.isHidden = false
+
         tabBarController?.tabBar.isHidden = false
         if AppCommon.shared.checkConnectivity() == false{
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
@@ -38,8 +48,10 @@ class CategoryViewController: UIViewController,ICanLogin {
             NoInternetViewController.vcIdentifier = "CategoryViewController"
             NoInternetViewController.modalPresentationStyle = .fullScreen
             self.present(NoInternetViewController, animated: true, completion: nil)
-           
+            
         }else{
+            AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
+            AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
             arrproductId.removeAll()
             subCategElement = "T-Shirts"
             mainCategElement = "Men"
@@ -47,19 +59,19 @@ class CategoryViewController: UIViewController,ICanLogin {
             categoryViewModel.fetchFilterdProducts(mainCategoryElement: mainCategElement, subCategoryElement: subCategElement)
         }
         
-
-
-
+        
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.barTintColor = UIColor.black
-
+        
         
         subCatView.roundCorners(corners: .allCorners, radius: 20)
-       //  productView.roundCorners(corners: .allCorners, radius: 20)
+        //  productView.roundCorners(corners: .allCorners, radius: 20)
         //register custom nib file cells
         productsCollectionView.layer.cornerRadius = 20
         productsCollectionView.clipsToBounds = true
@@ -72,35 +84,35 @@ class CategoryViewController: UIViewController,ICanLogin {
         let productCell = UINib(nibName: Constants.productCell, bundle: nil)
         productsCollectionView.register(productCell, forCellWithReuseIdentifier: Constants.productCell)
         
-   //     activityIndicatorView = UIActivityIndicatorView(style: .large)
-//        categoryViewModel = CategoryViewModel()
-//        collectionViewModel = HomeViewModel()
+        //     activityIndicatorView = UIActivityIndicatorView(style: .large)
+        //        categoryViewModel = CategoryViewModel()
+        //        collectionViewModel = HomeViewModel()
         db = DisposeBag()
         
         // collectionViews Deleget
         mainCategoryCollectionView.rx.setDelegate(self).disposed(by: db)
         subCategoryCollectionView.rx.setDelegate(self).disposed(by: db)
         productsCollectionView.rx.setDelegate(self).disposed(by: db)
-
-
+        
+        
         //first item selected at first
         let selectedIndexPath = IndexPath(item: 0, section: 0)
-
+        
         //binding viewModel observables
         categoryViewModel.mainCategoryElementsObservable.bind(to: mainCategoryCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){ [weak self] row,item,cell in
-           let mainCategoryCell = cell as! MainCategoriesCollectionViewCell
+            let mainCategoryCell = cell as! MainCategoriesCollectionViewCell
             mainCategoryCell.mainCategoriesCellLabel.text = item
             self?.mainCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: db)
         
         categoryViewModel.subCategoryElementsObservable.bind(to: subCategoryCollectionView.rx.items(cellIdentifier: Constants.subCategoryElementCell)){ [weak self] row,item,cell in
-           let subCategoryCell = cell as! SubCategoriesCollectionViewCell
-           subCategoryCell.subCategorieslabel.text = item
+            let subCategoryCell = cell as! SubCategoriesCollectionViewCell
+            subCategoryCell.subCategorieslabel.text = item
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: db)
         
         categoryViewModel.productsObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: Constants.productCell)){ row,item,cell in
-           let productsCell = cell as! MainProductsCollectionViewCell
+            let productsCell = cell as! MainProductsCollectionViewCell
             productsCell.productObject = item
             self.arrproductId.append(String(item.id))
         }.disposed(by: db)
@@ -120,30 +132,30 @@ class CategoryViewController: UIViewController,ICanLogin {
             self?.categoryViewModel.fetchFilterdProducts(mainCategoryElement: self!.mainCategElement, subCategoryElement: self!.subCategElement)
             self?.arrproductId.removeAll()
         }).disposed(by: db)
-
-      
+        
+        
         
         productsCollectionView.rx.itemSelected.subscribe{value in
-           // print(value.element?.item)
-           if AppCommon.shared.checkConnectivity() == true{
-               // self.controlViews(flag: true)
-            self.collectionViewModel.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
-            let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
+            // print(value.element?.item)
+            if AppCommon.shared.checkConnectivity() == true{
+                // self.controlViews(flag: true)
+                self.collectionViewModel.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+                let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
                 self.navigationController?.pushViewController(detailsViewController, animated: true)
             }
         }.disposed(by: db)
         
         
-//        productsCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (indexpath) in
-//        }).disposed(by: db)
-
-    
-         categoryViewModel.errorObservable.subscribe(onError: {[weak self] (error) in
-             self?.hideLoading()
-             }).disposed(by: db)
-         
-         categoryViewModel.LoadingObservable.subscribe(onNext: {[weak self] (value) in
+        //        productsCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (indexpath) in
+        //        }).disposed(by: db)
+        
+        
+        categoryViewModel.errorObservable.subscribe(onError: {[weak self] (error) in
+            self?.hideLoading()
+        }).disposed(by: db)
+        
+        categoryViewModel.LoadingObservable.subscribe(onNext: {[weak self] (value) in
             let hud = JGProgressHUD()
             hud.textLabel.text = "Loading"
             hud.style = .dark
@@ -154,13 +166,13 @@ class CategoryViewController: UIViewController,ICanLogin {
             case false:
                 hud.dismiss()
             }
-         }).disposed(by: db)
-
-         categoryViewModel.fetchData()
-         categoryViewModel.fetchFilterdProducts(mainCategoryElement: mainCategElement, subCategoryElement: subCategElement)
+        }).disposed(by: db)
+        
+        categoryViewModel.fetchData()
+        categoryViewModel.fetchFilterdProducts(mainCategoryElement: mainCategElement, subCategoryElement: subCategElement)
         
     }
-
+    
     @IBAction func searchCategoryProducts(_ sender: Any) {
         let searchCategoryViewController = storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
         searchCategoryViewController.productList = categoryViewModel.ProductElements
@@ -192,8 +204,8 @@ class CategoryViewController: UIViewController,ICanLogin {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-
-       // productsCollectionView.reloadData()
+        
+        // productsCollectionView.reloadData()
         view.setNeedsLayout()
     }
     
@@ -213,6 +225,7 @@ class CategoryViewController: UIViewController,ICanLogin {
             }
         }
     }
+
     
 }
 
@@ -232,8 +245,6 @@ extension CategoryViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8)
     }
-    
-    
 }
 
 
@@ -253,7 +264,7 @@ extension CategoryViewController{
         
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel)
         { action -> Void in
-           
+            
         })
         self.present(alertController, animated: true, completion: nil)
     }

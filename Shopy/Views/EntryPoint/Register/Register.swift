@@ -148,7 +148,7 @@ class Register: UIViewController,IRounded {
 //                                            self.dismissLoadingHud(hud: hud)
 //                                            self.onSuccessHud()
                                             
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
                                                 self.viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!, onSuccess: { [unowned self] in
                                                     self.dismissLoadingHud(hud: hud)
                                                     self.navigationController?.popViewController(animated: true)

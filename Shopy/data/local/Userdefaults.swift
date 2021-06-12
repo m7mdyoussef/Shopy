@@ -13,6 +13,7 @@ enum Keys:String {
     case email = "email"
     case username = "username"
     case loggedIn = "logedIn"
+
     case id = "id"
     case isDisconut = "discount"
     case phone = "phone"

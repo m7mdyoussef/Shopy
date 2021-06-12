@@ -12,6 +12,7 @@ import RxCocoa
 import RxSwift
 import ImageSlideshow
 import JGProgressHUD
+import ReadMoreTextView
 
 class ProductDetailsViewController: UIViewController {
     
@@ -49,6 +50,11 @@ class ProductDetailsViewController: UIViewController {
         sizeCollectionView.rx.setDelegate(self)
         cardButton.layer.cornerRadius = 25
         setUpSizeCollection()
+        
+//        productDetails.shouldTrim = true
+//        productDetails.maximumNumberOfLines = 4
+//        productDetails.attributedReadMoreText = NSAttributedString(string: "... Read more")
+//        productDetails.attributedReadLessText = NSAttributedString(string: " Read less")
     }
     
     func setUpSizeCollection(){

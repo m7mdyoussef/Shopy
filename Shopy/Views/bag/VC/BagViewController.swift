@@ -31,8 +31,8 @@ class BagViewController: UIViewController {
     
     
 
-    var totalPrice:Double = 1.0
-    var totalDiscount:Double = 1.0
+    var totalPrice:Double = 0
+    var totalDiscount:Double = 0
 //    let hud = JGProgressHUD(style: .dark)
     
     
@@ -104,6 +104,7 @@ class BagViewController: UIViewController {
                     self.totalDiscount = totalPrice - (totalPrice * 0.10)
                     self.afterDiscountLabel.text = "\(self.totalDiscount) LE"
                 }else{
+                    self.totalDiscount = self.totalPrice
                     self.totalPriceLabel.text = "\(totalPrice) LE"
                     self.afterDiscountLabel.text = "\(totalPrice) LE"
                 }
@@ -158,10 +159,8 @@ class BagViewController: UIViewController {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CarInfoViewController
         vc.delegate = self
         
-//        vc.bagProducts = self.bagProducts
-//        vc.totalDiscount = totalDiscount
-        let obj = OrderObject(products: self.bagProducts, total: totalDiscount, subTotal:totalPrice , discount: Double(round(1000 * (totalPrice * 0.10) )/1000)
- )
+        let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool ? Double(round(1000 * (totalPrice * 0.10) )/1000) : 0
+        let obj = OrderObject(products: self.bagProducts, total: totalDiscount, subTotal:totalPrice , discount: discount)
         vc.orderObject = obj
         
         let cardAction = UIAlertAction(title: "Pay with Card", style: .default) { (action) in
