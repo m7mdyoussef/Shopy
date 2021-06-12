@@ -42,6 +42,8 @@ class OrderDetailsVC: UIViewController {
         uiTotalPrice.text! += order.totalPrice
         uiDiscount.text! += order.totalDiscounts
         uiFinancialState.text = order.financialStatus
+        
+        
 
     }
     

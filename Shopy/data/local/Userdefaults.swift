@@ -9,11 +9,16 @@
 import Foundation
 
 enum Keys:String {
+    case isFirstTime = "isFirstTime"
     case email = "email"
     case username = "username"
     case loggedIn = "logedIn"
     case id = "id"
     case isDisconut = "discount"
+    case phone = "phone"
+    case title = "address"
+    case city = "city"
+    case country = "country"
 }
 class MyUserDefaults {
     private static var shared = UserDefaults.standard

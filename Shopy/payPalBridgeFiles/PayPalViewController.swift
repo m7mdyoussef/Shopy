@@ -123,6 +123,10 @@ class PayPalViewController: UIViewController {
 //}
 
 extension PayPalViewController: CardInfoViewControllerDelegate {
+    func clearBag() {
+        print("asdf")
+    }
+    
     func didClickDone(_ token: STPToken) {
         print("we have a token ", token)
         finishPayment(token: token)

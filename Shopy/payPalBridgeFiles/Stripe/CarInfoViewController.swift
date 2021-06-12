@@ -8,87 +8,151 @@
 
 import UIKit
 import Stripe
+import MarqueeLabel
 
 protocol CardInfoViewControllerDelegate {
     func didClickDone(_ token: STPToken)
     func didClickCancel()
+    func clearBag()
 }
 
+enum PaymentType : String{
+    case cash = "Cash on Deliver"
+    case stripe = "Visa"
+}
 class CarInfoViewController: UIViewController {
-
+    
     //MARK: - IBOutlets
-        @IBOutlet weak var doneButtonOutlet: UIButton!
+    //        @IBOutlet weak var doneButtonOutlet: UIButton!
+    @IBOutlet weak var uiStackTextField: UIStackView!
+    
+    @IBOutlet weak var uiViewTextField: UIView!
+    @IBOutlet weak var uiSubmitButton: UIButton!
+    @IBOutlet weak var uiPaymentlabel: MarqueeLabel!
+    @IBOutlet weak var uiName: UILabel!
+    @IBOutlet weak var uiAddress: UILabel!
+    @IBOutlet weak var uiPhone: UILabel!
+    @IBOutlet weak var uiItemCount: UILabel!
+    @IBOutlet weak var uiSubtotal: UILabel!
+    @IBOutlet weak var uiDiscount: UILabel!
+    @IBOutlet weak var uiTotal: UILabel!
+    
+    let paymentCardTextField = STPPaymentCardTextField()
+    private var viewModel = BagViewModel()
+    var delegate: CardInfoViewControllerDelegate?
+    var paymentMethod : PaymentType!
+//    var bagProducts : [BagProduct]!
+//    var totalDiscount : Double!
+    var orderObject:OrderObject!
+    //MARK: - View lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        let paymentCardTextField = STPPaymentCardTextField()
-        
-        var delegate: CardInfoViewControllerDelegate?
-        
-        //MARK: - View lifecycle
-        override func viewDidLoad() {
-            super.viewDidLoad()
-
-            view.addSubview(paymentCardTextField)
-            
-            paymentCardTextField.delegate = self
-            
-            paymentCardTextField.translatesAutoresizingMaskIntoConstraints = false
-            
-            view.addConstraint(NSLayoutConstraint(item: paymentCardTextField, attribute: .top, relatedBy: .equal, toItem: doneButtonOutlet, attribute: .bottom, multiplier: 1, constant: 30))
-            
-            view.addConstraint(NSLayoutConstraint(item: paymentCardTextField, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -20))
-            
-            view.addConstraint(NSLayoutConstraint(item: paymentCardTextField, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 20))
+        //            uiPaymentCardView.addSubview(paymentCardTextField)
+        uiStackTextField.addArrangedSubview(paymentCardTextField)
+        paymentCardTextField.delegate = self
+        uiPaymentlabel.text! += paymentMethod.rawValue
+        uiName.text! += MyUserDefaults.getValue(forKey: .username) as! String
+        if MyUserDefaults.getValue(forKey: .phone) != nil{
+            uiPhone.isHidden = false
+            uiPhone.text! += " \(String(describing: MyUserDefaults.getValue(forKey: .phone)))"
+        }else{
+            uiPhone.isHidden = true
         }
+        uiAddress.text! += "\(MyUserDefaults.getValue(forKey:.title) as! String), \(MyUserDefaults.getValue(forKey:.city) as! String), \(MyUserDefaults.getValue(forKey:.country) as! String)"
+        uiPhone.text! += MyUserDefaults.getValue(forKey: .phone) as! String
+        uiItemCount.text! = String(describing: orderObject.products.count)
+        uiSubtotal.text = "\(orderObject.subTotal)"
+        uiDiscount.text = "$\(orderObject.discount)"
+        uiTotal.text = "\(orderObject.total)"
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-        
-        //MARK: - IBActions
-
-        @IBAction func doneButtonPressed(_ sender: Any) {
-            processCard()
-        }
-        
-        @IBAction func cancelButtonPressed(_ sender: Any) {
-            delegate?.didClickCancel()
-            dismissView()
-        }
-        
-        
-        //MARK: - Helpers
-        
-        private func dismissView() {
-            self.dismiss(animated: true, completion: nil)
-        }
-
-        private func processCard() {
-            
-            let cardParams = STPCardParams()
-            cardParams.number = paymentCardTextField.cardNumber
-            cardParams.expMonth = UInt(paymentCardTextField.expirationMonth)
-            cardParams.expYear = UInt(paymentCardTextField.expirationYear)
-            cardParams.cvc = paymentCardTextField.cvc
-            
-            STPAPIClient.shared.createToken(withCard: cardParams) { (token, error) in
-                
-                if error == nil {
-                    self.delegate?.didClickDone(token!)
-                    self.dismissView()
-                } else {
-                    print("Error processing card token", error!.localizedDescription)
-                }
-                
-            }
-            
+        switch paymentMethod {
+        case .cash:
+            uiViewTextField.isHidden = true
+            uiSubmitButton.alpha = 1
+            uiSubmitButton.isEnabled = true
+        case .stripe:
+            uiViewTextField.isHidden = false
+            uiSubmitButton.alpha = 0.5
+            uiSubmitButton.isEnabled = false
+        default:
+            uiStackTextField.isHidden = false
+            uiStackTextField.alpha = 1
         }
     }
-
-
-    extension CarInfoViewController: STPPaymentCardTextFieldDelegate {
+    
+    @IBAction func uiSubmit(_ sender: Any) {
         
-        func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
-            
-            doneButtonOutlet.isEnabled = textField.isValid
+        switch paymentMethod {
+        case .cash:
+            self.viewModel.checkout(product: self.orderObject.products,status: .pending)
+            dismissView()
+            delegate?.clearBag()
+        case .stripe:
+            processCard()
+            self.viewModel.checkout(product: self.orderObject.products,status: .paid)
+        default:
+            self.viewModel.checkout(product: self.orderObject.products,status: .pending)
+
         }
+    }
+    //MARK: - IBActions
+    
+    //        @IBAction func doneButtonPressed(_ sender: Any) {
+    //            processCard()
+    //        }
+    //
+    //        @IBAction func cancelButtonPressed(_ sender: Any) {
+    //                delegate?.didClickCancel()
+    //                dismissView()
+    //        }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        delegate?.didClickCancel()
+//        dismissView()
+    }
+    
+    //MARK: - Helpers
+    
+    private func dismissView() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func processCard() {
         
+        let cardParams = STPCardParams()
+        cardParams.number = paymentCardTextField.cardNumber
+        cardParams.expMonth = UInt(paymentCardTextField.expirationMonth)
+        cardParams.expYear = UInt(paymentCardTextField.expirationYear)
+        cardParams.cvc = paymentCardTextField.cvc
         
+        STPAPIClient.shared.createToken(withCard: cardParams) { (token, error) in
+            
+            if error == nil {
+                self.delegate?.didClickDone(token!)
+                self.dismissView()
+                self.delegate?.clearBag()
+                //                    self.viewModel.checkout(product: self.bagProducts,status: .paid)
+            } else {
+                print("Error processing card token", error!.localizedDescription)
+            }
+        }
+    }
+}
 
+
+
+extension CarInfoViewController: STPPaymentCardTextFieldDelegate {
+    
+    func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
+        uiSubmitButton.isEnabled = textField.isValid
+        uiSubmitButton.alpha = textField.isValid ? 1 : 0.5
+    }
+    
+    
+    
 }

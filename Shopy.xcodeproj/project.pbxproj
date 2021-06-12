@@ -11,6 +11,7 @@
 		25439C4C0A5EE7980C196ABD /* Pods_Shopy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DE585536EF363BD795C169 /* Pods_Shopy.framework */; };
 		2729B1032670F11000FCA983 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2729B1022670F11000FCA983 /* OrderDetailsVC.swift */; };
 		2730285B267102AB004273CF /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27302859267102AB004273CF /* OrderCell.xib */; };
+		27338D27267544BC003F6C84 /* OrderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27338D26267544BC003F6C84 /* OrderObject.swift */; };
 		273FF7D42660932400A37003 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7D32660932400A37003 /* Register.swift */; };
 		273FF7D926609D4300A37003 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7D826609D4300A37003 /* Login.swift */; };
 		273FF7DE2660A30300A37003 /* EntryNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7DD2660A30300A37003 /* EntryNavigator.swift */; };
@@ -138,6 +139,7 @@
 		264E4FC7B77E696D0A2906DC /* Pods_Shopy_ShopyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopy_ShopyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2729B1022670F11000FCA983 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
 		27302859267102AB004273CF /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
+		27338D26267544BC003F6C84 /* OrderObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderObject.swift; sourceTree = "<group>"; };
 		273FF7D32660932400A37003 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		273FF7D826609D4300A37003 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		273FF7DD2660A30300A37003 /* EntryNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryNavigator.swift; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 				CF4798A32669497B00B0A64D /* DiscountCode.swift */,
 				2766A91F266F5F3E0036F78C /* Order.swift */,
 				27A3E18826724F62008590EB /* PostOrder.swift */,
+				27338D26267544BC003F6C84 /* OrderObject.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1189,6 +1192,7 @@
 				27C3A857266CAEAA00D16F84 /* MeVC.swift in Sources */,
 				CF4797E62665D3D800B0A64D /* CollectionViewController+FlowLayout.swift in Sources */,
 				CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */,
+				27338D27267544BC003F6C84 /* OrderObject.swift in Sources */,
 				9E686591266653D3007B0388 /* DetailedProductsModel.swift in Sources */,
 				CF47989F2669471500B0A64D /* PriceRules.swift in Sources */,
 				27DDC4ED266BE275002E92A7 /* Products.swift in Sources */,

@@ -77,6 +77,7 @@ class CollectionViewController: UIViewController,ICanLogin {
     }
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
         arrproductId.removeAll()
         adsImage.loadGif(name: imagesArr[0])
         if AppCommon.shared.checkConnectivity() == false{
@@ -106,24 +107,38 @@ class CollectionViewController: UIViewController,ICanLogin {
     }
     
     @IBAction func moveToBag(_ sender: Any) {
-        if isUserLoggedIn(){
-            let bag = BagViewController()
-            navigationController?.pushViewController(bag, animated: true)
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+            
         }else{
-//            let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-//            navigationController?.pushViewController(vc, animated: true)
-            presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
+            if isUserLoggedIn(){
+                let bag = BagViewController()
+                navigationController?.pushViewController(bag, animated: true)
+            }else{
+                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
-        
+
     }
     @IBAction func moveToFavourite(_ sender: Any) {
-        if isUserLoggedIn(){
-            let vc = FavouriteProductsVC()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }else{
-            presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
-        }
         
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+            
+        }else{
+            if isUserLoggedIn(){
+                let vc = FavouriteProductsVC()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     @IBAction func showDiscountCode(_ sender: Any) {
         isDiscount = true

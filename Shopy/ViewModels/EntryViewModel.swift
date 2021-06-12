@@ -116,7 +116,7 @@ class EntryViewModel {
                 if let mail = i.email {
                     
                     if email == mail , password == i.password{
-                        self.saveCredentialsInUserDefaults(email: email, username: i.firstName!,id: i.id)
+                        self.saveCredentialsInUserDefaults(customer:i)
                         DispatchQueue.main.async {
                             onSuccess()
                         }
@@ -139,12 +139,18 @@ class EntryViewModel {
         
     }
     
-    func saveCredentialsInUserDefaults(email:String,username:String,id:Int) {
+    func saveCredentialsInUserDefaults(customer: CustomerPostOrder) {
         MyUserDefaults.add(val: true, key: .loggedIn)
-        MyUserDefaults.add(val: email, key: .email)
-        MyUserDefaults.add(val: username, key: .username)
-        MyUserDefaults.add(val: id, key: .id)
+        MyUserDefaults.add(val: customer.email!, key: .email)
+        MyUserDefaults.add(val: customer.firstName, key: .username)
+        MyUserDefaults.add(val: customer.id, key: .id)
         MyUserDefaults.add(val: true, key: .isDisconut)
+        MyUserDefaults.add(val: customer.addresses[0].title, key: .title)
+        MyUserDefaults.add(val: customer.addresses[0].city, key: .city)
+        MyUserDefaults.add(val: customer.addresses[0].country, key: .country)
+//        guard let phone = customer.phone else {return}
+        MyUserDefaults.add(val: customer.phone!, key: .phone)
+        
     }
     
     func getAllUsers(onFinish: @escaping (AllCustomers)->Void,onError: @escaping (String)->Void) {

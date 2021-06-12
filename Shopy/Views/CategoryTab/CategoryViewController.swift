@@ -30,6 +30,7 @@ class CategoryViewController: UIViewController,ICanLogin {
     
     override func viewWillAppear(_ animated: Bool) {
        // super.viewWillAppear(true)
+        navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = false
         if AppCommon.shared.checkConnectivity() == false{
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
@@ -167,18 +168,50 @@ class CategoryViewController: UIViewController,ICanLogin {
     }
     
     @IBAction func moveToBag(_ sender: Any) {
-        if isUserLoggedIn(){
-            let bag = BagViewController()
-            navigationController?.pushViewController(bag, animated: true)
+//        if isUserLoggedIn(){
+//            let bag = BagViewController()
+//            navigationController?.pushViewController(bag, animated: true)
+//        }else{
+//            presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
+//        }
+        
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+            
         }else{
-            presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
+            if isUserLoggedIn(){
+                let bag = BagViewController()
+                navigationController?.pushViewController(bag, animated: true)
+            }else{
+                presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
+            }
         }
+
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 
        // productsCollectionView.reloadData()
         view.setNeedsLayout()
+    }
+    
+    @IBAction func uiShowFavourite(_ sender: Any) {
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+            
+        }else{
+            if isUserLoggedIn(){
+                let vc = FavouriteProductsVC()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else{
+                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     
 }

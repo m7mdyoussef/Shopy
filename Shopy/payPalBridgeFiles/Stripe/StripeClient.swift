@@ -67,6 +67,12 @@ class StripeClient {
         
         let serializer = DataResponseSerializer(emptyResponseCodes: Set([200, 204, 205]))
         
+        
+        
+        
+        print("url is \(url)")
+        print(params)
+        
         AF.request(url, method: .post, parameters: params).validate().response(responseSerializer: serializer) { (response) in
         
 //        AF.request(url, method: .post, parameters: params)
@@ -78,7 +84,7 @@ class StripeClient {
                     print("Payment successful")
                     completion(nil)
                 case .failure(let error):
-                    if (response.data?.count)! > 0 {print(error)}
+//                    if (response.data?.count)! > 0 {print(error)}
                     completion(error)
                 }
             }

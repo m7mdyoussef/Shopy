@@ -41,7 +41,7 @@ class BagCollectionViewCell: UICollectionViewCell {
             self.bagImage.doenloadImage(url: bagProduct?.image ?? "")
             
             guard let size = bagProduct?.sizeProduct else {return}
-            uiDropShowMenu.setTitle("\(size) ", for: .normal)
+            uiDropShowMenu.setTitle(" \(size) ", for: .normal)
             
             //initialize dropList
             sizeSelectionMenu = DropDown()
@@ -55,7 +55,7 @@ class BagCollectionViewCell: UICollectionViewCell {
             
             
             sizeSelectionMenu.selectionAction = { [unowned self] (index: Int, item: String) in
-                uiDropShowMenu.setTitle("\(item) ", for: .normal)
+                uiDropShowMenu.setTitle(" \(item) ", for: .normal)
 
             }
         }

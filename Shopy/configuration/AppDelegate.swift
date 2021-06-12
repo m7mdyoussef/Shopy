@@ -63,6 +63,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
             MyUserDefaults.add(val: false, key: .loggedIn)
         }
         
+        if let _ = MyUserDefaults.getValue(forKey: .isFirstTime){
+            
+        }else{
+            MyUserDefaults.add(val: false, key: .isFirstTime)
+        
+            
+        }
+        
         
         return true
     }

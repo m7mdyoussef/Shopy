@@ -16,7 +16,6 @@ class BagViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var checkoutView: UIView!
     @IBOutlet weak var uiEmptyImage: UIImageView!
-    
     @IBOutlet weak var afterDiscountLabel: UILabel!
     @IBOutlet weak var bagProductsCollectionView: UICollectionView!{
         didSet{
@@ -31,10 +30,9 @@ class BagViewController: UIViewController {
     var hud:JGProgressHUD!
     
     
-    let allItems = [pay(title: "jdhk", price: 50, id: 1),pay(title: "jddhg", price: 150, id: 2)]
-    var purchasedItemId = [Int]()
 
-    var totalPrice = 0
+    var totalPrice:Double = 1.0
+    var totalDiscount:Double = 1.0
 //    let hud = JGProgressHUD(style: .dark)
     
     
@@ -103,7 +101,8 @@ class BagViewController: UIViewController {
                 let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool
                 if discount == true{
                     self.totalPriceLabel.text = "\(totalPrice) LE"
-                    self.afterDiscountLabel.text = "\(totalPrice - (totalPrice * 0.10)) LE"
+                    self.totalDiscount = totalPrice - (totalPrice * 0.10)
+                    self.afterDiscountLabel.text = "\(self.totalDiscount) LE"
                 }else{
                     self.totalPriceLabel.text = "\(totalPrice) LE"
                     self.afterDiscountLabel.text = "\(totalPrice) LE"
@@ -128,7 +127,7 @@ class BagViewController: UIViewController {
         let localData = BagPersistenceManager.shared
         guard let bagProducts = localData.retrievebagProducts() else {return}
         self.bagProducts = bagProducts
-        var totalPrice = 0.0
+//        var totalPrice = 0.0
         
         for bag in bagProducts {
             let count = Double(bag.count)
@@ -139,7 +138,7 @@ class BagViewController: UIViewController {
         }
         print("\(totalPrice)")
         DispatchQueue.main.async {
-            self.totalPriceLabel.text = "\(totalPrice) $"
+            self.totalPriceLabel.text = "\(self.totalPrice) $"
         }
        
     }
@@ -153,21 +152,28 @@ class BagViewController: UIViewController {
     
     
     private func showPaymentOptins() {
-        
+//        fetchBagProducts()
+        updateTotalPrice()
         let alertController = UIAlertController(title: "Payment Options", message: "Choose prefered payment option", preferredStyle: .actionSheet)
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CarInfoViewController
+        vc.delegate = self
+        
+//        vc.bagProducts = self.bagProducts
+//        vc.totalDiscount = totalDiscount
+        let obj = OrderObject(products: self.bagProducts, total: totalDiscount, subTotal:totalPrice , discount: Double(round(1000 * (totalPrice * 0.10) )/1000)
+ )
+        vc.orderObject = obj
         
         let cardAction = UIAlertAction(title: "Pay with Card", style: .default) { (action) in
-            
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CarInfoViewController
-            
-            vc.delegate = self
+            vc.paymentMethod = .stripe
             self.present(vc, animated: true, completion: nil)
-            self.viewModel.checkout(product: self.bagProducts,status: .paid)
         }
         
         let cashOnDelivery = UIAlertAction(title: "Cash on delivery", style: .default) { [weak self] (action) in
             guard let self = self else {return}
-            self.viewModel.checkout(product: self.bagProducts,status: .pending)
+            vc.paymentMethod = .cash
+            self.present(vc, animated: true, completion: nil)
+//            self.viewModel.checkout(product: self.bagProducts,status: .pending)
         }
         
         
@@ -196,14 +202,13 @@ class BagViewController: UIViewController {
         
 //        var itemsToBuy : [PayPalItem] = []
         self.totalPrice = 0
-        for item in allItems {
-            self.totalPrice += item.price
-            purchasedItemId.append(item.id)
-            
+        for item in bagProducts {
+            self.totalPrice += Double(item.price!)!
         }
+        print(Int(totalPrice))
         self.totalPrice = self.totalPrice * 100
         
-        StripeClient.sharedClient.createAndConfirmPayment(token, amount: totalPrice) { (error) in
+        StripeClient.sharedClient.createAndConfirmPayment(token, amount: Int(totalPrice)) { (error) in
             
             if error == nil {
                 //self.emptyTheBasket()
@@ -287,5 +292,8 @@ extension BagViewController: CardInfoViewControllerDelegate {
         showNotification(text: "you canceled the payment", isError: true)
     }
     
+    func clearBag() {
+        emptyBag()
+    }
     
 }

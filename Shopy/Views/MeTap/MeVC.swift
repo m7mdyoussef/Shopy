@@ -279,9 +279,9 @@ class MeVC: UIViewController {
             uiRemoveAllOrders.isHidden = true
         }
     }
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        uiWishlistCollection.reloadData()
-    }
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        uiWishlistCollection.reloadData()
+//    }
     
     @IBAction func uiCardButton(_ sender: Any) {
         let bag = BagViewController()
