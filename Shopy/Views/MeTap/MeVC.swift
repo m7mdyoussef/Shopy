@@ -40,10 +40,39 @@ class MeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let animation = AnimationType.from(direction: .left, offset: 300)
-        view.animate(animations: [animation])
+        if uiWishlistCollection.isHidden == false{
+            let animation = AnimationType.from(direction: .left, offset: 300)
+            view.animate(animations: [animation])
+            UIView.animate(views: uiWishlistCollection.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+        }
+    }
+    
+    @IBAction func uiSettings(_ sender: Any) {
+//        let settings = SettingsVC()
+//        navigationController?.pushViewController(settings, animated: true)
         
-        UIView.animate(views: uiWishlistCollection.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+        let alert = UIAlertController(title: "Settings", message: "", preferredStyle: .actionSheet)
+        let lang = UIAlertAction(title: "Language".localized, style: .default) { (action) in
+            
+        }
+        let logoutaction = UIAlertAction(title: "Logout", style: .destructive) { [weak self] (action) in
+            guard let self = self else {return}
+            
+            let logout = UIAlertController(title: "Logout", message: "Are you sure ?", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .destructive) { (action) in
+                self.viewModel.logout()
+                let vc = self.storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            logout.addAction(ok)
+            logout.addAction(cancel)
+            self.present(logout, animated: true, completion: nil)
+            
+        }
+        alert.addAction(lang)
+        alert.addAction(logoutaction)
+        present(alert, animated: true, completion: nil)
     }
     
     func setupViews()  {

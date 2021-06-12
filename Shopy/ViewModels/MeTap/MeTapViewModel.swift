@@ -161,5 +161,7 @@ class MeTapViewModel:MeModelType,ICanLogin {
             }
         }
     }
-    
+    func logout() {
+        MyUserDefaults.add(val: false, key: .loggedIn)
+    }
 }
