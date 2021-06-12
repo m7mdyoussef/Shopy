@@ -22,7 +22,6 @@ protocol HomeModelType{
     var priceRuleObservable: Observable<[PriceRule]>?{get}
     var discontCodeObservable: Observable<[DiscountCodeElement]>?{get}
     var LoadingObservable: Observable<Bool>?{get}
-    
 }
 
 class HomeViewModel: HomeModelType{
@@ -35,7 +34,7 @@ class HomeViewModel: HomeModelType{
     var productElementObservable: Observable<ProductClass>?
     var priceRuleObservable: Observable<[PriceRule]>?
     var discontCodeObservable: Observable<[DiscountCodeElement]>?
-    
+    var mainCategoryObservable : Observable<[String]>?
     private var collectionDataSubject = PublishSubject<[CustomElement]>()
     private var productDataSubject = PublishSubject<[ProductElement]>()
     private var productElementDataSubject = PublishSubject<ProductClass>()
@@ -46,6 +45,7 @@ class HomeViewModel: HomeModelType{
 
     
     init() {
+        mainCategoryObservable = Observable.just(["Men", "Women" , "Kids"])
         collectionDataObservable = collectionDataSubject.asObserver()
         productsDataObservable  = productDataSubject.asObservable()
         productElementObservable = productElementDataSubject.asObserver()
@@ -66,7 +66,7 @@ class HomeViewModel: HomeModelType{
             case .success(let response):
                 guard let customCollections = response?.custom_collections else {return}
                 self.collectionDataSubject.asObserver().onNext(customCollections)
-                self.getAllProduct(id: String(customCollections[0].id))
+                self.getAllProduct(id: String(customCollections[2].id))
             case .failure(let error):
                 AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
                 self.Loadingsubject.onNext(false)

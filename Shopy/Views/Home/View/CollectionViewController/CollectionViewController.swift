@@ -25,8 +25,8 @@ class CollectionViewController: UIViewController,ICanLogin {
     @IBOutlet weak var bagBtn: UIBarButtonItem!
     var hubBag: BadgeHub!
     var hubFavourite: BadgeHub!
-    var arrId = [Int]()
-    var imagesArr = ["home", "kids", "men", "sale", "women"]
+    var arrId = ["268359598278", "268359631046", "268359663814"]
+    var imagesArr = ["men", "women", "kids"]
     var arrDiscountCodes = [String]()
     var arrproductId = [String]()
     private var searchBar:UISearchBar!
@@ -49,7 +49,6 @@ class CollectionViewController: UIViewController,ICanLogin {
     
     func startPoint(){
         categoryViewModel = CategoryViewModel()
-        //adsView.roundCorners(corners: .allCorners, radius: 35)
         showIndicator = ShowIndecator(view: view.self)
         registerMenuCell()
         registerProductCell()
@@ -103,10 +102,8 @@ class CollectionViewController: UIViewController,ICanLogin {
             collectionViewModel?.getDiscountCode(priceRule: "951238656198")
             getAllDiscountCodes()
         }
-        
     }
     
-  
     @IBAction func searchOfProducts(_ sender: Any) {
         let searchCategoryViewController = self.storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
                   searchCategoryViewController.productList = self.collectionViewModel?.ProductElements
@@ -170,11 +167,11 @@ class CollectionViewController: UIViewController,ICanLogin {
     func setUpMenuColllection(){
         let selectedIndexPath = IndexPath(item: 0, section: 0)
 
-        collectionViewModel?.collectionDataObservable?.asObservable().bind(to: menuCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){row, items, cell in
+        collectionViewModel?.mainCategoryObservable?.bind(to: menuCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){row, items, cell in
 
-            (cell as? MainCategoriesCollectionViewCell)?.mainCategoriesCellLabel.text=items.title
+            (cell as? MainCategoriesCollectionViewCell)?.mainCategoriesCellLabel.text = items
             self.menuCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
-            self.arrId.append(items.id)
+         //   self.arrId.append(items.id)
             
         }.disposed(by: disposeBag)
         
@@ -182,9 +179,9 @@ class CollectionViewController: UIViewController,ICanLogin {
             self?.adsImage.contentMode = .scaleAspectFit
 
             guard let self = self else {return}
-            print(self.arrId[value.element?.item ?? 0])
+            
             self.controlViews(flag: true)
-            self.collectionViewModel?.getAllProduct(id: String(self.arrId[value.element?.item ?? 0]))
+            self.collectionViewModel?.getAllProduct(id: self.arrId[value.element?.item ?? 0])
             self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
             self.arrproductId.removeAll()
             self.discountCode.text = self.arrDiscountCodes[value.element?.item ?? 0]

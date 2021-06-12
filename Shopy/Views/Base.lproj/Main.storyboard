@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oY1-e7-rB0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oY1-e7-rB0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
-
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -896,7 +895,6 @@
                             <constraint firstAttribute="bottom" secondItem="QDg-w3-Npi" secondAttribute="bottom" constant="106" id="MLX-eq-Era"/>
                             <constraint firstItem="QDg-w3-Npi" firstAttribute="leading" secondItem="xt0-rS-Li9" secondAttribute="leading" id="NcM-Ef-wN9"/>
                             <constraint firstAttribute="bottom" secondItem="MQ2-dF-1lb" secondAttribute="bottom" constant="16" id="QPb-r2-NvN"/>
-                            <constraint firstAttribute="trailing" secondItem="MQ2-dF-1lb" secondAttribute="trailing" constant="16" id="Qzk-WS-I1C"/>
                             <constraint firstItem="MQ2-dF-1lb" firstAttribute="leading" secondItem="xt0-rS-Li9" secondAttribute="leading" constant="16" id="das-5d-WUK"/>
                             <constraint firstItem="MQ2-dF-1lb" firstAttribute="top" secondItem="QDg-w3-Npi" secondAttribute="bottom" constant="16" id="gwA-q6-aaT"/>
                             <constraint firstAttribute="trailing" secondItem="QDg-w3-Npi" secondAttribute="trailing" id="iVk-EN-EfY"/>
@@ -1822,6 +1820,9 @@
     <designables>
         <designable name="G5i-ae-D24">
             <size key="intrinsicContentSize" width="78.5" height="24.5"/>
+        </designable>
+        <designable name="RyN-O2-DzH">
+            <size key="intrinsicContentSize" width="-1" height="280"/>
         </designable>
         <designable name="SQ8-Up-0Xp">
             <size key="intrinsicContentSize" width="78.5" height="24.5"/>
