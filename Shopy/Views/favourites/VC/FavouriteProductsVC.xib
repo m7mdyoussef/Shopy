@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouriteProductsVC" customModule="Shopy" customModuleProvider="target">
             <connections>
+                <outlet property="emptyImageView" destination="6U7-1s-YLs" id="2Gh-s1-iVJ"/>
                 <outlet property="favouriteProductsCollectionView" destination="Zd6-FY-rnX" id="140-cH-Toz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,11 +31,18 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nothing" translatesAutoresizingMaskIntoConstraints="NO" id="6U7-1s-YLs">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6U7-1s-YLs" secondAttribute="trailing" id="9ID-3h-tcN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zd6-FY-rnX" secondAttribute="trailing" id="BVI-ZG-xBc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6U7-1s-YLs" secondAttribute="bottom" id="BiY-rq-k9h"/>
+                <constraint firstItem="6U7-1s-YLs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FIT-rk-hkm"/>
+                <constraint firstItem="6U7-1s-YLs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="IQe-TJ-rgg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Zd6-FY-rnX" secondAttribute="bottom" id="daG-Fv-6FP"/>
                 <constraint firstItem="Zd6-FY-rnX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eT3-3e-K7N"/>
                 <constraint firstItem="Zd6-FY-rnX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="p6r-2f-5l6"/>
@@ -43,6 +51,7 @@
         </view>
     </objects>
     <resources>
+        <image name="nothing" width="2449" height="3060"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

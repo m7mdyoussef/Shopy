@@ -15,7 +15,8 @@ import Stripe
 class BagViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var checkoutView: UIView!
-    @IBOutlet weak var uiEmptyImage: UIImageView!
+   @IBOutlet weak var uiEmptyImage: UIImageView!
+    @IBOutlet weak var checkoutButton: UIButton!
     
     @IBOutlet weak var afterDiscountLabel: UILabel!
     @IBOutlet weak var bagProductsCollectionView: UICollectionView!{
@@ -45,7 +46,8 @@ class BagViewController: UIViewController {
         let favProductCell = UINib(nibName: "BagCollectionViewCell", bundle: nil)
       //  checkoutView.collectionCellLayout()
         bagProductsCollectionView.register(favProductCell, forCellWithReuseIdentifier: "BagCollectionViewCell")
-        
+        checkoutButton.layer.cornerRadius = 15
+        checkoutButton.clipsToBounds = true
         viewModel.loading.asObservable().subscribe{ [weak self] value in
             guard let self = self else {return}
             print(value.element!)

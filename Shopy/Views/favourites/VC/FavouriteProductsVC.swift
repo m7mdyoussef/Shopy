@@ -11,7 +11,8 @@ import RxCocoa
 import RxSwift
 
 class FavouriteProductsVC: UIViewController {
-
+    @IBOutlet weak var emptyImageView: UIImageView!
+    
     @IBOutlet weak var favouriteProductsCollectionView: UICollectionView!{
         didSet{
             //favouriteProductsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -30,6 +31,7 @@ class FavouriteProductsVC: UIViewController {
         favouriteProductsCollectionView.dataSource = self
        fetchFavProducts()
     }
+    
 
     func fetchFavProducts() {
         let localData = FavouritesPersistenceManager.shared
@@ -38,7 +40,16 @@ class FavouriteProductsVC: UIViewController {
         }
         self.favProducts = favourites
         DispatchQueue.main.async {
-            self.favouriteProductsCollectionView.reloadData()
+            if self.favProducts.isEmpty{
+                self.emptyImageView.isHidden = false
+                self.favouriteProductsCollectionView.isHidden = true
+            }
+            else{
+                self.emptyImageView.isHidden = false
+                self.favouriteProductsCollectionView.isHidden = true
+                self.favouriteProductsCollectionView.reloadData()
+            }
+          
         }
        
     }

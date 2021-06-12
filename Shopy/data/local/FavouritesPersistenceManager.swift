@@ -21,9 +21,16 @@ class FavouritesPersistenceManager{
     
     
     func retrieveFavourites()->[FavouriteProduct]?{
+        let email = MyUserDefaults.getValue(forKey: .email) as! String
+        var retrievedFavourites = [FavouriteProduct]()
         do {
             let favProducts = try context.fetch(FavouriteProduct.fetchRequest()) as! [FavouriteProduct]
-            return favProducts
+            favProducts.forEach { product in
+                if product.email == email {
+                    retrievedFavourites.append(product)
+                }
+            }
+            return retrievedFavourites
 
         } catch  { return nil}
          }
@@ -36,6 +43,8 @@ class FavouritesPersistenceManager{
         storedFavProduct.image = favProduct.images[0].src
         storedFavProduct.title = favProduct.title
         storedFavProduct.price = favProduct.variants[0].price
+        let email = MyUserDefaults.getValue(forKey: .email) as! String
+        storedFavProduct.email = email
         try?self.context.save()
         print("added successfully")
     }
