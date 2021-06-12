@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class CategoryViewModel : CategoryContract{
+class CategoryViewModel : CategoryContract,ICanLogin{
     let mainCategoryElements = ["Men","Women","Kids"]
     let subCategoryElements = ["T-Shirts","Shoes","Accessories"]
     var ProductElements:[ProductElement]?

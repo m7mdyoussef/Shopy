@@ -24,7 +24,7 @@ protocol HomeModelType{
     var LoadingObservable: Observable<Bool>?{get}
 }
 
-class HomeViewModel: HomeModelType{
+class HomeViewModel: HomeModelType,ICanLogin{
     var LoadingObservable: Observable<Bool>?
         
     var ProductElements:[ProductElement]?

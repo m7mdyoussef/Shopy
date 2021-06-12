@@ -96,8 +96,15 @@ class CollectionViewController: UIViewController,ICanLogin {
             self.present(NoInternetViewController, animated: true, completion: nil)
         
         }else{
-            AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
-            AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
+            
+            if collectionViewModel!.isUserLoggedIn() {
+                AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
+                AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
+            }else{
+                AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: -1)
+                AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: 0)
+            }
+            
             collectionViewModel?.getCollectionData()
             collectionViewModel?.getPriceRules()
             collectionViewModel?.getDiscountCode(priceRule: "951238656198")

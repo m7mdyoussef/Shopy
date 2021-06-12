@@ -20,9 +20,19 @@ class BagPersistenceManager{
     
     
     func retrievebagProducts()->[BagProduct]?{
+        let email = MyUserDefaults.getValue(forKey: .email) as! String
+        var retrievedBagProducts = [BagProduct]()
+        
         do {
+           
+            
             let bagProducts = try context.fetch(BagProduct.fetchRequest()) as! [BagProduct]
-            return bagProducts
+            bagProducts.forEach { product in
+                if product.email == email {
+                    retrievedBagProducts.append(product)
+                }
+            }
+            return retrievedBagProducts
         } catch  { return nil }
         
     }
@@ -70,6 +80,8 @@ class BagPersistenceManager{
         let data = NSKeyedArchiver.archivedData(withRootObject: bagProduct.options[0].values)
         storedBagProduct.sizes = data
         storedBagProduct.availableCount = Int64(bagProduct.variants[0].inventoryQuantity)
+        let email = MyUserDefaults.getValue(forKey: .email) as! String
+        storedBagProduct.email = email
         try?self.context.save()
         print("added successfully")
     }

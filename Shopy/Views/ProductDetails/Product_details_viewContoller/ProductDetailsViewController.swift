@@ -14,7 +14,7 @@ import ImageSlideshow
 import JGProgressHUD
 import ReadMoreTextView
 
-class ProductDetailsViewController: UIViewController {
+class ProductDetailsViewController: UIViewController, ICanLogin{
     
     @IBOutlet weak var favouriteButton: UIButton!
     @IBOutlet weak var sizeCollectionView: UICollectionView!
@@ -31,7 +31,7 @@ class ProductDetailsViewController: UIViewController {
     let manager = FavouritesPersistenceManager.shared
     let bagManager = BagPersistenceManager.shared
     var productElement : ProductClass?
-    var isFavo: Bool?
+    var isFavo: Bool = false
     var imagesArr = [String]()
     var sizeProduct = ""
     
@@ -74,28 +74,49 @@ class ProductDetailsViewController: UIViewController {
     }
     
     @IBAction func addToWishList(_ sender: Any) {
-        self.isFavo = self.manager.isFavourited(productID: productElement?.id ?? 0)
-        checkFav()
+        if isUserLoggedIn(){
+            self.isFavo = self.manager.isFavourited(productID: productElement?.id ?? 0)
+            checkFav()
+        }
+        else{
+            self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please,login first", buttonTitle: "OK")
+        }
+        
     }
     @IBAction func addToCard(_ sender: Any) {
-        if(sizeProduct == ""){
-            self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please, Choose your size.", buttonTitle: "OK")
-        }else{
-        let isStored = bagManager.isBagProduct(productID: productElement!.id)
-        if isStored {
-            self.presentGFAlertOnMainThread(title: "Warning !!", message: "This product is already in card", buttonTitle: "OK")
-        }else{
-            self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the card🎉🎉", buttonTitle: "OK")
-            bagManager.addToBagProducts(bagProduct: productElement!, size: sizeProduct)
+        if isUserLoggedIn(){
+            if(sizeProduct == ""){
+                self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please, Choose your size.", buttonTitle: "OK")
+            }else{
+            let isStored = bagManager.isBagProduct(productID: productElement!.id)
+            if isStored {
+                self.presentGFAlertOnMainThread(title: "Warning !!", message: "This product is already in card", buttonTitle: "OK")
+            }else{
+                self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the card🎉🎉", buttonTitle: "OK")
+                bagManager.addToBagProducts(bagProduct: productElement!, size: sizeProduct)
+            }
+            }
         }
+        else{
+            self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please,login first", buttonTitle: "OK")
         }
+        
+        
+        
+        
+       
         
     }
     
     func checkColor(){
-        if self.isFavo == true{
-            self.favouriteButton.tintColor = UIColor.red
-        }else{
+        if isUserLoggedIn(){
+            if self.isFavo == true{
+                self.favouriteButton.tintColor = UIColor.red
+            }else{
+                self.favouriteButton.tintColor = UIColor.gray
+            }
+        }
+        else{
             self.favouriteButton.tintColor = UIColor.gray
         }
     }
@@ -127,7 +148,9 @@ extension ProductDetailsViewController: ImageSlideshowDelegate {
             self.productTitle.text = response.element?.title
             self.productPrice.text = response.element?.variants[0].price
             self.productDetails.text = response.element?.bodyHTML
-            self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)
+            if self.isUserLoggedIn(){
+                self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)
+            }
             self.checkColor()
             self.arrOption.accept(((response.element?.options[0].values) ?? []))
             let imgs = response.element?.images

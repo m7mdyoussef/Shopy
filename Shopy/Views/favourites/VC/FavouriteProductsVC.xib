@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouriteProductsVC" customModule="Shopy" customModuleProvider="target">
             <connections>
+                <outlet property="emptyImageView" destination="6U7-1s-YLs" id="2Gh-s1-iVJ"/>
                 <outlet property="favouriteProductsCollectionView" destination="Zd6-FY-rnX" id="140-cH-Toz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,11 +31,19 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="6U7-1s-YLs">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6U7-1s-YLs" secondAttribute="trailing" id="9ID-3h-tcN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zd6-FY-rnX" secondAttribute="trailing" id="BVI-ZG-xBc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6U7-1s-YLs" secondAttribute="bottom" id="BiY-rq-k9h"/>
+                <constraint firstItem="6U7-1s-YLs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FIT-rk-hkm"/>
+                <constraint firstItem="6U7-1s-YLs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="IQe-TJ-rgg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Zd6-FY-rnX" secondAttribute="bottom" id="daG-Fv-6FP"/>
                 <constraint firstItem="Zd6-FY-rnX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eT3-3e-K7N"/>
                 <constraint firstItem="Zd6-FY-rnX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="p6r-2f-5l6"/>
@@ -43,6 +52,7 @@
         </view>
     </objects>
     <resources>
+        <image name="empty" width="800" height="600"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

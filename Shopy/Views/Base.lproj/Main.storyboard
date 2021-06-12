@@ -1788,10 +1788,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MZB-xf-aal">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="5413"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="5426"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Method : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-N6-1VB" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="8" y="8" width="398" height="4814.5"/>
+                                                <rect key="frame" x="8" y="8" width="398" height="4827.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -1804,7 +1804,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aic-1b-VvE" userLabel="Ipaymentcard">
-                                                <rect key="frame" x="8" y="4832.5" width="398" height="80"/>
+                                                <rect key="frame" x="8" y="4845.5" width="398" height="80"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qcm-Dh-aQ7">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="80"/>
@@ -1822,7 +1822,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Personal Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dem-AH-cJs" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="8" y="4842.5" width="398" height="24.5"/>
+                                                <rect key="frame" x="8" y="4855.5" width="398" height="24.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -1835,7 +1835,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="evJ-b8-tEN">
-                                                <rect key="frame" x="8" y="4887" width="398" height="138.5"/>
+                                                <rect key="frame" x="8" y="4900" width="398" height="138.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ve5-f6-xmI" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                         <rect key="frame" x="0.0" y="10" width="398" height="21"/>
@@ -1897,7 +1897,7 @@
                                                 <edgeInsets key="layoutMargins" top="10" left="0.0" bottom="0.0" right="0.0"/>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ztI-Uc-cbx">
-                                                <rect key="frame" x="8" y="5045.5" width="398" height="150"/>
+                                                <rect key="frame" x="8" y="5058.5" width="398" height="150"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="Zoq-Z7-Atv"/>
@@ -1939,7 +1939,7 @@
                                                 </cells>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="b8L-Td-9kD">
-                                                <rect key="frame" x="8" y="5215.5" width="398" height="24.5"/>
+                                                <rect key="frame" x="8" y="5228.5" width="398" height="24.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD7-Rd-ccG">
                                                         <rect key="frame" x="0.0" y="0.0" width="199" height="24.5"/>
@@ -1956,7 +1956,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="qA4-xw-nuc">
-                                                <rect key="frame" x="8" y="5260" width="398" height="24.5"/>
+                                                <rect key="frame" x="8" y="5273" width="398" height="24.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djP-Cb-LBZ">
@@ -1975,7 +1975,7 @@
                                                 <viewLayoutGuide key="safeArea" id="xMa-wp-qCt"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="F0b-1A-Rza">
-                                                <rect key="frame" x="8" y="5304.5" width="398" height="100.5"/>
+                                                <rect key="frame" x="8" y="5317.5" width="398" height="100.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="K5b-NI-1G7">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="30.5"/>
