@@ -20,6 +20,8 @@ class BagCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var uiDropShowMenu: UIButton!
     @IBOutlet weak var uiMenuAnchorView: UIView!
+    @IBOutlet weak var uiPlus: UIButton!
+    @IBOutlet weak var uiMinus: UIButton!
     
     private var sizeSelectionMenu:DropDown!
 
@@ -70,7 +72,10 @@ class BagCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         tableViewCellBackground.collectionCellLayout()
-        
+//        uiPlus.roundCorners(corners: [.topRight,.bottomRight], radius: uiPlus.frame.height/2)
+//        uiMinus.roundCorners(corners: [.topLeft,.bottomLeft], radius: uiMinus.frame.height/2)
+        uiPlus.layer.cornerRadius = uiPlus.frame.height/2
+        uiMinus.layer.cornerRadius = uiPlus.frame.height/2
     }
 
     @IBAction func decreaseCount(_ sender: Any) {

@@ -34,9 +34,10 @@ class MainCategoriesCollectionViewCell: UICollectionViewCell {
 
             mainCategoriesCellLabel.layer.backgroundColor = isSelected ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             mainCategoriesCellHighLightedView.backgroundColor = isSelected ? #colorLiteral(red: 1, green: 0.4701387882, blue: 0.4451708794, alpha: 1) : UIColor.white
-
+        
         }
     }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
