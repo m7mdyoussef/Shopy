@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import JGProgressHUD
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController,ICanLogin {
 
     @IBOutlet weak var subCatView: UIView!
     @IBOutlet private weak var mainCategoryCollectionView: UICollectionView!
@@ -167,8 +167,12 @@ class CategoryViewController: UIViewController {
     }
     
     @IBAction func moveToBag(_ sender: Any) {
-        let bag = BagViewController()
-        navigationController?.pushViewController(bag, animated: true)
+        if isUserLoggedIn(){
+            let bag = BagViewController()
+            navigationController?.pushViewController(bag, animated: true)
+        }else{
+            presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -101,7 +101,7 @@ class MeVC: UIViewController {
         viewModel.fetchOrders()
     }
     
-    func setupWishlistCollectionView()  {
+    func setupWishlistCollectionView() {
         viewModel.favProductsObservable?.asObservable().bind(to: uiWishlistCollection.rx.items(cellIdentifier: "FavouriteproductCVC")){
             row,item,cell in
             (cell as? FavouriteproductCVC)?.favProduct = item
@@ -109,8 +109,10 @@ class MeVC: UIViewController {
                 self.deletFromFavourites(productID: Int(item.id ))
                 
                 let alert = UIAlertController(title: "Remove Favourite", message: "Are you sure you want to remove the product from the wishlist ?", preferredStyle: .alert)
+                
                 let action = UIAlertAction(title: "Yes", style: .destructive) { (action) in
                     viewModel.fetchFavProducts()
+                    uiWishlistCollection.reloadData()
                 }
                 let action2 = UIAlertAction(title: "Cancel", style: .default, handler: nil)
                 

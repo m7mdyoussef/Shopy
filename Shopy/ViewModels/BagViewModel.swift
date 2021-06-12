@@ -20,7 +20,7 @@ protocol BagViewModelType {
     var error: Driver<Bool>{get}
 }
 
-class BagViewModel: BagViewModelType {
+class BagViewModel: BagViewModelType,ICanLogin {
     var loading: Driver<Bool>
     var error: Driver<Bool>
     let remote : RemoteDataSource!
