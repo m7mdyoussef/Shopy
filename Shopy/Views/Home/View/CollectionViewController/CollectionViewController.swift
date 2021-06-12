@@ -13,7 +13,9 @@ import SDWebImage
 import ImageIO
 import JGProgressHUD
 import BadgeHub
-class CollectionViewController: UIViewController {
+
+
+class CollectionViewController: UIViewController,ICanLogin {
     var disposeBag = DisposeBag()
     var collectionViewModel:HomeViewModel?
     @IBOutlet weak var productsCollectionView: UICollectionView!
@@ -78,6 +80,7 @@ class CollectionViewController: UIViewController {
             case false:
                 hud.dismiss()
               //  self.view.isUserInteractionEnabled = true
+
             }
         }).disposed(by: disposeBag)
     }
@@ -118,12 +121,24 @@ class CollectionViewController: UIViewController {
          self.present(popup, animated: true, completion: nil)
     }
     @IBAction func moveToBag(_ sender: Any) {
-        let bag = BagViewController()
-        navigationController?.pushViewController(bag, animated: true)
+        if isUserLoggedIn(){
+            let bag = BagViewController()
+            navigationController?.pushViewController(bag, animated: true)
+        }else{
+//            let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+//            navigationController?.pushViewController(vc, animated: true)
+            presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
+        }
+        
     }
     @IBAction func moveToFavourite(_ sender: Any) {
-        let vc = FavouriteProductsVC()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if isUserLoggedIn(){
+            let vc = FavouriteProductsVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
+        }
+        
     }
     @IBAction func showDiscountCode(_ sender: Any) {
       
@@ -197,3 +212,4 @@ class CollectionViewController: UIViewController {
         }.disposed(by: disposeBag)
     }
 }
+

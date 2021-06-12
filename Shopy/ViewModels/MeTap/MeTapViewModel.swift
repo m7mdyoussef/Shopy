@@ -23,7 +23,7 @@ protocol MeModelType{
     var loadingObservable: Driver<Bool>{get}
 }
 
-class MeTapViewModel:MeModelType {
+class MeTapViewModel:MeModelType,ICanLogin {
 
     var favProductsObservable: Driver<[FavouriteProduct]>?
     var ordersObservable: Driver<[Order]>?
@@ -86,12 +86,12 @@ class MeTapViewModel:MeModelType {
     }
     
     
-    func isUserLoggedIn() -> Bool {
-        let value = MyUserDefaults.getValue(forKey: .loggedIn)
-        guard let isLoggedIn = value else {return false}
-        
-        return (isLoggedIn as! Bool) ? true : false
-    }
+//    func isUserLoggedIn() -> Bool {
+//        let value = MyUserDefaults.getValue(forKey: .loggedIn)
+//        guard let isLoggedIn = value else {return false}
+//
+//        return (isLoggedIn as! Bool) ? true : false
+//    }
     
     func getUserName() -> String {
         return MyUserDefaults.getValue(forKey: .username) as! String
@@ -161,5 +161,7 @@ class MeTapViewModel:MeModelType {
             }
         }
     }
-    
+    func logout() {
+        MyUserDefaults.add(val: false, key: .loggedIn)
+    }
 }

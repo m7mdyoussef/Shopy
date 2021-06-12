@@ -1,0 +1,186 @@
+
+/* Class = "UILabel"; text = "Orders"; ObjectID = "1pz-5r-tbZ"; */
+"1pz-5r-tbZ.text" = "Orders";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "48Y-Mh-82s"; */
+"48Y-Mh-82s.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Zip"; ObjectID = "5PN-OT-u2h"; */
+"5PN-OT-u2h.placeholder" = "Zip";
+
+/* Class = "UITabBarItem"; title = "Category"; ObjectID = "5qg-HU-feb"; */
+"5qg-HU-feb.title" = "Category";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "71I-Ef-Otv"; */
+"71I-Ef-Otv.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "No Internet Connection"; ObjectID = "7bd-p1-h8w"; */
+"7bd-p1-h8w.text" = "No Internet Connection";
+
+/* Class = "UILabel"; text = "Email is not valid"; ObjectID = "8dK-Du-F7C"; */
+"8dK-Du-F7C.text" = "Email is not valid";
+
+/* Class = "UIButton"; normalTitle = "ADD TO CART"; ObjectID = "BRL-Ch-XAJ"; */
+"BRL-Ch-XAJ.normalTitle" = "ADD TO CART";
+
+/* Class = "UITextField"; placeholder = "First name"; ObjectID = "BkM-BD-dL1"; */
+"BkM-BD-dL1.placeholder" = "First name";
+
+/* Class = "UILabel"; text = "Sizes:"; ObjectID = "FlI-xa-8O0"; */
+"FlI-xa-8O0.text" = "Sizes:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Fn5-Ye-ryD"; */
+"Fn5-Ye-ryD.text" = "Label";
+
+/* Class = "UILabel"; text = "Total : "; ObjectID = "G5i-ae-D24"; */
+"G5i-ae-D24.text" = "Total : ";
+
+/* Class = "UIButton"; normalTitle = "Reset"; ObjectID = "IKD-dC-tCG"; */
+"IKD-dC-tCG.normalTitle" = "Reset";
+
+/* Class = "UILabel"; text = "password doesn't match"; ObjectID = "ILG-GZ-sQd"; */
+"ILG-GZ-sQd.text" = "password doesn't match";
+
+/* Class = "UILabel"; text = "OOPS!"; ObjectID = "Ifb-34-miL"; */
+"Ifb-34-miL.text" = "OOPS!";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "J3t-68-hBr"; */
+"J3t-68-hBr.normalTitle" = "Save";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "JOt-ht-q1q"; */
+"JOt-ht-q1q.normalTitle" = "Submit";
+
+/* Class = "UITextField"; placeholder = "City"; ObjectID = "Jhb-ST-4EM"; */
+"Jhb-ST-4EM.placeholder" = "City";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "KsQ-hv-CxE"; */
+"KsQ-hv-CxE.title" = "Item";
+
+/* Class = "UILabel"; text = "Wishlist"; ObjectID = "NlE-Lr-67d"; */
+"NlE-Lr-67d.text" = "Wishlist";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "Oki-pT-uuE"; */
+"Oki-pT-uuE.placeholder" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Filter"; ObjectID = "QUg-Zv-3mD"; */
+"QUg-Zv-3mD.normalTitle" = "Filter";
+
+/* Class = "UINavigationItem"; title = "Addresses"; ObjectID = "RYn-NU-fDN"; */
+"RYn-NU-fDN.title" = "Addresses";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "RyN-O2-DzH"; */
+"RyN-O2-DzH.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIButton"; normalTitle = "Delete All Orders"; ObjectID = "Rzs-5A-Bv9"; */
+"Rzs-5A-Bv9.normalTitle" = "Delete All Orders";
+
+/* Class = "UILabel"; text = "Total : "; ObjectID = "SQ8-Up-0Xp"; */
+"SQ8-Up-0Xp.text" = "Total : ";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "SeT-W0-llJ"; */
+"SeT-W0-llJ.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "financial state :"; ObjectID = "T43-be-xYo"; */
+"T43-be-xYo.text" = "financial state :";
+
+/* Class = "UILabel"; text = "Email is not valid"; ObjectID = "TPJ-UP-Krv"; */
+"TPJ-UP-Krv.text" = "Email is not valid";
+
+/* Class = "UIButton"; normalTitle = "CheckOut"; ObjectID = "VXb-W9-OJC"; */
+"VXb-W9-OJC.normalTitle" = "CheckOut";
+
+/* Class = "UITabBarItem"; title = "Category"; ObjectID = "VeF-P8-bY1"; */
+"VeF-P8-bY1.title" = "Category";
+
+/* Class = "UILabel"; text = "0000"; ObjectID = "W4L-VT-Qsd"; */
+"W4L-VT-Qsd.text" = "0000";
+
+/* Class = "UITextField"; placeholder = "Confirmation"; ObjectID = "WCY-yA-peb"; */
+"WCY-yA-peb.placeholder" = "Confirmation";
+
+/* Class = "UILabel"; text = "Created At : "; ObjectID = "Wz6-Kt-dpY"; */
+"Wz6-Kt-dpY.text" = "Created At : ";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "YOM-1J-9Vk"; */
+"YOM-1J-9Vk.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "YSp-Nz-10G"; */
+"YSp-Nz-10G.placeholder" = "Password";
+
+/* Class = "UIViewController"; title = "Network issue"; ObjectID = "ZQB-My-7yU"; */
+"ZQB-My-7yU.title" = "Network issue";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "aiI-ap-99O"; */
+"aiI-ap-99O.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Phone"; ObjectID = "cFu-FE-EJ9"; */
+"cFu-FE-EJ9.placeholder" = "Phone";
+
+/* Class = "UILabel"; text = "OrderID# "; ObjectID = "ceI-T1-ChN"; */
+"ceI-T1-ChN.text" = "OrderID# ";
+
+/* Class = "UITextField"; placeholder = "Country"; ObjectID = "dTk-ob-f8n"; */
+"dTk-ob-f8n.placeholder" = "Country";
+
+/* Class = "UILabel"; text = "financial state :"; ObjectID = "fNW-3U-CEb"; */
+"fNW-3U-CEb.text" = "financial state :";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "ffj-Bx-fuL"; */
+"ffj-Bx-fuL.title" = "Item";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "gUj-Ob-0pR"; */
+"gUj-Ob-0pR.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Order Products "; ObjectID = "iNA-fB-Jx7"; */
+"iNA-fB-Jx7.text" = "Order Products ";
+
+/* Class = "UISegmentedControl"; iuU-Hd-Vls.segmentTitles[0] = "Register"; ObjectID = "iuU-Hd-Vls"; */
+"iuU-Hd-Vls.segmentTitles[0]" = "Register";
+
+/* Class = "UISegmentedControl"; iuU-Hd-Vls.segmentTitles[1] = "Login"; ObjectID = "iuU-Hd-Vls"; */
+"iuU-Hd-Vls.segmentTitles[1]" = "Login";
+
+/* Class = "UILabel"; text = "Total : "; ObjectID = "jEw-yg-TeX"; */
+"jEw-yg-TeX.text" = "Total : ";
+
+/* Class = "UILabel"; text = "Created At : "; ObjectID = "jzb-mm-4tO"; */
+"jzb-mm-4tO.text" = "Created At : ";
+
+/* Class = "UIButton"; normalTitle = "Done"; ObjectID = "ka3-T3-Pro"; */
+"ka3-T3-Pro.normalTitle" = "Done";
+
+/* Class = "UIButton"; normalTitle = "Try again"; ObjectID = "m9h-J5-MPg"; */
+"m9h-J5-MPg.normalTitle" = "Try again";
+
+/* Class = "UILabel"; text = "Total : "; ObjectID = "nd2-iN-Lho"; */
+"nd2-iN-Lho.text" = "Total : ";
+
+/* Class = "UITextField"; placeholder = "Last name"; ObjectID = "oVc-6Y-zot"; */
+"oVc-6Y-zot.placeholder" = "Last name";
+
+/* Class = "UIButton"; normalTitle = "Sort"; ObjectID = "oWI-vd-mfi"; */
+"oWI-vd-mfi.normalTitle" = "Sort";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "pC6-Re-cN0"; */
+"pC6-Re-cN0.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Description:"; ObjectID = "r0B-w1-fKk"; */
+"r0B-w1-fKk.text" = "Description:";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "svw-dM-pW3"; */
+"svw-dM-pW3.title" = "Item";
+
+/* Class = "UILabel"; text = "Discount : "; ObjectID = "vEZ-je-ot0"; */
+"vEZ-je-ot0.text" = "Discount : ";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "vlq-43-5Z3"; */
+"vlq-43-5Z3.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Shopy"; ObjectID = "yaI-41-4Lu"; */
+"yaI-41-4Lu.text" = "Shopy";
+
+/* Class = "UITabBarItem"; title = "Me"; ObjectID = "yc5-Sb-4kN"; */
+"yc5-Sb-4kN.title" = "Me";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "zd6-fC-ru2"; */
+"zd6-fC-ru2.title" = "Item";

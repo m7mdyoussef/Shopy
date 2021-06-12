@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oY1-e7-rB0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oY1-e7-rB0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -919,7 +920,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="x7B-xU-Zxh">
             <objects>
-                <tabBarController id="oY1-e7-rB0" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="rootTabController" id="oY1-e7-rB0" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yug-Yw-HXN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1740,6 +1741,12 @@
                             <barButtonItem id="keg-xQ-dkQ">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </barButtonItem>
+                            <barButtonItem image="gearshape.fill" catalog="system" style="plain" id="Ktv-QS-nWm">
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <connections>
+                                    <action selector="uiSettings:" destination="Wfi-LV-jbC" id="dle-m6-d6B"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="cart.fill" catalog="system" id="uII-Zb-p3Z">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -1847,6 +1854,7 @@
         <image name="circle.grid.2x2.fill" catalog="system" width="128" height="112"/>
         <image name="empty" width="800" height="600"/>
         <image name="filter" width="981" height="908"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>

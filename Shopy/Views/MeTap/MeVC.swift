@@ -12,6 +12,9 @@ import JGProgressHUD
 import RxSwift
 import RxCocoa
 import BadgeHub
+import ViewAnimator
+import MOLH
+
 class MeVC: UIViewController {
     
     @IBOutlet weak var uiWishlistCollection: UICollectionView!
@@ -44,9 +47,62 @@ class MeVC: UIViewController {
         setupViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if uiWishlistCollection.isHidden == false{
+             let animation = AnimationType.from(direction: .left, offset: 300)
+             UIView.animate(views: uiWishlistCollection.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+             
+             let animation1 = AnimationType.random()
+             UIView.animate(views: uiOrdersCollection.visibleCells,animations: [animation1],delay: 0.5,duration: 2)
+         }
+     }
+    
+    @IBAction func uiSettings(_ sender: Any) {
+        //        let settings = SettingsVC()
+        //        navigationController?.pushViewController(settings, animated: true)
+        
+        let alert = UIAlertController(title: "Settings", message: "", preferredStyle: .actionSheet)
+        let lang = UIAlertAction(title: "Language".localized, style: .default) { (action) in
+            
+            
+            MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "en" ? "ar" : "en")
+            if #available(iOS 13.0, *) {
+                let delegate = UIApplication.shared.delegate as? AppDelegate
+                delegate!.swichRoot()
+            } else {
+                // Fallback on earlier versions
+                MOLH.reset()
+            }
+            
+            
+        }
+        let logoutaction = UIAlertAction(title: "Logout", style: .destructive) { [weak self] (action) in
+            guard let self = self else {return}
+            
+            let logout = UIAlertController(title: "Logout", message: "Are you sure ?", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .destructive) { (action) in
+                self.viewModel.logout()
+                let vc = self.storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            logout.addAction(ok)
+            logout.addAction(cancel)
+            self.present(logout, animated: true, completion: nil)
+            
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(lang)
+        alert.addAction(logoutaction)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func setupViews()  {
         registerCollectionViewCells()
-//        addingOrdersStatusSegments()
+        //        addingOrdersStatusSegments()
         setupWishlistCollectionView()
         setupOrdersCollectionView()
         uiWishlistCollection.rx.setDelegate(self).disposed(by: bag)
@@ -79,7 +135,7 @@ class MeVC: UIViewController {
         segmentsArray.append((state: .paid, value: FinancialStatus.paid.rawValue))
         segmentsArray.append((state: .partiallyRefunded, value: FinancialStatus.partiallyPaid.rawValue))
         segmentsArray.append((state: .voided, value: FinancialStatus.voided.rawValue))
-    
+        
         let segmentsNames = segmentsArray.map{$0.value}
         segmentedControl = HMSegmentedControl(sectionTitles: segmentsNames)
         segmentedControl.borderWidth = CGFloat(1)
@@ -95,20 +151,21 @@ class MeVC: UIViewController {
     }
     
     func fetchOrders() {
-//        let financialState = sgmentsArray[Int(segmentedControl.selectedSegmentIndex)].state
+        //        let financialState = sgmentsArray[Int(segmentedControl.selectedSegmentIndex)].state
         viewModel.fetchOrders()
     }
     
-    func setupWishlistCollectionView()  {
+    func setupWishlistCollectionView() {
         viewModel.favProductsObservable?.asObservable().bind(to: uiWishlistCollection.rx.items(cellIdentifier: "FavouriteproductCVC")){
             row,item,cell in
             (cell as? FavouriteproductCVC)?.favProduct = item
             (cell as? FavouriteproductCVC)?.deleteFromFavourites = { [unowned self] in
-                self.deletFromFavourites(productID: Int(item.id ))
-                
                 let alert = UIAlertController(title: "Remove Favourite", message: "Are you sure you want to remove the product from the wishlist ?", preferredStyle: .alert)
+                
                 let action = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+                    self.deletFromFavourites(productID: Int(item.id ))
                     viewModel.fetchFavProducts()
+                    uiWishlistCollection.reloadData()
                 }
                 let action2 = UIAlertAction(title: "Cancel", style: .default, handler: nil)
                 
@@ -132,17 +189,20 @@ class MeVC: UIViewController {
             (cell as? OrderCell)?.orderData = item
         }.disposed(by: bag)
         
-//        uiOrdersCollection.rx.itemSelected.subscribe{value in
-////            print(value.element.ite)
-//        }.disposed(by: bag)
-//
+        //        uiOrdersCollection.rx.itemSelected.subscribe{value in
+        ////            print(value.element.ite)
+        //        }.disposed(by: bag)
+        //
+        
+
         uiOrdersCollection.rx.modelSelected(Order.self).subscribe{ [unowned self] value in
             let vc = self.storyboard?.instantiateViewController(identifier: "OrderDetailsVC") as! OrderDetailsVC
             vc.order = value.element
+            
             if AppCommon.shared.checkConnectivity() == true{
                 self.present(vc, animated: true, completion: nil)
             }
-           
+            
         }.disposed(by: bag)
     }
     
@@ -157,7 +217,7 @@ class MeVC: UIViewController {
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
             NoInternetViewController.modalPresentationStyle = .fullScreen
             self.present(NoInternetViewController, animated: true, completion: nil)
-
+            
         }else{
             
             if viewModel.isUserLoggedIn() {
@@ -230,7 +290,7 @@ class MeVC: UIViewController {
         }
     }
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-      //  uiWishlistCollection.reloadData()
+        uiWishlistCollection.reloadData()
     }
     
     @IBAction func uiCardButton(_ sender: Any) {
@@ -282,6 +342,17 @@ extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
             return CGSize(width: CGFloat(200), height: CGFloat(view.layer.frame.height * 1/3.5  ))
         }else {
             return CGSize(width: CGFloat(150), height: CGFloat(200))
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case uiWishlistCollection:
+            let animation1 = AnimationType.from(direction: .top, offset: 300)
+            cell.animate(animations: [animation1],delay: 0.5,duration: 2)
+        default:
+            let animation1 = AnimationType.rotate(angle: 30)
+            cell.animate(animations: [animation1],delay: 0.5,duration: 2)
         }
     }
     

@@ -69,7 +69,6 @@ class BagPersistenceManager{
         storedBagProduct.sizeProduct = size
         let data = NSKeyedArchiver.archivedData(withRootObject: bagProduct.options[0].values)
         storedBagProduct.sizes = data
-
         storedBagProduct.availableCount = Int64(bagProduct.variants[0].inventoryQuantity)
         try?self.context.save()
         print("added successfully")

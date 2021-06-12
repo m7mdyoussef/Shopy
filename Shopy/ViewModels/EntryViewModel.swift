@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+
 class EntryViewModel {
     
     public var isAllTextFilld:Bool!
@@ -138,13 +139,12 @@ class EntryViewModel {
         
     }
     
-    
-    
     func saveCredentialsInUserDefaults(email:String,username:String,id:Int) {
         MyUserDefaults.add(val: true, key: .loggedIn)
         MyUserDefaults.add(val: email, key: .email)
         MyUserDefaults.add(val: username, key: .username)
         MyUserDefaults.add(val: id, key: .id)
+        MyUserDefaults.add(val: true, key: .isDisconut)
     }
     
     func getAllUsers(onFinish: @escaping (AllCustomers)->Void,onError: @escaping (String)->Void) {
