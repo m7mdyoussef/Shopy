@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
     func reset() {
         let rootViewController: UIWindow = ((UIApplication.shared.delegate?.window)!)!
         let story = UIStoryboard(name: "Main", bundle: nil)
-        rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "rootnav")
+        rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "rootTabController")
     }
     
     @available(iOS 13.0, *)
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
         
         // switch root view controllers
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let nav = storyboard.instantiateViewController(withIdentifier: "rootnav")
+        let nav = storyboard.instantiateViewController(withIdentifier: "rootTabController")
         
         let scene = UIApplication.shared.connectedScenes.first
         if let sd : SceneDelegate = (scene?.delegate as? SceneDelegate) {

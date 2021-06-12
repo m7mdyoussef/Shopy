@@ -12,6 +12,7 @@ import JGProgressHUD
 import RxSwift
 import RxCocoa
 import ViewAnimator
+import MOLH
 
 class MeVC: UIViewController {
     
@@ -48,11 +49,22 @@ class MeVC: UIViewController {
     }
     
     @IBAction func uiSettings(_ sender: Any) {
-//        let settings = SettingsVC()
-//        navigationController?.pushViewController(settings, animated: true)
+        //        let settings = SettingsVC()
+        //        navigationController?.pushViewController(settings, animated: true)
         
         let alert = UIAlertController(title: "Settings", message: "", preferredStyle: .actionSheet)
         let lang = UIAlertAction(title: "Language".localized, style: .default) { (action) in
+            
+            
+            MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "en" ? "ar" : "en")
+            if #available(iOS 13.0, *) {
+                let delegate = UIApplication.shared.delegate as? AppDelegate
+                delegate!.swichRoot()
+            } else {
+                // Fallback on earlier versions
+                MOLH.reset()
+            }
+            
             
         }
         let logoutaction = UIAlertAction(title: "Logout", style: .destructive) { [weak self] (action) in
@@ -70,14 +82,17 @@ class MeVC: UIViewController {
             self.present(logout, animated: true, completion: nil)
             
         }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(lang)
         alert.addAction(logoutaction)
+        alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
     
     func setupViews()  {
         registerCollectionViewCells()
-//        addingOrdersStatusSegments()
+        //        addingOrdersStatusSegments()
         setupWishlistCollectionView()
         setupOrdersCollectionView()
         uiWishlistCollection.rx.setDelegate(self).disposed(by: bag)
@@ -110,7 +125,7 @@ class MeVC: UIViewController {
         segmentsArray.append((state: .paid, value: FinancialStatus.paid.rawValue))
         segmentsArray.append((state: .partiallyRefunded, value: FinancialStatus.partiallyPaid.rawValue))
         segmentsArray.append((state: .voided, value: FinancialStatus.voided.rawValue))
-    
+        
         let segmentsNames = segmentsArray.map{$0.value}
         segmentedControl = HMSegmentedControl(sectionTitles: segmentsNames)
         segmentedControl.borderWidth = CGFloat(1)
@@ -126,7 +141,7 @@ class MeVC: UIViewController {
     }
     
     func fetchOrders() {
-//        let financialState = sgmentsArray[Int(segmentedControl.selectedSegmentIndex)].state
+        //        let financialState = sgmentsArray[Int(segmentedControl.selectedSegmentIndex)].state
         viewModel.fetchOrders()
     }
     
@@ -165,17 +180,17 @@ class MeVC: UIViewController {
             (cell as? OrderCell)?.orderData = item
         }.disposed(by: bag)
         
-//        uiOrdersCollection.rx.itemSelected.subscribe{value in
-////            print(value.element.ite)
-//        }.disposed(by: bag)
-//
+        //        uiOrdersCollection.rx.itemSelected.subscribe{value in
+        ////            print(value.element.ite)
+        //        }.disposed(by: bag)
+        //
         uiOrdersCollection.rx.modelSelected(Order.self).subscribe{ [unowned self] value in
             let vc = self.storyboard?.instantiateViewController(identifier: "OrderDetailsVC") as! OrderDetailsVC
             vc.order = value.element
             if AppCommon.shared.checkConnectivity() == true{
                 self.present(vc, animated: true, completion: nil)
             }
-           
+            
         }.disposed(by: bag)
     }
     
@@ -190,7 +205,7 @@ class MeVC: UIViewController {
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
             NoInternetViewController.modalPresentationStyle = .fullScreen
             self.present(NoInternetViewController, animated: true, completion: nil)
-
+            
         }else{
             
             if viewModel.isUserLoggedIn() {

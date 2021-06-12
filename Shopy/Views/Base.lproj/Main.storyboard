@@ -987,7 +987,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="x7B-xU-Zxh">
             <objects>
-                <tabBarController id="oY1-e7-rB0" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="rootTabController" id="oY1-e7-rB0" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yug-Yw-HXN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1129,7 +1129,7 @@
             <objects>
                 <viewController id="32K-2O-Nxq" customClass="Register" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCY-aF-Eyn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="597"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="597.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAq-WB-fwL">
@@ -1357,7 +1357,7 @@
             <objects>
                 <viewController id="q6x-kp-74i" customClass="Login" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sc0-f0-Y81">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="597"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="597.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xde-EO-g0k">
@@ -1885,6 +1885,32 @@
             <point key="canvasLocation" x="-3120" y="-516"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="G5i-ae-D24">
+            <size key="intrinsicContentSize" width="78.5" height="24.5"/>
+        </designable>
+        <designable name="SQ8-Up-0Xp">
+            <size key="intrinsicContentSize" width="78.5" height="24.5"/>
+        </designable>
+        <designable name="ceI-T1-ChN">
+            <size key="intrinsicContentSize" width="116" height="24.5"/>
+        </designable>
+        <designable name="fNW-3U-CEb">
+            <size key="intrinsicContentSize" width="133.5" height="21"/>
+        </designable>
+        <designable name="jEw-yg-TeX">
+            <size key="intrinsicContentSize" width="78.5" height="24.5"/>
+        </designable>
+        <designable name="jzb-mm-4tO">
+            <size key="intrinsicContentSize" width="111" height="21"/>
+        </designable>
+        <designable name="nd2-iN-Lho">
+            <size key="intrinsicContentSize" width="78.5" height="24.5"/>
+        </designable>
+        <designable name="vEZ-je-ot0">
+            <size key="intrinsicContentSize" width="120.5" height="24.5"/>
+        </designable>
+    </designables>
     <resources>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="circle.grid.2x2" catalog="system" width="128" height="112"/>
