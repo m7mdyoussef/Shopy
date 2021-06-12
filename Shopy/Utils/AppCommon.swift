@@ -12,7 +12,8 @@ import SystemConfiguration
 import SwiftMessages
 import JGProgressHUD
 import SDWebImage
-
+import PopupDialog
+import BadgeHub
 extension UIView {
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
@@ -90,6 +91,54 @@ class AppCommon: NSObject {
         
     }
     
+    func showPopupDialog(title: String = "", message: String = "",image: UIImage) -> PopupDialog{
+        
+        let popup = PopupDialog(title: title, message: message, image: image)
+        let buttonOne = DefaultButton(title: "OK") {
+            popup.dismiss()
+        }
+        
+        popup.addButtons([buttonOne])
+        let dialogAppearance = PopupDialogDefaultView.appearance()
+        dialogAppearance.backgroundColor = .white
+        dialogAppearance.titleFont = .boldSystemFont(ofSize: 17)
+        dialogAppearance.titleColor = #colorLiteral(red: 0.9985825419, green: 0.2874522209, blue: 0.3107439578, alpha: 1)
+        dialogAppearance.titleTextAlignment = .center
+        dialogAppearance.messageFont  = .systemFont(ofSize: 17)
+        dialogAppearance.messageColor = UIColor(white: 0.6, alpha: 1)
+        dialogAppearance.messageTextAlignment = .center
+//
+//        let containerAppearance = PopupDialogContainerView.appearance()
+//        containerAppearance.backgroundColor = UIColor(red:0.23, green:0.23, blue:0.27, alpha:1.00)
+//        containerAppearance.cornerRadius = 2
+//        containerAppearance.shadowEnabled = true
+//        containerAppearance.shadowColor = .black
+//        containerAppearance.shadowOpacity = 0.6
+//        containerAppearance.shadowRadius = 20
+//        containerAppearance.shadowOffset = CGSize(width: 0, height: 8)
+//
+//        let overlayAppearance = PopupDialogOverlayView.appearance()
+//        overlayAppearance.color = .black
+//        overlayAppearance.blurRadius = 20
+//        overlayAppearance.blurEnabled = true
+//        overlayAppearance.liveBlurEnabled = false
+//        overlayAppearance.opacity = 0.7
+//
+        return popup
+       
+       // self.present(popup, animated: true, completion: nil)
+    }
+    
+    func showBadgeNumber(barButtonItem: UIBarButtonItem, count: Int){
+        let hub = BadgeHub(barButtonItem: barButtonItem)
+        hub?.setCount(count)
+        hub?.pop()
+        hub?.blink()
+        hub?.setCircleBorderColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), borderWidth: 0.5)
+        hub?.setCountLabelFont(UIFont(name: "Arial", size: 17))
+        hub?.setCircleColor(#colorLiteral(red: 0.6043980013, green: 0.0525575951, blue: 0.03250552842, alpha: 1), label: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+    }
+    
     func checkConnectivity() -> Bool {
         if currentReachabilityStatus != .notReachable {
             return true
@@ -106,7 +155,6 @@ class AppCommon: NSObject {
         hud.show(in: view)
     }
 }
-
 
 extension UIImageView{
     func doenloadImage(url:String){

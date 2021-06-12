@@ -22,7 +22,10 @@ target 'Shopy' do
   pod "ImageSlideshow/SDWebImage"
   pod 'Stripe'
   pod 'JGProgressHUD'
-
+  pod 'PopupDialog'
+  pod 'ReadMoreTextView'
+  pod 'BadgeHub'
+  pod 'BadgeSwift'
   
   #  pod 'Gallery'
   #  pod 'InstantSearchClient'

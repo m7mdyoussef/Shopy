@@ -12,11 +12,17 @@ import RxSwift
 import SDWebImage
 import ImageIO
 import JGProgressHUD
+import BadgeHub
 class CollectionViewController: UIViewController {
     var disposeBag = DisposeBag()
     var collectionViewModel:HomeViewModel?
     @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var adsView: UIView!
+    
+    @IBOutlet weak var favouriteBtn: UIBarButtonItem!
+    @IBOutlet weak var bagBtn: UIBarButtonItem!
+    var hubBag: BadgeHub!
+    var hubFavourite: BadgeHub!
     var arrId = [Int]()
     var imagesArr = ["home", "kids", "men", "sale", "women"]
     var arrDiscountCodes = [String]()
@@ -28,14 +34,15 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var adsButton: UIButton!
     @IBOutlet weak var discountCode: UILabel!
     @IBOutlet weak var adsImage: UIImageView!
-    
+    let manager = FavouritesPersistenceManager.shared
+    let bagManager = BagPersistenceManager.shared
     private var categoryViewModel:CategoryViewModel!
     var showIndicator:ShowIndecator?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor.black
         startPoint()
-      
+        
     }
     
     func startPoint(){
@@ -67,24 +74,27 @@ class CollectionViewController: UIViewController {
             switch value{
             case true:
                 hud.dismiss()
-                self.view.isUserInteractionEnabled = false
+                //self.view.isUserInteractionEnabled = false
             case false:
                 hud.dismiss()
-                self.view.isUserInteractionEnabled = true
+              //  self.view.isUserInteractionEnabled = true
             }
         }).disposed(by: disposeBag)
     }
     override func viewWillAppear(_ animated: Bool) {
+        
         tabBarController?.tabBar.isHidden = false
         arrproductId.removeAll()
         adsImage.loadGif(name: imagesArr[0])
+        MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         if AppCommon.shared.checkConnectivity() == false{
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
             NoInternetViewController.modalPresentationStyle = .fullScreen
             self.present(NoInternetViewController, animated: true, completion: nil)
         
         }else{
-            
+            AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
+            AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
             collectionViewModel?.getCollectionData()
             collectionViewModel?.getPriceRules()
             collectionViewModel?.getDiscountCode(priceRule: "951238656198")
@@ -93,17 +103,20 @@ class CollectionViewController: UIViewController {
         
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-       // productsCollectionView.reloadData()
-        view.setNeedsLayout()
-    }
-    
+  
     @IBAction func searchOfProducts(_ sender: Any) {
         let searchCategoryViewController = self.storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
                   searchCategoryViewController.productList = self.collectionViewModel?.ProductElements
                   self.navigationController?.pushViewController(searchCategoryViewController, animated: true)
     }
+  
     
+    @IBAction func selectDiscountCode(_ sender: Any) {
+                isDiscount = true
+                MyUserDefaults.add(val: isDiscount, key: .isDisconut)
+        let popup = AppCommon.shared.showPopupDialog(title: "Congratulation🥳🥳", message: "You got 10% Discount.", image: adsImage.image!)
+         self.present(popup, animated: true, completion: nil)
+    }
     @IBAction func moveToBag(_ sender: Any) {
         let bag = BagViewController()
         navigationController?.pushViewController(bag, animated: true)
@@ -113,17 +126,22 @@ class CollectionViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func showDiscountCode(_ sender: Any) {
-        isDiscount = true
-        MyUserDefaults.add(val: isDiscount, key: .isDisconut)
-        adsImage.loadGif(name: "black")
+      
+        let popup = AppCommon.shared.showPopupDialog(title: "OFFER", message: "Please, Click on the code ☝️ to get a Special offer🙈.", image: adsImage.image!)
+         self.present(popup, animated: true, completion: nil)
+
+         adsImage.loadGif(name: "black")
         adsImage.contentMode = .scaleAspectFill
         adsView.layer.cornerRadius = 25
         adsView.clipsToBounds = true
         adsImage.layer.masksToBounds = true
-        controlViews(flag: false)
+          controlViews(flag: false)
     }
     
+  
+    
     func getAllDiscountCodes(){
+        
         collectionViewModel?.discontCodeObservable?.asObservable().subscribe(onNext: {[weak self] (response) in
             guard let self = self else {return}
             for i in 0..<response.count{
