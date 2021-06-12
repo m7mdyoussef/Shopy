@@ -42,11 +42,13 @@ class MeVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if uiWishlistCollection.isHidden == false{
-            let animation = AnimationType.from(direction: .left, offset: 300)
-            view.animate(animations: [animation])
-            UIView.animate(views: uiWishlistCollection.visibleCells, animations: [animation],delay: 0.5,duration: 2)
-        }
-    }
+             let animation = AnimationType.from(direction: .left, offset: 300)
+             UIView.animate(views: uiWishlistCollection.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+             
+             let animation1 = AnimationType.random()
+             UIView.animate(views: uiOrdersCollection.visibleCells,animations: [animation1],delay: 0.5,duration: 2)
+         }
+     }
     
     @IBAction func uiSettings(_ sender: Any) {
         //        let settings = SettingsVC()
@@ -150,11 +152,10 @@ class MeVC: UIViewController {
             row,item,cell in
             (cell as? FavouriteproductCVC)?.favProduct = item
             (cell as? FavouriteproductCVC)?.deleteFromFavourites = { [unowned self] in
-                self.deletFromFavourites(productID: Int(item.id ))
-                
                 let alert = UIAlertController(title: "Remove Favourite", message: "Are you sure you want to remove the product from the wishlist ?", preferredStyle: .alert)
                 
                 let action = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+                    self.deletFromFavourites(productID: Int(item.id ))
                     viewModel.fetchFavProducts()
                     uiWishlistCollection.reloadData()
                 }
@@ -184,9 +185,12 @@ class MeVC: UIViewController {
         ////            print(value.element.ite)
         //        }.disposed(by: bag)
         //
+        
+
         uiOrdersCollection.rx.modelSelected(Order.self).subscribe{ [unowned self] value in
             let vc = self.storyboard?.instantiateViewController(identifier: "OrderDetailsVC") as! OrderDetailsVC
             vc.order = value.element
+            
             if AppCommon.shared.checkConnectivity() == true{
                 self.present(vc, animated: true, completion: nil)
             }
@@ -328,6 +332,17 @@ extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
             return CGSize(width: CGFloat(200), height: CGFloat(view.layer.frame.height * 1/3.5  ))
         }else {
             return CGSize(width: CGFloat(150), height: CGFloat(200))
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        switch collectionView {
+        case uiWishlistCollection:
+            let animation1 = AnimationType.from(direction: .top, offset: 300)
+            cell.animate(animations: [animation1],delay: 0.5,duration: 2)
+        default:
+            let animation1 = AnimationType.rotate(angle: 30)
+            cell.animate(animations: [animation1],delay: 0.5,duration: 2)
         }
     }
     

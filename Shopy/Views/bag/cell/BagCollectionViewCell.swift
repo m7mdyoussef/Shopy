@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DropDown
 
 class BagCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bagImage: UIImageView!
@@ -17,6 +18,11 @@ class BagCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var availableCount: UILabel!
     
+    @IBOutlet weak var uiDropShowMenu: UIButton!
+    @IBOutlet weak var uiMenuAnchorView: UIView!
+    
+    private var sizeSelectionMenu:DropDown!
+
     var countNumber = 1
     var availableStoredCount = 0
     
@@ -33,15 +39,38 @@ class BagCollectionViewCell: UICollectionViewCell {
             self.count.text = "\(bagProduct?.count ?? 1)"
             self.countNumber = Int(bagProduct!.count)
             self.bagImage.doenloadImage(url: bagProduct?.image ?? "")
+            
+            guard let size = bagProduct?.sizeProduct else {return}
+            uiDropShowMenu.setTitle("\(size) ", for: .normal)
+            
+            //initialize dropList
+            sizeSelectionMenu = DropDown()
+            sizeSelectionMenu.anchorView = uiMenuAnchorView
+            let data = bagProduct?.sizes
+            guard let arrSizes = NSKeyedUnarchiver.unarchiveObject(with: data as! Data) as? [String] else {return}
+            
+            sizeSelectionMenu.dataSource = arrSizes
+            sizeSelectionMenu.direction = .bottom
+            sizeSelectionMenu.bottomOffset = CGPoint(x: 0, y:uiMenuAnchorView.plainView.bounds.height)
+            
+            
+            sizeSelectionMenu.selectionAction = { [unowned self] (index: Int, item: String) in
+                uiDropShowMenu.setTitle("\(item) ", for: .normal)
+
+            }
         }
     }
     var deleteFromBagProducts:()->() = {}
     var updateSavedCount:(Int , Bool)->() = {_,_ in}
-    
+        
+    @IBAction func uiShowMenue(_ sender: Any) {
+        sizeSelectionMenu.show()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         tableViewCellBackground.collectionCellLayout()
+        
     }
 
     @IBAction func decreaseCount(_ sender: Any) {

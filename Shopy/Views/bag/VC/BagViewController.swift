@@ -15,6 +15,7 @@ import Stripe
 class BagViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var checkoutView: UIView!
+    @IBOutlet weak var uiEmptyImage: UIImageView!
     
     @IBOutlet weak var afterDiscountLabel: UILabel!
     @IBOutlet weak var bagProductsCollectionView: UICollectionView!{
@@ -92,14 +93,24 @@ class BagViewController: UIViewController {
             
         }
         DispatchQueue.main.async {
-            self.bagProductsCollectionView.reloadData()
-            let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool
-            if discount == true{
-                self.totalPriceLabel.text = "\(totalPrice) LE"
-                self.afterDiscountLabel.text = "\(totalPrice - (totalPrice * 0.10)) LE"
+            
+            if !bagProducts.isEmpty {
+                
+                self.uiEmptyImage.isHidden = true
+                self.bagProductsCollectionView.isHidden = false
+                
+                self.bagProductsCollectionView.reloadData()
+                let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool
+                if discount == true{
+                    self.totalPriceLabel.text = "\(totalPrice) LE"
+                    self.afterDiscountLabel.text = "\(totalPrice - (totalPrice * 0.10)) LE"
+                }else{
+                    self.totalPriceLabel.text = "\(totalPrice) LE"
+                    self.afterDiscountLabel.text = "\(totalPrice) LE"
+                }
             }else{
-                self.totalPriceLabel.text = "\(totalPrice) LE"
-                self.afterDiscountLabel.text = "\(totalPrice) LE"
+                self.uiEmptyImage.isHidden = false
+                self.bagProductsCollectionView.isHidden = true
             }
         }
     }
