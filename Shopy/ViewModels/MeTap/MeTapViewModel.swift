@@ -13,7 +13,7 @@ import RxCocoa
 protocol MeModelType{
     
     func fetchFavProducts()
-    func getUserName() -> String
+    func getUserName() -> String?
     func fetchOrders()
     func getFormattedDate(date:String) -> String?
     
@@ -100,8 +100,14 @@ class MeTapViewModel:MeModelType,ICanLogin {
     //        return (isLoggedIn as! Bool) ? true : false
     //    }
     
-    func getUserName() -> String {
-        return MyUserDefaults.getValue(forKey: .username) as! String
+    func getUserName() -> String? {
+        
+        if let username = MyUserDefaults.getValue(forKey: .username){
+            return username as? String
+        }else{
+            return nil
+        }
+        
     }
     
     func fetchOrderProducts(orderLineItems: [LineItems]) {

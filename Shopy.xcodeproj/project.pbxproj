@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		074782A1C8E6277CE1CBE546 /* Pods_ShopyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B33C7D1FE68BC50FDE5402E /* Pods_ShopyTests.framework */; };
 		25439C4C0A5EE7980C196ABD /* Pods_Shopy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30DE585536EF363BD795C169 /* Pods_Shopy.framework */; };
+		2720D65F2676558C0069F171 /* OrderConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2720D65E2676558C0069F171 /* OrderConfirmationCell.swift */; };
 		2729B1032670F11000FCA983 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2729B1022670F11000FCA983 /* OrderDetailsVC.swift */; };
 		2730285B267102AB004273CF /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27302859267102AB004273CF /* OrderCell.xib */; };
 		27338D27267544BC003F6C84 /* OrderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27338D26267544BC003F6C84 /* OrderObject.swift */; };
@@ -57,7 +58,7 @@
 		9E567CCD266D695400AC11C1 /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567CCC266D695400AC11C1 /* NoInternetViewController.swift */; };
 		9E59BDDC26531C67003B113F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E59BDDB26531C66003B113F /* GoogleService-Info.plist */; };
 		9E5B51AE26726BC1007E32F2 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B51AD26726BC1007E32F2 /* StripeClient.swift */; };
-		9E5B51B026727FA4007E32F2 /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B51AF26727FA4007E32F2 /* CarInfoViewController.swift */; };
+		9E5B51B026727FA4007E32F2 /* CardInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B51AF26727FA4007E32F2 /* CardInfoViewController.swift */; };
 		9E6172E82667CA3200E93743 /* SearchCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6172E72667CA3200E93743 /* SearchCategoryViewController.swift */; };
 		9E6172EB2667CBB900E93743 /* CategorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6172EA2667CBB900E93743 /* CategorySearchViewModel.swift */; };
 		9E686591266653D3007B0388 /* DetailedProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E686590266653D3007B0388 /* DetailedProductsModel.swift */; };
@@ -139,6 +140,7 @@
 /* Begin PBXFileReference section */
 		0B13707064EE8F01FB88405D /* Pods-ShopyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShopyTests.debug.xcconfig"; path = "Target Support Files/Pods-ShopyTests/Pods-ShopyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		264E4FC7B77E696D0A2906DC /* Pods_Shopy_ShopyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shopy_ShopyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2720D65E2676558C0069F171 /* OrderConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationCell.swift; sourceTree = "<group>"; };
 		2729B1022670F11000FCA983 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
 		27302859267102AB004273CF /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		27338D26267544BC003F6C84 /* OrderObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderObject.swift; sourceTree = "<group>"; };
@@ -200,7 +202,7 @@
 		9E567CCC266D695400AC11C1 /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
 		9E59BDDB26531C66003B113F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E5B51AD26726BC1007E32F2 /* StripeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
-		9E5B51AF26727FA4007E32F2 /* CarInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoViewController.swift; sourceTree = "<group>"; };
+		9E5B51AF26727FA4007E32F2 /* CardInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoViewController.swift; sourceTree = "<group>"; };
 		9E6172E72667CA3200E93743 /* SearchCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryViewController.swift; sourceTree = "<group>"; };
 		9E6172EA2667CBB900E93743 /* CategorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySearchViewModel.swift; sourceTree = "<group>"; };
 		9E686590266653D3007B0388 /* DetailedProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProductsModel.swift; sourceTree = "<group>"; };
@@ -293,6 +295,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2720D65D2676555E0069F171 /* OrderConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B51AF26727FA4007E32F2 /* CardInfoViewController.swift */,
+				2720D65E2676558C0069F171 /* OrderConfirmationCell.swift */,
+			);
+			path = OrderConfirmation;
+			sourceTree = "<group>";
+		};
 		2729B1012670F0D300FCA983 /* OrderDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,7 +537,6 @@
 			isa = PBXGroup;
 			children = (
 				9E5B51AD26726BC1007E32F2 /* StripeClient.swift */,
-				9E5B51AF26727FA4007E32F2 /* CarInfoViewController.swift */,
 			);
 			path = Stripe;
 			sourceTree = "<group>";
@@ -573,6 +583,7 @@
 				9E756A0626642D22000B5D98 /* CategoryTab */,
 				27C3A854266CAE7600D16F84 /* MeTap */,
 				2729B1012670F0D300FCA983 /* OrderDetails */,
+				2720D65D2676555E0069F171 /* OrderConfirmation */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1172,6 +1183,7 @@
 				9E756A1D26644277000B5D98 /* Constants.swift in Sources */,
 				CF4798072665DC9900B0A64D /* AppCommon.swift in Sources */,
 				CFF7A3C426644C7B003D7987 /* HomeViewModel.swift in Sources */,
+				2720D65F2676558C0069F171 /* OrderConfirmationCell.swift in Sources */,
 				D2CA0EB5266BBE90005AB72D /* BagCollectionViewCell.swift in Sources */,
 				D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */,
 				27DDC4E7266BE263002E92A7 /* RegisterResponse.swift in Sources */,
@@ -1217,7 +1229,7 @@
 				2729B1032670F11000FCA983 /* OrderDetailsVC.swift in Sources */,
 				CF4798A42669497C00B0A64D /* DiscountCode.swift in Sources */,
 				D2CA0EB9266BBEC3005AB72D /* BagViewController.swift in Sources */,
-				9E5B51B026727FA4007E32F2 /* CarInfoViewController.swift in Sources */,
+				9E5B51B026727FA4007E32F2 /* CardInfoViewController.swift in Sources */,
 				D2CA0EBC266BC4BD005AB72D /* BagPersistenceManager.swift in Sources */,
 				CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */,
 				27DDC4E8266BE263002E92A7 /* Customer.swift in Sources */,

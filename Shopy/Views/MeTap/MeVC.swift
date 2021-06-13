@@ -230,7 +230,7 @@ class MeVC: UIViewController {
         }else{
             
             showGreatingMessage()
-//            if viewModel.isUserLoggedIn() {
+            if viewModel.isUserLoggedIn() {
                 bagBtn.setBadge(text: String(describing: bagManager.retrievebagProducts()?.count ?? 0))
                 viewModel.favProductsObservable?.drive(onNext: { [unowned self] (favProducts) in
                     self.resetWishListViews(count:favProducts.count)
@@ -244,7 +244,7 @@ class MeVC: UIViewController {
                 
                 viewModel.fetchFavProducts()
                 fetchOrders()
-//            }
+            }
 //            else{
 //                bagBtn.setBadge(text: String("0"))
 //                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
@@ -270,10 +270,10 @@ class MeVC: UIViewController {
     
     func showGreatingMessage() {
        
-        if viewModel.getUserName() == ""{
+        if  viewModel.getUserName() == nil  || viewModel.getUserName() == ""{
             navigationItem.title = "Login / Register"
         }else{
-            navigationItem.title = "Hello,\(viewModel.getUserName())"
+            navigationItem.title = "Hello,\(String(describing: viewModel.getUserName()!))"
         }
     }
     
