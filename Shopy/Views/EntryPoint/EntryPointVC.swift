@@ -19,7 +19,16 @@ class EntryPointVC: UIViewController {
         notificationName = Notification.Name("EntryScreen")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+//        tabBarController?.tabBar.isHidden = true
+    }
     @IBAction func uiSegmentAction(_ sender: UISegmentedControl) {
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["key":uiSegment.selectedSegmentIndex])
     }
+    
+    @IBAction func uiSwipeToRight(_ sender: Any) {
+//        let vc = storyboard?.instantiateViewController(identifier: "CollectionViewController") as! CollectionViewController
+//        navigationController?.popViewController(animated: true)
+    }
+
 }

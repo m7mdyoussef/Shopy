@@ -101,7 +101,7 @@ class CollectionViewController: UIViewController,ICanLogin {
                 AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
                 AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
             }else{
-                AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: -1)
+                AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: 0)
                 AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: 0)
             }
             

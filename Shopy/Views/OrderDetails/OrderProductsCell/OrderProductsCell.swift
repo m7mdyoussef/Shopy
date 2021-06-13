@@ -32,7 +32,7 @@ class OrderProductsCell: UITableViewCell {
     var item:LineItems!{
         willSet{
             uiCount.text = "x\(newValue.quantity)"
-            uiPrice.text = "\(newValue.price) LE"
+            uiPrice.text = "$ \(newValue.price)"
         }
     }
     

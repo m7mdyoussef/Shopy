@@ -24,7 +24,7 @@ class OrderCell: UICollectionViewCell {
             uiOrderIdLabel.text! = "No. :\(String(orderData.orderNumber))"
 
             uiCountLabel.text = "\(orderData.lineItems.count) item/s"
-            uiTotalLabel.text = "Total : \(orderData.totalPrice) LE"
+            uiTotalLabel.text = "Total :$ \(orderData.totalPrice)"
             
 //            self.uiContentView.layer.cornerRadius = 12.69
 //            self.uiContentView.layer.masksToBounds = true

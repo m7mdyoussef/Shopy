@@ -32,6 +32,9 @@ class FavouriteProductsVC: UIViewController {
        fetchFavProducts()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = true
+    }
 
     func fetchFavProducts() {
         let localData = FavouritesPersistenceManager.shared
@@ -45,8 +48,8 @@ class FavouriteProductsVC: UIViewController {
                 self.favouriteProductsCollectionView.isHidden = true
             }
             else{
-                self.emptyImageView.isHidden = false
-                self.favouriteProductsCollectionView.isHidden = true
+                self.emptyImageView.isHidden = true
+                self.favouriteProductsCollectionView.isHidden = false
                 self.favouriteProductsCollectionView.reloadData()
             }
           
