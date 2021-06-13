@@ -30,5 +30,10 @@ class EntryPointVC: UIViewController {
 //        let vc = storyboard?.instantiateViewController(identifier: "CollectionViewController") as! CollectionViewController
 //        navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func uiClose(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
 }

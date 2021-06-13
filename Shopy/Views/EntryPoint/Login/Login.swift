@@ -69,7 +69,8 @@ class Login: UIViewController,IRounded{
             viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!, onSuccess: { [unowned self] in
                 self.dismissLoadingHud(hud: hud)
                 self.onSuccessHud()
-                self.navigationController?.popViewController(animated: true)
+//                self.navigationController?.popViewController(animated: true)
+                dismiss(animated: true, completion: nil)
             }) { [unowned self] (string) in
 //                hud.dismiss()
                 self.dismissLoadingHud(hud: hud)

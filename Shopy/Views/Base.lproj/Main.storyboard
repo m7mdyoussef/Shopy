@@ -520,10 +520,19 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8S-XO-uqI">
+                                        <rect key="frame" x="364" y="25" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="uiClose:" destination="aGa-bo-GIK" eventType="touchUpInside" id="Vhn-iJ-PC4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="yaI-41-4Lu" firstAttribute="centerX" secondItem="qTC-IV-iBv" secondAttribute="centerX" id="JUM-a9-blL"/>
+                                    <constraint firstAttribute="trailing" secondItem="b8S-XO-uqI" secondAttribute="trailing" constant="20" id="MhK-TD-InS"/>
+                                    <constraint firstItem="b8S-XO-uqI" firstAttribute="top" secondItem="qTC-IV-iBv" secondAttribute="top" constant="25" id="NYe-RF-h9D"/>
                                     <constraint firstItem="yaI-41-4Lu" firstAttribute="centerY" secondItem="qTC-IV-iBv" secondAttribute="centerY" id="fSF-gP-kZp"/>
                                 </constraints>
                             </view>
@@ -549,7 +558,7 @@
                             <constraint firstItem="iuU-Hd-Vls" firstAttribute="top" secondItem="qTC-IV-iBv" secondAttribute="bottom" constant="-15.5" id="8y6-rU-GxM"/>
                             <constraint firstAttribute="bottom" secondItem="Gyy-No-IAY" secondAttribute="bottom" id="HYc-Jh-ZtP"/>
                             <constraint firstItem="qTC-IV-iBv" firstAttribute="trailing" secondItem="U9G-UK-SXv" secondAttribute="trailing" id="RTt-rT-Wwd"/>
-                            <constraint firstItem="qTC-IV-iBv" firstAttribute="top" secondItem="FWJ-zb-mrU" secondAttribute="top" id="UWN-E1-igf"/>
+                            <constraint firstItem="qTC-IV-iBv" firstAttribute="top" secondItem="U9G-UK-SXv" secondAttribute="top" constant="-44" id="UWN-E1-igf"/>
                             <constraint firstItem="Gyy-No-IAY" firstAttribute="leading" secondItem="U9G-UK-SXv" secondAttribute="leading" id="fzd-D9-dat"/>
                             <constraint firstItem="qTC-IV-iBv" firstAttribute="width" secondItem="FWJ-zb-mrU" secondAttribute="width" id="io4-qX-Zhk"/>
                             <constraint firstItem="Gyy-No-IAY" firstAttribute="trailing" secondItem="U9G-UK-SXv" secondAttribute="trailing" id="mZy-hA-IfE"/>
@@ -794,7 +803,7 @@
                                                                 <rect key="frame" x="16" y="-14" width="382" height="114"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="phJ-4G-WkO">
+                                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="phJ-4G-WkO">
                                                                     <size key="itemSize" width="128" height="128"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1796,10 +1805,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MZB-xf-aal">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="5452"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="6115"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Method : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-N6-1VB" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="8" y="8" width="398" height="4853.5"/>
+                                                <rect key="frame" x="8" y="8" width="398" height="5516.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -1812,7 +1821,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aic-1b-VvE" userLabel="Ipaymentcard">
-                                                <rect key="frame" x="8" y="4871.5" width="398" height="80"/>
+                                                <rect key="frame" x="8" y="5534.5" width="398" height="80"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qcm-Dh-aQ7">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="80"/>
@@ -1830,7 +1839,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Personal Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dem-AH-cJs" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                                <rect key="frame" x="8" y="4881.5" width="398" height="24.5"/>
+                                                <rect key="frame" x="8" y="5544.5" width="398" height="24.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                                                 <nil key="textColor"/>
@@ -1843,7 +1852,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="evJ-b8-tEN">
-                                                <rect key="frame" x="8" y="4926" width="398" height="138.5"/>
+                                                <rect key="frame" x="8" y="5589" width="398" height="138.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ve5-f6-xmI" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                         <rect key="frame" x="0.0" y="10" width="398" height="21"/>
@@ -1905,7 +1914,7 @@
                                                 <edgeInsets key="layoutMargins" top="10" left="0.0" bottom="0.0" right="0.0"/>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ztI-Uc-cbx">
-                                                <rect key="frame" x="8" y="5084.5" width="398" height="150"/>
+                                                <rect key="frame" x="8" y="5747.5" width="398" height="150"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="Zoq-Z7-Atv"/>
@@ -1947,7 +1956,7 @@
                                                 </cells>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="b8L-Td-9kD">
-                                                <rect key="frame" x="8" y="5254.5" width="398" height="24.5"/>
+                                                <rect key="frame" x="8" y="5917.5" width="398" height="24.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtotal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD7-Rd-ccG">
                                                         <rect key="frame" x="0.0" y="0.0" width="199" height="24.5"/>
@@ -1964,7 +1973,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="qA4-xw-nuc">
-                                                <rect key="frame" x="8" y="5299" width="398" height="24.5"/>
+                                                <rect key="frame" x="8" y="5962" width="398" height="24.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djP-Cb-LBZ">
@@ -1983,7 +1992,7 @@
                                                 <viewLayoutGuide key="safeArea" id="xMa-wp-qCt"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="F0b-1A-Rza">
-                                                <rect key="frame" x="8" y="5343.5" width="398" height="100.5"/>
+                                                <rect key="frame" x="8" y="6006.5" width="398" height="100.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="K5b-NI-1G7">
                                                         <rect key="frame" x="0.0" y="0.0" width="398" height="30.5"/>
@@ -2036,14 +2045,11 @@
                                     <constraint firstItem="MZB-xf-aal" firstAttribute="top" secondItem="tld-BI-PMZ" secondAttribute="top" id="fXU-dm-3Kz"/>
                                     <constraint firstAttribute="trailing" secondItem="MZB-xf-aal" secondAttribute="trailing" id="mNM-OC-Lvx"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="drI-eI-hxR"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="hRE-WL-yhR"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q8r-0c-Cg3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="q8r-0c-Cg3" firstAttribute="trailing" secondItem="tld-BI-PMZ" secondAttribute="trailing" id="CEX-uh-NNI"/>
                             <constraint firstItem="tld-BI-PMZ" firstAttribute="leading" secondItem="q8r-0c-Cg3" secondAttribute="leading" id="CXl-ij-GaM"/>
                             <constraint firstItem="tld-BI-PMZ" firstAttribute="top" secondItem="q8r-0c-Cg3" secondAttribute="top" id="glm-G5-DLC"/>
                             <constraint firstItem="q8r-0c-Cg3" firstAttribute="bottom" secondItem="tld-BI-PMZ" secondAttribute="bottom" id="o8c-ic-eRh"/>

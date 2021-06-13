@@ -50,12 +50,13 @@ class CategoryViewController: UIViewController,ICanLogin {
             self.present(NoInternetViewController, animated: true, completion: nil)
             
         }else{
-            if categoryViewModel.isUserLoggedIn(){
-                AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
-                AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
+            if categoryViewModel.isUserLoggedIn() {
+                bagBtn.setBadge(text: String(describing: bagManager.retrievebagProducts()?.count ?? 0))
+                favouriteBtn.setBadge(text: String(describing: manager.retrieveFavourites()?.count ?? 0))
             }else{
-                AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: 0)
-                AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: 0)
+                bagBtn.setBadge(text: String("0"))
+                favouriteBtn.setBadge(text: String("0"))
+                
             }
             
             arrproductId.removeAll()
@@ -203,7 +204,9 @@ class CategoryViewController: UIViewController,ICanLogin {
                 let bag = BagViewController()
                 navigationController?.pushViewController(bag, animated: true)
             }else{
-                presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
+                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true, completion: nil)
             }
         }
 
@@ -227,7 +230,8 @@ class CategoryViewController: UIViewController,ICanLogin {
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-                navigationController?.pushViewController(vc, animated: true)
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true, completion: nil)
             }
         }
     }

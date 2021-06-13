@@ -31,6 +31,7 @@
 		277534272674AFEB009F535A /* Localization+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277534262674AFEB009F535A /* Localization+ext.swift */; };
 		2775343D2674B57F009F535A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2775343F2674B57F009F535A /* Localizable.strings */; };
 		277F3A99265D51A000C822D9 /* IRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F3A98265D51A000C822D9 /* IRounded.swift */; };
+		278647C326762A4000A8B648 /* RoundedBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278647C226762A4000A8B648 /* RoundedBadge.swift */; };
 		27A3E18426724E2F008590EB /* BagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E18326724E2F008590EB /* BagViewModel.swift */; };
 		27A3E18926724F62008590EB /* PostOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E18826724F62008590EB /* PostOrder.swift */; };
 		27B4E42B266AD6F9009A55EF /* UIUPdateAddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */; };
@@ -163,6 +164,7 @@
 		2775343E2674B57F009F535A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		277534402674B582009F535A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		277F3A98265D51A000C822D9 /* IRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRounded.swift; sourceTree = "<group>"; };
+		278647C226762A4000A8B648 /* RoundedBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBadge.swift; sourceTree = "<group>"; };
 		27A3E18326724E2F008590EB /* BagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagViewModel.swift; sourceTree = "<group>"; };
 		27A3E18826724F62008590EB /* PostOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrder.swift; sourceTree = "<group>"; };
 		27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUPdateAddressList.swift; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 				277534262674AFEB009F535A /* Localization+ext.swift */,
 				2775343F2674B57F009F535A /* Localizable.strings */,
 				D253BA8326752D5600136DC6 /* UIView+Ext.swift */,
+				278647C226762A4000A8B648 /* RoundedBadge.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1174,6 +1177,7 @@
 				27DDC4E7266BE263002E92A7 /* RegisterResponse.swift in Sources */,
 				9E6172EB2667CBB900E93743 /* CategorySearchViewModel.swift in Sources */,
 				CF78F3C32669B5C7005B9FE1 /* GifFile.swift in Sources */,
+				278647C326762A4000A8B648 /* RoundedBadge.swift in Sources */,
 				9E14BDEF265D45BD000899B9 /* CategoryViewController.swift in Sources */,
 				27DDC517266BE4D0002E92A7 /* Userdefaults.swift in Sources */,
 				D2CA0F5A26729640005AB72D /* ViewController+Ext.swift in Sources */,
