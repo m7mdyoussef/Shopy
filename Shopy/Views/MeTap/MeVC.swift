@@ -121,10 +121,10 @@ class MeVC: UIViewController {
             guard let value = value.element else {return}
             if value {
                 self.hud = self.loadingHud(text: "Loading", style: .dark)
-                view.isUserInteractionEnabled = false
+                self.view.isUserInteractionEnabled = false
             }else{
                 self.dismissLoadingHud(hud: self.hud)
-                view.isUserInteractionEnabled = true
+                self.view.isUserInteractionEnabled = true
             }
         }.disposed(by: bag)
     }
@@ -173,14 +173,14 @@ class MeVC: UIViewController {
                 
                 let action = UIAlertAction(title: "Yes", style: .destructive) { (action) in
                     self.deletFromFavourites(productID: Int(item.id ))
-                    viewModel.fetchFavProducts()
-                    uiWishlistCollection.reloadData()
+                    self.viewModel.fetchFavProducts()
+                    self.uiWishlistCollection.reloadData()
                 }
                 let action2 = UIAlertAction(title: "Cancel", style: .default, handler: nil)
                 
                 alert.addAction(action)
                 alert.addAction(action2)
-                present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
             }
             
         }.disposed(by: bag)

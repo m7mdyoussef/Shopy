@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import DropDown
+import ViewAnimator
 
 class SearchCategoryViewController: UIViewController {
     
@@ -32,6 +33,12 @@ class SearchCategoryViewController: UIViewController {
     
     private var arrproductId = [String]()
 
+    
+    override func viewDidAppear(_ animated: Bool) {
+           
+             let animation1 = AnimationType.random()
+             UIView.animate(views: categorySearchResultCollectionView.visibleCells,animations: [animation1],delay: 0.5,duration: 2)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

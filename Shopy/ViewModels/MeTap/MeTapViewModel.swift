@@ -68,7 +68,7 @@ class MeTapViewModel:MeModelType,ICanLogin {
                 case .success(let response):
                     guard let orders = response?.orders else {return}
                     print("success")
-                    self.ordersSubject.asObserver().onNext(getOrdersWithEmail(orders: orders))
+                    self.ordersSubject.asObserver().onNext(self.getOrdersWithEmail(orders: orders))
                     self.loadingSubject.onNext(false)
                     
                 case .failure(let error):

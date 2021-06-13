@@ -13,7 +13,7 @@ import SDWebImage
 import ImageIO
 import JGProgressHUD
 import BadgeHub
-
+import ViewAnimator
 
 class CollectionViewController: UIViewController,ICanLogin {
     var disposeBag = DisposeBag()
@@ -41,6 +41,14 @@ class CollectionViewController: UIViewController,ICanLogin {
     let bagManager = BagPersistenceManager.shared
     private var categoryViewModel:CategoryViewModel!
     var showIndicator:ShowIndecator?
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+          let animation = AnimationType.random()
+              UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor.black

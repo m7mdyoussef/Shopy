@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,27 +19,33 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hQn-23-frl">
                         <rect key="frame" x="0.0" y="1" width="125" height="133"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="rhz-iZ-B4G">
-                        <rect key="frame" x="0.0" y="133" width="125" height="40"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhz-iZ-B4G" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                        <rect key="frame" x="5" y="133" width="120" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="CBg-tj-KId"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                        <color key="textColor" name="buttonColors"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="rhz-iZ-B4G" secondAttribute="bottom" id="4nJ-5s-e48"/>
                 <constraint firstItem="hQn-23-frl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BOI-6J-4WK"/>
                 <constraint firstItem="hQn-23-frl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DAe-Mw-08a"/>
-                <constraint firstItem="rhz-iZ-B4G" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="F30-Rf-8SK"/>
                 <constraint firstAttribute="bottom" secondItem="hQn-23-frl" secondAttribute="bottom" constant="37.5" id="J5H-Bj-R1G"/>
                 <constraint firstAttribute="trailing" secondItem="rhz-iZ-B4G" secondAttribute="trailing" id="K5q-Ta-JlQ"/>
                 <constraint firstAttribute="trailing" secondItem="hQn-23-frl" secondAttribute="trailing" id="ozP-Cd-37L"/>
+                <constraint firstItem="rhz-iZ-B4G" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="urV-ZB-dkd"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="125" height="176"/>
             <connections>
                 <outlet property="productImage" destination="hQn-23-frl" id="gMr-g6-HAQ"/>
@@ -51,9 +55,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="folder.fill" catalog="system" width="128" height="97"/>
-        <namedColor name="buttonColors">
-            <color red="1" green="0.4699999988079071" blue="0.44499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="folder.fill" catalog="system" width="128" height="95"/>
     </resources>
 </document>

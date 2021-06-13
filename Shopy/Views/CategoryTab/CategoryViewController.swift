@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import JGProgressHUD
 import BadgeHub
+import ViewAnimator
 
 class CategoryViewController: UIViewController,ICanLogin {
 
@@ -36,6 +37,11 @@ class CategoryViewController: UIViewController,ICanLogin {
     private var collectionViewModel = HomeViewModel()
     private var arrproductId = [String]()
     
+    override func viewDidAppear(_ animated: Bool) {
+        let animation = AnimationType.random()
+        UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+     
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
