@@ -132,13 +132,18 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="PFs-cU-VkI" firstAttribute="leading" secondItem="ucC-9e-tta" secondAttribute="leading" id="4OL-Pe-tYu"/>
                                             <constraint firstAttribute="trailing" secondItem="PFs-cU-VkI" secondAttribute="trailing" id="C6P-PW-mKk"/>
                                             <constraint firstAttribute="bottom" secondItem="PFs-cU-VkI" secondAttribute="bottom" id="G1z-o8-nXZ"/>
                                             <constraint firstItem="PFs-cU-VkI" firstAttribute="top" secondItem="ucC-9e-tta" secondAttribute="top" id="KFl-3k-r4q"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>

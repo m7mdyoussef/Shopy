@@ -16,6 +16,7 @@ enum Keys:String {
 
     case id = "id"
     case isDisconut = "discount"
+    case discountCode = "DiscountCode"
     case phone = "phone"
     case title = "address"
     case city = "city"

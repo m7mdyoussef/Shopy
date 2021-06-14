@@ -24,6 +24,7 @@ class OrderDetailsVC: UIViewController {
     var order : Order!
     var viewModel:MeTapViewModel!
     var bag:DisposeBag!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MeTapViewModel()
@@ -38,13 +39,9 @@ class OrderDetailsVC: UIViewController {
         }else{
             uiCreatedAt.isHidden = true
         }
-        
-        uiTotalPrice.text! += order.totalPrice
         uiDiscount.text! += order.totalDiscounts
+        uiTotalPrice.text! += order.totalPrice
         uiFinancialState.text = order.financialStatus
-        
-        
-
     }
     
     func setupViews() {

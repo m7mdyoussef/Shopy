@@ -33,6 +33,7 @@
 		2775343D2674B57F009F535A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2775343F2674B57F009F535A /* Localizable.strings */; };
 		277F3A99265D51A000C822D9 /* IRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F3A98265D51A000C822D9 /* IRounded.swift */; };
 		278647C326762A4000A8B648 /* RoundedBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278647C226762A4000A8B648 /* RoundedBadge.swift */; };
+		279C33652677B7840035B281 /* Wow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 279C33642677B7840035B281 /* Wow.mp3 */; };
 		27A3E18426724E2F008590EB /* BagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E18326724E2F008590EB /* BagViewModel.swift */; };
 		27A3E18926724F62008590EB /* PostOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E18826724F62008590EB /* PostOrder.swift */; };
 		27B4E42B266AD6F9009A55EF /* UIUPdateAddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */; };
@@ -165,6 +166,7 @@
 		277534402674B582009F535A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		277F3A98265D51A000C822D9 /* IRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRounded.swift; sourceTree = "<group>"; };
 		278647C226762A4000A8B648 /* RoundedBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBadge.swift; sourceTree = "<group>"; };
+		279C33642677B7840035B281 /* Wow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Wow.mp3; sourceTree = "<group>"; };
 		27A3E18326724E2F008590EB /* BagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagViewModel.swift; sourceTree = "<group>"; };
 		27A3E18826724F62008590EB /* PostOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrder.swift; sourceTree = "<group>"; };
 		27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUPdateAddressList.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 		9E182D8326503E8100069E6E /* Shopy */ = {
 			isa = PBXGroup;
 			children = (
+				279C33642677B7840035B281 /* Wow.mp3 */,
 				9E70BABA267175910099FB70 /* payPalBridgeFiles */,
 				9E5780A3266C365F005EF36E /* core data */,
 				9E5780A2266C35BC005EF36E /* resourses */,
@@ -1014,6 +1017,7 @@
 				D2116C7726695B86007892B7 /* FavouriteProductsVC.xib in Resources */,
 				CF08214C266DDC9C00064DB9 /* kids2.gif in Resources */,
 				9E182D9126503E8300069E6E /* Assets.xcassets in Resources */,
+				279C33652677B7840035B281 /* Wow.mp3 in Resources */,
 				27DED85F2671E2C300870B9A /* OrderProductsCell.xib in Resources */,
 				CF78F3F22669D018005B9FE1 /* offer0.gif in Resources */,
 				277534012674AEE2009F535A /* SettingsTableViewCell.xib in Resources */,

@@ -29,6 +29,7 @@ class CollectionViewController: UIViewController,ICanLogin {
     var isDiscount = false
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var adsButton: UIButton!
+    @IBOutlet weak var codeButton: UIButton!
     @IBOutlet weak var discountCode: UILabel!
     @IBOutlet weak var adsImage: UIImageView!
     let manager = FavouritesPersistenceManager.shared
@@ -36,9 +37,12 @@ class CollectionViewController: UIViewController,ICanLogin {
     private var categoryViewModel:CategoryViewModel!
     var showIndicator:ShowIndecator?
     var selectedIndexPath: IndexPath?
+    
+    var myDiscount:String!
     override func viewDidAppear(_ animated: Bool) {
-        let animation = AnimationType.random()
-        UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+
+        let animation = AnimationType.from(direction: .left, offset: 300)
+        UIView.animate(views: menuCollectionView.visibleCells, animations: [animation],delay: 0.1,duration: 1)
     }
     
     override func viewDidLoad() {
@@ -52,8 +56,8 @@ class CollectionViewController: UIViewController,ICanLogin {
         showIndicator = ShowIndecator(view: view.self)
         registerMenuCell()
         registerProductCell()
-        productsCollectionView.rx.setDelegate(self)
-        menuCollectionView.rx.setDelegate(self)
+        productsCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        menuCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         controlViews(flag: true)
         collectionViewModel = HomeViewModel()
         collectionViewModel?.getCollectionData()
@@ -88,8 +92,21 @@ class CollectionViewController: UIViewController,ICanLogin {
         
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
-        adsImage.loadGif(name: imagesArr[0])
-        MyUserDefaults.add(val: isDiscount, key: .isDisconut)
+//        adsImage.loadGif(name: imagesArr[0])
+        
+//        MyUserDefaults.add(val: isDiscount, key: .isDisconut)
+        
+        if let _ =  MyUserDefaults.getValue(forKey: .isDisconut){
+            controlViews(flag: false)
+            codeButton.isHidden = true
+            adsImage.loadGif(name: "black")
+            discountCode.isHidden = true
+        }else{
+            controlViews(flag: true)
+            self.adsImage.loadGif(name: self.imagesArr[0])
+        }
+        
+        
         if AppCommon.shared.checkConnectivity() == false{
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
             NoInternetViewController.modalPresentationStyle = .fullScreen
@@ -105,7 +122,7 @@ class CollectionViewController: UIViewController,ICanLogin {
                 bagBtn.setBadge(text: String("0"))
                 favouriteBtn.setBadge(text: String("0"))
             }
-            controlViews(flag: true)
+//            controlViews(flag: true)
             self.menuCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
             collectionViewModel?.getAllProduct(id: arrId[0])
             collectionViewModel?.getPriceRules()
@@ -123,6 +140,8 @@ class CollectionViewController: UIViewController,ICanLogin {
         isDiscount = true
         MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         let popup = AppCommon.shared.showPopupDialog(title: "Congratulation🥳🥳", message: "You got 10% Discount.", image: adsImage.image!)
+        self.collectionViewModel?.playWow()
+        self.collectionViewModel?.saveDiscountCode(code: myDiscount)
         self.present(popup, animated: true, completion: nil)
     }
     @IBAction func moveToBag(_ sender: Any) {
@@ -182,6 +201,7 @@ class CollectionViewController: UIViewController,ICanLogin {
             for i in 0..<response.count{
                 print(response[i].code)
                 self.arrDiscountCodes.append(response[i].code)
+                self.myDiscount = response[i].code
             }
             self.discountCode.text = response[0].code
         }).disposed(by: disposeBag)
@@ -199,10 +219,21 @@ class CollectionViewController: UIViewController,ICanLogin {
             guard let self = self else {return}
             
             self.adsImage.contentMode = .scaleAspectFit
-            self.controlViews(flag: true)
+//            self.controlViews(flag: true)
             self.collectionViewModel?.getAllProduct(id: self.arrId[value.element?.item ?? 0])
-            self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
+            
+            
+            if let _ =  MyUserDefaults.getValue(forKey: .isDisconut){
+                self.adsImage.loadGif(name: "black")
+            }else{
+                self.controlViews(flag: true)
+                self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
+                            
+            }
+            
+//            self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
             self.discountCode.text = self.arrDiscountCodes[value.element?.item ?? 0]
+            self.myDiscount = self.arrDiscountCodes[value.element?.item ?? 0]
         }.disposed(by: disposeBag)
     }
     
@@ -226,4 +257,5 @@ class CollectionViewController: UIViewController,ICanLogin {
         }.disposed(by: disposeBag)
     }
 }
+
 

@@ -72,9 +72,19 @@ extension FavouriteProductsVC :UICollectionViewDelegate ,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavouriteproductCVC", for: indexPath) as! FavouriteproductCVC
         cell.favProduct = favProducts[indexPath.item]
-        cell.deleteFromFavourites = {[weak self] in
-            self?.deletFromFavourites(productID: Int(self?.favProducts[indexPath.item].id ?? 0))
+        cell.deleteFromFavourites = { [unowned self] in
+            let alert = UIAlertController(title: "Remove Favourite", message: "Are you sure you want to remove the product from the wishlist ?", preferredStyle: .alert)
             
+            let action = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+                self.deletFromFavourites(productID: Int( favProducts[indexPath.row].id))
+                self.fetchFavProducts()
+                collectionView.reloadData()
+            }
+            let action2 = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            
+            alert.addAction(action)
+            alert.addAction(action2)
+            self.present(alert, animated: true, completion: nil)
         }
         return cell
     }
@@ -84,14 +94,20 @@ extension FavouriteProductsVC :UICollectionViewDelegate ,UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 1, bottom: 0, right: 1)
+        return UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let availableWidth = (view.frame.width - 2 - 2)/2
+        let availableWidth = view.frame.width / 2.4
         return CGSize(width: availableWidth, height: availableWidth)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
+        vc.idProduct = String(favProducts[indexPath.row].id)
+        navigationController?.pushViewController(vc, animated: true)
     }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 5
+//    }
     
 }

@@ -49,20 +49,20 @@ class MeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if uiWishlistCollection.isHidden == false{
+//        if uiWishlistCollection.isHidden == false{
              let animation = AnimationType.from(direction: .left, offset: 300)
              UIView.animate(views: uiWishlistCollection.visibleCells, animations: [animation],delay: 0.5,duration: 2)
              
              let animation1 = AnimationType.random()
              UIView.animate(views: uiOrdersCollection.visibleCells,animations: [animation1],delay: 0.5,duration: 2)
-         }
+//         }
      }
     
     @IBAction func uiSettings(_ sender: Any) {
         //        let settings = SettingsVC()
         //        navigationController?.pushViewController(settings, animated: true)
         
-        let alert = UIAlertController(title: "Settings", message: "", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Settings".localized, message: "", preferredStyle: .actionSheet)
         let lang = UIAlertAction(title: "Language".localized, style: .default) { (action) in
             
             
@@ -77,8 +77,8 @@ class MeVC: UIViewController {
             
             
         }
-        let status = viewModel.isUserLoggedIn() ? "Logout" : "Login"
-        let logoutaction = UIAlertAction(title: status.localized, style: .destructive) { [weak self] (action) in
+        let status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
+        let logoutaction = UIAlertAction(title: status, style: .destructive) { [weak self] (action) in
             guard let self = self else {return}
             
             if status == "Login"{
@@ -369,14 +369,16 @@ extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        var animation :AnimationType
+        
         switch collectionView {
         case uiWishlistCollection:
-            let animation1 = AnimationType.from(direction: .top, offset: 300)
-            cell.animate(animations: [animation1],delay: 0.5,duration: 2)
+            animation = AnimationType.from(direction: .top, offset: 300)
         default:
-            let animation1 = AnimationType.rotate(angle: 30)
-            cell.animate(animations: [animation1],delay: 0.5,duration: 2)
+            animation = AnimationType.zoom(scale: 0)
         }
+        cell.animate(animations: [animation],delay: 0.5,duration: 2)
     }
     
 }

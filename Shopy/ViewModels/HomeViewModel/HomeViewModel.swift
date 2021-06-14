@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import AVFoundation
 
 protocol HomeModelType{
     func getCollectionData()
@@ -159,4 +160,22 @@ class HomeViewModel: HomeModelType,ICanLogin{
         }
     }
    
+    
+    func playWow()  {
+        var bombSoundEffect: AVAudioPlayer?
+//
+        let path = Bundle.main.path(forResource: "Wow.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
+            bombSoundEffect?.play()
+        } catch {
+            // couldn't load file :(
+        }
+        
+    }
+    func saveDiscountCode(code: String) {
+        MyUserDefaults.add(val: code, key: .discountCode)
+    }
 }

@@ -35,10 +35,19 @@ class BagViewModel: BagViewModelType,ICanLogin {
     
     func checkout(product: [BagProduct],status:CheckoutStatus) {
         
-//        let email = MyUserDefaults.getValue(forKey: .email) as! String
-//        let order = PostOrder(email: email, fulfillmentStatus: "fulfilled", lineItems: retreiveLineItems(products: product))
+
         let id = MyUserDefaults.getValue(forKey: .id) as! Int
-        let order = PostNewOrder(lineItems: retreiveLineItems(products: product), customer: discount_codeCustomer(id: id), financialStatus: status.rawValue)
+        
+        
+        var code: [Code] = []
+        if  (MyUserDefaults.getValue(forKey: .isDisconut) as? Bool)! {
+            code = [Code(code:MyUserDefaults.getValue(forKey: .discountCode) as! String)]
+        }
+        
+        
+//        let order = PostNewOrder(lineItems: retreiveLineItems(products: product), customer: MyCustomer(id: id), financialStatus: status.rawValue, discountCode: code)
+        
+        let order = PostNewOrder(lineItems: retreiveLineItems(products: product), customer: MyCustomer(id: id), financialStatus: status.rawValue, discountCode: code)
         
         let postOrder = PostOrderRequest(order: order)
     

@@ -26,17 +26,37 @@ struct PostOrder: Codable {
 // new
 struct PostNewOrder:Codable {
     let lineItems: [PostLineItem]
-        let customer: discount_codeCustomer
-        let financialStatus: String
-
-        enum CodingKeys: String, CodingKey {
-            case lineItems = "line_items"
-            case customer
-            case financialStatus = "financial_status"
-        }
+    let customer: MyCustomer
+    let financialStatus: String
+    let discountCode: [Code]
+    
+    enum CodingKeys: String, CodingKey {
+        case lineItems = "line_items"
+        case customer
+        case financialStatus = "financial_status"
+        case discountCode = "discount_codes"
+    }
 }
 
-struct discount_codeCustomer: Codable {
+//struct Codes:Codable {
+//    let codes : [Code]
+//}
+
+struct Code:Codable {
+    
+    let code : String
+    var ammount : String = "10.00"
+    var type : String = "percentage"
+    
+    enum CodingKeys: String, CodingKey {
+        case code
+        case ammount = "amount"
+        case type
+    }
+
+}
+
+struct MyCustomer: Codable {
     let id: Int
 }
 
@@ -49,7 +69,7 @@ struct PostCustomer: Codable {
 // MARK: - discount_codeLineItem
 struct PostLineItem: Codable {
     let variantID, quantity: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case variantID = "variant_id"
         case quantity

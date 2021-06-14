@@ -32,8 +32,15 @@ class CategoryViewController: UIViewController,ICanLogin {
     private var arrproductId = [String]()
     
     override func viewDidAppear(_ animated: Bool) {
-        let animation = AnimationType.random()
-        UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+        
+        var animation = AnimationType.from(direction: .left, offset: 300)
+        UIView.animate(views: mainCategoryCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+        
+        
+        animation = AnimationType.from(direction: .top, offset: 300)
+        UIView.animate(views: subCategoryCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -254,6 +261,13 @@ extension CategoryViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 8)
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let animation = AnimationType.zoom(scale: 0)
+        UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+    }
+    
 }
 
 

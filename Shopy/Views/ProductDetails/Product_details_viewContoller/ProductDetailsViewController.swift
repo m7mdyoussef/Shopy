@@ -51,10 +51,10 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
         cardButton.layer.cornerRadius = 25
         setUpSizeCollection()
         
-//        productDetails.shouldTrim = true
-//        productDetails.maximumNumberOfLines = 4
-//        productDetails.attributedReadMoreText = NSAttributedString(string: "... Read more")
-//        productDetails.attributedReadLessText = NSAttributedString(string: " Read less")
+        //        productDetails.shouldTrim = true
+        //        productDetails.maximumNumberOfLines = 4
+        //        productDetails.attributedReadMoreText = NSAttributedString(string: "... Read more")
+        //        productDetails.attributedReadLessText = NSAttributedString(string: " Read less")
     }
     
     func setUpSizeCollection(){
@@ -80,7 +80,10 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
             checkFav()
         }
         else{
-            self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please,login first", buttonTitle: "OK")
+            //            self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please,login first", buttonTitle: "OK")
+            let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
         }
         
     }
@@ -90,17 +93,20 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
             if(sizeProduct == ""){
                 self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please, Choose your size.", buttonTitle: "OK")
             }else{
-            let isStored = bagManager.isBagProduct(productID: productElement!.id)
-            if isStored {
-                self.presentGFAlertOnMainThread(title: "Warning !!", message: "This product is already in card", buttonTitle: "OK")
-            }else{
-                self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the card🎉🎉", buttonTitle: "OK")
-                bagManager.addToBagProducts(bagProduct: productElement!, size: sizeProduct)
-            }
+                let isStored = bagManager.isBagProduct(productID: productElement!.id)
+                if isStored {
+                    self.presentGFAlertOnMainThread(title: "Warning !!", message: "This product is already in card", buttonTitle: "OK")
+                }else{
+                    self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the card🎉🎉", buttonTitle: "OK")
+                    bagManager.addToBagProducts(bagProduct: productElement!, size: sizeProduct)
+                }
             }
         }
         else{
-            self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please,login first", buttonTitle: "OK")
+//            self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please,login first", buttonTitle: "OK")
+            let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
         }
         
     }
@@ -143,7 +149,7 @@ extension ProductDetailsViewController: ImageSlideshowDelegate {
             guard let self = self else {return}
             self.productElement = response.element
             self.productTitle.text = response.element?.title
-            self.productPrice.text = response.element?.variants[0].price
+            self.productPrice.text = "$ \(String(describing: response.element!.variants[0].price))"
             self.productDetails.text = response.element?.bodyHTML
             if self.isUserLoggedIn(){
                 self.isFavo = self.manager.isFavourited(productID: response.element?.id ?? 0)

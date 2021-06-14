@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import JGProgressHUD
 import Stripe
+import ViewAnimator
 
 
 class BagViewController: UIViewController {
@@ -65,6 +66,11 @@ class BagViewController: UIViewController {
         }.disposed(by: bag)
         
     }
+//    
+//    override func viewDidAppear(_ animated: Bool) {
+//        let animation = AnimationType.from(direction: .left, offset: 300)
+//        UIView.animate(views: bagProductsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 3)
+//    }
     
     func emptyBag()  {
         for item in bagProducts{
@@ -100,15 +106,22 @@ class BagViewController: UIViewController {
                 self.bagProductsCollectionView.isHidden = false
                 
                 self.bagProductsCollectionView.reloadData()
-                let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool
+                
+                var discount = false
+                if let has = MyUserDefaults.getValue(forKey: .isDisconut) {
+                    discount = has as! Bool == true ? true : false
+                }else{
+                    MyUserDefaults.add(val: false, key: .isDisconut)
+                }
+                
                 if discount == true{
-                    self.totalPriceLabel.text = "\(self.totalPrice) LE"
+                    self.totalPriceLabel.text = "$ \(self.totalPrice)"
                     self.totalDiscount = self.totalPrice - (self.totalPrice * 0.10)
-                    self.afterDiscountLabel.text = "\(self.totalDiscount) LE"
+                    self.afterDiscountLabel.text = "$ \(self.totalDiscount)"
                 }else{
                     self.totalDiscount = self.totalPrice
-                    self.totalPriceLabel.text = "\(self.totalPrice) LE"
-                    self.afterDiscountLabel.text = "\(self.totalPrice) LE"
+                    self.totalPriceLabel.text = "$ \(self.totalPrice)"
+                    self.afterDiscountLabel.text = "$ \(self.totalPrice)"
                 }
             }else{
                 self.uiEmptyImage.isHidden = false
@@ -281,7 +294,8 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
-    
+
+
 }
 
 

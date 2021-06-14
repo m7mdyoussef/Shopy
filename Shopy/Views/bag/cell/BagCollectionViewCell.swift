@@ -74,8 +74,8 @@ class BagCollectionViewCell: UICollectionViewCell {
         tableViewCellBackground.collectionCellLayout()
 //        uiPlus.roundCorners(corners: [.topRight,.bottomRight], radius: uiPlus.frame.height/2)
 //        uiMinus.roundCorners(corners: [.topLeft,.bottomLeft], radius: uiMinus.frame.height/2)
-        uiPlus.layer.cornerRadius = uiPlus.frame.height/2
-        uiMinus.layer.cornerRadius = uiPlus.frame.height/2
+        uiPlus.roundCorners(corners: [.topRight,.bottomRight], radius: 12)
+        uiMinus.roundCorners(corners: [.topLeft,.bottomLeft], radius: 12)
     }
 
     @IBAction func decreaseCount(_ sender: Any) {
