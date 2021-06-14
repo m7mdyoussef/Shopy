@@ -22,17 +22,17 @@ extension ProductDetailsViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func registerSizeCell(){
-        var sizeCell = UINib(nibName: "SizesCollectionViewCell", bundle: nil)
+        let sizeCell = UINib(nibName: "SizesCollectionViewCell", bundle: nil)
         sizeCollectionView.register(sizeCell, forCellWithReuseIdentifier: "SizesCollectionViewCell")
     }
     
     func checkFav(){
         if self.isFavo == false{
-            self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the whishlist🎉🎉", buttonTitle: "OK")
+            self.presentGFAlertOnMainThread(title: "Completed".localized, message: "Successfully added to the whishlist🎉🎉".localized, buttonTitle: "OK".localized)
             favouriteButton.tintColor = UIColor.red
             self.manager.addToFavourites(favProduct: self.productElement!)
         }else{
-            self.presentGFAlertOnMainThread(title: "Success", message: "Successfully removed from the whishlist", buttonTitle: "OK")
+            self.presentGFAlertOnMainThread(title: "Completed".localized, message: "Successfully removed from the whishlist".localized, buttonTitle: "OK".localized)
             favouriteButton.tintColor = UIColor.gray
             self.manager.removeProduct(productID: self.productElement!.id)
         }

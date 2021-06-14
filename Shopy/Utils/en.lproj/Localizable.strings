@@ -10,3 +10,37 @@
 "Logout" = "Logout";
 "Login" = "Login";
 "Settings" = "Settings";
+"OK" = "OK";
+"Yes" = "Yes";
+"Hello" = "Hello";
+"Are you sure ?" = "Are you sure ?";
+"Cancel" = "Cancel";
+"Loading" = "Loading";
+"Remove Favourite" = "Remove Favourite";
+"Are you sure you want to remove the product from the wishlist ?" = "Are you sure you want to remove the product from the wishlist ?";
+"Login / Register" = "Login / Register";
+"Remove All Orders" = "Remove All Orders";
+
+"No. :" = "No. :";
+"item/s" = "item/s";
+"Total :$" = "Total :$";
+"Men" = "Men";
+"Women" = "Women";
+"Kids" = "Kids";
+"You got 10% Discount." = "You got 10% Discount.";
+"Congratulation🥳🥳" = "Congratulation🥳🥳";
+"Error" = "Error";
+"T-Shirts" = "T-Shirts";
+"Shoes" = "Shoes";
+"Accessories" = "Accessories";
+
+"Not Completed" = "Not Completed 🚫";
+"Please, Choose your size." = "Please, Choose your size.";
+"The product is already in the cart" = "The product is already in the cart ⚠️";
+"Successfully added to the card🎉🎉" = "Successfully added to the cart ✅";
+"Completed" = "Completed";
+"Successfully added to the whishlist🎉🎉" = "Successfully added to the whishlist ✅";
+
+"Remove All Orders" = "Remove All Orders";
+
+"Are you Sure you want to remove all orders" = "Are you Sure you want to remove all orders 🚫";

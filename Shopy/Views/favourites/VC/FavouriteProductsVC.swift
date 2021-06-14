@@ -73,14 +73,14 @@ extension FavouriteProductsVC :UICollectionViewDelegate ,UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavouriteproductCVC", for: indexPath) as! FavouriteproductCVC
         cell.favProduct = favProducts[indexPath.item]
         cell.deleteFromFavourites = { [unowned self] in
-            let alert = UIAlertController(title: "Remove Favourite", message: "Are you sure you want to remove the product from the wishlist ?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Remove Favourite".localized, message: "Are you sure you want to remove the product from the wishlist ?".localized, preferredStyle: .alert)
             
-            let action = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+            let action = UIAlertAction(title: "Yes".localized, style: .destructive) { (action) in
                 self.deletFromFavourites(productID: Int( favProducts[indexPath.row].id))
                 self.fetchFavProducts()
                 collectionView.reloadData()
             }
-            let action2 = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            let action2 = UIAlertAction(title: "Cancel".localized, style: .default, handler: nil)
             
             alert.addAction(action)
             alert.addAction(action2)

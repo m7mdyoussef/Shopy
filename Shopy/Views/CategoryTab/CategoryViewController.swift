@@ -170,7 +170,7 @@ class CategoryViewController: UIViewController,ICanLogin {
         
         categoryViewModel.LoadingObservable.subscribe(onNext: {[weak self] (value) in
             let hud = JGProgressHUD()
-            hud.textLabel.text = "Loading"
+            hud.textLabel.text = "Loading".localized
             hud.style = .dark
             hud.show(in: (self?.view)!)
             switch value{
@@ -283,9 +283,9 @@ extension CategoryViewController{
     }
     
     func showErrorMessage(errorMessage: String) {
-        let alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error".localized, message: "Error".localized, preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel)
+        alertController.addAction(UIAlertAction(title: "OK".localized, style: .cancel)
         { action -> Void in
             
         })

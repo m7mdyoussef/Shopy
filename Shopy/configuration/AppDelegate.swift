@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import Stripe
 import MOLH
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
     

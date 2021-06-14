@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "0.00$"; ObjectID = "JlL-BX-uvD"; */
+"JlL-BX-uvD.text" = "0.00$";
+
+/* Class = "UIButton"; normalTitle = "Checkout"; ObjectID = "O7t-QO-bFK"; */
+"O7t-QO-bFK.normalTitle" = "الدفع";
+
+/* Class = "UILabel"; text = "Total Price"; ObjectID = "oQA-ts-3GD"; */
+"oQA-ts-3GD.text" = "اجمالي السعر";
+
+/* Class = "UILabel"; text = "0.00$"; ObjectID = "yFd-km-FhX"; */
+"yFd-km-FhX.text" = "0.00$";
+
+/* Class = "UILabel"; text = "After Discount"; ObjectID = "yPn-tW-6gY"; */
+"yPn-tW-6gY.text" = "بعد الخصم";

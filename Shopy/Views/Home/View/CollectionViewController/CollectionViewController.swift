@@ -73,7 +73,7 @@ class CollectionViewController: UIViewController,ICanLogin {
         collectionViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
             guard let self = self else {return}
             let hud = JGProgressHUD()
-            hud.textLabel.text = "Loading"
+            hud.textLabel.text = "Loading".localized
             hud.style = .dark
             hud.show(in: (self.view)!)
             switch value{
@@ -96,11 +96,17 @@ class CollectionViewController: UIViewController,ICanLogin {
         
 //        MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         
-        if let _ =  MyUserDefaults.getValue(forKey: .isDisconut){
-            controlViews(flag: false)
-            codeButton.isHidden = true
-            adsImage.loadGif(name: "black")
-            discountCode.isHidden = true
+        if let state =  MyUserDefaults.getValue(forKey: .isDisconut){
+            
+            if state as! Bool == true{
+                controlViews(flag: false)
+                codeButton.isHidden = true
+                adsImage.loadGif(name: "black")
+                discountCode.isHidden = true
+            }else{
+                controlViews(flag: true)
+                self.adsImage.loadGif(name: self.imagesArr[0])
+            }
         }else{
             controlViews(flag: true)
             self.adsImage.loadGif(name: self.imagesArr[0])
@@ -139,7 +145,7 @@ class CollectionViewController: UIViewController,ICanLogin {
     @IBAction func selectDiscountCode(_ sender: Any) {
         isDiscount = true
         MyUserDefaults.add(val: isDiscount, key: .isDisconut)
-        let popup = AppCommon.shared.showPopupDialog(title: "Congratulation🥳🥳", message: "You got 10% Discount.", image: adsImage.image!)
+        let popup = AppCommon.shared.showPopupDialog(title: "Congratulation🥳🥳".localized, message: "You got 10% Discount.".localized, image: adsImage.image!)
         self.collectionViewModel?.playWow()
         self.collectionViewModel?.saveDiscountCode(code: myDiscount)
         self.present(popup, animated: true, completion: nil)
@@ -223,8 +229,13 @@ class CollectionViewController: UIViewController,ICanLogin {
             self.collectionViewModel?.getAllProduct(id: self.arrId[value.element?.item ?? 0])
             
             
-            if let _ =  MyUserDefaults.getValue(forKey: .isDisconut){
-                self.adsImage.loadGif(name: "black")
+            if let has =  MyUserDefaults.getValue(forKey: .isDisconut){
+                if has as! Bool == true{
+                    self.adsImage.loadGif(name: "black")
+                }else{
+                    self.controlViews(flag: true)
+                    self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
+                }
             }else{
                 self.controlViews(flag: true)
                 self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
