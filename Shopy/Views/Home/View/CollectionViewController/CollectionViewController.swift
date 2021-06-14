@@ -99,7 +99,7 @@ class CollectionViewController: UIViewController,ICanLogin {
         if let _ =  MyUserDefaults.getValue(forKey: .isDisconut){
             controlViews(flag: false)
             codeButton.isHidden = true
-            adsImage.loadGif(name: "black")
+            adsImage.loadGif(name: "bravo")
             discountCode.isHidden = true
         }else{
             controlViews(flag: true)
@@ -224,14 +224,16 @@ class CollectionViewController: UIViewController,ICanLogin {
             
             
             if let _ =  MyUserDefaults.getValue(forKey: .isDisconut){
-                self.adsImage.loadGif(name: "black")
+                self.controlViews(flag: false)
+                self.codeButton.isHidden = true
+                self.adsImage.loadGif(name: "bravo")
+                self.discountCode.isHidden = true
             }else{
                 self.controlViews(flag: true)
                 self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
                             
             }
             
-//            self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
             self.discountCode.text = self.arrDiscountCodes[value.element?.item ?? 0]
             self.myDiscount = self.arrDiscountCodes[value.element?.item ?? 0]
         }.disposed(by: disposeBag)
