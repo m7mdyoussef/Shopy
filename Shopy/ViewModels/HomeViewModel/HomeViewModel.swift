@@ -158,6 +158,5 @@ class HomeViewModel: HomeModelType,ICanLogin{
             self.Loadingsubject.onNext(false)
         }
     }
-    
    
 }

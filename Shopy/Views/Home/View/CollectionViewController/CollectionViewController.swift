@@ -35,10 +35,10 @@ class CollectionViewController: UIViewController,ICanLogin {
     let bagManager = BagPersistenceManager.shared
     private var categoryViewModel:CategoryViewModel!
     var showIndicator:ShowIndecator?
-   var selectedIndexPath: IndexPath?
+    var selectedIndexPath: IndexPath?
     override func viewDidAppear(_ animated: Bool) {
-          let animation = AnimationType.random()
-              UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+        let animation = AnimationType.random()
+        UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
     }
     
     override func viewDidLoad() {
@@ -75,11 +75,11 @@ class CollectionViewController: UIViewController,ICanLogin {
             switch value{
             case true:
                 hud.dismiss()
-                //self.view.isUserInteractionEnabled = false
+            //self.view.isUserInteractionEnabled = false
             case false:
                 hud.dismiss()
-              //  self.view.isUserInteractionEnabled = true
-
+            //  self.view.isUserInteractionEnabled = true
+            
             }
         }).disposed(by: disposeBag)
     }
@@ -94,7 +94,7 @@ class CollectionViewController: UIViewController,ICanLogin {
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
             NoInternetViewController.modalPresentationStyle = .fullScreen
             self.present(NoInternetViewController, animated: true, completion: nil)
-        
+            
         }else{
             
             selectedIndexPath = IndexPath(item: 0, section: 0)
@@ -116,14 +116,14 @@ class CollectionViewController: UIViewController,ICanLogin {
     
     @IBAction func searchOfProducts(_ sender: Any) {
         let searchCategoryViewController = self.storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
-                  searchCategoryViewController.productList = self.collectionViewModel?.ProductElements
-                  self.navigationController?.pushViewController(searchCategoryViewController, animated: true)
+        searchCategoryViewController.productList = self.collectionViewModel?.ProductElements
+        self.navigationController?.pushViewController(searchCategoryViewController, animated: true)
     }
     @IBAction func selectDiscountCode(_ sender: Any) {
-                isDiscount = true
-                MyUserDefaults.add(val: isDiscount, key: .isDisconut)
+        isDiscount = true
+        MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         let popup = AppCommon.shared.showPopupDialog(title: "Congratulation🥳🥳", message: "You got 10% Discount.", image: adsImage.image!)
-         self.present(popup, animated: true, completion: nil)
+        self.present(popup, animated: true, completion: nil)
     }
     @IBAction func moveToBag(_ sender: Any) {
         if AppCommon.shared.checkConnectivity() == false{
@@ -141,7 +141,7 @@ class CollectionViewController: UIViewController,ICanLogin {
                 present(vc, animated: true, completion: nil)
             }
         }
-
+        
     }
     @IBAction func moveToFavourite(_ sender: Any) {
         
@@ -162,19 +162,19 @@ class CollectionViewController: UIViewController,ICanLogin {
         }
     }
     @IBAction func showDiscountCode(_ sender: Any) {
-      
+        
         let popup = AppCommon.shared.showPopupDialog(title: "OFFER", message: "Please, Click on the code ☝️ to get a Special offer🙈.", image: adsImage.image!)
-         self.present(popup, animated: true, completion: nil)
+        self.present(popup, animated: true, completion: nil)
         
         adsImage.loadGif(name: "black")
         adsImage.contentMode = .scaleAspectFill
         adsView.layer.cornerRadius = 25
         adsView.clipsToBounds = true
         adsImage.layer.masksToBounds = true
-          controlViews(flag: false)
+        controlViews(flag: false)
     }
     
-
+    
     func getAllDiscountCodes(){
         
         collectionViewModel?.discontCodeObservable?.asObservable().subscribe(onNext: {[weak self] (response) in
@@ -189,7 +189,7 @@ class CollectionViewController: UIViewController,ICanLogin {
     
     func setUpMenuColllection(){
         collectionViewModel?.mainCategoryObservable?.bind(to: menuCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){row, items, cell in
-
+            
             (cell as? MainCategoriesCollectionViewCell)?.mainCategoriesCellLabel.text = items
             self.menuCollectionView.selectItem(at: self.selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: disposeBag)
@@ -197,7 +197,7 @@ class CollectionViewController: UIViewController,ICanLogin {
         menuCollectionView.rx.itemSelected.subscribe{[weak self]value in
             
             guard let self = self else {return}
-           
+            
             self.adsImage.contentMode = .scaleAspectFit
             self.controlViews(flag: true)
             self.collectionViewModel?.getAllProduct(id: self.arrId[value.element?.item ?? 0])

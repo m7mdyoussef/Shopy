@@ -15,7 +15,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         self.productView.collectionCellLayout()
     }
 

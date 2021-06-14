@@ -105,7 +105,6 @@
 		D2116C7B2669767B007892B7 /* FavouriteproductCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2116C792669767B007892B7 /* FavouriteproductCVC.xib */; };
 		D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21A3B11265BF58F0096553A /* RemoteDataSource.swift */; };
 		D253BA8426752D5600136DC6 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253BA8326752D5600136DC6 /* UIView+Ext.swift */; };
-		D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A4726574E06005ABAF2 /* ErrorMessage.swift */; };
 		D2745A4F265751CC005ABAF2 /* ApiRequestWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A4E265751CC005ABAF2 /* ApiRequestWrapper.swift */; };
 		D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A5026575255005ABAF2 /* ApiServices.swift */; };
 		D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2745A5226575420005ABAF2 /* RemoteDataSourceWrapper.swift */; };
@@ -249,7 +248,6 @@
 		D2116C792669767B007892B7 /* FavouriteproductCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouriteproductCVC.xib; sourceTree = "<group>"; };
 		D21A3B11265BF58F0096553A /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		D253BA8326752D5600136DC6 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
-		D2745A4726574E06005ABAF2 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		D2745A4E265751CC005ABAF2 /* ApiRequestWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestWrapper.swift; sourceTree = "<group>"; };
 		D2745A5026575255005ABAF2 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
 		D2745A5226575420005ABAF2 /* RemoteDataSourceWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceWrapper.swift; sourceTree = "<group>"; };
@@ -651,7 +649,6 @@
 				CFE2264126736FE500952274 /* GIFs */,
 				D2CA0F582672960E005AB72D /* viewController+Ext */,
 				9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */,
-				D2745A4726574E06005ABAF2 /* ErrorMessage.swift */,
 				27465D9D26615720000FF0D0 /* DismissKeyboard.swift */,
 				2748ECCB266465E800A9DF42 /* EmailValidationExtension.swift */,
 				2759BB6826646F4100AF288D /* ProgressHudExt.swift */,
@@ -1170,7 +1167,6 @@
 				CFF7A3C426644C7B003D7987 /* HomeViewModel.swift in Sources */,
 				2720D65F2676558C0069F171 /* OrderConfirmationCell.swift in Sources */,
 				D2CA0EB5266BBE90005AB72D /* BagCollectionViewCell.swift in Sources */,
-				D2745A4826574E06005ABAF2 /* ErrorMessage.swift in Sources */,
 				27DDC4E7266BE263002E92A7 /* RegisterResponse.swift in Sources */,
 				9E6172EB2667CBB900E93743 /* CategorySearchViewModel.swift in Sources */,
 				CF78F3C32669B5C7005B9FE1 /* GifFile.swift in Sources */,
