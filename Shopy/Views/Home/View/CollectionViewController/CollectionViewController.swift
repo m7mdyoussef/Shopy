@@ -12,7 +12,6 @@ import RxSwift
 import SDWebImage
 import ImageIO
 import JGProgressHUD
-import BadgeHub
 import ViewAnimator
 
 class CollectionViewController: UIViewController,ICanLogin {
@@ -20,18 +19,13 @@ class CollectionViewController: UIViewController,ICanLogin {
     var collectionViewModel:HomeViewModel?
     @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var adsView: UIView!
-    
     @IBOutlet weak var favouriteBtn: UIBarButtonItem!
     @IBOutlet weak var bagBtn: UIBarButtonItem!
-    var hubBag: BadgeHub!
-    var hubFavourite: BadgeHub!
     var arrId = ["268359598278", "268359631046", "268359663814"]
     var imagesArr = ["men", "women", "kids"]
     var category = "268359598278"
     var arrDiscountCodes = [String]()
-//    var arrproductId = [String]()
     private var searchBar:UISearchBar!
-
     var isDiscount = false
     @IBOutlet weak var menuCollectionView: UICollectionView!
     @IBOutlet weak var adsButton: UIButton!
@@ -41,19 +35,16 @@ class CollectionViewController: UIViewController,ICanLogin {
     let bagManager = BagPersistenceManager.shared
     private var categoryViewModel:CategoryViewModel!
     var showIndicator:ShowIndecator?
-    
-    
+   var selectedIndexPath: IndexPath?
     override func viewDidAppear(_ animated: Bool) {
           let animation = AnimationType.random()
               UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor.black
         startPoint()
-        
     }
     
     func startPoint(){
@@ -92,11 +83,11 @@ class CollectionViewController: UIViewController,ICanLogin {
             }
         }).disposed(by: disposeBag)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
-//        arrproductId.removeAll()
         adsImage.loadGif(name: imagesArr[0])
         MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         if AppCommon.shared.checkConnectivity() == false{
@@ -106,16 +97,17 @@ class CollectionViewController: UIViewController,ICanLogin {
         
         }else{
             
+            selectedIndexPath = IndexPath(item: 0, section: 0)
             if collectionViewModel!.isUserLoggedIn() {
                 bagBtn.setBadge(text: String(describing: bagManager.retrievebagProducts()?.count ?? 0))
                 favouriteBtn.setBadge(text: String(describing: manager.retrieveFavourites()?.count ?? 0))
             }else{
                 bagBtn.setBadge(text: String("0"))
                 favouriteBtn.setBadge(text: String("0"))
-                
             }
-            
-            collectionViewModel?.getCollectionData()
+            controlViews(flag: true)
+            self.menuCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
+            collectionViewModel?.getAllProduct(id: arrId[0])
             collectionViewModel?.getPriceRules()
             collectionViewModel?.getDiscountCode(priceRule: "951238656198")
             getAllDiscountCodes()
@@ -127,8 +119,6 @@ class CollectionViewController: UIViewController,ICanLogin {
                   searchCategoryViewController.productList = self.collectionViewModel?.ProductElements
                   self.navigationController?.pushViewController(searchCategoryViewController, animated: true)
     }
-  
-    
     @IBAction func selectDiscountCode(_ sender: Any) {
                 isDiscount = true
                 MyUserDefaults.add(val: isDiscount, key: .isDisconut)
@@ -175,8 +165,8 @@ class CollectionViewController: UIViewController,ICanLogin {
       
         let popup = AppCommon.shared.showPopupDialog(title: "OFFER", message: "Please, Click on the code ☝️ to get a Special offer🙈.", image: adsImage.image!)
          self.present(popup, animated: true, completion: nil)
-
-         adsImage.loadGif(name: "black")
+        
+        adsImage.loadGif(name: "black")
         adsImage.contentMode = .scaleAspectFill
         adsView.layer.cornerRadius = 25
         adsView.clipsToBounds = true
@@ -184,8 +174,7 @@ class CollectionViewController: UIViewController,ICanLogin {
           controlViews(flag: false)
     }
     
-  
-    
+
     func getAllDiscountCodes(){
         
         collectionViewModel?.discontCodeObservable?.asObservable().subscribe(onNext: {[weak self] (response) in
@@ -199,25 +188,20 @@ class CollectionViewController: UIViewController,ICanLogin {
     }
     
     func setUpMenuColllection(){
-        let selectedIndexPath = IndexPath(item: 0, section: 0)
-
         collectionViewModel?.mainCategoryObservable?.bind(to: menuCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){row, items, cell in
 
             (cell as? MainCategoriesCollectionViewCell)?.mainCategoriesCellLabel.text = items
-            self.menuCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
-         //   self.arrId.append(items.id)
-            
+            self.menuCollectionView.selectItem(at: self.selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: disposeBag)
         
         menuCollectionView.rx.itemSelected.subscribe{[weak self]value in
-            self?.adsImage.contentMode = .scaleAspectFit
-
-            guard let self = self else {return}
             
+            guard let self = self else {return}
+           
+            self.adsImage.contentMode = .scaleAspectFit
             self.controlViews(flag: true)
             self.collectionViewModel?.getAllProduct(id: self.arrId[value.element?.item ?? 0])
             self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
-//            self.arrproductId.removeAll()
             self.discountCode.text = self.arrDiscountCodes[value.element?.item ?? 0]
         }.disposed(by: disposeBag)
     }
@@ -227,20 +211,7 @@ class CollectionViewController: UIViewController,ICanLogin {
             row, item, cell in
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
-//            self.arrproductId.append(String(item.id))
-            
         }.disposed(by: disposeBag)
-        
-//        productsCollectionView.rx.itemSelected.subscribe{value in
-//            print(value.element?.item)
-//            if AppCommon.shared.checkConnectivity() == true{
-//                self.controlViews(flag: true)
-//                self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
-//                var detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
-//                detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
-//                self.navigationController?.pushViewController(detailsViewController, animated: true)
-//            }
-//        }.disposed(by: disposeBag)
         
         productsCollectionView.rx.modelSelected(ProductElement.self).subscribe{ productElement in
             let element = productElement.element

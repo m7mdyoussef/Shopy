@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import JGProgressHUD
-import BadgeHub
 import ViewAnimator
 
 class CategoryViewController: UIViewController,ICanLogin {
@@ -20,19 +19,14 @@ class CategoryViewController: UIViewController,ICanLogin {
     @IBOutlet private weak var mainCategoryCollectionView: UICollectionView!
     @IBOutlet weak var subCategoryCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
-    
     @IBOutlet weak var favouriteBtn: UIBarButtonItem!
     @IBOutlet weak var bagBtn: UIBarButtonItem!
-    
-    var hubBag: BadgeHub!
-    var hubFavourite: BadgeHub!
     let manager = FavouritesPersistenceManager.shared
     let bagManager = BagPersistenceManager.shared
     private var db:DisposeBag!
     private var mainCategElement:String = "Men"
     private var subCategElement:String = "T-Shirts"
     private var activityIndicatorView:UIActivityIndicatorView!
-    
     private var categoryViewModel = CategoryViewModel()
     private var collectionViewModel = HomeViewModel()
     private var arrproductId = [String]()
@@ -40,13 +34,12 @@ class CategoryViewController: UIViewController,ICanLogin {
     override func viewDidAppear(_ animated: Bool) {
         let animation = AnimationType.random()
         UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
-     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         navigationController?.navigationBar.isHidden = false
-
         tabBarController?.tabBar.isHidden = false
         if AppCommon.shared.checkConnectivity() == false{
             let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController

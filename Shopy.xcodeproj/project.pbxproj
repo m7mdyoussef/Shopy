@@ -89,8 +89,6 @@
 		CF47989F2669471500B0A64D /* PriceRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47989E2669471300B0A64D /* PriceRules.swift */; };
 		CF4798A42669497C00B0A64D /* DiscountCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4798A32669497B00B0A64D /* DiscountCode.swift */; };
 		CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6571992661966700C31614 /* CollectionViewController.swift */; };
-		CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */; };
-		CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */; };
 		CF6571A9266197D300C31614 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6571A7266197D200C31614 /* ProductCollectionViewCell.swift */; };
 		CF6571AA266197D300C31614 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6571A8266197D300C31614 /* ProductCollectionViewCell.xib */; };
 		CF78F3C32669B5C7005B9FE1 /* GifFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78F3C22669B5C6005B9FE1 /* GifFile.swift */; };
@@ -235,8 +233,6 @@
 		CF47989E2669471300B0A64D /* PriceRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRules.swift; sourceTree = "<group>"; };
 		CF4798A32669497B00B0A64D /* DiscountCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCode.swift; sourceTree = "<group>"; };
 		CF6571992661966700C31614 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
-		CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
 		CF6571A7266197D200C31614 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF6571A8266197D300C31614 /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		CF78F3C22669B5C6005B9FE1 /* GifFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifFile.swift; sourceTree = "<group>"; };
@@ -685,7 +681,6 @@
 			children = (
 				CF6571A62661977500C31614 /* Products */,
 				CF4797E42665D38900B0A64D /* CollectionViewController */,
-				CF6571AE26619B9100C31614 /* MenuCollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -732,15 +727,6 @@
 				CF6571A8266197D300C31614 /* ProductCollectionViewCell.xib */,
 			);
 			path = Products;
-			sourceTree = "<group>";
-		};
-		CF6571AE26619B9100C31614 /* MenuCollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				CF65719F2661976100C31614 /* MenuCollectionViewCell.swift */,
-				CF6571A02661976100C31614 /* MenuCollectionViewCell.xib */,
-			);
-			path = MenuCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		CF78F434266ADF6A005B9FE1 /* Product_details_viewContoller */ = {
@@ -1025,7 +1011,6 @@
 				CF6571AA266197D300C31614 /* ProductCollectionViewCell.xib in Resources */,
 				CF47988E2667D23300B0A64D /* SizesCollectionViewCell.xib in Resources */,
 				D2CA0EB6266BBE90005AB72D /* BagCollectionViewCell.xib in Resources */,
-				CF6571A22661976100C31614 /* MenuCollectionViewCell.xib in Resources */,
 				D2116C7726695B86007892B7 /* FavouriteProductsVC.xib in Resources */,
 				CF08214C266DDC9C00064DB9 /* kids2.gif in Resources */,
 				9E182D9126503E8300069E6E /* Assets.xcassets in Resources */,
@@ -1231,7 +1216,6 @@
 				D2CA0EB9266BBEC3005AB72D /* BagViewController.swift in Sources */,
 				9E5B51B026727FA4007E32F2 /* CardInfoViewController.swift in Sources */,
 				D2CA0EBC266BC4BD005AB72D /* BagPersistenceManager.swift in Sources */,
-				CF6571A12661976100C31614 /* MenuCollectionViewCell.swift in Sources */,
 				27DDC4E8266BE263002E92A7 /* Customer.swift in Sources */,
 				D21A3B12265BF58F0096553A /* RemoteDataSource.swift in Sources */,
 				273FF7DE2660A30300A37003 /* EntryNavigator.swift in Sources */,

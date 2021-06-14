@@ -35,6 +35,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
         if (flag == true){
             adsButton.isHidden = false
             discountCode.isHidden = true
+            adsImage.contentMode = .scaleAspectFit
         }else{
             adsButton.isHidden = true
             discountCode.isHidden = false
