@@ -59,14 +59,13 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
     
     func setUpSizeCollection(){
         arrOption.asObservable().bind(to: sizeCollectionView.rx.items(cellIdentifier: "SizesCollectionViewCell")){row, items, cell in
-            
             (cell as? SizesCollectionViewCell)?.productSize.text = String(items)
-            
         }
+        
         sizeCollectionView.rx.modelSelected(String.self).subscribe{ [weak self] value in
             guard let self = self else {return}
             print(value.element!)
-          //  self.sizeProduct = value.element ?? ""
+            self.sizeProduct = value.element ?? ""
         }
     }
     
@@ -85,6 +84,7 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
         }
         
     }
+    
     @IBAction func addToCard(_ sender: Any) {
         if isUserLoggedIn(){
             if(sizeProduct == ""){
@@ -102,11 +102,6 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
         else{
             self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please,login first", buttonTitle: "OK")
         }
-        
-        
-        
-        
-       
         
     }
     
@@ -158,8 +153,6 @@ extension ProductDetailsViewController: ImageSlideshowDelegate {
             let imgs = response.element?.images
             self.slideShow.slideshowInterval = 2.0
             self.slideShow.pageIndicatorPosition = .init(horizontal: .center, vertical: .under)
-            self.slideShow.pageIndicator?.view.backgroundColor = #colorLiteral(red: 1, green: 0.451376426, blue: 0.4464759048, alpha: 1)
-            self.slideShow.pageIndicator?.view.layer.cornerRadius = 15
             self.slideShow.contentScaleMode = UIViewContentMode.scaleAspectFit
             self.slideShow.activityIndicator = DefaultActivityIndicator()
             self.slideShow.delegate = self
