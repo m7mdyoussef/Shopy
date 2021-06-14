@@ -9,6 +9,7 @@
 import UIKit
 import Stripe
 import MarqueeLabel
+import SDWebImage
 
 protocol CardInfoViewControllerDelegate {
     func didClickDone(_ token: STPToken)
@@ -20,7 +21,7 @@ enum PaymentType : String{
     case cash = "Cash on Deliver"
     case stripe = "Visa"
 }
-class CarInfoViewController: UIViewController {
+class CardInfoViewController: UIViewController {
     
     //MARK: - IBOutlets
     //        @IBOutlet weak var doneButtonOutlet: UIButton!
@@ -53,12 +54,15 @@ class CarInfoViewController: UIViewController {
         paymentCardTextField.delegate = self
         uiPaymentlabel.text! += paymentMethod.rawValue
         uiName.text! += MyUserDefaults.getValue(forKey: .username) as! String
-        if MyUserDefaults.getValue(forKey: .phone) != nil{
-            uiPhone.isHidden = false
-            uiPhone.text! += " \(String(describing: MyUserDefaults.getValue(forKey: .phone)))"
-        }else{
-            uiPhone.isHidden = true
-        }
+        
+        
+//        if MyUserDefaults.getValue(forKey: .phone) != nil{
+//            uiPhone.isHidden = false
+//            uiPhone.text! += " \(String(describing: MyUserDefaults.getValue(forKey: .phone)))"
+//        }else{
+//            uiPhone.isHidden = true
+//        }
+        
         uiAddress.text! += "\(MyUserDefaults.getValue(forKey:.title) as! String), \(MyUserDefaults.getValue(forKey:.city) as! String), \(MyUserDefaults.getValue(forKey:.country) as! String)"
         uiPhone.text! += MyUserDefaults.getValue(forKey: .phone) as! String
         uiItemCount.text! = String(describing: orderObject.products.count)
@@ -146,13 +150,30 @@ class CarInfoViewController: UIViewController {
 
 
 
-extension CarInfoViewController: STPPaymentCardTextFieldDelegate {
+extension CardInfoViewController: STPPaymentCardTextFieldDelegate {
     
     func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
         uiSubmitButton.isEnabled = textField.isValid
         uiSubmitButton.alpha = textField.isValid ? 1 : 0.5
     }
+}
+
+extension CardInfoViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        orderObject.products.count
+    }
     
-    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! OrderConfirmationCell
+        cell.str = ""
+        cell.uiLabel.text = String(describing: (Int(orderObject.products[indexPath.row].count)))
+//        cell.uiImage.image = UIImage(systemName: "pencil")
+        
+        if let image = orderObject.products[indexPath.row].image{
+            cell.uiImage.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "placeholder"))
+        }
+
+        return cell
+    }
     
 }

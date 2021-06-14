@@ -77,20 +77,29 @@ class MeVC: UIViewController {
             
             
         }
-        let logoutaction = UIAlertAction(title: "Logout", style: .destructive) { [weak self] (action) in
+        let status = viewModel.isUserLoggedIn() ? "Logout" : "Login"
+        let logoutaction = UIAlertAction(title: status.localized, style: .destructive) { [weak self] (action) in
             guard let self = self else {return}
             
-            let logout = UIAlertController(title: "Logout", message: "Are you sure ?", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .destructive) { (action) in
-                self.viewModel.logout()
-                let vc = self.storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-                self.navigationController?.pushViewController(vc, animated: true)
+            if status == "Login"{
+                let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+            }else{
+                let logout = UIAlertController(title: "Logout", message: "Are you sure ?", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .destructive) { (action) in
+                    self.viewModel.logout()
+                    self.tabBarController?.selectedIndex = 0
+                    self.viewModel.fetchFavProducts()
+                    self.viewModel.fetchOrders()
+
+                }
+                
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                logout.addAction(ok)
+                logout.addAction(cancel)
+                self.present(logout, animated: true, completion: nil)
             }
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            logout.addAction(ok)
-            logout.addAction(cancel)
-            self.present(logout, animated: true, completion: nil)
-            
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -112,10 +121,10 @@ class MeVC: UIViewController {
             guard let value = value.element else {return}
             if value {
                 self.hud = self.loadingHud(text: "Loading", style: .dark)
-                view.isUserInteractionEnabled = false
+                self.view.isUserInteractionEnabled = false
             }else{
                 self.dismissLoadingHud(hud: self.hud)
-                view.isUserInteractionEnabled = true
+                self.view.isUserInteractionEnabled = true
             }
         }.disposed(by: bag)
     }
@@ -164,14 +173,14 @@ class MeVC: UIViewController {
                 
                 let action = UIAlertAction(title: "Yes", style: .destructive) { (action) in
                     self.deletFromFavourites(productID: Int(item.id ))
-                    viewModel.fetchFavProducts()
-                    uiWishlistCollection.reloadData()
+                    self.viewModel.fetchFavProducts()
+                    self.uiWishlistCollection.reloadData()
                 }
                 let action2 = UIAlertAction(title: "Cancel", style: .default, handler: nil)
                 
                 alert.addAction(action)
                 alert.addAction(action2)
-                present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
             }
             
         }.disposed(by: bag)
@@ -220,10 +229,9 @@ class MeVC: UIViewController {
             
         }else{
             
+            showGreatingMessage()
             if viewModel.isUserLoggedIn() {
-                showGreatingMessage()
-               AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
-//                AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
+                bagBtn.setBadge(text: String(describing: bagManager.retrievebagProducts()?.count ?? 0))
                 viewModel.favProductsObservable?.drive(onNext: { [unowned self] (favProducts) in
                     self.resetWishListViews(count:favProducts.count)
                     self.uiWishlistCollection.reloadData()
@@ -236,10 +244,13 @@ class MeVC: UIViewController {
                 
                 viewModel.fetchFavProducts()
                 fetchOrders()
-            }else{
-                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-                navigationController?.pushViewController(vc, animated: true)
             }
+//            else{
+//                bagBtn.setBadge(text: String("0"))
+//                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+//                vc.modalPresentationStyle = .fullScreen
+//                present(vc, animated: true, completion: nil)
+//            }
         }
     }
     
@@ -258,7 +269,12 @@ class MeVC: UIViewController {
     }
     
     func showGreatingMessage() {
-        navigationItem.title = "Hello,\(viewModel.getUserName())"
+       
+        if  viewModel.getUserName() == nil  || viewModel.getUserName() == ""{
+            navigationItem.title = "Login / Register"
+        }else{
+            navigationItem.title = "Hello,\(String(describing: viewModel.getUserName()!))"
+        }
     }
     
     func deletFromFavourites(productID : Int) {
@@ -294,8 +310,15 @@ class MeVC: UIViewController {
 //    }
     
     @IBAction func uiCardButton(_ sender: Any) {
-        let bag = BagViewController()
-        navigationController?.pushViewController(bag, animated: true)
+        
+        if viewModel.isUserLoggedIn(){
+            let bag = BagViewController()
+            navigationController?.pushViewController(bag, animated: true)
+        }else{
+            let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
+        }
     }
     
     

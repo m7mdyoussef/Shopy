@@ -89,7 +89,7 @@ class PayPalViewController: UIViewController {
         
         let cardAction = UIAlertAction(title: "Pay with Card", style: .default) { (action) in
             
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CarInfoViewController
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CardInfoViewController
             
             vc.delegate = self
             self.present(vc, animated: true, completion: nil)

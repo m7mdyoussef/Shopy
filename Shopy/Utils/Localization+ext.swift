@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 extension String {
     var localized: String {
         return NSLocalizedString(self, tableName: "Localizable", bundle: Bundle.main, value: self, comment: self)

@@ -13,7 +13,7 @@ import SDWebImage
 import ImageIO
 import JGProgressHUD
 import BadgeHub
-
+import ViewAnimator
 
 class CollectionViewController: UIViewController,ICanLogin {
     var disposeBag = DisposeBag()
@@ -27,8 +27,9 @@ class CollectionViewController: UIViewController,ICanLogin {
     var hubFavourite: BadgeHub!
     var arrId = ["268359598278", "268359631046", "268359663814"]
     var imagesArr = ["men", "women", "kids"]
+    var category = "268359598278"
     var arrDiscountCodes = [String]()
-    var arrproductId = [String]()
+//    var arrproductId = [String]()
     private var searchBar:UISearchBar!
 
     var isDiscount = false
@@ -40,6 +41,14 @@ class CollectionViewController: UIViewController,ICanLogin {
     let bagManager = BagPersistenceManager.shared
     private var categoryViewModel:CategoryViewModel!
     var showIndicator:ShowIndecator?
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+          let animation = AnimationType.random()
+              UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor.black
@@ -87,7 +96,7 @@ class CollectionViewController: UIViewController,ICanLogin {
         
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
-        arrproductId.removeAll()
+//        arrproductId.removeAll()
         adsImage.loadGif(name: imagesArr[0])
         MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         if AppCommon.shared.checkConnectivity() == false{
@@ -98,11 +107,12 @@ class CollectionViewController: UIViewController,ICanLogin {
         }else{
             
             if collectionViewModel!.isUserLoggedIn() {
-                AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
-                AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
+                bagBtn.setBadge(text: String(describing: bagManager.retrievebagProducts()?.count ?? 0))
+                favouriteBtn.setBadge(text: String(describing: manager.retrieveFavourites()?.count ?? 0))
             }else{
-                AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: -1)
-                AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: 0)
+                bagBtn.setBadge(text: String("0"))
+                favouriteBtn.setBadge(text: String("0"))
+                
             }
             
             collectionViewModel?.getCollectionData()
@@ -137,7 +147,8 @@ class CollectionViewController: UIViewController,ICanLogin {
                 navigationController?.pushViewController(bag, animated: true)
             }else{
                 let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-                navigationController?.pushViewController(vc, animated: true)
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true, completion: nil)
             }
         }
 
@@ -155,7 +166,8 @@ class CollectionViewController: UIViewController,ICanLogin {
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-                navigationController?.pushViewController(vc, animated: true)
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true, completion: nil)
             }
         }
     }
@@ -205,7 +217,7 @@ class CollectionViewController: UIViewController,ICanLogin {
             self.controlViews(flag: true)
             self.collectionViewModel?.getAllProduct(id: self.arrId[value.element?.item ?? 0])
             self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
-            self.arrproductId.removeAll()
+//            self.arrproductId.removeAll()
             self.discountCode.text = self.arrDiscountCodes[value.element?.item ?? 0]
         }.disposed(by: disposeBag)
     }
@@ -215,17 +227,29 @@ class CollectionViewController: UIViewController,ICanLogin {
             row, item, cell in
             (cell as? ProductCollectionViewCell)?.productPrice.text = item.title
             (cell as? ProductCollectionViewCell)?.productImage.sd_setImage(with: URL(string: item.image.src), completed: nil)
-            self.arrproductId.append(String(item.id))
+//            self.arrproductId.append(String(item.id))
             
         }.disposed(by: disposeBag)
         
-        productsCollectionView.rx.itemSelected.subscribe{value in
-            print(value.element?.item)
+//        productsCollectionView.rx.itemSelected.subscribe{value in
+//            print(value.element?.item)
+//            if AppCommon.shared.checkConnectivity() == true{
+//                self.controlViews(flag: true)
+//                self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+//                var detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
+//                detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
+//                self.navigationController?.pushViewController(detailsViewController, animated: true)
+//            }
+//        }.disposed(by: disposeBag)
+        
+        productsCollectionView.rx.modelSelected(ProductElement.self).subscribe{ productElement in
+            let element = productElement.element
             if AppCommon.shared.checkConnectivity() == true{
+                self.category = self.arrId[0]
                 self.controlViews(flag: true)
-                self.collectionViewModel?.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
-                var detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
-                detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
+                self.collectionViewModel?.getProductElement(idProduct: String(element?.id ?? 0) )
+                let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
+                detailsViewController.idProduct = String(element?.id ?? 0)
                 self.navigationController?.pushViewController(detailsViewController, animated: true)
             }
         }.disposed(by: disposeBag)

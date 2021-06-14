@@ -13,7 +13,7 @@ import RxCocoa
 protocol MeModelType{
     
     func fetchFavProducts()
-    func getUserName() -> String
+    func getUserName() -> String?
     func fetchOrders()
     func getFormattedDate(date:String) -> String?
     
@@ -24,7 +24,7 @@ protocol MeModelType{
 }
 
 class MeTapViewModel:MeModelType,ICanLogin {
-
+    
     var favProductsObservable: Driver<[FavouriteProduct]>?
     var ordersObservable: Driver<[Order]>?
     var orderProductsObservable: Driver<[Product]>?
@@ -47,30 +47,37 @@ class MeTapViewModel:MeModelType,ICanLogin {
     }
     
     func fetchFavProducts() {
-        let localData = FavouritesPersistenceManager.shared
-        guard let favourites = localData.retrieveFavourites() else {
-            return
+        
+        if isUserLoggedIn(){
+            let localData = FavouritesPersistenceManager.shared
+            guard let favourites = localData.retrieveFavourites() else {
+                return
+            }
+            self.favProductsSubject.asObserver().onNext(favourites)
+        }else{
+            self.favProductsSubject.asObserver().onNext([])
         }
-        self.favProductsSubject.asObserver().onNext(favourites)
     }
     
     func fetchOrders()  {
         
-        loadingSubject.asObserver().onNext(true)
-        remote.fetchOrders() { [unowned self] (result) in
-            switch result{
-            case .success(let response):
-                guard let orders = response?.orders else {return}
-                print("success")
-                self.ordersSubject.asObserver().onNext(getOrdersWithEmail(orders: orders))
-                self.loadingSubject.onNext(false)
-
-            case .failure(let error):
-                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
-                self.loadingSubject.onNext(false)
-
+        if isUserLoggedIn(){
+            loadingSubject.asObserver().onNext(true)
+            remote.fetchOrders() { [unowned self] (result) in
+                switch result{
+                case .success(let response):
+                    guard let orders = response?.orders else {return}
+                    print("success")
+                    self.ordersSubject.asObserver().onNext(self.getOrdersWithEmail(orders: orders))
+                    self.loadingSubject.onNext(false)
+                    
+                case .failure(let error):
+                    AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
+                    self.loadingSubject.onNext(false)
+                }
             }
-            
+        }else{
+            self.ordersSubject.asObserver().onNext([])
         }
     }
     
@@ -86,15 +93,21 @@ class MeTapViewModel:MeModelType,ICanLogin {
     }
     
     
-//    func isUserLoggedIn() -> Bool {
-//        let value = MyUserDefaults.getValue(forKey: .loggedIn)
-//        guard let isLoggedIn = value else {return false}
-//
-//        return (isLoggedIn as! Bool) ? true : false
-//    }
+    //    func isUserLoggedIn() -> Bool {
+    //        let value = MyUserDefaults.getValue(forKey: .loggedIn)
+    //        guard let isLoggedIn = value else {return false}
+    //
+    //        return (isLoggedIn as! Bool) ? true : false
+    //    }
     
-    func getUserName() -> String {
-        return MyUserDefaults.getValue(forKey: .username) as! String
+    func getUserName() -> String? {
+        
+        if let username = MyUserDefaults.getValue(forKey: .username){
+            return username as? String
+        }else{
+            return nil
+        }
+        
     }
     
     func fetchOrderProducts(orderLineItems: [LineItems]) {
@@ -108,12 +121,12 @@ class MeTapViewModel:MeModelType,ICanLogin {
                 
                 self.dispatchGroup.leave()
                 switch result{
-                    case .success(let product):
-                        guard let product = product else {return}
-                        products.append(product)
-                        print(products)
-                    case .failure(let error):
-                        print(error)
+                case .success(let product):
+                    guard let product = product else {return}
+                    products.append(product)
+                    print(products)
+                case .failure(let error):
+                    print(error)
                 }
             }
             
@@ -147,7 +160,7 @@ class MeTapViewModel:MeModelType,ICanLogin {
                 
                 let myOrders = self.getOrdersWithEmail(orders: orders)
                 for order in myOrders{
-//                    self.dispatchGroup.enter()
+                    //                    self.dispatchGroup.enter()
                     self.remote.removeOrder(id:order.id)
                 }
                 
@@ -163,5 +176,16 @@ class MeTapViewModel:MeModelType,ICanLogin {
     }
     func logout() {
         MyUserDefaults.add(val: false, key: .loggedIn)
+        
+        MyUserDefaults.add(val: "", key: .email)
+        MyUserDefaults.add(val: "", key: .username)
+        MyUserDefaults.add(val: "", key: .id)
+        //        MyUserDefaults.add(val: true, key: .isDisconut)
+        
+        MyUserDefaults.add(val: "", key: .title)
+        MyUserDefaults.add(val: "", key: .city)
+        MyUserDefaults.add(val: "", key: .country)
+        //        guard let phone = customer.phone else {return}
+        MyUserDefaults.add(val: "", key: .phone)
     }
 }

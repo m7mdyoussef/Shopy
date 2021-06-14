@@ -43,19 +43,22 @@ class BagViewModel: BagViewModelType,ICanLogin {
         let postOrder = PostOrderRequest(order: order)
     
         loadingSubject.asObserver().onNext(true)
-        remote.postOrder(order: postOrder) { [weak self] (data) in
-            guard let self = self else {return}
-            self.loadingSubject.asObserver().onNext(false)
-            do{
-                let _ = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
-                print(String(decoding: data, as: UTF8.self))
-            }catch{
-                self.errorSubject.asObserver().onNext(true)
-            }
-            
-        } onFailure: { (err) in
+        
+        remote.postOrder(order: postOrder, onCompletion: { [weak self] (data) in
+         guard let self = self else {return}
+           self.loadingSubject.asObserver().onNext(false)
+           do{
+               let _ = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
+               print(String(decoding: data, as: UTF8.self))
+           }catch{
+               self.errorSubject.asObserver().onNext(true)
+           }
+        }) { (err) in
             self.errorSubject.asObserver().onNext(true)
+
         }
+        
+
     }
     
     private func retreiveLineItems(products: [BagProduct]) -> [PostLineItem]{

@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import JGProgressHUD
 import BadgeHub
+import ViewAnimator
 
 class CategoryViewController: UIViewController,ICanLogin {
 
@@ -36,6 +37,11 @@ class CategoryViewController: UIViewController,ICanLogin {
     private var collectionViewModel = HomeViewModel()
     private var arrproductId = [String]()
     
+    override func viewDidAppear(_ animated: Bool) {
+        let animation = AnimationType.random()
+        UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+     
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -50,9 +56,13 @@ class CategoryViewController: UIViewController,ICanLogin {
             self.present(NoInternetViewController, animated: true, completion: nil)
             
         }else{
-            if categoryViewModel.isUserLoggedIn(){
-                AppCommon.shared.showBadgeNumber(barButtonItem: bagBtn, count: bagManager.retrievebagProducts()?.count ?? 0)
-                AppCommon.shared.showBadgeNumber(barButtonItem: favouriteBtn, count: manager.retrieveFavourites()?.count ?? 0)
+            if categoryViewModel.isUserLoggedIn() {
+                bagBtn.setBadge(text: String(describing: bagManager.retrievebagProducts()?.count ?? 0))
+                favouriteBtn.setBadge(text: String(describing: manager.retrieveFavourites()?.count ?? 0))
+            }else{
+                bagBtn.setBadge(text: String("0"))
+                favouriteBtn.setBadge(text: String("0"))
+                
             }
             
             arrproductId.removeAll()
@@ -200,7 +210,9 @@ class CategoryViewController: UIViewController,ICanLogin {
                 let bag = BagViewController()
                 navigationController?.pushViewController(bag, animated: true)
             }else{
-                presentGFAlertOnMainThread(title: "Warning!!", message: "Please login", buttonTitle: "OK")
+                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true, completion: nil)
             }
         }
 
@@ -224,7 +236,8 @@ class CategoryViewController: UIViewController,ICanLogin {
                 self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-                navigationController?.pushViewController(vc, animated: true)
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true, completion: nil)
             }
         }
     }

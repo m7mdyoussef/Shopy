@@ -131,12 +131,16 @@ class AppCommon: NSObject {
     
     func showBadgeNumber(barButtonItem: UIBarButtonItem, count: Int){
         let hub = BadgeHub(barButtonItem: barButtonItem)
-        hub?.setCount(count)
-        hub?.pop()
-        hub?.blink()
-        hub?.setCircleBorderColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), borderWidth: 0.5)
-        hub?.setCountLabelFont(UIFont(name: "Arial", size: 17))
-        hub?.setCircleColor(#colorLiteral(red: 0.6043980013, green: 0.0525575951, blue: 0.03250552842, alpha: 1), label: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+        if count == 0 {
+            hub?.hideCount()
+        }else{
+            hub?.setCount(count)
+            hub?.pop()
+            hub?.blink()
+            hub?.setCircleBorderColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), borderWidth: 0.5)
+            hub?.setCountLabelFont(UIFont(name: "Arial", size: 17))
+            hub?.setCircleColor(#colorLiteral(red: 0.6043980013, green: 0.0525575951, blue: 0.03250552842, alpha: 1), label: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+        }
     }
     
     func checkConnectivity() -> Bool {

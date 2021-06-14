@@ -83,7 +83,7 @@ class BagViewController: UIViewController {
         let localData = BagPersistenceManager.shared
         guard let bagProducts = localData.retrievebagProducts() else {return}
         self.bagProducts = bagProducts
-        var totalPrice = 0.0
+        totalPrice = 0.0
         
         for bag in bagProducts {
             let count = Double(bag.count)
@@ -102,13 +102,13 @@ class BagViewController: UIViewController {
                 self.bagProductsCollectionView.reloadData()
                 let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool
                 if discount == true{
-                    self.totalPriceLabel.text = "\(totalPrice) LE"
-                    self.totalDiscount = totalPrice - (totalPrice * 0.10)
+                    self.totalPriceLabel.text = "\(self.totalPrice) LE"
+                    self.totalDiscount = self.totalPrice - (self.totalPrice * 0.10)
                     self.afterDiscountLabel.text = "\(self.totalDiscount) LE"
                 }else{
                     self.totalDiscount = self.totalPrice
-                    self.totalPriceLabel.text = "\(totalPrice) LE"
-                    self.afterDiscountLabel.text = "\(totalPrice) LE"
+                    self.totalPriceLabel.text = "\(self.totalPrice) LE"
+                    self.afterDiscountLabel.text = "\(self.totalPrice) LE"
                 }
             }else{
                 self.uiEmptyImage.isHidden = false
@@ -156,9 +156,9 @@ class BagViewController: UIViewController {
     
     private func showPaymentOptins() {
 //        fetchBagProducts()
-        updateTotalPrice()
+//        updateTotalPrice()
         let alertController = UIAlertController(title: "Payment Options", message: "Choose prefered payment option", preferredStyle: .actionSheet)
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CarInfoViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CardInfoViewController
         vc.delegate = self
         
         let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool ? Double(round(1000 * (totalPrice * 0.10) )/1000) : 0
@@ -177,8 +177,11 @@ class BagViewController: UIViewController {
 //            self.viewModel.checkout(product: self.bagProducts,status: .pending)
         }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (_) in
+            guard let self = self else {return}
+            self.fetchBagProducts()
+        }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cardAction)
         alertController.addAction(cancelAction)
         alertController.addAction(cashOnDelivery)
