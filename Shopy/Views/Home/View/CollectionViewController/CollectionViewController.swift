@@ -13,7 +13,7 @@ import SDWebImage
 import ImageIO
 import JGProgressHUD
 import ViewAnimator
-
+import AVFoundation
 class CollectionViewController: UIViewController,ICanLogin {
     var disposeBag = DisposeBag()
     var collectionViewModel:HomeViewModel?

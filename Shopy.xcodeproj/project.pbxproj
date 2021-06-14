@@ -99,6 +99,10 @@
 		CF78F3FC2669D08C005B9FE1 /* specialoffers.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF78F3FB2669D08C005B9FE1 /* specialoffers.gif */; };
 		CF78F436266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78F435266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift */; };
 		CFE2272026777A1C009AA907 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE2271F26777A1B009AA907 /* ErrorMessage.swift */; };
+		CFE2273A2677FF26009AA907 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFE227392677FF26009AA907 /* splash.gif */; };
+		CFE2273F2677FF55009AA907 /* bravo.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFE2273E2677FF55009AA907 /* bravo.gif */; };
+		CFE227412677FF69009AA907 /* source.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFE227402677FF69009AA907 /* source.gif */; };
+		CFE22768267804C1009AA907 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE22767267804C1009AA907 /* SplashViewController.swift */; };
 		CFF7A3C426644C7B003D7987 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF7A3C326644C7B003D7987 /* HomeViewModel.swift */; };
 		D2116C712669503F007892B7 /* FavouritesPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116C702669503F007892B7 /* FavouritesPersistenceManager.swift */; };
 		D2116C7626695B86007892B7 /* FavouriteProductsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2116C7426695B86007892B7 /* FavouriteProductsVC.swift */; };
@@ -244,6 +248,10 @@
 		CF78F3FB2669D08C005B9FE1 /* specialoffers.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = specialoffers.gif; sourceTree = "<group>"; };
 		CF78F435266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductDetails+DelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		CFE2271F26777A1B009AA907 /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		CFE227392677FF26009AA907 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
+		CFE2273E2677FF55009AA907 /* bravo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bravo.gif; sourceTree = "<group>"; };
+		CFE227402677FF69009AA907 /* source.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = source.gif; sourceTree = "<group>"; };
+		CFE22767267804C1009AA907 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CFF7A3C326644C7B003D7987 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D2116C702669503F007892B7 /* FavouritesPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesPersistenceManager.swift; sourceTree = "<group>"; };
 		D2116C7426695B86007892B7 /* FavouriteProductsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteProductsVC.swift; sourceTree = "<group>"; };
@@ -570,6 +578,7 @@
 		9E756A0526642D14000B5D98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CFE227632678048F009AA907 /* Splash */,
 				277533F92674AEB8009F535A /* Settings */,
 				9E182D8A26503E8100069E6E /* Main.storyboard */,
 				9E182D9226503E8300069E6E /* LaunchScreen.storyboard */,
@@ -651,6 +660,9 @@
 		9EAE57482657110500BE44C2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CFE2273E2677FF55009AA907 /* bravo.gif */,
+				CFE227392677FF26009AA907 /* splash.gif */,
+				CFE227402677FF69009AA907 /* source.gif */,
 				CFE2271F26777A1B009AA907 /* ErrorMessage.swift */,
 				CFE2264126736FE500952274 /* GIFs */,
 				D2CA0F582672960E005AB72D /* viewController+Ext */,
@@ -757,6 +769,14 @@
 				CF78F3E22669C39F005B9FE1 /* offer.gif */,
 			);
 			path = GIFs;
+			sourceTree = "<group>";
+		};
+		CFE227632678048F009AA907 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				CFE22767267804C1009AA907 /* SplashViewController.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		CFF7A3BF26644C4D003D7987 /* HomeViewModel */ = {
@@ -1011,8 +1031,10 @@
 				CF78F3FC2669D08C005B9FE1 /* specialoffers.gif in Resources */,
 				CF08214E266DDC9C00064DB9 /* kids.gif in Resources */,
 				9E59BDDC26531C67003B113F /* GoogleService-Info.plist in Resources */,
+				CFE2273F2677FF55009AA907 /* bravo.gif in Resources */,
 				CF6571AA266197D300C31614 /* ProductCollectionViewCell.xib in Resources */,
 				CF47988E2667D23300B0A64D /* SizesCollectionViewCell.xib in Resources */,
+				CFE227412677FF69009AA907 /* source.gif in Resources */,
 				D2CA0EB6266BBE90005AB72D /* BagCollectionViewCell.xib in Resources */,
 				D2116C7726695B86007892B7 /* FavouriteProductsVC.xib in Resources */,
 				CF08214C266DDC9C00064DB9 /* kids2.gif in Resources */,
@@ -1030,6 +1052,7 @@
 				9E70BAC0267178EF0099FB70 /* PayPalViewController.xib in Resources */,
 				9E756A0D266431CB000B5D98 /* MainProductsCollectionViewCell.xib in Resources */,
 				CF78F3E32669C3A0005B9FE1 /* offer.gif in Resources */,
+				CFE2273A2677FF26009AA907 /* splash.gif in Resources */,
 				2775343D2674B57F009F535A /* Localizable.strings in Resources */,
 				CF08214B266DDC9C00064DB9 /* men.gif in Resources */,
 				D2116C7B2669767B007892B7 /* FavouriteproductCVC.xib in Resources */,
@@ -1233,6 +1256,7 @@
 				9EAE574C2657118E00BE44C2 /* ShowIndecator.swift in Sources */,
 				274D374C266DA8D9002EF152 /* MeTapViewModel.swift in Sources */,
 				9E182D8726503E8100069E6E /* SceneDelegate.swift in Sources */,
+				CFE22768267804C1009AA907 /* SplashViewController.swift in Sources */,
 				9E756A1B26643B29000B5D98 /* CategoryContract.swift in Sources */,
 				CF6571A9266197D300C31614 /* ProductCollectionViewCell.swift in Sources */,
 				9E70BABF267178EF0099FB70 /* PayPalViewController.swift in Sources */,
