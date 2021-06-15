@@ -44,3 +44,23 @@
 "Remove All Orders" = "Remove All Orders";
 
 "Are you Sure you want to remove all orders" = "Are you Sure you want to remove all orders 🚫";
+
+
+"Price: Highiest to lowest" = "Price: Highiest to lowest";
+"Price: Lowest to Highiest" = "Price: Lowest to Highiest";
+"Search..." = "Search...";
+
+"Payment Options" = "Payment Options";
+"Choose prefered payment option" = "Choose prefered payment option";
+//"Main" = "Main";
+"Pay with Card" = "Pay with Card";
+"Cash on delivery" = "Cash on delivery";
+"Payment Successful" = "Payment Successful";
+"Confirmatiom" = "Confirmatiom";
+"Do you want to delete it?" = "Do you want to delete it?";
+"No" = "No";
+"Sorry , this product isn't available with this amount" = "Sorry , this product isn't available with this amount";
+"you canceled the payment" = "you canceled the payment";
+"Bag Products" = "Bag Products";
+"Please Wait" = "Please Wait";
+"An Error Occured, Try Again later ..." = "An Error Occured, Try Again later ...";

@@ -58,8 +58,8 @@ class SearchCategoryViewController: UIViewController {
             filteringMenu = DropDown()
             sortingMenu.anchorView = sortView
             filteringMenu.anchorView = filterView
-            sortingMenu.dataSource = ["Price: Highiest to lowest","Price: Lowest to Highiest"]
-            filteringMenu.dataSource = ["T-Shirts","Shoes","Accessories"]
+        sortingMenu.dataSource = ["Price: Highiest to lowest".localized,"Price: Lowest to Highiest".localized]
+        filteringMenu.dataSource = ["T-Shirts".localized,"Shoes".localized,"Accessories".localized]
             sortingMenu.direction = .bottom
             filteringMenu.direction = .bottom
             sortingMenu.bottomOffset = CGPoint(x: 0, y:sortView.plainView.bounds.height)
@@ -67,7 +67,7 @@ class SearchCategoryViewController: UIViewController {
         
         //create search bar in run time
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 42))
-        searchBar.placeholder = "Search..."
+        searchBar.placeholder = "Search...".localized
         let barButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.rightBarButtonItem = barButton
         self.searchBar.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)

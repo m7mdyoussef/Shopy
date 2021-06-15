@@ -41,7 +41,7 @@ class BagViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = BagViewModel()
-        navigationItem.title = "Bag Products"
+        navigationItem.title = "Bag Products".localized
         let favProductCell = UINib(nibName: "BagCollectionViewCell", bundle: nil)
       //  checkoutView.collectionCellLayout()
         bagProductsCollectionView.register(favProductCell, forCellWithReuseIdentifier: "BagCollectionViewCell")
@@ -52,7 +52,7 @@ class BagViewController: UIViewController {
             print(value.element!)
             
             if value.element == true {
-                self.hud = self.loadingHud(text: "Please Wait", style: .dark)
+                self.hud = self.loadingHud(text: "Please Wait".localized, style: .dark)
             }else{
                 self.dismissLoadingHud(hud: self.hud)
                 self.onSuccessHud()
@@ -62,7 +62,7 @@ class BagViewController: UIViewController {
         
         viewModel.error.asObservable().subscribe{[weak self] value in
             guard let self = self else {return}
-            self.onFaildHud(text: "An Error Occured, Try Again later ...")
+            self.onFaildHud(text: "An Error Occured, Try Again later ...".localized)
         }.disposed(by: bag)
         
     }
@@ -170,27 +170,27 @@ class BagViewController: UIViewController {
     private func showPaymentOptins() {
 //        fetchBagProducts()
 //        updateTotalPrice()
-        let alertController = UIAlertController(title: "Payment Options", message: "Choose prefered payment option", preferredStyle: .actionSheet)
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CardInfoViewController
+        let alertController = UIAlertController(title: "Payment Options".localized, message: "Choose prefered payment option".localized, preferredStyle: .actionSheet)
+        let vc = UIStoryboard.init(name: "Main".localized, bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CardInfoViewController
         vc.delegate = self
         
         let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool ? Double(round(1000 * (totalPrice * 0.10) )/1000) : 0
         let obj = OrderObject(products: self.bagProducts, total: totalDiscount, subTotal:totalPrice , discount: discount)
         vc.orderObject = obj
         
-        let cardAction = UIAlertAction(title: "Pay with Card", style: .default) { (action) in
+        let cardAction = UIAlertAction(title: "Pay with Card".localized, style: .default) { (action) in
             vc.paymentMethod = .stripe
             self.present(vc, animated: true, completion: nil)
         }
         
-        let cashOnDelivery = UIAlertAction(title: "Cash on delivery", style: .default) { [weak self] (action) in
+        let cashOnDelivery = UIAlertAction(title: "Cash on delivery".localized, style: .default) { [weak self] (action) in
             guard let self = self else {return}
             vc.paymentMethod = .cash
             self.present(vc, animated: true, completion: nil)
 //            self.viewModel.checkout(product: self.bagProducts,status: .pending)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (_) in
+        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel) { [weak self] (_) in
             guard let self = self else {return}
             self.fetchBagProducts()
         }
@@ -230,7 +230,7 @@ class BagViewController: UIViewController {
             if error == nil {
                 //self.emptyTheBasket()
                // self.addItemsToPurchaseHistory(self.purchasedItemIds)
-                self.showNotification(text: "Payment Successful", isError: false)
+                self.showNotification(text: "Payment Successful".localized, isError: false)
             } else {
                 self.showNotification(text: error!.localizedDescription, isError: true)
                 print("error gegdgjgdjjhgejgfjhghrgjdhegejgfjegdjhgejfgjdhgjf ", error!.localizedDescription)
@@ -252,12 +252,12 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
         cell.bagProduct = bagProducts[indexPath.item]
         cell.deleteFromBagProducts = {[weak self] in
             guard let self = self else {return}
-            let alert = UIAlertController(title: "Confirmatiom", message: "Do you want to delete it?", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Yes", style: .destructive) { _ in
+            let alert = UIAlertController(title: "Confirmatiom".localized, message: "Do you want to delete it?".localized, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Yes".localized, style: .destructive) { _ in
                 self.deletFromBagProducts(productID: Int(self.bagProducts[indexPath.item].id ))
                 self.fetchBagProducts()
             }
-            let no = UIAlertAction(title: "No", style: .default) { _ in
+            let no = UIAlertAction(title: "No".localized, style: .default) { _ in
             }
             
             alert.addAction(no)
@@ -273,7 +273,7 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
                 self?.fetchBagProducts()
             }
             else{
-                self?.presentGFAlertOnMainThread(title: "Error", message: "Sorry , this product isn't available with this amount", buttonTitle: "OK")
+                self?.presentGFAlertOnMainThread(title: "Error".localized, message: "Sorry , this product isn't available with this amount".localized, buttonTitle: "OK".localized)
             }
         
         }
@@ -307,7 +307,7 @@ extension BagViewController: CardInfoViewControllerDelegate {
     
     func didClickCancel() {
         print("user canceled the payment")
-        showNotification(text: "you canceled the payment", isError: true)
+        showNotification(text: "you canceled the payment".localized, isError: true)
     }
     
     func clearBag() {

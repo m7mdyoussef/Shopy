@@ -45,3 +45,24 @@
 
 "Are you Sure you want to remove all orders" = "حقا تريد حذف جميع الطلبات 🚫";
 
+
+
+
+"Price: Highiest to lowest" = ".السعر: من الاعلي الي الاقل";
+"Price: Lowest to Highiest" = ".السعر: من الاقل الي الاعلي";
+"Search..." = "بحث٫٫٫";
+
+"Payment Options" = "طرق الدفع";
+"Choose prefered payment option" = "اختار طريقة الدفع.";
+//"Main" = "رئيسي";
+"Pay with Card" = "الدفع بواسطة الكارت.";
+"Cash on delivery" = "كاش عند التوصيل.";
+"Payment Successful" = "الدفع تم بنجاح";
+"Confirmatiom" = "تأكيد";
+"Do you want to delete it?" = "هل تريد حذفه؟";
+"No" = "لا";
+"Sorry , this product isn't available with this amount" = "نعتذر، المنتج غير متاح منه  هذه .الكمية";
+"you canceled the payment" = "تم الغاء الدفع.";
+"Bag Products" = "حقيبة المنتجات";
+"Please Wait" = "انتظر من فضلك.";
+"An Error Occured, Try Again later ..." = "هناك خطأ حدث، حاول وقت آخر...";
