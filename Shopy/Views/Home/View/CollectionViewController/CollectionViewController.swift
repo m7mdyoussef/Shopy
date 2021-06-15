@@ -101,7 +101,7 @@ class CollectionViewController: UIViewController,ICanLogin {
             if state as! Bool == true{
                 controlViews(flag: false)
                 codeButton.isHidden = true
-                adsImage.loadGif(name: "black")
+                adsImage.loadGif(name: "bravo")
                 discountCode.isHidden = true
             }else{
                 controlViews(flag: true)
@@ -191,7 +191,7 @@ class CollectionViewController: UIViewController,ICanLogin {
         let popup = AppCommon.shared.showPopupDialog(title: "OFFER", message: "Please, Click on the code ☝️ to get a Special offer🙈.", image: adsImage.image!)
         self.present(popup, animated: true, completion: nil)
         
-        adsImage.loadGif(name: "black")
+        adsImage.loadGif(name: "bravo")
         adsImage.contentMode = .scaleAspectFill
         adsView.layer.cornerRadius = 25
         adsView.clipsToBounds = true
@@ -231,7 +231,7 @@ class CollectionViewController: UIViewController,ICanLogin {
             
             if let has =  MyUserDefaults.getValue(forKey: .isDisconut){
                 if has as! Bool == true{
-                    self.adsImage.loadGif(name: "black")
+                    self.adsImage.loadGif(name: "bravo")
                 }else{
                     self.controlViews(flag: true)
                     self.adsImage.loadGif(name: self.imagesArr[value.element?.item ?? 0])
