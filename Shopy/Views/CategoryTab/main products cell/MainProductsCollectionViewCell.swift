@@ -23,7 +23,7 @@ class MainProductsCollectionViewCell: UICollectionViewCell {
     
     var DetailedProductObject:DetailedProducts!{
         didSet{
-            productName.text = DetailedProductObject.variants[0].price + " LE"
+            productName.text = DetailedProductObject.variants[0].price + " $"
             productName.font = UIFont.boldSystemFont(ofSize: 17)
             productImage.sd_setImage(with: URL(string: DetailedProductObject.image.src), placeholderImage: UIImage(named: "placeholder"))
         }

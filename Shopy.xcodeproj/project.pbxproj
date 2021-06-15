@@ -452,7 +452,6 @@
 				9E182D8226503E8100069E6E /* Products */,
 				900ED897D64BBEF98F5FD341 /* Pods */,
 				A599565F241219575ADA5953 /* Frameworks */,
-				9E5A7706266BC7930086E2E5 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -534,13 +533,6 @@
 				9E182D8D26503E8100069E6E /* Shopy.xcdatamodeld */,
 			);
 			path = "core data";
-			sourceTree = "<group>";
-		};
-		9E5A7706266BC7930086E2E5 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		9E5B51AC26726BA3007E32F2 /* Stripe */ = {
@@ -663,10 +655,6 @@
 		9EAE57482657110500BE44C2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CFE2273E2677FF55009AA907 /* bravo.gif */,
-				CFE227392677FF26009AA907 /* splash.gif */,
-				CFE227402677FF69009AA907 /* source.gif */,
-				CFE2271F26777A1B009AA907 /* ErrorMessage.swift */,
 				CFE2264126736FE500952274 /* GIFs */,
 				D2CA0F582672960E005AB72D /* viewController+Ext */,
 				9EAE574B2657118E00BE44C2 /* ShowIndecator.swift */,
@@ -675,6 +663,7 @@
 				2759BB6826646F4100AF288D /* ProgressHudExt.swift */,
 				9E756A1C26644277000B5D98 /* Constants.swift */,
 				CF4798062665DC9900B0A64D /* AppCommon.swift */,
+				CFE2271F26777A1B009AA907 /* ErrorMessage.swift */,
 				277533DA2674A092009F535A /* ICanLogin.swift */,
 				277534262674AFEB009F535A /* Localization+ext.swift */,
 				2775343F2674B57F009F535A /* Localizable.strings */,
@@ -759,6 +748,9 @@
 		CFE2264126736FE500952274 /* GIFs */ = {
 			isa = PBXGroup;
 			children = (
+				CFE2273E2677FF55009AA907 /* bravo.gif */,
+				CFE227392677FF26009AA907 /* splash.gif */,
+				CFE227402677FF69009AA907 /* source.gif */,
 				CF78F3C22669B5C6005B9FE1 /* GifFile.swift */,
 				CF082149266DDC9C00064DB9 /* sale.gif */,
 				CF082148266DDC9B00064DB9 /* kids.gif */,

@@ -94,7 +94,7 @@ class AppCommon: NSObject {
     func showPopupDialog(title: String = "", message: String = "",image: UIImage) -> PopupDialog{
         
         let popup = PopupDialog(title: title, message: message, image: image)
-        let buttonOne = DefaultButton(title: "OK") {
+        let buttonOne = DefaultButton(title: "OK".localized) {
             popup.dismiss()
         }
         

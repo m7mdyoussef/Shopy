@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,6 +37,7 @@
                     </label>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="rhz-iZ-B4G" secondAttribute="bottom" id="4nJ-5s-e48"/>
                 <constraint firstItem="hQn-23-frl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BOI-6J-4WK"/>
@@ -45,7 +47,6 @@
                 <constraint firstAttribute="trailing" secondItem="hQn-23-frl" secondAttribute="trailing" id="ozP-Cd-37L"/>
                 <constraint firstItem="rhz-iZ-B4G" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="urV-ZB-dkd"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="125" height="176"/>
             <connections>
                 <outlet property="productImage" destination="hQn-23-frl" id="gMr-g6-HAQ"/>
@@ -54,7 +55,12 @@
             <point key="canvasLocation" x="186.23188405797103" y="131.58482142857142"/>
         </collectionViewCell>
     </objects>
+    <designables>
+        <designable name="rhz-iZ-B4G">
+            <size key="intrinsicContentSize" width="38.5" height="18"/>
+        </designable>
+    </designables>
     <resources>
-        <image name="folder.fill" catalog="system" width="128" height="95"/>
+        <image name="folder.fill" catalog="system" width="128" height="97"/>
     </resources>
 </document>
