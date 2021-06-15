@@ -72,7 +72,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
             
         }
         
-        
+        MOLHLanguage.setDefaultLanguage("ar")
+                MOLH.shared.activate(true)
         return true
     }
     

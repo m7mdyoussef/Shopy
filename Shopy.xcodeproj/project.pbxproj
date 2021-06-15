@@ -22,6 +22,7 @@
 		2759BB6926646F4100AF288D /* ProgressHudExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2759BB6826646F4100AF288D /* ProgressHudExt.swift */; };
 		2766A920266F5F3E0036F78C /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766A91F266F5F3E0036F78C /* Order.swift */; };
 		2766A92F266F84A80036F78C /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2766A92D266F84A80036F78C /* OrderCell.swift */; };
+		276D444B2678B139008CCD72 /* Wow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 276D444A2678B139008CCD72 /* Wow.mp3 */; };
 		27723528266ABE58004B442D /* AddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27723527266ABE58004B442D /* AddressVC.swift */; };
 		277533DB2674A092009F535A /* ICanLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277533DA2674A092009F535A /* ICanLogin.swift */; };
 		277534012674AEE2009F535A /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277533FF2674AEE2009F535A /* SettingsTableViewCell.xib */; };
@@ -32,7 +33,8 @@
 		2775343D2674B57F009F535A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2775343F2674B57F009F535A /* Localizable.strings */; };
 		277F3A99265D51A000C822D9 /* IRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277F3A98265D51A000C822D9 /* IRounded.swift */; };
 		278647C326762A4000A8B648 /* RoundedBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278647C226762A4000A8B648 /* RoundedBadge.swift */; };
-		279C33652677B7840035B281 /* Wow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 279C33642677B7840035B281 /* Wow.mp3 */; };
+		2797EAF72678D13500A71630 /* Cash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2797EAF62678D13500A71630 /* Cash.mp3 */; };
+		2797EAFC2678D1ED00A71630 /* ICanPlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797EAFB2678D1ED00A71630 /* ICanPlaySound.swift */; };
 		27A3E18426724E2F008590EB /* BagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E18326724E2F008590EB /* BagViewModel.swift */; };
 		27A3E18926724F62008590EB /* PostOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A3E18826724F62008590EB /* PostOrder.swift */; };
 		27B4E42B266AD6F9009A55EF /* UIUPdateAddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */; };
@@ -156,6 +158,7 @@
 		2759BB6826646F4100AF288D /* ProgressHudExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHudExt.swift; sourceTree = "<group>"; };
 		2766A91F266F5F3E0036F78C /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		2766A92D266F84A80036F78C /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		276D444A2678B139008CCD72 /* Wow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Wow.mp3; sourceTree = "<group>"; };
 		27723527266ABE58004B442D /* AddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressVC.swift; sourceTree = "<group>"; };
 		277533DA2674A092009F535A /* ICanLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICanLogin.swift; sourceTree = "<group>"; };
 		277533FF2674AEE2009F535A /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
@@ -169,7 +172,8 @@
 		277534402674B582009F535A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		277F3A98265D51A000C822D9 /* IRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRounded.swift; sourceTree = "<group>"; };
 		278647C226762A4000A8B648 /* RoundedBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBadge.swift; sourceTree = "<group>"; };
-		279C33642677B7840035B281 /* Wow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Wow.mp3; sourceTree = "<group>"; };
+		2797EAF62678D13500A71630 /* Cash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Cash.mp3; sourceTree = "<group>"; };
+		2797EAFB2678D1ED00A71630 /* ICanPlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICanPlaySound.swift; sourceTree = "<group>"; };
 		27A3E18326724E2F008590EB /* BagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BagViewModel.swift; sourceTree = "<group>"; };
 		27A3E18826724F62008590EB /* PostOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrder.swift; sourceTree = "<group>"; };
 		27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUPdateAddressList.swift; sourceTree = "<group>"; };
@@ -339,6 +343,13 @@
 			path = OrderCell;
 			sourceTree = "<group>";
 		};
+		276D444F2678B146008CCD72 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		2772352F266AC4C6004B442D /* Addresses */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,7 +479,9 @@
 		9E182D8326503E8100069E6E /* Shopy */ = {
 			isa = PBXGroup;
 			children = (
-				279C33642677B7840035B281 /* Wow.mp3 */,
+				276D444A2678B139008CCD72 /* Wow.mp3 */,
+				2797EAF62678D13500A71630 /* Cash.mp3 */,
+				276D444F2678B146008CCD72 /* Audio */,
 				9E70BABA267175910099FB70 /* payPalBridgeFiles */,
 				9E5780A3266C365F005EF36E /* core data */,
 				9E5780A2266C35BC005EF36E /* resourses */,
@@ -669,6 +682,7 @@
 				2775343F2674B57F009F535A /* Localizable.strings */,
 				D253BA8326752D5600136DC6 /* UIView+Ext.swift */,
 				278647C226762A4000A8B648 /* RoundedBadge.swift */,
+				2797EAFB2678D1ED00A71630 /* ICanPlaySound.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1020,6 +1034,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				276D444B2678B139008CCD72 /* Wow.mp3 in Resources */,
 				277534082674AEEF009F535A /* SettingsVC.xib in Resources */,
 				9E182D9426503E8300069E6E /* LaunchScreen.storyboard in Resources */,
 				CF08214F266DDC9C00064DB9 /* sale.gif in Resources */,
@@ -1030,11 +1045,11 @@
 				CF6571AA266197D300C31614 /* ProductCollectionViewCell.xib in Resources */,
 				CF47988E2667D23300B0A64D /* SizesCollectionViewCell.xib in Resources */,
 				CFE227412677FF69009AA907 /* source.gif in Resources */,
+				2797EAF72678D13500A71630 /* Cash.mp3 in Resources */,
 				27D5064526780C07000284EC /* BagCollectionViewCell.xib in Resources */,
 				D2116C7726695B86007892B7 /* FavouriteProductsVC.xib in Resources */,
 				CF08214C266DDC9C00064DB9 /* kids2.gif in Resources */,
 				9E182D9126503E8300069E6E /* Assets.xcassets in Resources */,
-				279C33652677B7840035B281 /* Wow.mp3 in Resources */,
 				27DED85F2671E2C300870B9A /* OrderProductsCell.xib in Resources */,
 				CF78F3F22669D018005B9FE1 /* offer0.gif in Resources */,
 				277534012674AEE2009F535A /* SettingsTableViewCell.xib in Resources */,
@@ -1203,6 +1218,7 @@
 				277534022674AEE2009F535A /* SettingsTableViewCell.swift in Sources */,
 				D2745A4F265751CC005ABAF2 /* ApiRequestWrapper.swift in Sources */,
 				9E182D8F26503E8100069E6E /* Shopy.xcdatamodeld in Sources */,
+				2797EAFC2678D1ED00A71630 /* ICanPlaySound.swift in Sources */,
 				D2116C7626695B86007892B7 /* FavouriteProductsVC.swift in Sources */,
 				277534272674AFEB009F535A /* Localization+ext.swift in Sources */,
 				CF78F436266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift in Sources */,

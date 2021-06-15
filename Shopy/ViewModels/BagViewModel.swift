@@ -9,6 +9,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import AVFoundation
 
 enum CheckoutStatus:String {
     case pending = "pending"
@@ -21,6 +22,7 @@ protocol BagViewModelType {
 }
 
 class BagViewModel: BagViewModelType,ICanLogin {
+    
     var loading: Driver<Bool>
     var error: Driver<Bool>
     let remote : RemoteDataSource!
@@ -76,5 +78,20 @@ class BagViewModel: BagViewModelType,ICanLogin {
             array.append(PostLineItem(variantID: Int(product.variantId), quantity: Int(product.count)))
         }
         return array
+    }
+    
+    var bombSoundEffect: AVAudioPlayer?
+    func playPaidSound()  {
+        
+        guard let path = Bundle.main.path(forResource: "Cash", ofType: "mp3") else {return}
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
+            bombSoundEffect?.play()
+        } catch(let err) {
+            print("could load \(err)")
+        }
+
     }
 }

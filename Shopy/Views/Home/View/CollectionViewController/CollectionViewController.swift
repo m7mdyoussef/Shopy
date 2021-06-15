@@ -147,6 +147,7 @@ class CollectionViewController: UIViewController,ICanLogin {
         MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         let popup = AppCommon.shared.showPopupDialog(title: "Congratulation🥳🥳".localized, message: "You got 10% Discount.".localized, image: adsImage.image!)
         self.collectionViewModel?.playWow()
+        discountCode.isHidden = true
         self.collectionViewModel?.saveDiscountCode(code: myDiscount)
         self.present(popup, animated: true, completion: nil)
     }

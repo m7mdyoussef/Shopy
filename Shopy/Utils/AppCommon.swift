@@ -102,7 +102,7 @@ class AppCommon: NSObject {
         let dialogAppearance = PopupDialogDefaultView.appearance()
         dialogAppearance.backgroundColor = .white
         dialogAppearance.titleFont = .boldSystemFont(ofSize: 17)
-        dialogAppearance.titleColor = #colorLiteral(red: 0.9985825419, green: 0.2874522209, blue: 0.3107439578, alpha: 1)
+        dialogAppearance.titleColor = #colorLiteral(red: 0.9649999738, green: 0.6240000129, blue: 0, alpha: 1)
         dialogAppearance.titleTextAlignment = .center
         dialogAppearance.messageFont  = .systemFont(ofSize: 17)
         dialogAppearance.messageColor = UIColor(white: 0.6, alpha: 1)

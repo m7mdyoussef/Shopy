@@ -265,7 +265,8 @@ extension CategoryViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let animation = AnimationType.zoom(scale: 0)
-        UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+//        UIView.animate(views: productsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 2)
+        cell.animate(animations: [animation],delay: 0.5,duration: 2)
     }
     
 }

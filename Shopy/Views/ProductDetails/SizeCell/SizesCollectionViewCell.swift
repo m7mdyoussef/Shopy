@@ -16,14 +16,14 @@ class SizesCollectionViewCell: UICollectionViewCell {
     override var isHighlighted: Bool{
         didSet{
             productSize.textColor = isHighlighted ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-            productSize.layer.backgroundColor = isHighlighted ? #colorLiteral(red: 1, green: 0.4701387882, blue: 0.4451708794, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            productSize.layer.backgroundColor = isHighlighted ? #colorLiteral(red: 0.9649999738, green: 0.6240000129, blue: 0, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
     }
     
     override var isSelected: Bool{
         didSet{
             productSize.textColor = isSelected ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-            productSize.layer.backgroundColor = isSelected ? #colorLiteral(red: 1, green: 0.4701387882, blue: 0.4451708794, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            productSize.layer.backgroundColor = isSelected ? #colorLiteral(red: 0.9649999738, green: 0.6240000129, blue: 0, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 
         }
     }

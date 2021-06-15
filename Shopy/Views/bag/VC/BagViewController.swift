@@ -117,7 +117,7 @@ class BagViewController: UIViewController {
                 if discount == true{
                     self.totalPriceLabel.text = "$ \(self.totalPrice)"
                     self.totalDiscount = self.totalPrice - (self.totalPrice * 0.10)
-                    self.afterDiscountLabel.text = "$ \(self.totalDiscount)"
+                    self.afterDiscountLabel.text = "$ \(round(self.totalDiscount))"
                 }else{
                     self.totalDiscount = self.totalPrice
                     self.totalPriceLabel.text = "$ \(self.totalPrice)"
@@ -312,6 +312,7 @@ extension BagViewController: CardInfoViewControllerDelegate {
     
     func clearBag() {
         emptyBag()
+        self.showNotification(text: "Order Placed Successful".localized, isError: false)
     }
     
 }

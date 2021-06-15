@@ -160,20 +160,44 @@ class HomeViewModel: HomeModelType,ICanLogin{
         }
     }
    
-    
+    var bombSoundEffect: AVAudioPlayer?
     func playWow()  {
-        var bombSoundEffect: AVAudioPlayer?
-        let path = Bundle.main.path(forResource: "Wow.mp3", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
         
+        guard let path = Bundle.main.path(forResource: "Wow", ofType: "mp3") else {return}
+        let url = URL(fileURLWithPath: path)
+
         do {
             bombSoundEffect = try AVAudioPlayer(contentsOf: url)
             bombSoundEffect?.play()
-        } catch {
-            // couldn't load file :(
+        } catch(let err) {
+            print("could load \(err)")
         }
-        
+
     }
+    
+//    func playWow() {
+//
+//        guard let url = Bundle.main.url(forResource: "Wow", withExtension: "mp3") else { return }
+//
+//        do {
+//            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+//            try AVAudioSession.sharedInstance().setActive(true)
+//
+//            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
+//            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+//
+//            /* iOS 10 and earlier require the following line:
+//            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+//
+//            guard let player = player else { return }
+//
+//            player.play()
+//
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
+    
     func saveDiscountCode(code: String) {
         MyUserDefaults.add(val: code, key: .discountCode)
     }

@@ -67,7 +67,9 @@ class CardInfoViewController: UIViewController {
         uiPhone.text! += MyUserDefaults.getValue(forKey: .phone) as! String
         uiItemCount.text! = String(describing: orderObject.products.count)
         uiSubtotal.text = "\(orderObject.subTotal)"
-        uiDiscount.text = "$\(orderObject.discount)"
+        
+        
+        uiDiscount.text = "$\(Double(round(100 * (orderObject.discount) )/100))"
         uiTotal.text = "\(orderObject.subTotal - orderObject.discount)"
     }
     
@@ -101,8 +103,9 @@ class CardInfoViewController: UIViewController {
             self.viewModel.checkout(product: self.orderObject.products,status: .paid)
         default:
             self.viewModel.checkout(product: self.orderObject.products,status: .pending)
-
         }
+        
+        viewModel.playPaidSound()
     }
     //MARK: - IBActions
     

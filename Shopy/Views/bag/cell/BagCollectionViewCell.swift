@@ -34,7 +34,7 @@ class BagCollectionViewCell: UICollectionViewCell {
 
             guard let inventoryCount = bagProduct?.availableCount else {return}
             self.availableStoredCount = Int(inventoryCount)
-            self.price.text = "\(price)"
+            self.price.text = "$ \(price)"
             self.availableCount.text = "\(inventoryCount)"
 
             self.title.text = bagProduct?.title
