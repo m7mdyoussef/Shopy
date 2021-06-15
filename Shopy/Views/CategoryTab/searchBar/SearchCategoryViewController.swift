@@ -77,7 +77,8 @@ class SearchCategoryViewController: UIViewController {
         collectionViewModel = HomeViewModel()
 
         db = DisposeBag()
-        
+        categorySearchViewModel.fetchData()
+
         categorySearchResultCollectionView.rx.setDelegate(self).disposed(by: db)
         
         searchBar.rx.text
@@ -90,8 +91,7 @@ class SearchCategoryViewController: UIViewController {
             self.arrproductId.append(String(item.id))
         }.disposed(by: db)
         
-        categorySearchViewModel.fetchData()
-
+       
         
         //dropList actions
         sortingMenu.selectionAction = { [unowned self] (index: Int, item: String) in
