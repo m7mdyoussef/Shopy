@@ -46,7 +46,7 @@ class HomeViewModel: HomeModelType,ICanLogin{
 
     
     init() {
-        mainCategoryObservable = Observable.just(["Men", "Women" , "Kids"])
+        mainCategoryObservable = Observable.just(["Men".localized, "Women".localized , "Kids".localized])
         collectionDataObservable = collectionDataSubject.asObserver()
         productsDataObservable  = productDataSubject.asObservable()
         productElementObservable = productElementDataSubject.asObserver()
@@ -89,7 +89,7 @@ class HomeViewModel: HomeModelType,ICanLogin{
                 self.productDataSubject.asObserver().onNext(products)
                 self.ProductElements = products
             case .failure(let error):
-                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
+                AppCommon.shared.showSwiftMessage(title: "Error".localized, message: error.localizedDescription , theme: .error)
                 self.Loadingsubject.onNext(false)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
@@ -109,7 +109,7 @@ class HomeViewModel: HomeModelType,ICanLogin{
                 print(product.title)
                 self.Loadingsubject.onNext(false)
             case .failure(let error):
-                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
+                AppCommon.shared.showSwiftMessage(title: "Error".localized, message: error.localizedDescription , theme: .error)
                 self.Loadingsubject.onNext(false)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
@@ -129,7 +129,7 @@ class HomeViewModel: HomeModelType,ICanLogin{
                 self.PriceRuleDataSubject.asObserver().onNext(priceRules)
                 print(priceRules[0].id)
             case .failure(let error):
-                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
+                AppCommon.shared.showSwiftMessage(title: "Error".localized, message: error.localizedDescription , theme: .error)
                 self.Loadingsubject.onNext(false)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
@@ -149,7 +149,7 @@ class HomeViewModel: HomeModelType,ICanLogin{
                 self.discountCodeDataSubject.asObserver().onNext(discountCode)
                 print(discountCode[0].code)
             case .failure(let error):
-                AppCommon.shared.showSwiftMessage(title: "Error", message: error.localizedDescription , theme: .error)
+                AppCommon.shared.showSwiftMessage(title: "Error".localized, message: error.localizedDescription , theme: .error)
                 print(error.userInfo[NSLocalizedDescriptionKey] as? String ?? "")
                 print(error.code)
             }
@@ -163,8 +163,7 @@ class HomeViewModel: HomeModelType,ICanLogin{
     
     func playWow()  {
         var bombSoundEffect: AVAudioPlayer?
-//
-        let path = Bundle.main.path(forResource: "Wow.mp3", ofType:nil)!
+        let path = Bundle.main.path(forResource: "Wow.mp3", ofType: nil)!
         let url = URL(fileURLWithPath: path)
         
         do {

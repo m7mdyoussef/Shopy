@@ -75,19 +75,18 @@ class MeVC: UIViewController {
                 MOLH.reset()
             }
             
-            
         }
         let status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
         let logoutaction = UIAlertAction(title: status, style: .destructive) { [weak self] (action) in
             guard let self = self else {return}
             
-            if status == "Login"{
+            if status == "Login".localized{
                 let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)
             }else{
-                let logout = UIAlertController(title: "Logout", message: "Are you sure ?", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "OK", style: .destructive) { (action) in
+                let logout = UIAlertController(title: "Logout".localized, message: "Are you sure ?".localized, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK".localized, style: .destructive) { (action) in
                     self.viewModel.logout()
                     self.tabBarController?.selectedIndex = 0
                     self.viewModel.fetchFavProducts()
@@ -95,14 +94,14 @@ class MeVC: UIViewController {
 
                 }
                 
-                let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
                 logout.addAction(ok)
                 logout.addAction(cancel)
                 self.present(logout, animated: true, completion: nil)
             }
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
         alert.addAction(lang)
         alert.addAction(logoutaction)
         alert.addAction(cancel)
@@ -120,7 +119,7 @@ class MeVC: UIViewController {
         viewModel.loadingObservable.asObservable().subscribe{ [unowned self] value in
             guard let value = value.element else {return}
             if value {
-                self.hud = self.loadingHud(text: "Loading", style: .dark)
+                self.hud = self.loadingHud(text: "Loading".localized, style: .dark)
                 self.view.isUserInteractionEnabled = false
             }else{
                 self.dismissLoadingHud(hud: self.hud)
@@ -169,14 +168,14 @@ class MeVC: UIViewController {
             row,item,cell in
             (cell as? FavouriteproductCVC)?.favProduct = item
             (cell as? FavouriteproductCVC)?.deleteFromFavourites = { [unowned self] in
-                let alert = UIAlertController(title: "Remove Favourite", message: "Are you sure you want to remove the product from the wishlist ?", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Remove Favourite".localized, message: "Are you sure you want to remove the product from the wishlist ?".localized, preferredStyle: .alert)
                 
-                let action = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+                let action = UIAlertAction(title: "Yes".localized, style: .destructive) { (action) in
                     self.deletFromFavourites(productID: Int(item.id ))
                     self.viewModel.fetchFavProducts()
                     self.uiWishlistCollection.reloadData()
                 }
-                let action2 = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                let action2 = UIAlertAction(title: "Cancel".localized, style: .default, handler: nil)
                 
                 alert.addAction(action)
                 alert.addAction(action2)
@@ -271,9 +270,9 @@ class MeVC: UIViewController {
     func showGreatingMessage() {
        
         if  viewModel.getUserName() == nil  || viewModel.getUserName() == ""{
-            navigationItem.title = "Login / Register"
+            navigationItem.title = "Login / Register".localized
         }else{
-            navigationItem.title = "Hello,\(String(describing: viewModel.getUserName()!))"
+            navigationItem.title = "\("Hello".localized),\(String(describing: viewModel.getUserName()!))"
         }
     }
     
@@ -323,9 +322,9 @@ class MeVC: UIViewController {
     
     
     @IBAction func uiRemoveAllOrders(_ sender: Any) {
-        let alert = UIAlertController(title: "Remove All Orders", message: "Are you Sure you want to remove all orders", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let ok = UIAlertAction(title: "Yes", style: .destructive) { [weak self] (action) in
+        let alert = UIAlertController(title: "Remove All Orders".localized, message: "Are you Sure you want to remove all orders".localized, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+        let ok = UIAlertAction(title: "Yes".localized, style: .destructive) { [weak self] (action) in
             guard let self = self else {return}
             self.viewModel.removeAllOrders { [weak self] in
                 guard let self = self else {return}

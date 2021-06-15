@@ -91,13 +91,13 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
     @IBAction func addToCard(_ sender: Any) {
         if isUserLoggedIn(){
             if(sizeProduct == ""){
-                self.presentGFAlertOnMainThread(title: "Warning !!", message: "Please, Choose your size.", buttonTitle: "OK")
+                self.presentGFAlertOnMainThread(title: "Not Completed".localized, message: "Please, Choose your size.".localized, buttonTitle: "OK".localized)
             }else{
                 let isStored = bagManager.isBagProduct(productID: productElement!.id)
                 if isStored {
-                    self.presentGFAlertOnMainThread(title: "Warning !!", message: "This product is already in card", buttonTitle: "OK")
+                    self.presentGFAlertOnMainThread(title: "Not Completed", message: "The product is already in the cart".localized, buttonTitle: "OK")
                 }else{
-                    self.presentGFAlertOnMainThread(title: "Success", message: "Successfully added to the card🎉🎉", buttonTitle: "OK")
+                    self.presentGFAlertOnMainThread(title: "Completed".localized, message: "Successfully added to the card🎉🎉".localized, buttonTitle: "OK".localized)
                     bagManager.addToBagProducts(bagProduct: productElement!, size: sizeProduct)
                 }
             }
@@ -127,7 +127,7 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
     func showLoading(){
         homeViewModel?.LoadingObservable?.subscribe(onNext: {[weak self] (value) in
             let hud = JGProgressHUD()
-            hud.textLabel.text = "Loading"
+            hud.textLabel.text = "Loading".localized
             hud.style = .dark
             hud.show(in: (self?.view)!)
             switch value{

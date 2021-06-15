@@ -21,10 +21,10 @@ class OrderCell: UICollectionViewCell {
         
         didSet{
             guard let orderData = orderData else {return}
-            uiOrderIdLabel.text! = "No. :\(String(orderData.orderNumber))"
+            uiOrderIdLabel.text! = "\("No. :".localized) \(String(orderData.orderNumber))"
 
-            uiCountLabel.text = "\(orderData.lineItems.count) item/s"
-            uiTotalLabel.text = "Total :$ \(orderData.totalPrice)"
+            uiCountLabel.text = "\(orderData.lineItems.count) \("item/s".localized)"
+            uiTotalLabel.text = "\("Total :$".localized) \(orderData.totalPrice)"
             
 //            self.uiContentView.layer.cornerRadius = 12.69
 //            self.uiContentView.layer.masksToBounds = true

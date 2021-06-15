@@ -10,8 +10,8 @@ import Foundation
 import RxSwift
 
 class CategoryViewModel : CategoryContract,ICanLogin{
-    let mainCategoryElements = ["Men","Women","Kids"]
-    let subCategoryElements = ["T-Shirts","Shoes","Accessories"]
+    let mainCategoryElements = ["Men".localized,"Women".localized,"Kids".localized]
+    let subCategoryElements = ["T-Shirts".localized,"Shoes".localized,"Accessories".localized]
     var ProductElements:[ProductElement]?
     //observables
     var errorObservable: Observable<Bool>
