@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -213,20 +213,39 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qb2-hz-xyt">
+                        <rect key="frame" x="0.0" y="0.0" width="311" height="242"/>
+                        <color key="backgroundColor" white="1" alpha="0.5306527453036769" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qAR-uc-FWQ">
+                        <rect key="frame" x="276" y="207.5" width="30" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Uj8-h8-9eG"/>
+                            <constraint firstAttribute="height" constant="30" id="tNk-t0-0Ko"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="qAR-uc-FWQ" secondAttribute="bottom" constant="5" id="4Sw-8H-6cg"/>
                 <constraint firstAttribute="trailing" secondItem="Cib-8d-LTk" secondAttribute="trailing" constant="5" id="C7R-Nu-O2m"/>
                 <constraint firstItem="Cib-8d-LTk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gby-DR-0FF"/>
                 <constraint firstAttribute="bottom" secondItem="Cib-8d-LTk" secondAttribute="bottom" id="XHv-ve-wSn"/>
+                <constraint firstAttribute="trailing" secondItem="qb2-hz-xyt" secondAttribute="trailing" id="e2s-Q7-cdw"/>
+                <constraint firstAttribute="bottom" secondItem="qb2-hz-xyt" secondAttribute="bottom" id="nOA-jl-IKx"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="qAR-uc-FWQ" secondAttribute="trailing" constant="5" id="nqC-qE-9qX"/>
+                <constraint firstItem="qb2-hz-xyt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="p6o-6z-4Cy"/>
+                <constraint firstItem="qb2-hz-xyt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="w4e-2d-5vz"/>
                 <constraint firstItem="Cib-8d-LTk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="zDx-Kc-cg3"/>
             </constraints>
             <size key="customSize" width="311" height="242"/>
             <connections>
                 <outlet property="availableCount" destination="aSH-zg-3gG" id="xp5-ry-YkG"/>
                 <outlet property="bagImage" destination="hD1-EN-m4A" id="LxI-ZY-oqK"/>
+                <outlet property="checkMarkImage" destination="qAR-uc-FWQ" id="5dn-OZ-g6V"/>
                 <outlet property="count" destination="Ijw-Pj-2QJ" id="he0-k2-WuZ"/>
+                <outlet property="heiglitedSelectionView" destination="qb2-hz-xyt" id="LDL-sc-bcL"/>
                 <outlet property="price" destination="r2N-Iu-9ip" id="4n9-uf-kl5"/>
                 <outlet property="tableViewCellBackground" destination="Cib-8d-LTk" id="djm-ts-rAt"/>
                 <outlet property="title" destination="8CW-FZ-N8i" id="NAo-H3-hLY"/>
@@ -245,6 +264,7 @@
     </designables>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <namedColor name="Color">
             <color red="0.9649999737739563" green="0.62400001287460327" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
