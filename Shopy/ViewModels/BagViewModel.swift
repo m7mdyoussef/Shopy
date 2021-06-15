@@ -21,8 +21,9 @@ protocol BagViewModelType {
     var error: Driver<Bool>{get}
 }
 
-class BagViewModel: BagViewModelType,ICanLogin {
+class BagViewModel: BagViewModelType,ICanLogin,ICanPlaySound{
     
+    var player: AVAudioPlayer?
     var loading: Driver<Bool>
     var error: Driver<Bool>
     let remote : RemoteDataSource!
@@ -80,18 +81,18 @@ class BagViewModel: BagViewModelType,ICanLogin {
         return array
     }
     
-    var bombSoundEffect: AVAudioPlayer?
-    func playPaidSound()  {
-        
-        guard let path = Bundle.main.path(forResource: "Cash", ofType: "mp3") else {return}
-        let url = URL(fileURLWithPath: path)
-
-        do {
-            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
-            bombSoundEffect?.play()
-        } catch(let err) {
-            print("could load \(err)")
-        }
-
-    }
+//    var bombSoundEffect: AVAudioPlayer?
+//    func playPaidSound()  {
+//
+//        guard let path = Bundle.main.path(forResource: "Cash", ofType: "mp3") else {return}
+//        let url = URL(fileURLWithPath: path)
+//
+//        do {
+//            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
+//            bombSoundEffect?.play()
+//        } catch(let err) {
+//            print("could load \(err)")
+//        }
+//
+//    }
 }

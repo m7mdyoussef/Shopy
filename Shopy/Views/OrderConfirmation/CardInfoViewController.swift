@@ -25,9 +25,8 @@ class CardInfoViewController: UIViewController {
     
     //MARK: - IBOutlets
     //        @IBOutlet weak var doneButtonOutlet: UIButton!
-    @IBOutlet weak var uiStackTextField: UIStackView!
-    
-    @IBOutlet weak var uiViewTextField: UIView!
+//    @IBOutlet weak var uiStackTextField: UIStackView!
+//    @IBOutlet weak var uiViewTextField: UIView!
     @IBOutlet weak var uiSubmitButton: UIButton!
     @IBOutlet weak var uiPaymentlabel: MarqueeLabel!
     @IBOutlet weak var uiName: UILabel!
@@ -49,28 +48,18 @@ class CardInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //            uiPaymentCardView.addSubview(paymentCardTextField)
-        uiStackTextField.addArrangedSubview(paymentCardTextField)
+//        uiStackTextField.addArrangedSubview(paymentCardTextField)
         paymentCardTextField.delegate = self
         uiPaymentlabel.text! += paymentMethod.rawValue
         uiName.text! += MyUserDefaults.getValue(forKey: .username) as! String
         
-        
-//        if MyUserDefaults.getValue(forKey: .phone) != nil{
-//            uiPhone.isHidden = false
-//            uiPhone.text! += " \(String(describing: MyUserDefaults.getValue(forKey: .phone)))"
-//        }else{
-//            uiPhone.isHidden = true
-//        }
-        
         uiAddress.text! += "\(MyUserDefaults.getValue(forKey:.title) as! String), \(MyUserDefaults.getValue(forKey:.city) as! String), \(MyUserDefaults.getValue(forKey:.country) as! String)"
         uiPhone.text! += MyUserDefaults.getValue(forKey: .phone) as! String
         uiItemCount.text! = String(describing: orderObject.products.count)
-        uiSubtotal.text = "\(orderObject.subTotal)"
-        
+        uiSubtotal.text = "$\(orderObject.subTotal)"
         
         uiDiscount.text = "$\(Double(round(100 * (orderObject.discount) )/100))"
-        uiTotal.text = "\(orderObject.subTotal - orderObject.discount)"
+        uiTotal.text = "$\(orderObject.subTotal - orderObject.discount)"
     }
     
     
@@ -78,16 +67,17 @@ class CardInfoViewController: UIViewController {
         
         switch paymentMethod {
         case .cash:
-            uiViewTextField.isHidden = true
+//            uiViewTextField.isHidden = true
             uiSubmitButton.alpha = 1
             uiSubmitButton.isEnabled = true
         case .stripe:
-            uiViewTextField.isHidden = false
+//            uiViewTextField.isHidden = false
             uiSubmitButton.alpha = 0.5
             uiSubmitButton.isEnabled = false
         default:
-            uiStackTextField.isHidden = false
-            uiStackTextField.alpha = 1
+            print("asd")
+//            uiStackTextField.isHidden = false
+//            uiStackTextField.alpha = 1
         }
     }
     
@@ -105,7 +95,7 @@ class CardInfoViewController: UIViewController {
             self.viewModel.checkout(product: self.orderObject.products,status: .pending)
         }
         
-        viewModel.playPaidSound()
+        viewModel.playSound(name: "Cash")
     }
     //MARK: - IBActions
     

@@ -155,7 +155,8 @@ class CategoryViewController: UIViewController,ICanLogin {
                 self.collectionViewModel.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
                 let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
-                self.navigationController?.pushViewController(detailsViewController, animated: true)
+//                self.navigationController?.pushViewController(detailsViewController, animated: true)
+                self.present(detailsViewController, animated: true, completion: nil)
             }
         }.disposed(by: db)
         

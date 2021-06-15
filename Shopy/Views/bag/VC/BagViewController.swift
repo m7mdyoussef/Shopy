@@ -15,10 +15,9 @@ import ViewAnimator
 
 class BagViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
-//    @IBOutlet weak var checkoutView: UIView!
+
     @IBOutlet weak var uiEmptyImage: UIImageView!
     @IBOutlet weak var checkoutButton: UIButton!
-    @IBOutlet weak var afterDiscountLabel: UILabel!
     @IBOutlet weak var bagProductsCollectionView: UICollectionView!{
         didSet{
             bagProductsCollectionView.delegate = self
@@ -117,11 +116,9 @@ class BagViewController: UIViewController {
                 if discount == true{
                     self.totalPriceLabel.text = "$ \(self.totalPrice)"
                     self.totalDiscount = self.totalPrice - (self.totalPrice * 0.10)
-                    self.afterDiscountLabel.text = "$ \(round(self.totalDiscount))"
                 }else{
                     self.totalDiscount = self.totalPrice
                     self.totalPriceLabel.text = "$ \(self.totalPrice)"
-                    self.afterDiscountLabel.text = "$ \(self.totalPrice)"
                 }
             }else{
                 self.uiEmptyImage.isHidden = false

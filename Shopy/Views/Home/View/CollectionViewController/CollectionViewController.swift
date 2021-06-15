@@ -146,7 +146,7 @@ class CollectionViewController: UIViewController,ICanLogin {
         isDiscount = true
         MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         let popup = AppCommon.shared.showPopupDialog(title: "Congratulation🥳🥳".localized, message: "You got 10% Discount.".localized, image: adsImage.image!)
-        self.collectionViewModel?.playWow()
+        self.collectionViewModel?.playSound(name: "Wow")
         discountCode.isHidden = true
         self.collectionViewModel?.saveDiscountCode(code: myDiscount)
         self.present(popup, animated: true, completion: nil)
@@ -263,7 +263,8 @@ class CollectionViewController: UIViewController,ICanLogin {
                 self.collectionViewModel?.getProductElement(idProduct: String(element?.id ?? 0) )
                 let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.idProduct = String(element?.id ?? 0)
-                self.navigationController?.pushViewController(detailsViewController, animated: true)
+//                self.navigationController?.pushViewController(detailsViewController, animated: true)
+                self.present(detailsViewController, animated: true, completion: nil)
             }
         }.disposed(by: disposeBag)
     }
