@@ -102,6 +102,7 @@
 		CF78F3F72669D03C005B9FE1 /* black.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF78F3F62669D03C005B9FE1 /* black.gif */; };
 		CF78F3FC2669D08C005B9FE1 /* specialoffers.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF78F3FB2669D08C005B9FE1 /* specialoffers.gif */; };
 		CF78F436266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78F435266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift */; };
+		CF79D3F326794A2B008697AB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79D3F226794A2B008697AB /* SettingViewController.swift */; };
 		CFE2272026777A1C009AA907 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE2271F26777A1B009AA907 /* ErrorMessage.swift */; };
 		CFE2273A2677FF26009AA907 /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFE227392677FF26009AA907 /* splash.gif */; };
 		CFE2273F2677FF55009AA907 /* bravo.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFE2273E2677FF55009AA907 /* bravo.gif */; };
@@ -256,6 +257,7 @@
 		CF78F3F62669D03C005B9FE1 /* black.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = black.gif; sourceTree = "<group>"; };
 		CF78F3FB2669D08C005B9FE1 /* specialoffers.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = specialoffers.gif; sourceTree = "<group>"; };
 		CF78F435266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductDetails+DelegateFlowLayout.swift"; sourceTree = "<group>"; };
+		CF79D3F226794A2B008697AB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CFE2271F26777A1B009AA907 /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		CFE227392677FF26009AA907 /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		CFE2273E2677FF55009AA907 /* bravo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bravo.gif; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 		9E756A0526642D14000B5D98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CF79D3F1267949C2008697AB /* Setting */,
 				CFE227632678048F009AA907 /* Splash */,
 				277533F92674AEB8009F535A /* Settings */,
 				9E182D8A26503E8100069E6E /* Main.storyboard */,
@@ -757,6 +760,14 @@
 				CF78F435266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift */,
 			);
 			path = Product_details_viewContoller;
+			sourceTree = "<group>";
+		};
+		CF79D3F1267949C2008697AB /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				CF79D3F226794A2B008697AB /* SettingViewController.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		CFE2264126736FE500952274 /* GIFs */ = {
@@ -1224,6 +1235,7 @@
 				CF78F436266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift in Sources */,
 				9E756A10266431EB000B5D98 /* SubCategoriesCollectionViewCell.swift in Sources */,
 				2766A920266F5F3E0036F78C /* Order.swift in Sources */,
+				CF79D3F326794A2B008697AB /* SettingViewController.swift in Sources */,
 				27A3E18926724F62008590EB /* PostOrder.swift in Sources */,
 				27DED85E2671E2C300870B9A /* OrderProductsCell.swift in Sources */,
 				D2745A5126575255005ABAF2 /* ApiServices.swift in Sources */,
