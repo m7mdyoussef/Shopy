@@ -11,6 +11,7 @@ import MOLH
 class SettingViewController: UIViewController {
     var viewModel:MeTapViewModel!
     
+    @IBOutlet weak var switchTheme: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MeTapViewModel()
@@ -29,11 +30,23 @@ class SettingViewController: UIViewController {
         }
     }
     
+    @IBAction func changeTheme(_ sender: Any) {
+        if switchTheme.isOn == true{
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+               return
+            }
+            view.window?.overrideUserInterfaceStyle = .dark
+        }
+        else{
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+               return
+            }
+            view.window?.overrideUserInterfaceStyle = .light
+        }
+    }
     @IBAction func editProfile(_ sender: Any) {
     }
     
-    @IBAction func darkMode(_ sender: Any) {
-    }
     
     @IBAction func logout(_ sender: Any) {
         let status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
