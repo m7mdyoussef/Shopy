@@ -168,7 +168,7 @@ class BagViewController: UIViewController {
 //        fetchBagProducts()
 //        updateTotalPrice()
         let alertController = UIAlertController(title: "Payment Options".localized, message: "Choose prefered payment option".localized, preferredStyle: .actionSheet)
-        let vc = UIStoryboard.init(name: "Main".localized, bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CardInfoViewController
+        let vc = UIStoryboard.init(name: "Main".localized, bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CartInfoViewController
         vc.delegate = self
         
         let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool ? Double(round(1000 * (totalPrice * 0.10) )/1000) : 0

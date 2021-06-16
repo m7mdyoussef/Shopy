@@ -10,6 +10,7 @@ import UIKit
 import Stripe
 import MarqueeLabel
 import SDWebImage
+import DropDown
 
 protocol CardInfoViewControllerDelegate {
     func didClickDone(_ token: STPToken)
@@ -21,7 +22,7 @@ enum PaymentType : String{
     case cash = "Cash on Deliver"
     case stripe = "Visa"
 }
-class CardInfoViewController: UIViewController {
+class CartInfoViewController: UIViewController {
     
     //MARK: - IBOutlets
     //        @IBOutlet weak var doneButtonOutlet: UIButton!
@@ -36,14 +37,17 @@ class CardInfoViewController: UIViewController {
     @IBOutlet weak var uiSubtotal: UILabel!
     @IBOutlet weak var uiDiscount: UILabel!
     @IBOutlet weak var uiTotal: UILabel!
+    @IBOutlet weak var uiAddressDropDownView: UIView!
     
     let paymentCardTextField = STPPaymentCardTextField()
     private var viewModel = BagViewModel()
     var delegate: CardInfoViewControllerDelegate?
     var paymentMethod : PaymentType!
-//    var bagProducts : [BagProduct]!
-//    var totalDiscount : Double!
     var orderObject:OrderObject!
+    var addressesDropDown:DropDown!
+    var addressesArray : [String]!
+    var allAddresses : [Address]!
+    
     //MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +64,40 @@ class CardInfoViewController: UIViewController {
         
         uiDiscount.text = "$\(Double(round(100 * (orderObject.discount) )/100))"
         uiTotal.text = "$\(orderObject.subTotal - orderObject.discount)"
+        
+        self.addressesDropDown = DropDown()
+        self.addressesDropDown.anchorView = self.uiAddressDropDownView
+        self.addressesDropDown.direction = .bottom
+        self.addressesDropDown.bottomOffset = CGPoint(x: 0, y:self.uiAddressDropDownView.plainView.bounds.height)
+        
+        addressesDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+          print("Selected item: \(item) at index: \(index)")
+            let all = allAddresses[index]
+            
+            uiAddress.text = "Address : "
+            uiAddress.text! += "\(String(describing: all.title!)), \(String(describing: all.city!)), \(String(describing: all.country!))"
+            
+        }
+        
+//        fetchAddresses()
+    
+    }
+    
+    func fetchAddresses() {
+        let remote  = RemoteDataSource()
+        
+        remote.getCustomer(customerId: MyUserDefaults.getValue(forKey: .id) as! Int) { (customer) in
+            guard let customer = customer else {return}
+            
+            self.allAddresses = customer.customer.addresses
+            self.addressesArray = customer.customer.addresses.map({ $0.title! })
+            self.addressesDropDown.dataSource = self.addressesArray
+        }
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        fetchAddresses()
         switch paymentMethod {
         case .cash:
 //            uiViewTextField.isHidden = true
@@ -139,11 +172,15 @@ class CardInfoViewController: UIViewController {
             }
         }
     }
+    @IBAction func uiAddressesButton(_ sender: Any) {
+        addressesDropDown.show()
+    }
+    
 }
 
 
 
-extension CardInfoViewController: STPPaymentCardTextFieldDelegate {
+extension CartInfoViewController: STPPaymentCardTextFieldDelegate {
     
     func paymentCardTextFieldDidChange(_ textField: STPPaymentCardTextField) {
         uiSubmitButton.isEnabled = textField.isValid
@@ -151,7 +188,7 @@ extension CardInfoViewController: STPPaymentCardTextFieldDelegate {
     }
 }
 
-extension CardInfoViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+extension CartInfoViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         orderObject.products.count
     }

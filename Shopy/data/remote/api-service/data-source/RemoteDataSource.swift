@@ -14,9 +14,10 @@ protocol RemoteDataSourceProtocol {
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void)
     func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void)
     func getAllUsers(onSuccess: @escaping (AllCustomers?)->Void , onError: @escaping (Error)->Void)
-
+    func getCustomer(customerId : Int,onCompletion: @escaping (Customer?) -> Void)
     func fetchOrders( completion: @escaping (Result<Orders?,NSError>) -> Void )
     func postOrder(order:PostOrderRequest , onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void)
+    func updateCustomer(customer:Customer,id:Int,onCompletion:@escaping (Data) -> Void,onFalure: @escaping (Error)->Void)
     //end amin
     
     
@@ -48,7 +49,7 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
     
     // amin
     func registerACustomer(customer:Customer, onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) {
-        self.postACustomer(target: .register(myCustomer: customer), onSuccess: { (data) in
+        self.postData(target: .register(myCustomer: customer), onSuccess: { (data) in
             onCompletion(data)
         }) { (error) in
             onFailure(error)
@@ -75,7 +76,7 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
     
     
     func postOrder(order:PostOrderRequest , onCompletion: @escaping (Data) -> Void, onFailure: @escaping (Error) -> Void) {
-        self.postACustomer(target: .postOrder(order: order), onSuccess: { (data) in
+        self.postData(target: .postOrder(order: order), onSuccess: { (data) in
 //        print(String(decoding: data, as: UTF8.self))
             onCompletion(data)
         }) { (error) in
@@ -93,6 +94,28 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
             }
         }
     }
+    
+    func updateCustomer(customer: Customer, id: Int, onCompletion: @escaping (Data) -> Void, onFalure: @escaping (Error) -> Void) {
+        self.postData(target: .updateCustomer(customer: customer, id: id)) { (data) in
+            onCompletion(data)
+        } onFailure: { (err) in
+           onFalure(err)
+        }
+
+    }
+    
+    func getCustomer(customerId: Int, onCompletion: @escaping (Customer?) -> Void) {
+        fetchData(target: .getCustomer(customerId: customerId), responseClass: Customer.self) { (result) in
+            switch result{
+            case .success(let customer):
+                onCompletion(customer)
+            case .failure(let err):
+                print(err)
+                onCompletion(nil)
+            }
+        }
+    }
+    
     
     // end amin
     func getProductElement(productId: String, completion: @escaping (Result<Product?, NSError>) -> Void) {

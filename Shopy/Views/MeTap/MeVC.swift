@@ -102,9 +102,24 @@ class MeVC: UIViewController {
             }
         }
         
+        let editProfile = UIAlertAction(title: "Edit Profile", style: .default) { [weak self] (_) in
+            guard let self = self else {return}
+            let vc = self.storyboard?.instantiateViewController(identifier: "Register") as! Register
+            
+            self.viewModel.getCustomerData { (customer,id) in
+                vc.customer = customer
+                vc.customerID = id
+                self.present(vc, animated: true, completion: nil)
+            } onError: {
+                vc.customer = nil
+                self.present(vc, animated: true, completion: nil)
+            }
+        }
+        
         let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
         alert.addAction(lang)
         alert.addAction(logoutaction)
+        alert.addAction(editProfile)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
