@@ -24,6 +24,79 @@ class BagViewController: UIViewController {
             bagProductsCollectionView.dataSource = self
         }
     }
+    enum Mode {
+        case view
+        case selection
+    }
+    
+    var selectedIndexPathDictionaries : [IndexPath:Bool] = [:]
+    var currentMode : Mode = .view{
+        didSet{
+            switch currentMode {
+            case .view:
+                for (key , value) in selectedIndexPathDictionaries{
+                    if value {
+                        bagProductsCollectionView.deselectItem(at: key, animated: true)
+                    }
+                }
+                selectedIndexPathDictionaries.removeAll()
+                selectBarButton.title = "Select"
+                self.navigationItem.leftBarButtonItem = nil
+                self.navigationItem.hidesBackButton = false
+             //   navigationItem.leftBarButtonItem = nil
+                bagProductsCollectionView.allowsMultipleSelection = false
+            case .selection:
+                selectBarButton.title = "Cancel"
+                navigationItem.leftBarButtonItem = deleteBarButton
+                bagProductsCollectionView.allowsMultipleSelection = true
+            }
+            
+        }
+    }
+    
+    lazy var selectBarButton : UIBarButtonItem={
+        let item = UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(selectionButtonAction))
+        return item
+    }()
+    
+    @objc func selectionButtonAction(){
+        currentMode = currentMode == .selection ? .view : .selection
+    }
+    
+    lazy var deleteBarButton : UIBarButtonItem={
+        let item = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deletionButtonAction))
+        return item
+    }()
+    
+    @objc func deletionButtonAction(){
+        let alert = UIAlertController(title: "Confirmatiom".localized, message: "Do you want to delete it?".localized, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Yes".localized, style: .destructive) { _ in
+            var deletedIndexPath : [IndexPath] = []
+            for (key , value) in self.selectedIndexPathDictionaries{
+                if value {
+                    deletedIndexPath.append(key)
+                }
+            }
+            
+            for i in deletedIndexPath.sorted(by: {$0.item>$1.item}){
+                self.deletFromBagProducts(productID: Int(self.bagProducts[i.item].id ))
+            }
+
+            self.selectedIndexPathDictionaries.removeAll()
+        }
+        let no = UIAlertAction(title: "No".localized, style: .default) { _ in
+        }
+        
+        alert.addAction(no)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+      
+        
+    }
+    
+    
+    
+    
     var viewModel : BagViewModel!
     var bagProducts = [BagProduct]()
 
@@ -39,6 +112,7 @@ class BagViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNavigationBar()
         viewModel = BagViewModel()
         navigationItem.title = "Bag Products".localized
         let favProductCell = UINib(nibName: "BagCollectionViewCell", bundle: nil)
@@ -70,6 +144,11 @@ class BagViewController: UIViewController {
 //        let animation = AnimationType.from(direction: .left, offset: 300)
 //        UIView.animate(views: bagProductsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 3)
 //    }
+    
+    func setUpNavigationBar(){
+        navigationItem.rightBarButtonItem = selectBarButton
+    }
+    
     
     func emptyBag()  {
         for item in bagProducts{
@@ -290,6 +369,23 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch currentMode {
+        case .view:
+            bagProductsCollectionView.deselectItem(at: indexPath, animated: true)
+        case .selection:
+            selectedIndexPathDictionaries[indexPath] = true
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        switch currentMode {
+        case .view:
+            break
+        case .selection:
+            selectedIndexPathDictionaries[indexPath] = false
+        }
     }
 
 

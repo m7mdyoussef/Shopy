@@ -10,9 +10,11 @@ import UIKit
 import DropDown
 
 class BagCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var checkMarkImage: UIImageView!
     @IBOutlet weak var bagImage: UIImageView!
     @IBOutlet weak var title: UILabel!
     
+    @IBOutlet weak var heiglitedSelectionView: UIView!
     @IBOutlet weak var tableViewCellBackground: UIView!
     @IBOutlet weak var count: UILabel!
     @IBOutlet weak var price: UILabel!
@@ -70,6 +72,24 @@ class BagCollectionViewCell: UICollectionViewCell {
     @IBAction func uiShowMenue(_ sender: Any) {
         sizeSelectionMenu.show()
     }
+    
+    
+    
+    override var isHighlighted: Bool{
+        didSet{
+            heiglitedSelectionView.isHidden = !isHighlighted
+            print("idHighlighted")
+        }
+    }
+    override var isSelected: Bool{
+        didSet{
+            heiglitedSelectionView.isHidden = !isSelected
+            checkMarkImage.isHidden = !isSelected
+            print("isSelected")
+        }
+    }
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
