@@ -16,7 +16,6 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         viewModel = MeTapViewModel()
     }
-    
 
     @IBAction func changeLanguage(_ sender: Any) {
         MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "en" ? "ar" : "en")

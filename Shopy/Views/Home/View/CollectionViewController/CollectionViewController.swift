@@ -47,7 +47,7 @@ class CollectionViewController: UIViewController,ICanLogin {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = UIColor.black
+      //  self.navigationController?.navigationBar.barTintColor = UIColor.black
         startPoint()
     }
     
