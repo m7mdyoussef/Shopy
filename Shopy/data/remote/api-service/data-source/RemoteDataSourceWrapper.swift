@@ -46,6 +46,8 @@ extension RemoteDataSourceWrapper :ApiRequestWrapper{
             return .post
         case .removeOrder:
             return .delete
+        case .postOrder:
+            return .post
         case .updateCustomer:
             return .put
         default:

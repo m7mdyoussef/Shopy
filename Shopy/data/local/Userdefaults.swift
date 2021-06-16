@@ -8,8 +8,14 @@
 
 import Foundation
 
+
+enum Themes : String{
+    case dark = "dark"
+    case light = "ligh"
+}
 enum Keys:String {
     case isFirstTime = "isFirstTime"
+    case theme = "theme"
     case email = "email"
     case username = "username"
     case loggedIn = "logedIn"

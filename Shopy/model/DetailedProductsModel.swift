@@ -3,7 +3,7 @@
 //  Shopy
 //
 //  Created by mohamed youssef on 6/3/21.
-//  Copyright © 2021 mohamed youssef. All rights reserved.
+//  Copyright ©️ 2021 mohamed youssef. All rights reserved.
 //
 
 import Foundation
@@ -20,6 +20,7 @@ struct DetailedProducts: Codable {
     let createdAt: String
     let handle: String
     let updatedAt, publishedAt: String
+    let templateSuffix: String?
     let status: Status
     let publishedScope: PublishedScope
     let tags, adminGraphqlAPIID: String
@@ -27,58 +28,62 @@ struct DetailedProducts: Codable {
     let options: [Option]
     let images: [Image]
     let image: Image
+    
 
     enum CodingKeys: String, CodingKey {
-        case id, title
-        case bodyHTML = "body_html"
-        case vendor
-        case productType = "product_type"
-        case createdAt = "created_at"
-        case handle
-        case updatedAt = "updated_at"
-        case publishedAt = "published_at"
-        case status
-        case publishedScope = "published_scope"
-        case tags
-        case adminGraphqlAPIID = "admin_graphql_api_id"
-        case variants, options, images, image
-    }
+         case id, title
+         case bodyHTML = "body_html"
+         case vendor
+         case productType = "product_type"
+         case createdAt = "created_at"
+         case handle
+         case updatedAt = "updated_at"
+         case publishedAt = "published_at"
+         case templateSuffix = "template_suffix"
+         case status
+         case publishedScope = "published_scope"
+         case tags
+         case adminGraphqlAPIID = "admin_graphql_api_id"
+         case variants, options, images, image
+     }
+    
 }
+
+
 
 // MARK: - Image
 struct Image: Codable {
-    let id, productID, position: Int
+    let productID, id, position: Int
     let createdAt, updatedAt: String
+    //let alt: JSONNull?
     let width, height: Int
     let src: String
+   // let variantIDS: [JSONAny]
     let adminGraphqlAPIID: String
 
     enum CodingKeys: String, CodingKey {
-        case id
         case productID = "product_id"
-        case position
+        case id, position
         case createdAt = "created_at"
         case updatedAt = "updated_at"
-        case width, height, src
+        case  width, height, src
+      //  case variantIDS = "variant_ids"
         case adminGraphqlAPIID = "admin_graphql_api_id"
     }
 }
-
-
-
 // MARK: - Option
 struct Option: Codable {
-    let id, productID: Int
+    let productID, id: Int
     let name: Name
     let position: Int
     let values: [String]
 
     enum CodingKeys: String, CodingKey {
-        case id
         case productID = "product_id"
-        case name, position, values
+        case id, name, position, values
     }
 }
+
 
 enum Name: String, Codable {
     case color = "Color"
@@ -90,55 +95,12 @@ enum ProductType: String, Codable {
     case shoes = "SHOES"
     case tShirts = "T-SHIRTS"
 }
-
 enum PublishedScope: String, Codable {
     case web = "web"
 }
 
 enum Status: String, Codable {
     case active = "active"
-}
-
-// MARK: - Variant
-struct DetailedVariant: Codable {
-    let id, productID: Int
-    let title, price, sku: String
-    let position: Int
-    let inventoryPolicy: InventoryPolicy
-    let compareAtPrice: String?
-    let fulfillmentService: FulfillmentService
-    let inventoryManagement: InventoryManagement
-    let option1: String
-    let option2: Option2
-    let createdAt, updatedAt: String
-    let taxable: Bool
-    let grams: Int
-    let weight: Int
-    let weightUnit: WeightUnit
-    let inventoryItemID, inventoryQuantity, oldInventoryQuantity: Int
-    let requiresShipping: Bool
-    let adminGraphqlAPIID: String
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case productID = "product_id"
-        case title, price, sku, position
-        case inventoryPolicy = "inventory_policy"
-        case compareAtPrice = "compare_at_price"
-        case fulfillmentService = "fulfillment_service"
-        case inventoryManagement = "inventory_management"
-        case option1, option2
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case taxable, grams
-        case weight
-        case weightUnit = "weight_unit"
-        case inventoryItemID = "inventory_item_id"
-        case inventoryQuantity = "inventory_quantity"
-        case oldInventoryQuantity = "old_inventory_quantity"
-        case requiresShipping = "requires_shipping"
-        case adminGraphqlAPIID = "admin_graphql_api_id"
-    }
 }
 
 enum FulfillmentService: String, Codable {
@@ -152,6 +114,49 @@ enum InventoryManagement: String, Codable {
 enum InventoryPolicy: String, Codable {
     case deny = "deny"
 }
+
+// MARK: - Variant
+struct DetailedVariant: Codable {
+    let productID, id: Int
+    let title, price, sku: String
+    let position: Int
+    let inventoryPolicy: InventoryPolicy
+    let compareAtPrice: String?
+    let fulfillmentService: FulfillmentService
+    let inventoryManagement: InventoryManagement
+    let option1: String
+    let option2: Option2?
+    let createdAt, updatedAt: String
+    let taxable: Bool
+    let barcode: String?
+    let grams: Int
+    let weight: Int
+    let weightUnit: WeightUnit
+    let inventoryItemID, inventoryQuantity, oldInventoryQuantity: Int
+    let requiresShipping: Bool
+    let adminGraphqlAPIID: String
+
+    enum CodingKeys: String, CodingKey {
+        case productID = "product_id"
+        case id, title, price, sku, position
+        case inventoryPolicy = "inventory_policy"
+        case compareAtPrice = "compare_at_price"
+        case fulfillmentService = "fulfillment_service"
+        case inventoryManagement = "inventory_management"
+        case option1, option2
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case taxable, barcode, grams
+        case weight
+        case weightUnit = "weight_unit"
+        case inventoryItemID = "inventory_item_id"
+        case inventoryQuantity = "inventory_quantity"
+        case oldInventoryQuantity = "old_inventory_quantity"
+        case requiresShipping = "requires_shipping"
+        case adminGraphqlAPIID = "admin_graphql_api_id"
+    }
+}
+
 
 enum Option2: String, Codable {
     case beige = "beige"

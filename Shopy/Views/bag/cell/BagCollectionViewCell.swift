@@ -27,6 +27,7 @@ class BagCollectionViewCell: UICollectionViewCell {
 
     var countNumber = 1
     var availableStoredCount = 0
+    var selectedSize = ""
     
     var bagProduct : BagProduct? {
         didSet{
@@ -43,6 +44,7 @@ class BagCollectionViewCell: UICollectionViewCell {
             self.bagImage.doenloadImage(url: bagProduct?.image ?? "")
             
             guard let size = bagProduct?.sizeProduct else {return}
+            selectedSize = size
             uiDropShowMenu.setTitle(" \(size) ", for: .normal)
             
             //initialize dropList
@@ -58,12 +60,12 @@ class BagCollectionViewCell: UICollectionViewCell {
             
             sizeSelectionMenu.selectionAction = { [unowned self] (index: Int, item: String) in
                 self.uiDropShowMenu.setTitle(" \(item) ", for: .normal)
-
+                selectedSize = item
             }
         }
     }
     var deleteFromBagProducts:()->() = {}
-    var updateSavedCount:(Int , Bool)->() = {_,_ in}
+    var updateSavedCount:(Int , Bool,String)->() = {_,_,_ in}
         
     @IBAction func uiShowMenue(_ sender: Any) {
         sizeSelectionMenu.show()
@@ -85,7 +87,8 @@ class BagCollectionViewCell: UICollectionViewCell {
         else{
             countNumber-=1
             self.count.text = "\(countNumber)"
-            self.updateSavedCount(countNumber ,true)
+            
+            self.updateSavedCount(countNumber ,true,selectedSize)
         }
     }
     @IBAction func increaseCount(_ sender: Any) {
@@ -93,9 +96,9 @@ class BagCollectionViewCell: UICollectionViewCell {
         if countNumber+1 <= availableStoredCount {
             countNumber+=1
             self.count.text = "\(countNumber)"
-            self.updateSavedCount(countNumber,true)
+            self.updateSavedCount(countNumber,true,selectedSize)
         }else{
-            self.updateSavedCount(countNumber,false)
+            self.updateSavedCount(countNumber,false,selectedSize)
         }
       
     }

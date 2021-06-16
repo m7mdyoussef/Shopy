@@ -87,11 +87,12 @@ class BagPersistenceManager{
     }
     
     
-    func updateCount(productID :Int , count : Int){
+    func updateCount(productID :Int , count : Int,size:String){
         guard let bagProducts = self.retrievebagProducts() else {return}
         for bag in bagProducts {
             if bag.value(forKey: "id") as! Int64 == Int64(productID) {
                 bag.count = Int64(count)
+                bag.sizeProduct = size
                 try?self.context.save()
             }
         }

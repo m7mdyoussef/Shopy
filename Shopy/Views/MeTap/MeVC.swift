@@ -108,7 +108,8 @@ class MeVC: UIViewController {
 //        alert.addAction(cancel)
 //        present(alert, animated: true, completion: nil)
         let vc = storyboard?.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
-        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
+//        present(vc, animated: true, completion: nil)
 
         //Master
 //        let alert = UIAlertController(title: "Settings".localized, message: "", preferredStyle: .actionSheet)

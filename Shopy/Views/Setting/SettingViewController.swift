@@ -12,12 +12,37 @@ class SettingViewController: UIViewController {
     var viewModel:MeTapViewModel!
     var status : String?
     @IBOutlet weak var switchTheme: UISwitch!
+    @IBOutlet weak var uiEditprofile: UIButton!
+    @IBOutlet weak var uiLogout: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = MeTapViewModel()
-        status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
+        tabBarController?.tabBar.isHidden = true
+        self.navigationItem.title = "Settings".localized
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
+        setTheme()
+        
+        if viewModel.isUserLoggedIn(){
+            uiEditprofile.isHidden = false
+            uiLogout.setTitle(" Logout".localized, for: .normal)
+        }else{
+            uiEditprofile.isHidden = true
+            uiLogout.setTitle(" Login".localized, for: .normal)
+        }
+    }
+    
+    func setTheme(){
+        let status = viewModel.isLightTheme()
+        switchTheme.setOn(!status , animated: true)
+        view.window?.overrideUserInterfaceStyle = status ? .light : .dark
+    }
     @IBAction func changeLanguage(_ sender: Any) {
         MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "en" ? "ar" : "en")
         if #available(iOS 13.0, *) {
@@ -31,18 +56,23 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func changeTheme(_ sender: Any) {
-        if switchTheme.isOn == true{
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-            }
-            view.window?.overrideUserInterfaceStyle = .dark
-        }
-        else{
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-            }
-            view.window?.overrideUserInterfaceStyle = .light
-        }
+//        if switchTheme.isOn == true{
+//
+//            guard (UIApplication.shared.delegate as? AppDelegate) != nil else {
+//                return
+//            }
+//            view.window?.overrideUserInterfaceStyle = .dark
+//        }
+//        else{
+//            guard (UIApplication.shared.delegate as? AppDelegate) != nil else {
+//                return
+//            }
+//            view.window?.overrideUserInterfaceStyle = .light
+//        }
+        
+        viewModel.toggleTheme()
+        setTheme()
+        
     }
     @IBAction func editProfile(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(identifier: "Register") as! Register
@@ -68,8 +98,9 @@ class SettingViewController: UIViewController {
         let ok = UIAlertAction(title: "OK".localized, style: .destructive) { (action) in
             self.viewModel.logout()
             self.tabBarController?.selectedIndex = 0
-            self.viewModel.fetchFavProducts()
-            self.viewModel.fetchOrders()
+            self.dismiss(animated: true,completion: nil)
+//            self.viewModel.fetchFavProducts()
+//            self.viewModel.fetchOrders()
             
         }
         

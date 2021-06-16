@@ -131,9 +131,9 @@ class BagViewController: UIViewController {
         localData.removeFromBag(productID: productID)
         self.fetchBagProducts()
     }
-    func updateCount(productID : Int , count : Int) {
+    func updateCount(productID : Int , count : Int ,size:String) {
         let localData = BagPersistenceManager.shared
-        localData.updateCount(productID: productID, count: count)
+        localData.updateCount(productID: productID, count: count,size: size)
        // self.fetchBagProducts()
     }
     func updateTotalPrice() {
@@ -264,9 +264,9 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
             
            
          }
-        cell.updateSavedCount = {[weak self](count , available) in
+        cell.updateSavedCount = {[weak self](count , available,size) in
             if available {
-                self?.updateCount(productID: Int(self?.bagProducts[indexPath.item].id ?? 0), count: count)
+                self?.updateCount(productID: Int(self?.bagProducts[indexPath.item].id ?? 0), count: count,size: size)
                 self?.fetchBagProducts()
             }
             else{

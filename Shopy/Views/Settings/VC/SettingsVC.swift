@@ -12,6 +12,7 @@ struct SettingOptions {
     var title:String
     var handler:()->Void
 }
+
 class SettingsVC: UIViewController {
     
     var settings = [SettingOptions(title: "English".localized, handler: {

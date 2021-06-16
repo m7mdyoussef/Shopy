@@ -206,4 +206,18 @@ class MeTapViewModel:MeModelType,ICanLogin {
         }
 
     }
+    
+    func isLightTheme() -> Bool  {
+        return (MyUserDefaults.getValue(forKey: .theme) as! Themes.RawValue) == Themes.light.rawValue
+    }
+    
+    func toggleTheme(){
+        let isLight = isLightTheme()
+        
+        if isLight{
+            MyUserDefaults.add(val: Themes.dark.rawValue, key: .theme)
+        }else{
+            MyUserDefaults.add(val: Themes.light.rawValue, key: .theme)
+        }
+    }
 }

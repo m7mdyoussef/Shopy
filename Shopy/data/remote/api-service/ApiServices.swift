@@ -78,7 +78,13 @@ class ApiServices<T : ApiRequestWrapper>{
 
         
 //      request.method = HTTPMethod.post
-        request.httpMethod = target.httpMethod.rawValue
+//        request.httpMethod = target.httpMethod.rawValue
+        
+        if target.httpMethod == .post{
+            request.method = HTTPMethod.post
+        }else{
+            request.method = HTTPMethod.put
+        }
         
         let session = URLSession.shared
         request.httpShouldHandleCookies = false
