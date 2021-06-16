@@ -47,7 +47,7 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
         setupScreens()
         registerSizeCell()
         showLoading()
-        sizeCollectionView.rx.setDelegate(self)
+        sizeCollectionView.rx.setDelegate(self).disposed(by: disposeBag)
         cardButton.layer.cornerRadius = 25
         setUpSizeCollection()
         

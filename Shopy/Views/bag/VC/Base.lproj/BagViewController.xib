@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BagViewController" customModule="Shopy" customModuleProvider="target">
             <connections>
-                <outlet property="afterDiscountLabel" destination="JlL-BX-uvD" id="gdo-ti-emR"/>
                 <outlet property="bagProductsCollectionView" destination="nyC-1W-z6e" id="Y9D-Im-qfs"/>
                 <outlet property="checkoutButton" destination="O7t-QO-bFK" id="zPd-w4-6lI"/>
                 <outlet property="totalPriceLabel" destination="yFd-km-FhX" id="3Ja-3F-5C6"/>
@@ -35,16 +34,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="394" height="39.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pm-cX-4MU">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="20"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="39.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQA-ts-3GD">
-                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="39.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFd-km-FhX">
-                                                    <rect key="frame" x="197" y="0.0" width="197" height="20"/>
+                                                    <rect key="frame" x="197" y="0.0" width="197" height="39.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -55,31 +54,7 @@
                                                 <constraint firstItem="oQA-ts-3GD" firstAttribute="width" secondItem="6pm-cX-4MU" secondAttribute="width" multiplier="0.5" id="YPE-up-I2j"/>
                                             </constraints>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0s-QH-sGs">
-                                            <rect key="frame" x="0.0" y="20" width="394" height="19.5"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="After Discount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPn-tW-6gY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlL-BX-uvD">
-                                                    <rect key="frame" x="197" y="0.0" width="197" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="yPn-tW-6gY" firstAttribute="width" secondItem="s0s-QH-sGs" secondAttribute="width" multiplier="0.5" id="41j-WJ-fG9"/>
-                                                <constraint firstItem="JlL-BX-uvD" firstAttribute="centerY" secondItem="yPn-tW-6gY" secondAttribute="centerY" id="gKq-ze-mMM"/>
-                                            </constraints>
-                                        </stackView>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="s0s-QH-sGs" firstAttribute="height" relation="greaterThanOrEqual" secondItem="Meq-gL-uk4" secondAttribute="height" multiplier="0.5" id="NvB-2o-vYj"/>
-                                    </constraints>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7t-QO-bFK">
                                     <rect key="frame" x="0.0" y="49.5" width="394" height="40"/>

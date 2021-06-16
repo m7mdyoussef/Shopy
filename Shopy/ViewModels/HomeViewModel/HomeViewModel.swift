@@ -25,7 +25,9 @@ protocol HomeModelType{
     var LoadingObservable: Observable<Bool>?{get}
 }
 
-class HomeViewModel: HomeModelType,ICanLogin{
+class HomeViewModel: HomeModelType,ICanLogin,ICanPlaySound{
+    var player: AVAudioPlayer?
+    
     var LoadingObservable: Observable<Bool>?
         
     var ProductElements:[ProductElement]?
@@ -159,43 +161,20 @@ class HomeViewModel: HomeModelType,ICanLogin{
             self.Loadingsubject.onNext(false)
         }
     }
-   
-    var bombSoundEffect: AVAudioPlayer?
-    func playWow()  {
-        
-        guard let path = Bundle.main.path(forResource: "Wow", ofType: "mp3") else {return}
-        let url = URL(fileURLWithPath: path)
-
-        do {
-            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
-            bombSoundEffect?.play()
-        } catch(let err) {
-            print("could load \(err)")
-        }
-
-    }
-    
-//    func playWow() {
 //
-//        guard let url = Bundle.main.url(forResource: "Wow", withExtension: "mp3") else { return }
+//    var bombSoundEffect: AVAudioPlayer?
+//    func playWow()  {
+//
+//        guard let path = Bundle.main.path(forResource: "Wow", ofType: "mp3") else {return}
+//        let url = URL(fileURLWithPath: path)
 //
 //        do {
-//            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-//            try AVAudioSession.sharedInstance().setActive(true)
-//
-//            /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
-//            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
-//
-//            /* iOS 10 and earlier require the following line:
-//            player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-//
-//            guard let player = player else { return }
-//
-//            player.play()
-//
-//        } catch let error {
-//            print(error.localizedDescription)
+//            bombSoundEffect = try AVAudioPlayer(contentsOf: url)
+//            bombSoundEffect?.play()
+//        } catch(let err) {
+//            print("could load \(err)")
 //        }
+//
 //    }
     
     func saveDiscountCode(code: String) {

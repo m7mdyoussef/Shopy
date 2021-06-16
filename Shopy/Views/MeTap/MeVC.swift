@@ -109,6 +109,68 @@ class MeVC: UIViewController {
 //        present(alert, animated: true, completion: nil)
         let vc = storyboard?.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
         present(vc, animated: true, completion: nil)
+        
+        //Master
+//        let alert = UIAlertController(title: "Settings".localized, message: "", preferredStyle: .actionSheet)
+//        let lang = UIAlertAction(title: "Language".localized, style: .default) { (action) in
+//
+//
+//            MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "en" ? "ar" : "en")
+//            if #available(iOS 13.0, *) {
+//                let delegate = UIApplication.shared.delegate as? AppDelegate
+//                delegate!.swichRoot()
+//
+//            } else {
+//                // Fallback on earlier versions
+//                MOLH.reset()
+//            }
+//
+//        }
+//        let status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
+//        let logoutaction = UIAlertAction(title: status, style: .destructive) { [weak self] (action) in
+//            guard let self = self else {return}
+//
+//            if status == "Login".localized{
+//                let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
+//                vc.modalPresentationStyle = .fullScreen
+//                self.present(vc, animated: true, completion: nil)
+//            }else{
+//                let logout = UIAlertController(title: "Logout".localized, message: "Are you sure ?".localized, preferredStyle: .alert)
+//                let ok = UIAlertAction(title: "OK".localized, style: .destructive) { (action) in
+//                    self.viewModel.logout()
+//                    self.tabBarController?.selectedIndex = 0
+//                    self.viewModel.fetchFavProducts()
+//                    self.viewModel.fetchOrders()
+//
+//                }
+//
+//                let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+//                logout.addAction(ok)
+//                logout.addAction(cancel)
+//                self.present(logout, animated: true, completion: nil)
+//            }
+//        }
+//
+//        let editProfile = UIAlertAction(title: "Edit Profile", style: .default) { [weak self] (_) in
+//            guard let self = self else {return}
+//            let vc = self.storyboard?.instantiateViewController(identifier: "Register") as! Register
+//
+//            self.viewModel.getCustomerData { (customer,id) in
+//                vc.customer = customer
+//                vc.customerID = id
+//                self.present(vc, animated: true, completion: nil)
+//            } onError: {
+//                vc.customer = nil
+//                self.present(vc, animated: true, completion: nil)
+//            }
+//        }
+//
+//        let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+//        alert.addAction(lang)
+//        alert.addAction(logoutaction)
+//        alert.addAction(editProfile)
+//        alert.addAction(cancel)
+//        present(alert, animated: true, completion: nil)
     }
     
     func setupViews()  {

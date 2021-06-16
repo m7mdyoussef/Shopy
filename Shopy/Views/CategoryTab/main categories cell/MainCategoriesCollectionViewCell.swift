@@ -23,6 +23,7 @@ class MainCategoriesCollectionViewCell: UICollectionViewCell {
             mainCategoriesCellLabel.layer.backgroundColor = isHighlighted ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : #colorLiteral(red: 0.9999235272, green: 1, blue: 0.9998829961, alpha: 1)
          //   mainCatView.backgroundColor = isHighlighted ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : UIColor.white
            mainCategoriesCellHighLightedView.backgroundColor = isHighlighted ? #colorLiteral(red: 0.9631432891, green: 0.6232308745, blue: 0.0003859905701, alpha: 1) : UIColor.white
+
         }
     }
     

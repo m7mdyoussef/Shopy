@@ -62,13 +62,24 @@ class ApiServices<T : ApiRequestWrapper>{
         }
         
     }
-    func postACustomer(target:T,onSuccess: @escaping (Data)->Void , onFailure: @escaping (Error)->Void) {
+    func postData(target:T,onSuccess: @escaping (Data)->Void , onFailure: @escaping (Error)->Void) {
         let urlString = target.baseURL + target.endpoint
         print("url is \(urlString)")
         guard let url = URL(string: urlString) else {return}
         guard AppCommon.shared.checkConnectivity() else {return}
         var request = URLRequest(url: url)
-        request.method = HTTPMethod.post
+//        request.method = HTTPMethod.post
+        
+//        if target.httpMethod.rawValue == "PUT"{
+//            request.method = HTTPMethod.put
+//        }else{
+//            request.httpMethod = HTTPMethod.post
+//        }
+
+        
+//      request.method = HTTPMethod.post
+        request.httpMethod = target.httpMethod.rawValue
+        
         let session = URLSession.shared
         request.httpShouldHandleCookies = false
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -92,9 +103,6 @@ class ApiServices<T : ApiRequestWrapper>{
 //
 //        let url = target.baseURL + target.endpoint
 //            
-//        
-//        let params: [String : Any] = ["stripeToken" : token.tokenId, "amount" : amount, "description" : Constants.defaultDescriptionStripe, "currency" : Constants.defaultCurrencyStripe]
-//
 //        
 //        let serializer = DataResponseSerializer(emptyResponseCodes: Set([200, 204, 205]))
 //        

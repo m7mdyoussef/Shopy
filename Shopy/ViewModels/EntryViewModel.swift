@@ -164,4 +164,53 @@ class EntryViewModel {
             onError(err.localizedDescription)
         }
     }
+    
+    func update(customer:Customer,id:Int,onSuccess:@escaping ()->Void,onFailure:@escaping (String)->Void) {
+        
+        remote.updateCustomer(customer: customer, id: id) { (data) in
+            if let decodedResponse =  try? JSONDecoder().decode(RegisterResponse.self, from: data){
+                print(String(decoding: data, as: UTF8.self))
+               
+                if let phone = decodedResponse.errors?.phone{
+                    let err = "phone \(phone[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }else
+                if let city = decodedResponse.errors?.addressesCity{
+                    let err = "City \(city[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }else if let zip = decodedResponse.errors?.addressesZip{
+                    let err = "Zip code \(zip[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }else if let country = decodedResponse.errors?.addressesCountry{
+                    let err = "Country \(country[0])"
+                    DispatchQueue.main.async {
+                        onFailure(err)
+                    }
+                }
+                
+                else{
+                    DispatchQueue.main.async {
+                        onSuccess()
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    onFailure("An Error Occured")
+                }
+                
+            }
+        } onFalure: { (err) in
+            DispatchQueue.main.async {
+                onFailure("An Error Occured")
+            }
+        }
+
+    }
+    
 }

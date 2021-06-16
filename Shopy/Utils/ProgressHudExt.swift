@@ -46,4 +46,18 @@ extension UIViewController{
     func dismissLoadingHud(hud:JGProgressHUD)  {
         hud.dismiss()
     }
+    
+    func showNotifications(text: String, isError: Bool) {
+        let hud = JGProgressHUD(style: .dark)
+        
+        if isError {
+            hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        } else {
+            hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        }
+        
+        hud.textLabel.text = text
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 2.0)
+    }
 }

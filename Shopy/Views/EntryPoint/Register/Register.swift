@@ -19,7 +19,6 @@ enum MailState:String {
     case notValid = "Email is not valid"
 }
 
-
 class Register: UIViewController,IRounded {
     
     @IBOutlet var uiView: UIView!
@@ -37,6 +36,8 @@ class Register: UIViewController,IRounded {
     
     var viewModel:EntryViewModel!
     var address:Address?
+    var customer:CustomerClass!
+    var customerID:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,17 +48,21 @@ class Register: UIViewController,IRounded {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        if let loggedin = MyUserDefaults.getValue(forKey: .loggedIn){
-            print("logged in is \(loggedin)")
-        }else{
-            print("non")
+        if self.customer != nil {
+            uiFirstName.text = customer.firstName
+            uiLastName.text = customer.lastName
+            uiEmail.text = customer.email
+            uiPhone.text = customer.phone
+            
+            uiEmail.isEnabled = false
+            
         }
-        
     }
     func setupView() {
-        roundView(uiView: uiView)
+        if self.customer == nil{
+            roundView(uiView: uiView)
+        }
         uiSubmit.layer.cornerRadius = uiSubmit.layer.frame.height/2
-        
         uiPassword.addTarget(self, action: #selector(checkPassword), for: .editingChanged)
         uiConfirmation.addTarget(self, action: #selector(checkPassword), for: .editingChanged)
         uiEmail.addTarget(self, action: #selector(checkMail), for: .editingChanged)
@@ -122,54 +127,15 @@ class Register: UIViewController,IRounded {
         viewModel.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
              yes: {empty in
                 
-                if empty == true{
+                if empty == true && customer == nil{
                     onFaildHud(text: "Please Fill in The blanks!!")
                     
                 }else{
                     
-                    if viewModel.isAllTextFilld && viewModel.isMailValid {
-//                        let hud = JGProgressHUD()
-//                        hud.textLabel.text = "Loading"
-//                        hud.style = .dark
-//                        hud.show(in: self.view)
-                        
-                        guard let address = address else {
-                            onFaildHud(text: "Please insert Address Data")
-                            return
-                        }
-                        
-                        let hud = loadingHud(text: "Please Wait", style: .dark)
-                        let myAddress:[Address] = [address]
-                        let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: myAddress))
-                        
-                        viewModel.signUp(customer:newCustomer,
-                                         onSuccess: { [unowned self] in
-//                                            hud.dismiss()
-//                                            self.dismissLoadingHud(hud: hud)
-//                                            self.onSuccessHud()
-                                            
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
-                                                self.viewModel.signIn(email: self.uiEmail.text!, password: self.uiPassword.text!, onSuccess: { [unowned self] in
-                                                    self.dismissLoadingHud(hud: hud)
-                                                    self.navigationController?.popViewController(animated: true)
-                                                }) { [unowned self] (string) in
-                                                    self.dismissLoadingHud(hud: hud)
-                                                    self.onFaildHud(text: string)
-                                                }
-                                            }
-                                            
-                                            
-                                         },onFailure: { [unowned self] localizedDescription in
-                                            print(localizedDescription)
-//                                            hud.dismiss()
-                                            self.dismissLoadingHud(hud: hud)
-                                            self.onFaildHud(text: localizedDescription)
-                                         });
-                        
-                    }else if !viewModel.isMailValid {
-                        onFaildHud(text: "Please Enter Valid Email!!")
+                    if customer != nil{
+                        self.update()
                     }else{
-                        onFaildHud(text: "Please Fill in The blanks!!")
+                        self.register()
                     }
                     
                 }
@@ -177,6 +143,71 @@ class Register: UIViewController,IRounded {
              }, no: {
                 onFaildHud(text: "Please confirm that you enter a valid passwords")
              })
+    }
+    
+    func update() {
+        if !uiLastName.text!.isEmpty && !uiFirstName.text!.isEmpty && !uiPhone.text!.isEmpty {
+            let newCustomer : Customer
+            if let address = address{
+                newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: [address]))
+//                viewModel.update(customer:newCustomer,id:customerID)
+            }else{
+                newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: []))
+//                viewModel.update(customer:newCustomer,id:customerID)
+            }
+            
+            viewModel.update(customer: newCustomer, id: customerID) {
+
+                self.showNotifications(text: "Updated Successfully", isError: false)
+                self.dismiss(animated: true)
+            } onFailure: { (err) in
+                self.onFaildHud(text: err)
+            }
+
+            
+        }else{
+            onFaildHud(text: "Please Fill in The blanks!!")
+        }
+    }
+    
+    func register()  {
+        if viewModel.isAllTextFilld && viewModel.isMailValid {
+            
+            guard let address = address else {
+                onFaildHud(text: "Please insert Address Data")
+                return
+            }
+            
+            let hud = loadingHud(text: "Please Wait", style: .dark)
+            let myAddress:[Address] = [address]
+            let newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: myAddress))
+            
+            viewModel.signUp(customer:newCustomer,
+                             onSuccess: { [unowned self] in
+
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                                    self.viewModel.signIn(email: self.uiEmail.text!, password: self.uiPassword.text!, onSuccess: { [unowned self] in
+                                        self.dismissLoadingHud(hud: hud)
+                                        self.navigationController?.popViewController(animated: true)
+                                    }) { [unowned self] (string) in
+                                        self.dismissLoadingHud(hud: hud)
+                                        self.onFaildHud(text: string)
+                                    }
+                                }
+                                
+                                
+                             },onFailure: { [unowned self] localizedDescription in
+                                print(localizedDescription)
+//                                            hud.dismiss()
+                                self.dismissLoadingHud(hud: hud)
+                                self.onFaildHud(text: localizedDescription)
+                             });
+            
+        }else if !viewModel.isMailValid {
+            onFaildHud(text: "Please Enter Valid Email!!")
+        }else{
+            onFaildHud(text: "Please Fill in The blanks!!")
+        }
     }
     
     @IBAction func listAddresses(_ sender: Any) {
