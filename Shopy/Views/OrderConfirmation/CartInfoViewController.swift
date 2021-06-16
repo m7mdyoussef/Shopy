@@ -26,8 +26,8 @@ class CartInfoViewController: UIViewController {
     
     //MARK: - IBOutlets
     //        @IBOutlet weak var doneButtonOutlet: UIButton!
-//    @IBOutlet weak var uiStackTextField: UIStackView!
-//    @IBOutlet weak var uiViewTextField: UIView!
+    @IBOutlet weak var uiStackTextField: UIStackView!
+    @IBOutlet weak var uiViewTextField: UIView!
     @IBOutlet weak var uiSubmitButton: UIButton!
     @IBOutlet weak var uiPaymentlabel: MarqueeLabel!
     @IBOutlet weak var uiName: UILabel!
@@ -52,7 +52,7 @@ class CartInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        uiStackTextField.addArrangedSubview(paymentCardTextField)
+        uiStackTextField.addArrangedSubview(paymentCardTextField)
         paymentCardTextField.delegate = self
         uiPaymentlabel.text! += paymentMethod.rawValue
         uiName.text! += MyUserDefaults.getValue(forKey: .username) as! String
@@ -100,17 +100,17 @@ class CartInfoViewController: UIViewController {
         fetchAddresses()
         switch paymentMethod {
         case .cash:
-//            uiViewTextField.isHidden = true
+            uiViewTextField.isHidden = true
             uiSubmitButton.alpha = 1
             uiSubmitButton.isEnabled = true
         case .stripe:
-//            uiViewTextField.isHidden = false
+            uiViewTextField.isHidden = false
             uiSubmitButton.alpha = 0.5
             uiSubmitButton.isEnabled = false
         default:
             print("asd")
-//            uiStackTextField.isHidden = false
-//            uiStackTextField.alpha = 1
+            uiStackTextField.isHidden = false
+            uiStackTextField.alpha = 1
         }
     }
     
@@ -119,7 +119,10 @@ class CartInfoViewController: UIViewController {
         switch paymentMethod {
         case .cash:
             self.viewModel.checkout(product: self.orderObject.products,status: .pending)
-            dismissView()
+            viewModel.playSound(name: "Cash")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.dismissView()
+            }
             delegate?.clearBag()
         case .stripe:
             processCard()
@@ -127,20 +130,8 @@ class CartInfoViewController: UIViewController {
         default:
             self.viewModel.checkout(product: self.orderObject.products,status: .pending)
         }
-        
-        viewModel.playSound(name: "Cash")
     }
-    //MARK: - IBActions
-    
-    //        @IBAction func doneButtonPressed(_ sender: Any) {
-    //            processCard()
-    //        }
-    //
-    //        @IBAction func cancelButtonPressed(_ sender: Any) {
-    //                delegate?.didClickCancel()
-    //                dismissView()
-    //        }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
 //        delegate?.didClickCancel()
 //        dismissView()
@@ -164,7 +155,10 @@ class CartInfoViewController: UIViewController {
             
             if error == nil {
                 self.delegate?.didClickDone(token!)
-                self.dismissView()
+                self.viewModel.playSound(name: "Cash")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.dismissView()
+                }
                 self.delegate?.clearBag()
                 //                    self.viewModel.checkout(product: self.bagProducts,status: .paid)
             } else {
@@ -174,6 +168,11 @@ class CartInfoViewController: UIViewController {
     }
     @IBAction func uiAddressesButton(_ sender: Any) {
         addressesDropDown.show()
+    }
+    
+    
+    @IBAction func uiClose(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

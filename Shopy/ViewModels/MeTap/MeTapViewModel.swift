@@ -138,14 +138,16 @@ class MeTapViewModel:MeModelType,ICanLogin {
     }
     
     func getFormattedDate(date: String) -> String? {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // api iso format
-        if let date = formatter.date(from: date) {
-            formatter.dateFormat = "EEEE, MMM d, yyyy"
-            return formatter.string(from: date)
-        }
-        return nil
+//        let formatter = DateFormatter()
+//        formatter.locale = Locale(identifier: "en_US_POSIX")
+//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // api iso format
+//        if let date = formatter.date(from: date) {
+//            formatter.dateFormat = "EEEE, MMM d, yyyy"
+//            return formatter.string(from: date)
+//        }
+//        return nil
+        
+        date.getNamedDayNamedMonthYear()
     }
     
     func removeAllOrders(completion: @escaping ()->Void) {

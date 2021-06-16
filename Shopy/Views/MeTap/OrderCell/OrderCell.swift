@@ -13,7 +13,7 @@ class OrderCell: UICollectionViewCell {
     @IBOutlet weak var uiContainerView: UIView!
     @IBOutlet weak var uiContentView: UIView!
     @IBOutlet private weak var uiBagImage: UIImageView!
-    @IBOutlet private weak var uiOrderIdLabel: UILabel!
+    @IBOutlet private weak var uiCreatedAtLabel: UILabel!
     @IBOutlet private weak var uiCountLabel: UILabel!
     @IBOutlet private weak var uiTotalLabel: UILabel!
     
@@ -21,11 +21,16 @@ class OrderCell: UICollectionViewCell {
         
         didSet{
             guard let orderData = orderData else {return}
-            uiOrderIdLabel.text! = "\("No. :".localized) \(String(orderData.orderNumber))"
+            uiCreatedAtLabel.text! = "\("No. :".localized) \(String(orderData.orderNumber))"
 
             uiCountLabel.text = "\(orderData.lineItems.count) \("item/s".localized)"
             uiTotalLabel.text = "\("Total :$".localized) \(orderData.totalPrice)"
             
+            
+            
+            if let date = orderData.createdAt.getDayMonthYear(){
+                uiCreatedAtLabel.text = "Created At: \(date)"
+            }
 //            self.uiContentView.layer.cornerRadius = 12.69
 //            self.uiContentView.layer.masksToBounds = true
 //            
@@ -42,5 +47,6 @@ class OrderCell: UICollectionViewCell {
         super.awakeFromNib()
 
     }
+
 
 }

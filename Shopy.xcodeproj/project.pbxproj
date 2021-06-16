@@ -40,6 +40,7 @@
 		27B4E42B266AD6F9009A55EF /* UIUPdateAddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */; };
 		27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BBDF25265D36DC009A887D /* EntryPointVC.swift */; };
 		27C3A857266CAEAA00D16F84 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3A856266CAEAA00D16F84 /* MeVC.swift */; };
+		27CEF94C267A31DE00B78C6C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CEF94B267A31DE00B78C6C /* DateExtension.swift */; };
 		27D5063D26780BAD000284EC /* BagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D5063F26780BAD000284EC /* BagViewController.xib */; };
 		27D5064526780C07000284EC /* BagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D5064726780C07000284EC /* BagCollectionViewCell.xib */; };
 		27D506A826781E36000284EC /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D506AA26781E36000284EC /* OrderCell.xib */; };
@@ -180,6 +181,7 @@
 		27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUPdateAddressList.swift; sourceTree = "<group>"; };
 		27BBDF25265D36DC009A887D /* EntryPointVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPointVC.swift; sourceTree = "<group>"; };
 		27C3A856266CAEAA00D16F84 /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
+		27CEF94B267A31DE00B78C6C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		27D5064326780BBC000284EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BagViewController.xib; sourceTree = "<group>"; };
 		27D5064426780BCC000284EC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/BagViewController.strings; sourceTree = "<group>"; };
 		27D5064B26780C0C000284EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BagCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 				D253BA8326752D5600136DC6 /* UIView+Ext.swift */,
 				278647C226762A4000A8B648 /* RoundedBadge.swift */,
 				2797EAFB2678D1ED00A71630 /* ICanPlaySound.swift */,
+				27CEF94B267A31DE00B78C6C /* DateExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1250,6 +1253,7 @@
 				27338D27267544BC003F6C84 /* OrderObject.swift in Sources */,
 				9E686591266653D3007B0388 /* DetailedProductsModel.swift in Sources */,
 				CF47989F2669471500B0A64D /* PriceRules.swift in Sources */,
+				27CEF94C267A31DE00B78C6C /* DateExtension.swift in Sources */,
 				27DDC4ED266BE275002E92A7 /* Products.swift in Sources */,
 				27DDC4D3266BE1E6002E92A7 /* CustomCollection.swift in Sources */,
 				2748ECC0266440F400A9DF42 /* EntryViewModel.swift in Sources */,

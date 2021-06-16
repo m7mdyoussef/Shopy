@@ -139,6 +139,11 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
         }).disposed(by: disposeBag)
         
     }
+    
+    @IBAction func uiClose(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension ProductDetailsViewController: ImageSlideshowDelegate {

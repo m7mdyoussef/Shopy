@@ -28,11 +28,20 @@
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="130"/>
                                         <color key="backgroundColor" red="0.074719302360000003" green="0.070143707099999994" blue="0.10230822119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="No. : " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qIZ-J4-6rG">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="No. : " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qIZ-J4-6rG" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                         <rect key="frame" x="0.0" y="135" width="400" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leadingBuffer">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="13 item/s" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wGm-6G-GgX" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                         <rect key="frame" x="8" y="155.5" width="384" height="18.5"/>
@@ -107,13 +116,16 @@
                 <outlet property="uiContainerView" destination="9OO-EL-OHX" id="dsv-40-g2A"/>
                 <outlet property="uiContentView" destination="OwL-wO-LzL" id="9t4-3p-C9Y"/>
                 <outlet property="uiCountLabel" destination="wGm-6G-GgX" id="Raa-R3-Dkc"/>
-                <outlet property="uiOrderIdLabel" destination="qIZ-J4-6rG" id="CvC-XQ-vSX"/>
+                <outlet property="uiCreatedAtLabel" destination="qIZ-J4-6rG" id="CvC-XQ-vSX"/>
                 <outlet property="uiTotalLabel" destination="yY5-cJ-ggL" id="lut-hl-U1g"/>
             </connections>
             <point key="canvasLocation" x="-368.11594202898556" y="301.33928571428572"/>
         </collectionViewCell>
     </objects>
     <designables>
+        <designable name="qIZ-J4-6rG">
+            <size key="intrinsicContentSize" width="65" height="20.5"/>
+        </designable>
         <designable name="wGm-6G-GgX">
             <size key="intrinsicContentSize" width="73" height="18.5"/>
         </designable>

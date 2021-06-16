@@ -263,7 +263,7 @@ class CollectionViewController: UIViewController,ICanLogin {
                 self.collectionViewModel?.getProductElement(idProduct: String(element?.id ?? 0) )
                 let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.idProduct = String(element?.id ?? 0)
-//                self.navigationController?.pushViewController(detailsViewController, animated: true)
+                detailsViewController.modalPresentationStyle = .fullScreen
                 self.present(detailsViewController, animated: true, completion: nil)
             }
         }.disposed(by: disposeBag)

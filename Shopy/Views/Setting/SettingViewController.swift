@@ -21,11 +21,12 @@ class SettingViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = "Settings".localized
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationItem.backButtonTitle = "Profile".localized
         status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
         setTheme()
         

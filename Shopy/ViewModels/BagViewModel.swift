@@ -47,9 +47,6 @@ class BagViewModel: BagViewModelType,ICanLogin,ICanPlaySound{
             code = [Code(code:MyUserDefaults.getValue(forKey: .discountCode) as! String)]
         }
         
-        
-//        let order = PostNewOrder(lineItems: retreiveLineItems(products: product), customer: MyCustomer(id: id), financialStatus: status.rawValue, discountCode: code)
-        
         let order = PostNewOrder(lineItems: retreiveLineItems(products: product), customer: MyCustomer(id: id), financialStatus: status.rawValue, discountCode: code)
         
         let postOrder = PostOrderRequest(order: order)

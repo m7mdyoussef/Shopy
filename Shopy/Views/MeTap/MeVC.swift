@@ -284,6 +284,8 @@ class MeVC: UIViewController {
         navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
+
         uiOrdersCollection.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         

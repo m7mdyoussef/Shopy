@@ -48,6 +48,8 @@ class BagViewController: UIViewController {
             case .selection:
                 selectBarButton.title = "Cancel"
                 navigationItem.leftBarButtonItem = deleteBarButton
+                navigationItem.leftBarButtonItem?.isEnabled = false
+//                navigationItem.leftBarButtonItem = deleteBarButton
                 bagProductsCollectionView.allowsMultipleSelection = true
             }
             
@@ -81,7 +83,8 @@ class BagViewController: UIViewController {
             for i in deletedIndexPath.sorted(by: {$0.item>$1.item}){
                 self.deletFromBagProducts(productID: Int(self.bagProducts[i.item].id ))
             }
-
+            
+            self.currentMode = .view
             self.selectedIndexPathDictionaries.removeAll()
         }
         let no = UIAlertAction(title: "No".localized, style: .default) { _ in
@@ -157,6 +160,14 @@ class BagViewController: UIViewController {
         fetchBagProducts()
     }
     
+    func handleMultipleSelectionLabel(){
+        if bagProducts.isEmpty{
+            selectBarButton.isEnabled = false
+        }else{
+            selectBarButton.isEnabled = true
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         fetchBagProducts()
         tabBarController?.tabBar.isHidden = true
@@ -167,6 +178,9 @@ class BagViewController: UIViewController {
         let localData = BagPersistenceManager.shared
         guard let bagProducts = localData.retrievebagProducts() else {return}
         self.bagProducts = bagProducts
+        
+        handleMultipleSelectionLabel()
+        
         totalPrice = 0.0
         
         for bag in bagProducts {
@@ -376,6 +390,13 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
             bagProductsCollectionView.deselectItem(at: indexPath, animated: true)
         case .selection:
             selectedIndexPathDictionaries[indexPath] = true
+            
+            if selectedIndexPathDictionaries.isEmpty{
+                navigationItem.leftBarButtonItem?.isEnabled = false
+            }else{
+                navigationItem.leftBarButtonItem?.isEnabled = true
+            }
+            
         }
     }
     
@@ -384,7 +405,12 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
         case .view:
             break
         case .selection:
-            selectedIndexPathDictionaries[indexPath] = false
+            selectedIndexPathDictionaries[indexPath] = nil
+            if selectedIndexPathDictionaries.isEmpty{
+                navigationItem.leftBarButtonItem?.isEnabled = false
+            }else{
+                navigationItem.leftBarButtonItem?.isEnabled = true
+            }
         }
     }
 

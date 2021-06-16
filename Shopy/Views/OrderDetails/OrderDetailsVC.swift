@@ -32,7 +32,14 @@ class OrderDetailsVC: UIViewController {
         setupViews()
 
         uiOrderId.text! += String(order.id)
-        uiOrderProductsCount.text! += "(\(order.lineItems.count))"
+        
+        var count = 0
+        
+        for i in order.lineItems{
+            count += i.quantity
+        }
+        
+        uiOrderProductsCount.text! += "(\(count))"
         
         if let formatted = viewModel.getFormattedDate(date: order.createdAt){
             uiCreatedAt.text! = formatted
