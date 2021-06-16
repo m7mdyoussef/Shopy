@@ -20,8 +20,10 @@ class SubCategoriesCollectionViewCell: UICollectionViewCell {
     override var isHighlighted: Bool{
         didSet{
            // subCategorieslabel.textColor = isHighlighted ? UIColor.black : UIColor.gray
-         subCatView.backgroundColor = isHighlighted ? #colorLiteral(red: 0.9649999738, green: 0.6240000129, blue: 0, alpha: 1) : UIColor.white
-            subCategorieslabel.textColor = isHighlighted ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : UIColor.gray
+         subCatView.backgroundColor = isHighlighted ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : UIColor.white
+            subCategorieslabel.textColor = isHighlighted ? #colorLiteral(red: 0.9631432891, green: 0.6232308745, blue: 0.0003859905701, alpha: 1) : UIColor.gray
+//         subCatView.backgroundColor = isHighlighted ? #colorLiteral(red: 0.9649999738, green: 0.6240000129, blue: 0, alpha: 1) : UIColor.white
+//            subCategorieslabel.textColor = isHighlighted ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : UIColor.gray
 
         }
     }
@@ -29,8 +31,10 @@ class SubCategoriesCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool{
         didSet{
             subCategorieslabel.textColor = isSelected ? UIColor.black : UIColor.gray
-            subCatView.backgroundColor = isSelected ? #colorLiteral(red: 0.9649999738, green: 0.6240000129, blue: 0, alpha: 1) : UIColor.white
-            subCategorieslabel.textColor = isSelected ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : UIColor.gray
+            subCatView.backgroundColor = isSelected ? #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1) : UIColor.white
+            subCategorieslabel.textColor = isSelected ? #colorLiteral(red: 0.9631432891, green: 0.6232308745, blue: 0.0003859905701, alpha: 1) : UIColor.gray
+//            subCatView.backgroundColor = isSelected ? #colorLiteral(red: 0.9649999738, green: 0.6240000129, blue: 0, alpha: 1) : UIColor.white
+//            subCategorieslabel.textColor = isSelected ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : UIColor.gray
 
 
         }

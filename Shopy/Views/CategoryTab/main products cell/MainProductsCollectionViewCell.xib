@@ -18,7 +18,11 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hQn-23-frl">
-                        <rect key="frame" x="0.0" y="1" width="125" height="133"/>
+                        <rect key="frame" x="16" y="17" width="93" height="117"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="93" id="4BF-lb-9P2"/>
+                            <constraint firstAttribute="height" constant="119.5" id="DKj-tB-hoW"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhz-iZ-B4G" customClass="MarqueeLabel" customModule="MarqueeLabel">
                         <rect key="frame" x="5" y="133" width="120" height="40"/>
@@ -26,7 +30,6 @@
                             <constraint firstAttribute="height" constant="40" id="CBg-tj-KId"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
@@ -40,11 +43,11 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="rhz-iZ-B4G" secondAttribute="bottom" id="4nJ-5s-e48"/>
-                <constraint firstItem="hQn-23-frl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BOI-6J-4WK"/>
-                <constraint firstItem="hQn-23-frl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DAe-Mw-08a"/>
+                <constraint firstItem="hQn-23-frl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="BOI-6J-4WK"/>
+                <constraint firstItem="hQn-23-frl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="DAe-Mw-08a"/>
                 <constraint firstAttribute="bottom" secondItem="hQn-23-frl" secondAttribute="bottom" constant="37.5" id="J5H-Bj-R1G"/>
                 <constraint firstAttribute="trailing" secondItem="rhz-iZ-B4G" secondAttribute="trailing" id="K5q-Ta-JlQ"/>
-                <constraint firstAttribute="trailing" secondItem="hQn-23-frl" secondAttribute="trailing" id="ozP-Cd-37L"/>
+                <constraint firstAttribute="trailing" secondItem="hQn-23-frl" secondAttribute="trailing" constant="16" id="ozP-Cd-37L"/>
                 <constraint firstItem="rhz-iZ-B4G" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="urV-ZB-dkd"/>
             </constraints>
             <size key="customSize" width="125" height="176"/>

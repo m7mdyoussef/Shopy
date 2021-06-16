@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oY1-e7-rB0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
@@ -119,19 +118,19 @@
                     <navigationItem key="navigationItem" id="42v-Re-ciC">
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="cart.fill" catalog="system" id="YOM-1J-9Vk">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="moveToBag:" destination="xuX-Yf-DFG" id="di4-Tw-vIK"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="heart.fill" catalog="system" style="plain" id="kYc-EO-3e8">
-                                <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="uiShowFavourite:" destination="xuX-Yf-DFG" id="boC-xX-0Dz"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="search" id="myx-Ms-PWm">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="searchCategoryProducts:" destination="xuX-Yf-DFG" id="bbO-5f-rBc"/>
                                 </connections>
@@ -309,7 +308,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pxa-Pe-INW"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstItem="tDG-SL-3nq" firstAttribute="leading" secondItem="pxa-Pe-INW" secondAttribute="leading" constant="20" id="15b-hA-SNY"/>
                             <constraint firstItem="UW5-jZ-Wvp" firstAttribute="centerX" secondItem="EXf-1R-h8c" secondAttribute="centerX" id="62x-RL-5fs"/>
@@ -471,7 +470,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e1H-wE-Tag"/>
-                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6ja-fQ-DxS" firstAttribute="leading" secondItem="PTB-WN-7db" secondAttribute="leading" constant="8" id="MvA-2I-y4Y"/>
                             <constraint firstItem="6ja-fQ-DxS" firstAttribute="top" secondItem="e1H-wE-Tag" secondAttribute="top" id="Ztl-Oz-K6g"/>
@@ -483,19 +482,19 @@
                         <nil key="title"/>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="cart.fill" catalog="system" id="ffj-Bx-fuL">
-                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="moveToBag:" destination="pps-Ya-Y6X" id="fdZ-MH-aQu"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="heart.fill" catalog="system" id="zd6-fC-ru2">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="moveToFavourite:" destination="pps-Ya-Y6X" id="mHj-jQ-I0m"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="magnifyingglass" catalog="system" id="48Y-Mh-82s">
-                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="searchOfProducts:" destination="pps-Ya-Y6X" id="S9X-xS-fom"/>
                                 </connections>
@@ -629,15 +628,15 @@
                                                     </preferredSymbolConfiguration>
                                                 </state>
                                                 <connections>
-                                                    <action selector="logout:" destination="xyJ-C0-KGJ" eventType="touchUpInside" id="EGS-2A-6Yt"/>
+                                                    <action selector="logout:" destination="xyJ-C0-KGJ" eventType="touchUpInside" id="sld-AQ-t5Y"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncl-61-0lj">
                                                 <rect key="frame" x="8" y="280" width="398" height="357"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="raW-df-1wS" firstAttribute="height" secondItem="p2h-Kg-mgJ" secondAttribute="height" multiplier="0.1" id="PSd-xB-kAy"/>
                                             <constraint firstItem="DZq-UH-PfH" firstAttribute="height" secondItem="p2h-Kg-mgJ" secondAttribute="height" multiplier="0.1" id="h4D-rK-aYI"/>
@@ -670,7 +669,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TIL-X6-7Ll"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstItem="Fmh-d5-rKy" firstAttribute="leading" secondItem="TIL-X6-7Ll" secondAttribute="leading" constant="16" id="0Lo-OH-4sR"/>
                             <constraint firstItem="TRr-JC-mTN" firstAttribute="height" secondItem="14n-JE-3qo" secondAttribute="height" multiplier="0.69" id="13F-OW-afq"/>
@@ -715,6 +714,7 @@
                                         <rect key="frame" x="365.5" y="35" width="28.5" height="28.5"/>
                                         <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="xmark.circle.fill" catalog="system">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large"/>
                                         </state>
                                         <connections>
@@ -723,6 +723,7 @@
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register" translatesAutoresizingMaskIntoConstraints="NO" id="pOT-hv-L1d">
                                         <rect key="frame" x="23" y="35" width="414" height="264"/>
+                                        <color key="tintColor" systemColor="systemBackgroundColor"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shopy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-41-4Lu">
                                         <rect key="frame" x="155" y="72" width="104" height="36.5"/>
@@ -759,7 +760,7 @@
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U9G-UK-SXv"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstItem="qTC-IV-iBv" firstAttribute="leading" secondItem="U9G-UK-SXv" secondAttribute="leading" id="1LV-NC-q4I"/>
                             <constraint firstItem="iuU-Hd-Vls" firstAttribute="centerX" secondItem="FWJ-zb-mrU" secondAttribute="centerX" id="5Zl-PG-wFX"/>
@@ -999,21 +1000,25 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street, district" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oki-pT-uuE">
                                                 <rect key="frame" x="10" y="8" width="394" height="37"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jhb-ST-4EM">
                                                 <rect key="frame" x="10" y="55" width="394" height="37"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5PN-OT-u2h">
                                                 <rect key="frame" x="10" y="102" width="394" height="37"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTk-ob-f8n">
                                                 <rect key="frame" x="10" y="149" width="394" height="37"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -1134,11 +1139,13 @@
                                             </stackView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BkM-BD-dL1">
                                                 <rect key="frame" x="10" y="58" width="394" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oVc-6Y-zot">
                                                 <rect key="frame" x="10" y="112" width="394" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -1160,9 +1167,11 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </stackView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gUj-Ob-0pR">
                                                 <rect key="frame" x="10" y="220" width="394" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1187,9 +1196,11 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </stackView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cFu-FE-EJ9">
                                                 <rect key="frame" x="10" y="328" width="394" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -1371,9 +1382,11 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </stackView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YSp-Nz-10G">
                                                 <rect key="frame" x="10" y="62" width="394" height="34"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -1424,6 +1437,7 @@
                                                         </state>
                                                     </button>
                                                 </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </stackView>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="8" left="10" bottom="8" right="10"/>
@@ -1820,7 +1834,7 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="cart.fill" catalog="system" id="uII-Zb-p3Z">
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="uiCardButton:" destination="Wfi-LV-jbC" id="w0m-w1-9HR"/>
                                 </connections>
@@ -1842,8 +1856,6 @@
             </objects>
             <point key="canvasLocation" x="162" y="-1223"/>
         </scene>
-
-    
         <!--Product Details View Controller-->
         <scene sceneID="n9g-cA-GXZ">
             <objects>
@@ -2429,7 +2441,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jww-1J-opW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4836" y="-529"/>
+            <point key="canvasLocation" x="-4175" y="-516"/>
         </scene>
     </scenes>
     <designables>
@@ -2475,8 +2487,10 @@
         </designable>
     </designables>
     <resources>
-        <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
+
         <image name="a.book.closed.fill.zh" catalog="system" width="115" height="128"/>
+        <image name="arrow.down.circle.fill" catalog="system" width="128" height="121"/>
+
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="circle.grid.2x2" catalog="system" width="128" height="112"/>
         <image name="circle.grid.2x2.fill" catalog="system" width="128" height="112"/>
@@ -2510,9 +2524,6 @@
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondarySystemGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
