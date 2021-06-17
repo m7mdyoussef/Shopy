@@ -57,19 +57,19 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func changeTheme(_ sender: Any) {
-//        if switchTheme.isOn == true{
-//
-//            guard (UIApplication.shared.delegate as? AppDelegate) != nil else {
-//                return
-//            }
-//            view.window?.overrideUserInterfaceStyle = .dark
-//        }
-//        else{
-//            guard (UIApplication.shared.delegate as? AppDelegate) != nil else {
-//                return
-//            }
-//            view.window?.overrideUserInterfaceStyle = .light
-//        }
+        //        if switchTheme.isOn == true{
+        //
+        //            guard (UIApplication.shared.delegate as? AppDelegate) != nil else {
+        //                return
+        //            }
+        //            view.window?.overrideUserInterfaceStyle = .dark
+        //        }
+        //        else{
+        //            guard (UIApplication.shared.delegate as? AppDelegate) != nil else {
+        //                return
+        //            }
+        //            view.window?.overrideUserInterfaceStyle = .light
+        //        }
         
         viewModel.toggleTheme()
         setTheme()
@@ -86,31 +86,29 @@ class SettingViewController: UIViewController {
             vc.customer = nil
             self.present(vc, animated: true, completion: nil)
         }
-}
-
-
-@IBAction func logout(_ sender: Any) {
-    if status == "Login".localized{
-        let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    }else{
-        let logout = UIAlertController(title: "Logout".localized, message: "Are you sure ?".localized, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK".localized, style: .destructive) { (action) in
-            self.viewModel.logout()
-            self.tabBarController?.selectedIndex = 0
-            self.dismiss(animated: true,completion: nil)
-//            self.viewModel.fetchFavProducts()
-//            self.viewModel.fetchOrders()
-            
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
-        logout.addAction(ok)
-        logout.addAction(cancel)
-        self.present(logout, animated: true, completion: nil)
     }
     
     
-}
+    @IBAction func logout(_ sender: Any) {
+        if status == "Login".localized{
+            let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        }else{
+            let logout = UIAlertController(title: "Logout".localized, message: "Are you sure ?".localized, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK".localized, style: .destructive) { (action) in
+                self.viewModel.logout()
+                self.tabBarController?.selectedIndex = 0
+                self.navigationController?.popViewController(animated: true)
+//                self.dismiss(animated: true,completion: nil)
+            }
+            
+            let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+            logout.addAction(ok)
+            logout.addAction(cancel)
+            self.present(logout, animated: true, completion: nil)
+        }
+        
+        
+    }
 }

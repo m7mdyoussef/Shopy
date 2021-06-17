@@ -13,7 +13,7 @@ PODS:
     - ImageSlideshow/Core
     - SDWebImage (>= 3.7)
   - JGProgressHUD (2.2)
-  - MarqueeLabel (4.0.5)
+  - MarqueeLabel (4.1.0)
   - MOLH (1.4.3)
   - NVActivityIndicatorView/AppExtension (4.8.0)
   - PopupDialog (1.1.1):
@@ -92,7 +92,7 @@ SPEC CHECKSUMS:
   HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
-  MarqueeLabel: 00cc0bcd087111dca575878b3531af980559707d
+  MarqueeLabel: 47ee0c9b3f8da874bb376aef59e8f31c40feaeda
   MOLH: e45827d200aeb1310641090fd8cd03ad2b42ae72
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   PopupDialog: 720c92befd8bc23c13442254945213db5612f149
@@ -105,6 +105,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
   ViewAnimator: 5af1c6f3b310f012bf081259c43717aa54fbae73
 
-PODFILE CHECKSUM: 5db2aef989b9442bf70ec20e44c99760127b5793
+PODFILE CHECKSUM: 314eaf6e393ac649b63531b10e49a7d0753171b7
 
 COCOAPODS: 1.10.1
