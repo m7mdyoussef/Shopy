@@ -19,7 +19,7 @@ enum MailState:String {
     case notValid = "Email is not valid"
 }
 
-class Register: UIViewController,IRounded {
+class RegisterViewController: UIViewController,IRounded {
     
     @IBOutlet var uiView: UIView!
     @IBOutlet weak var uiSubmit: UIButton!
@@ -230,7 +230,7 @@ class Register: UIViewController,IRounded {
 
 
 //MARK:-secured password without suggestion
-extension Register: UITextFieldDelegate{
+extension RegisterViewController: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if ( textField == self.uiPassword  ) {
@@ -245,7 +245,7 @@ extension Register: UITextFieldDelegate{
 
 
 //MARK:- receiving address list from delegat
-extension Register:UIUPdateAddressList{
+extension RegisterViewController:UIUPdateAddressList{
     func receive(address: Address?) {
         if let address = address{
             self.address = address

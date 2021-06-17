@@ -76,8 +76,8 @@ class SettingViewController: UIViewController {
         
     }
     @IBAction func editProfile(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(identifier: "Register") as! Register
-        
+        let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
+        vc.modalPresentationStyle = .fullScreen
         self.viewModel.getCustomerData { (customer,id) in
             vc.customer = customer
             vc.customerID = id

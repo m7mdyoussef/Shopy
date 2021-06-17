@@ -10,10 +10,22 @@ import UIKit
 
 class EntryNavigator: UITabBarController {
     
-    var tap:Bool!
+//    var tap:Bool!?
+    var customer:CustomerClass!
+    var customerID:Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(EntryNavigator.respond), name: NSNotification.Name(rawValue: "EntryScreen"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let customer = customer{
+            guard  let register = self.viewControllers![0] as? RegisterViewController else {return}
+            register.customer = customer
+            register.customerID = customerID
+        }
+        
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -23,6 +35,7 @@ class EntryNavigator: UITabBarController {
             if let id = dict["key"] as? Bool{
                 self.selectedIndex = id ? 1 : 0
             }
+            
         }
     }
 

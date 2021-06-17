@@ -12,7 +12,7 @@
 		2720D65F2676558C0069F171 /* OrderConfirmationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2720D65E2676558C0069F171 /* OrderConfirmationCell.swift */; };
 		2729B1032670F11000FCA983 /* OrderDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2729B1022670F11000FCA983 /* OrderDetailsVC.swift */; };
 		27338D27267544BC003F6C84 /* OrderObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27338D26267544BC003F6C84 /* OrderObject.swift */; };
-		273FF7D42660932400A37003 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7D32660932400A37003 /* Register.swift */; };
+		273FF7D42660932400A37003 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7D32660932400A37003 /* RegisterViewController.swift */; };
 		273FF7D926609D4300A37003 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7D826609D4300A37003 /* Login.swift */; };
 		273FF7DE2660A30300A37003 /* EntryNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273FF7DD2660A30300A37003 /* EntryNavigator.swift */; };
 		27465D9E26615720000FF0D0 /* DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27465D9D26615720000FF0D0 /* DismissKeyboard.swift */; };
@@ -150,7 +150,7 @@
 		2720D65E2676558C0069F171 /* OrderConfirmationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmationCell.swift; sourceTree = "<group>"; };
 		2729B1022670F11000FCA983 /* OrderDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsVC.swift; sourceTree = "<group>"; };
 		27338D26267544BC003F6C84 /* OrderObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderObject.swift; sourceTree = "<group>"; };
-		273FF7D32660932400A37003 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		273FF7D32660932400A37003 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		273FF7D826609D4300A37003 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		273FF7DD2660A30300A37003 /* EntryNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryNavigator.swift; sourceTree = "<group>"; };
 		27465D9D26615720000FF0D0 /* DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboard.swift; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		27BBDF3D265D465D009A887D /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				273FF7D32660932400A37003 /* Register.swift */,
+				273FF7D32660932400A37003 /* RegisterViewController.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -1275,7 +1275,7 @@
 				273FF7DE2660A30300A37003 /* EntryNavigator.swift in Sources */,
 				9E567CCD266D695400AC11C1 /* NoInternetViewController.swift in Sources */,
 				9E182D8526503E8100069E6E /* AppDelegate.swift in Sources */,
-				273FF7D42660932400A37003 /* Register.swift in Sources */,
+				273FF7D42660932400A37003 /* RegisterViewController.swift in Sources */,
 				277534092674AEEF009F535A /* SettingsVC.swift in Sources */,
 				D2745A5326575420005ABAF2 /* RemoteDataSourceWrapper.swift in Sources */,
 				2748ECCC266465E800A9DF42 /* EmailValidationExtension.swift in Sources */,

@@ -1090,7 +1090,7 @@
         <!--Item-->
         <scene sceneID="vsj-AT-XQZ">
             <objects>
-                <viewController storyboardIdentifier="Register" id="32K-2O-Nxq" customClass="Register" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Register" id="32K-2O-Nxq" customClass="RegisterViewController" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCY-aF-Eyn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="597.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1327,8 +1327,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="32K-2O-Nxq" kind="relationship" relationship="viewControllers" id="jya-cl-iW5"/>
-                        <segue destination="q6x-kp-74i" kind="relationship" relationship="viewControllers" id="1CF-YF-9QP"/>
+                        <segue destination="32K-2O-Nxq" kind="relationship" relationship="viewControllers" id="ewd-OK-Msh"/>
+                        <segue destination="q6x-kp-74i" kind="relationship" relationship="viewControllers" id="Qz7-gA-hX6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hf-Ge-m5E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
