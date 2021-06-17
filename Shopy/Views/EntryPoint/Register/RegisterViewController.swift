@@ -156,14 +156,15 @@ class RegisterViewController: UIViewController,IRounded {
 //                viewModel.update(customer:newCustomer,id:customerID)
             }
             
-            viewModel.update(customer: newCustomer, id: customerID) {
-
-                self.showNotifications(text: "Updated Successfully", isError: false)
-                self.dismiss(animated: true)
-            } onFailure: { (err) in
+            
+            viewModel.update(customer: newCustomer, id: customerID, onSuccess: {
+                     self.showNotifications(text: "Updated Successfully", isError: false)
+                           self.dismiss(animated: true)
+            }) { (err) in
                 self.onFaildHud(text: err)
             }
-
+            
+           
             
         }else{
             onFaildHud(text: "Please Fill in The blanks!!")

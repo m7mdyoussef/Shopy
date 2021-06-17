@@ -167,8 +167,8 @@ class EntryViewModel {
     
     func update(customer:Customer,id:Int,onSuccess:@escaping ()->Void,onFailure:@escaping (String)->Void) {
         
-        remote.updateCustomer(customer: customer, id: id) { (data) in
-            if let decodedResponse =  try? JSONDecoder().decode(RegisterResponse.self, from: data){
+        remote.updateCustomer(customer: customer, id: id, onCompletion: { (data) in
+                        if let decodedResponse =  try? JSONDecoder().decode(RegisterResponse.self, from: data){
                 print(String(decoding: data, as: UTF8.self))
                
                 if let phone = decodedResponse.errors?.phone{
@@ -205,11 +205,14 @@ class EntryViewModel {
                 }
                 
             }
-        } onFalure: { (err) in
-            DispatchQueue.main.async {
-                onFailure("An Error Occured")
-            }
+
+        }) { (err) in
+             DispatchQueue.main.async {
+                           onFailure("An Error Occured")
+                       }
         }
+        
+     
 
     }
     

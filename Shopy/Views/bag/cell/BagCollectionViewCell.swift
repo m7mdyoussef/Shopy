@@ -62,7 +62,7 @@ class BagCollectionViewCell: UICollectionViewCell {
             
             sizeSelectionMenu.selectionAction = { [unowned self] (index: Int, item: String) in
                 self.uiDropShowMenu.setTitle(" \(item) ", for: .normal)
-                selectedSize = item
+                self.selectedSize = item
             }
         }
     }
