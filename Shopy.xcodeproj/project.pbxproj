@@ -590,11 +590,11 @@
 		9E756A0526642D14000B5D98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9E182D8A26503E8100069E6E /* Main.storyboard */,
+				9E182D9226503E8300069E6E /* LaunchScreen.storyboard */,
 				CF79D3F1267949C2008697AB /* Setting */,
 				CFE227632678048F009AA907 /* Splash */,
 				277533F92674AEB8009F535A /* Settings */,
-				9E182D8A26503E8100069E6E /* Main.storyboard */,
-				9E182D9226503E8300069E6E /* LaunchScreen.storyboard */,
 				9E567CCB266D691600AC11C1 /* NoInternetScreen */,
 				CF65719026617D8500C31614 /* Home */,
 				CF4798782666CE4100B0A64D /* ProductDetails */,

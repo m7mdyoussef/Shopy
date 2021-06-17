@@ -373,8 +373,22 @@ class MeVC: UIViewController {
         }
     }
 //    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        uiWishlistCollection.reloadData()
+//
+//        if let uiWishlistCollection = uiWishlistCollection {
+//            uiWishlistCollection.reloadData()
+//        }
 //    }
+    
+
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        uiWishlistCollection.collectionViewLayout.invalidateLayout()
+//    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        uiWishlistCollection.collectionViewLayout.invalidateLayout()
+    }
     
     @IBAction func uiCardButton(_ sender: Any) {
         
@@ -429,7 +443,8 @@ extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
         //        return CGSize(width: CGFloat(view.layer.frame.width / 2), height: CGFloat(view.layer.frame.height * 1/4  ))
         
         if collectionView == uiWishlistCollection{
-            return CGSize(width: CGFloat(200), height: CGFloat(view.layer.frame.height * 1/3.5  ))
+//            return CGSize(width: CGFloat(200), height: CGFloat(view.layer.frame.height * 1/3.5  ))
+            return CGSize(width: CGFloat(200), height: CGFloat(uiWishlistCollection.frame.height))
         }else {
             return CGSize(width: CGFloat(150), height: CGFloat(200))
         }
