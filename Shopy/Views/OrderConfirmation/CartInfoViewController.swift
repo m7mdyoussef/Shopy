@@ -72,10 +72,10 @@ class CartInfoViewController: UIViewController {
         
         addressesDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
-            let all = allAddresses[index]
+            let all = self.allAddresses[index]
             
-            uiAddress.text = "Address : "
-            uiAddress.text! += "\(String(describing: all.title!)), \(String(describing: all.city!)), \(String(describing: all.country!))"
+            self.uiAddress.text = "Address : "
+            self.uiAddress.text! += "\(String(describing: all.title!)), \(String(describing: all.city!)), \(String(describing: all.country!))"
             
         }
         

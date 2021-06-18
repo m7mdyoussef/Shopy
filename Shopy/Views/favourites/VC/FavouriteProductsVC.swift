@@ -76,7 +76,7 @@ extension FavouriteProductsVC :UICollectionViewDelegate ,UICollectionViewDataSou
             let alert = UIAlertController(title: "Remove Favourite".localized, message: "Are you sure you want to remove the product from the wishlist ?".localized, preferredStyle: .alert)
             
             let action = UIAlertAction(title: "Yes".localized, style: .destructive) { (action) in
-                self.deletFromFavourites(productID: Int( favProducts[indexPath.row].id))
+                self.deletFromFavourites(productID: Int( self.favProducts[indexPath.row].id))
                 self.fetchFavProducts()
                 collectionView.reloadData()
             }

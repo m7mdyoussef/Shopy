@@ -96,11 +96,13 @@ class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceP
     }
     
     func updateCustomer(customer: Customer, id: Int, onCompletion: @escaping (Data) -> Void, onFalure: @escaping (Error) -> Void) {
-        self.postData(target: .updateCustomer(customer: customer, id: id)) { (data) in
+        
+        self.postData(target: .updateCustomer(customer: customer, id: id), onSuccess: { (data) in
             onCompletion(data)
-        } onFailure: { (err) in
-           onFalure(err)
+        }) { (err) in
+             onFalure(err)
         }
+        
 
     }
     

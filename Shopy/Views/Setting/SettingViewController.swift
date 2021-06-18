@@ -27,7 +27,8 @@ class SettingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationItem.backButtonTitle = "Profile".localized
+        navigationItem.backBarButtonItem?.title = "Profile".localized
+       // navigationItem.backButtonTitle = "Profile".localized
         status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
         setTheme()
         
@@ -88,14 +89,16 @@ class SettingViewController: UIViewController {
     @IBAction func editProfile(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
         vc.modalPresentationStyle = .fullScreen
-        self.viewModel.getCustomerData { (customer,id) in
+        
+        self.viewModel.getCustomerData(onComplete: { (customer,id) in
             vc.customer = customer
             vc.customerID = id
             self.present(vc, animated: true, completion: nil)
-        } onError: {
+        }) {
             vc.customer = nil
             self.present(vc, animated: true, completion: nil)
         }
+        
     }
     
     
