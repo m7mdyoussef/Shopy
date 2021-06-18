@@ -61,8 +61,11 @@
 		9E182D9426503E8300069E6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E182D9226503E8300069E6E /* LaunchScreen.storyboard */; };
 		9E182D9F26503E8300069E6E /* ShopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D9E26503E8300069E6E /* ShopyTests.swift */; };
 		9E182DAA26503E8300069E6E /* ShopyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182DA926503E8300069E6E /* ShopyUITests.swift */; };
+		9E55E738267BFA390084AECB /* MockCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E55E737267BFA390084AECB /* MockCategory.swift */; };
 		9E567CCD266D695400AC11C1 /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567CCC266D695400AC11C1 /* NoInternetViewController.swift */; };
+		9E584C4C267CD95000608C97 /* CategoryJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 9E584C4B267CD95000608C97 /* CategoryJson.json */; };
 		9E59BDDC26531C67003B113F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E59BDDB26531C66003B113F /* GoogleService-Info.plist */; };
+		9E5B1B41267BE6D900FC0CE7 /* CategoryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B1B40267BE6D900FC0CE7 /* CategoryViewModelTest.swift */; };
 		9E5B51AE26726BC1007E32F2 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B51AD26726BC1007E32F2 /* StripeClient.swift */; };
 		9E5B51B026727FA4007E32F2 /* CartInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B51AF26727FA4007E32F2 /* CartInfoViewController.swift */; };
 		9E6172E82667CA3200E93743 /* SearchCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6172E72667CA3200E93743 /* SearchCategoryViewController.swift */; };
@@ -215,8 +218,11 @@
 		9E182DA526503E8300069E6E /* ShopyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShopyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E182DA926503E8300069E6E /* ShopyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopyUITests.swift; sourceTree = "<group>"; };
 		9E182DAB26503E8300069E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E55E737267BFA390084AECB /* MockCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCategory.swift; sourceTree = "<group>"; };
 		9E567CCC266D695400AC11C1 /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
+		9E584C4B267CD95000608C97 /* CategoryJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CategoryJson.json; sourceTree = "<group>"; };
 		9E59BDDB26531C66003B113F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E5B1B40267BE6D900FC0CE7 /* CategoryViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModelTest.swift; sourceTree = "<group>"; };
 		9E5B51AD26726BC1007E32F2 /* StripeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
 		9E5B51AF26727FA4007E32F2 /* CartInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInfoViewController.swift; sourceTree = "<group>"; };
 		9E6172E72667CA3200E93743 /* SearchCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCategoryViewController.swift; sourceTree = "<group>"; };
@@ -503,8 +509,10 @@
 		9E182D9D26503E8300069E6E /* ShopyTests */ = {
 			isa = PBXGroup;
 			children = (
+				9E55E736267BF9FB0084AECB /* Mocks */,
 				9E182D9E26503E8300069E6E /* ShopyTests.swift */,
 				9E182DA026503E8300069E6E /* Info.plist */,
+				9E5B1B40267BE6D900FC0CE7 /* CategoryViewModelTest.swift */,
 			);
 			path = ShopyTests;
 			sourceTree = "<group>";
@@ -516,6 +524,15 @@
 				9E182DAB26503E8300069E6E /* Info.plist */,
 			);
 			path = ShopyUITests;
+			sourceTree = "<group>";
+		};
+		9E55E736267BF9FB0084AECB /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				9E55E737267BFA390084AECB /* MockCategory.swift */,
+				9E584C4B267CD95000608C97 /* CategoryJson.json */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		9E567CCB266D691600AC11C1 /* NoInternetScreen */ = {
@@ -1089,6 +1106,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E584C4C267CD95000608C97 /* CategoryJson.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1295,6 +1313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E5B1B41267BE6D900FC0CE7 /* CategoryViewModelTest.swift in Sources */,
+				9E55E738267BFA390084AECB /* MockCategory.swift in Sources */,
 				9E182D9F26503E8300069E6E /* ShopyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

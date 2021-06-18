@@ -8,6 +8,9 @@
 
 import Foundation
 
+
+
+
 protocol RemoteDataSourceProtocol {
     
     //amin
@@ -24,15 +27,17 @@ protocol RemoteDataSourceProtocol {
     // MARK: joe
     func getCategoryProducts(categoryType:String,completion: @escaping (Result<Products?,NSError>) -> Void)
     func getDetailedProducts(completion: @escaping (Result<DetailedProductsModel?, NSError>) -> Void)
-    
-    //end
-    
     func getProducts(collectionId:String, completion: @escaping (Result<Products?, NSError>) -> Void)
     func getProductElement(productId:String, completion: @escaping (Result<Product?, NSError>) -> Void)
+    //end
     
 }
 
 class RemoteDataSource: ApiServices<RemoteDataSourceWrapper> , RemoteDataSourceProtocol {
+//    var apiServices:ApiServices<ApiRequestWrapper>!
+//    init(api:ApiServices) {
+//        api = apiServices
+//    }
     
     func customCollections(completion: @escaping (Result<CustomCollection?, NSError>) -> Void) {
         
