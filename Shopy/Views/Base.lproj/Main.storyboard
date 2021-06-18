@@ -2031,7 +2031,7 @@
                                     <constraint firstAttribute="width" constant="35" id="lqc-AT-eRs"/>
                                 </constraints>
                                 <color key="tintColor" name="black"/>
-                                <state key="normal">
+                                <state key="normal" image="xmark.circle.fill" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
                                 </state>

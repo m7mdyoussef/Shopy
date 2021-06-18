@@ -9,7 +9,12 @@
 import Foundation
 import Alamofire
 
-class ApiServices<T : ApiRequestWrapper>{
+//protocol ApiServicesProtocol {
+//     associatedtype T
+//     func fetchData<M :Codable>(target: T,responseClass : M.Type, completion:@escaping (Result<M?, NSError>) -> Void)
+//}
+
+class ApiServices<T : ApiRequestWrapper> {
     
     func fetchData<M :Codable>(target: T,responseClass : M.Type, completion:@escaping (Result<M?, NSError>) -> Void){
         guard AppCommon.shared.checkConnectivity() else {return}
