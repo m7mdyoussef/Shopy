@@ -49,6 +49,7 @@ class MeVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
 //        if uiWishlistCollection.isHidden == false{
              let animation = AnimationType.from(direction: .left, offset: 300)
              UIView.animate(views: uiWishlistCollection.visibleCells, animations: [animation],delay: 0.5,duration: 2)
@@ -59,119 +60,9 @@ class MeVC: UIViewController {
      }
     
     @IBAction func uiSettings(_ sender: Any) {
-        //        let settings = SettingsVC()
-        //        navigationController?.pushViewController(settings, animated: true)
-        
-//        let alert = UIAlertController(title: "Settings".localized, message: "", preferredStyle: .actionSheet)
-//        let lang = UIAlertAction(title: "Language".localized, style: .default) { (action) in
-//
-//
-//            MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "en" ? "ar" : "en")
-//            if #available(iOS 13.0, *) {
-//                let delegate = UIApplication.shared.delegate as? AppDelegate
-//                delegate!.swichRoot()
-//
-//            } else {
-//                // Fallback on earlier versions
-//                MOLH.reset()
-//            }
-//
-//        }
-//        let status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
-//        let logoutaction = UIAlertAction(title: status, style: .destructive) { [weak self] (action) in
-//            guard let self = self else {return}
-//
-//            if status == "Login".localized{
-//                let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
-//                vc.modalPresentationStyle = .fullScreen
-//                self.present(vc, animated: true, completion: nil)
-//            }else{
-//                let logout = UIAlertController(title: "Logout".localized, message: "Are you sure ?".localized, preferredStyle: .alert)
-//                let ok = UIAlertAction(title: "OK".localized, style: .destructive) { (action) in
-//                    self.viewModel.logout()
-//                    self.tabBarController?.selectedIndex = 0
-//                    self.viewModel.fetchFavProducts()
-//                    self.viewModel.fetchOrders()
-//
-//                }
-//
-//                let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
-//                logout.addAction(ok)
-//                logout.addAction(cancel)
-//                self.present(logout, animated: true, completion: nil)
-//            }
-//        }
-//
-//        let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
-//        alert.addAction(lang)
-//        alert.addAction(logoutaction)
-//        alert.addAction(cancel)
-//        present(alert, animated: true, completion: nil)
         let vc = storyboard?.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
         navigationController?.pushViewController(vc, animated: true)
 //        present(vc, animated: true, completion: nil)
-
-        //Master
-//        let alert = UIAlertController(title: "Settings".localized, message: "", preferredStyle: .actionSheet)
-//        let lang = UIAlertAction(title: "Language".localized, style: .default) { (action) in
-//
-//
-//            MOLH.setLanguageTo(MOLHLanguage.currentAppleLanguage() == "en" ? "ar" : "en")
-//            if #available(iOS 13.0, *) {
-//                let delegate = UIApplication.shared.delegate as? AppDelegate
-//                delegate!.swichRoot()
-//
-//            } else {
-//                // Fallback on earlier versions
-//                MOLH.reset()
-//            }
-//
-//        }
-//        let status = viewModel.isUserLoggedIn() ? "Logout".localized : "Login".localized
-//        let logoutaction = UIAlertAction(title: status, style: .destructive) { [weak self] (action) in
-//            guard let self = self else {return}
-//
-//            if status == "Login".localized{
-//                let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
-//                vc.modalPresentationStyle = .fullScreen
-//                self.present(vc, animated: true, completion: nil)
-//            }else{
-//                let logout = UIAlertController(title: "Logout".localized, message: "Are you sure ?".localized, preferredStyle: .alert)
-//                let ok = UIAlertAction(title: "OK".localized, style: .destructive) { (action) in
-//                    self.viewModel.logout()
-//                    self.tabBarController?.selectedIndex = 0
-//                    self.viewModel.fetchFavProducts()
-//                    self.viewModel.fetchOrders()
-//
-//                }
-//
-//                let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
-//                logout.addAction(ok)
-//                logout.addAction(cancel)
-//                self.present(logout, animated: true, completion: nil)
-//            }
-//        }
-//
-//        let editProfile = UIAlertAction(title: "Edit Profile", style: .default) { [weak self] (_) in
-//            guard let self = self else {return}
-//            let vc = self.storyboard?.instantiateViewController(identifier: "Register") as! Register
-//
-//            self.viewModel.getCustomerData { (customer,id) in
-//                vc.customer = customer
-//                vc.customerID = id
-//                self.present(vc, animated: true, completion: nil)
-//            } onError: {
-//                vc.customer = nil
-//                self.present(vc, animated: true, completion: nil)
-//            }
-//        }
-//
-//        let cancel = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
-//        alert.addAction(lang)
-//        alert.addAction(logoutaction)
-//        alert.addAction(editProfile)
-//        alert.addAction(cancel)
-//        present(alert, animated: true, completion: nil)
     }
     
     func setupViews()  {
@@ -284,7 +175,8 @@ class MeVC: UIViewController {
         navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = viewModel.isLightTheme() ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: viewModel.isLightTheme() ? UIColor.black : UIColor.white ]
 
         uiOrdersCollection.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         

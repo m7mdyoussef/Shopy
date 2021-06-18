@@ -40,6 +40,7 @@
 		27B4E42B266AD6F9009A55EF /* UIUPdateAddressList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */; };
 		27BBDF26265D36DC009A887D /* EntryPointVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BBDF25265D36DC009A887D /* EntryPointVC.swift */; };
 		27C3A857266CAEAA00D16F84 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C3A856266CAEAA00D16F84 /* MeVC.swift */; };
+		27C6E25B267BEBA600F342A5 /* MeTapViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E25A267BEBA600F342A5 /* MeTapViewModelTest.swift */; };
 		27CEF94C267A31DE00B78C6C /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CEF94B267A31DE00B78C6C /* DateExtension.swift */; };
 		27D5063D26780BAD000284EC /* BagViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D5063F26780BAD000284EC /* BagViewController.xib */; };
 		27D5064526780C07000284EC /* BagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D5064726780C07000284EC /* BagCollectionViewCell.xib */; };
@@ -59,7 +60,6 @@
 		9E182D8F26503E8100069E6E /* Shopy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D8D26503E8100069E6E /* Shopy.xcdatamodeld */; };
 		9E182D9126503E8300069E6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E182D9026503E8300069E6E /* Assets.xcassets */; };
 		9E182D9426503E8300069E6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E182D9226503E8300069E6E /* LaunchScreen.storyboard */; };
-		9E182D9F26503E8300069E6E /* ShopyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182D9E26503E8300069E6E /* ShopyTests.swift */; };
 		9E182DAA26503E8300069E6E /* ShopyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E182DA926503E8300069E6E /* ShopyUITests.swift */; };
 		9E567CCD266D695400AC11C1 /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E567CCC266D695400AC11C1 /* NoInternetViewController.swift */; };
 		9E59BDDC26531C67003B113F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E59BDDB26531C66003B113F /* GoogleService-Info.plist */; };
@@ -181,6 +181,7 @@
 		27B4E42A266AD6F9009A55EF /* UIUPdateAddressList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUPdateAddressList.swift; sourceTree = "<group>"; };
 		27BBDF25265D36DC009A887D /* EntryPointVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPointVC.swift; sourceTree = "<group>"; };
 		27C3A856266CAEAA00D16F84 /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
+		27C6E25A267BEBA600F342A5 /* MeTapViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeTapViewModelTest.swift; sourceTree = "<group>"; };
 		27CEF94B267A31DE00B78C6C /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		27D5064326780BBC000284EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BagViewController.xib; sourceTree = "<group>"; };
 		27D5064426780BCC000284EC /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/BagViewController.strings; sourceTree = "<group>"; };
@@ -210,7 +211,6 @@
 		9E182D9326503E8300069E6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E182D9526503E8300069E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E182D9A26503E8300069E6E /* ShopyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShopyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E182D9E26503E8300069E6E /* ShopyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopyTests.swift; sourceTree = "<group>"; };
 		9E182DA026503E8300069E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E182DA526503E8300069E6E /* ShopyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShopyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E182DA926503E8300069E6E /* ShopyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopyUITests.swift; sourceTree = "<group>"; };
@@ -503,8 +503,8 @@
 		9E182D9D26503E8300069E6E /* ShopyTests */ = {
 			isa = PBXGroup;
 			children = (
-				9E182D9E26503E8300069E6E /* ShopyTests.swift */,
 				9E182DA026503E8300069E6E /* Info.plist */,
+				27C6E25A267BEBA600F342A5 /* MeTapViewModelTest.swift */,
 			);
 			path = ShopyTests;
 			sourceTree = "<group>";
@@ -1295,7 +1295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E182D9F26503E8300069E6E /* ShopyTests.swift in Sources */,
+				27C6E25B267BEBA600F342A5 /* MeTapViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
