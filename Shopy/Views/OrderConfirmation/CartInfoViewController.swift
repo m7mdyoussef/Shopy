@@ -63,7 +63,7 @@ class CartInfoViewController: UIViewController {
         uiSubtotal.text = "$\(orderObject.subTotal)"
         
         uiDiscount.text = "$\(Double(round(100 * (orderObject.discount) )/100))"
-        uiTotal.text = "$\(orderObject.subTotal - orderObject.discount)"
+        uiTotal.text = "$\(String(format: "%.2f", orderObject.subTotal - orderObject.discount))"
         
         self.addressesDropDown = DropDown()
         self.addressesDropDown.anchorView = self.uiAddressDropDownView
