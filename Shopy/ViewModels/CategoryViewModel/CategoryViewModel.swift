@@ -63,4 +63,8 @@ class CategoryViewModel : CategoryContract,ICanLogin{
         }
     }
     
+    func isLightTheme() -> Bool  {
+        return (MyUserDefaults.getValue(forKey: .theme) as! Themes.RawValue) == Themes.light.rawValue
+    }
+    
 }

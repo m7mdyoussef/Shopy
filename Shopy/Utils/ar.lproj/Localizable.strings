@@ -10,6 +10,9 @@
 "Language" = "تغيير الي الانجليزية";
 "Logout" = "تسجيل خروج";
 "Login" = "تسجيل دخول";
+" Login" = " تسجيل دخول ";
+" Logout" = "تسجيل خروج ";
+
 "Settings" = "الاعدادات";
 "OK" = "ًحسنا";
 "Yes" = "حسناً";
@@ -64,3 +67,11 @@
 "Bag Products" = "حقيبة المنتجات";
 "Please Wait" = "انتظر من فضلك.";
 "An Error Occured, Try Again later ..." = "هناك خطأ حدث، حاول وقت آخر...";
+
+
+
+//uiLanguage.setTitle(" Change to Arabic ".localized, for: .normal)
+//}else{
+//uiLanguage.setTitle(" التغيير الي الانجليزية".localized, for: .normal)
+//
+//" Change to Arabic " = " التغيير الي الانجليزية"

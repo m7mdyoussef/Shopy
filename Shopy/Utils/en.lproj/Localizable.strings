@@ -9,6 +9,10 @@
 "Language" = "Change to Arabic";
 "Logout" = "Logout";
 "Login" = "Login";
+
+" Login" = " Login ";
+" Logout" = " Logout ";
+
 "Settings" = "Settings";
 "OK" = "OK";
 "Yes" = "Yes";

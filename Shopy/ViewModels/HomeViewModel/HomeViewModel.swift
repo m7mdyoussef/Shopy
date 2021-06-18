@@ -180,4 +180,8 @@ class HomeViewModel: HomeModelType,ICanLogin,ICanPlaySound{
     func saveDiscountCode(code: String) {
         MyUserDefaults.add(val: code, key: .discountCode)
     }
+    
+    func isLightTheme() -> Bool  {
+        return (MyUserDefaults.getValue(forKey: .theme) as! Themes.RawValue) == Themes.light.rawValue
+    }
 }

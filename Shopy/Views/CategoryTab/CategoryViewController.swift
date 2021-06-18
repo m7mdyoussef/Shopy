@@ -44,6 +44,11 @@ class CategoryViewController: UIViewController,ICanLogin {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
+        self.navigationController?.navigationBar.barTintColor = categoryViewModel.isLightTheme() ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: categoryViewModel.isLightTheme() ? UIColor.black : UIColor.white ]
+        
         super.viewWillAppear(true)
         
         navigationController?.navigationBar.isHidden = false

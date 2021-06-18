@@ -534,19 +534,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="p2h-Kg-mgJ">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="645"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-75-FIl">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-75-FIl">
                                                 <rect key="frame" x="8" y="22" width="398" height="64.5"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
                                                 <color key="tintColor" name="Color"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content=" Change To Arabic">
-                                                            <attributes>
-                                                                <font key="NSFont" size="18" name="Verdana-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <state key="normal" title=" Change To Arabic ">
                                                     <imageReference key="image" image="a.book.closed.fill.zh" catalog="system" renderingMode="original"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="medium">
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -556,19 +549,12 @@
                                                     <action selector="changeLanguage:" destination="xyJ-C0-KGJ" eventType="touchUpInside" id="Lrz-Lp-jwL"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUQ-hN-eYD">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUQ-hN-eYD">
                                                 <rect key="frame" x="8" y="86.5" width="398" height="64.5"/>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
                                                 <color key="tintColor" name="Color"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal">
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content=" Edit Profile">
-                                                            <attributes>
-                                                                <font key="NSFont" size="18" name="Verdana-Bold"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="leftToRight" tighteningFactorForTruncation="0.0"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <state key="normal" title=" Edit Profile ">
                                                     <imageReference key="image" image="person.circle" catalog="system" symbolScale="large" renderingMode="original"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
                                                 </state>
@@ -576,45 +562,33 @@
                                                     <action selector="editProfile:" destination="xyJ-C0-KGJ" eventType="touchUpInside" id="e43-S2-RH9"/>
                                                 </connections>
                                             </button>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="raW-df-1wS">
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wRP-MH-f9R">
                                                 <rect key="frame" x="8" y="151" width="398" height="64.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MPS-en-zSb">
-                                                        <rect key="frame" x="8" y="0.5" width="44" height="60.5"/>
-                                                        <imageReference key="image" image="thermometer.sun" catalog="system" renderingMode="original"/>
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="medium"/>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3m4-zY-U8o">
-                                                        <rect key="frame" x="52" y="8" width="258.5" height="48.5"/>
-                                                        <attributedString key="attributedText">
-                                                            <fragment content="Dark Mode">
-                                                                <attributes>
-                                                                    <color key="NSColor" name="Color"/>
-                                                                    <font key="NSFont" size="18" name="Verdana-Bold"/>
-                                                                </attributes>
-                                                            </fragment>
-                                                        </attributedString>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTC-hV-wQe">
+                                                        <rect key="frame" x="0.0" y="20.5" width="349" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                                                        <color key="tintColor" name="Color"/>
+                                                        <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title=" Dark mode ">
+                                                            <color key="titleColor" name="Color"/>
+                                                            <imageReference key="image" image="moon" catalog="system" symbolScale="large" renderingMode="original"/>
+                                                        </state>
+                                                    </button>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="X1Q-VG-WH6">
-                                                        <rect key="frame" x="310.5" y="8" width="81.5" height="48.5"/>
+                                                        <rect key="frame" x="349" y="16.5" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="changeTheme:" destination="xyJ-C0-KGJ" eventType="valueChanged" id="ktj-Vc-W7S"/>
                                                         </connections>
                                                     </switch>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="MPS-en-zSb" firstAttribute="width" secondItem="raW-df-1wS" secondAttribute="width" multiplier="0.11" id="Tor-JQ-xi7"/>
-                                                    <constraint firstItem="X1Q-VG-WH6" firstAttribute="width" secondItem="raW-df-1wS" secondAttribute="width" multiplier="0.2" id="gaI-QZ-IR0"/>
-                                                </constraints>
-                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZq-UH-PfH">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZq-UH-PfH">
                                                 <rect key="frame" x="8" y="215.5" width="398" height="64.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
                                                 <color key="tintColor" name="Color"/>
                                                 <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title=" Logout">
+                                                <state key="normal" title=" Logout ">
                                                     <imageReference key="image" image="square.and.arrow.down" catalog="system" symbolScale="large" renderingMode="original"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="large" weight="medium">
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
@@ -631,7 +605,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="raW-df-1wS" firstAttribute="height" secondItem="p2h-Kg-mgJ" secondAttribute="height" multiplier="0.1" id="PSd-xB-kAy"/>
+                                            <constraint firstItem="wRP-MH-f9R" firstAttribute="height" secondItem="p2h-Kg-mgJ" secondAttribute="height" multiplier="0.1" id="8fU-8B-FUN"/>
                                             <constraint firstItem="DZq-UH-PfH" firstAttribute="height" secondItem="p2h-Kg-mgJ" secondAttribute="height" multiplier="0.1" id="h4D-rK-aYI"/>
                                             <constraint firstItem="dUQ-hN-eYD" firstAttribute="height" secondItem="p2h-Kg-mgJ" secondAttribute="height" multiplier="0.1" id="vf9-lm-yyq"/>
                                             <constraint firstItem="hrf-75-FIl" firstAttribute="height" secondItem="p2h-Kg-mgJ" secondAttribute="height" multiplier="0.1" id="wmd-i4-8jm"/>
@@ -671,10 +645,25 @@
                     <connections>
                         <outlet property="switchTheme" destination="X1Q-VG-WH6" id="tmh-uh-Inn"/>
                         <outlet property="uiEditprofile" destination="dUQ-hN-eYD" id="xfl-qX-F21"/>
+                        <outlet property="uiLanguage" destination="hrf-75-FIl" id="Dyx-uV-KJZ"/>
                         <outlet property="uiLogout" destination="DZq-UH-PfH" id="CDj-Dv-WC8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Crp-zB-clN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="bA9-jB-JE2">
+                    <rect key="frame" x="0.0" y="0.0" width="398" height="64.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="18"/>
+                    <color key="tintColor" name="Color"/>
+                    <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title=" Edit Profile">
+                        <imageReference key="image" image="person.circle" catalog="system" symbolScale="large" renderingMode="original"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
+                    </state>
+                    <connections>
+                        <action selector="editProfile:" destination="xyJ-C0-KGJ" eventType="touchUpInside" id="BOA-s6-6MT"/>
+                    </connections>
+                </button>
             </objects>
             <point key="canvasLocation" x="5444.9275362318849" y="-961.60714285714278"/>
         </scene>
@@ -1092,7 +1081,7 @@
             <objects>
                 <viewController storyboardIdentifier="Register" id="32K-2O-Nxq" customClass="RegisterViewController" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCY-aF-Eyn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="597.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="597"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAq-WB-fwL">
@@ -1340,7 +1329,7 @@
             <objects>
                 <viewController id="q6x-kp-74i" customClass="Login" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sc0-f0-Y81">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="597.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="597"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xde-EO-g0k">
@@ -2546,6 +2535,7 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="location" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="moon" catalog="system" width="128" height="121"/>
         <image name="noconnection" width="2000" height="2000"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
@@ -2555,11 +2545,7 @@
         <image name="setting" width="407" height="407"/>
         <image name="sort" width="512" height="512"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
-        <image name="thermometer.sun" catalog="system" width="114" height="128"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
-        <namedColor name="Color">
-            <color red="0.9649999737739563" green="0.62400001287460327" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Color">
             <color red="0.9649999737739563" green="0.62400001287460327" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

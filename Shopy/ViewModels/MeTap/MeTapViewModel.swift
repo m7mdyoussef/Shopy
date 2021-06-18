@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import MOLH
 
 protocol MeModelType{
     
@@ -221,5 +222,9 @@ class MeTapViewModel:MeModelType,ICanLogin {
         }else{
             MyUserDefaults.add(val: Themes.light.rawValue, key: .theme)
         }
+    }
+    
+    func isEnglish() -> Bool {
+        return MOLHLanguage.currentAppleLanguage() == "en" ? true : false
     }
 }

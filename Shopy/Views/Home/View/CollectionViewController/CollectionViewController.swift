@@ -90,6 +90,10 @@ class CollectionViewController: UIViewController,ICanLogin {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        self.navigationController?.navigationBar.barTintColor = collectionViewModel!.isLightTheme() ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: collectionViewModel!.isLightTheme() ? UIColor.black : UIColor.white ]
+        
+        
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
 //        adsImage.loadGif(name: imagesArr[0])

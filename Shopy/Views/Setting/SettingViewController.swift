@@ -14,6 +14,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var switchTheme: UISwitch!
     @IBOutlet weak var uiEditprofile: UIButton!
     @IBOutlet weak var uiLogout: UIButton!
+    @IBOutlet weak var uiLanguage: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,15 @@ class SettingViewController: UIViewController {
             uiEditprofile.isHidden = true
             uiLogout.setTitle(" Login".localized, for: .normal)
         }
+        
+        if viewModel.isEnglish(){
+            uiLanguage.setTitle(" Change to Arabic ".localized, for: .normal)
+        }else{
+            uiLanguage.setTitle(" التغيير الي الانجليزية".localized, for: .normal)
+        }
+        
+        
+        
     }
     
     func setTheme(){
