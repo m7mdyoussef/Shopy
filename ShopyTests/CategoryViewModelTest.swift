@@ -80,10 +80,7 @@ class CategoryViewModelTest: XCTestCase {
                  }
              }
             waitForExpectations(timeout: 5)
-        
-        
     }
-    
     
     func testExample() throws {
         // This is an example of a functional test case.

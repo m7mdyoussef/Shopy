@@ -13,12 +13,9 @@ class BagPersistenceManager{
     
     var context:NSManagedObjectContext!
     static let shared = BagPersistenceManager()
-    
     private init(){
         context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
-    
-    
     func retrievebagProducts()->[BagProduct]?{
         let email = MyUserDefaults.getValue(forKey: .email) as! String
         var retrievedBagProducts = [BagProduct]()
@@ -36,9 +33,7 @@ class BagPersistenceManager{
         } catch  { return nil }
         
     }
-    
-    
-    func isBagProduct(productID :Int )->Bool{
+    func isBagProduct(productID :Int)->Bool{
         guard let favourites = self.retrievebagProducts() else { return false}
         for fav in favourites {
             
@@ -47,8 +42,7 @@ class BagPersistenceManager{
         return false
         
     }
-    
-    func isSizeFound(productID :Int, size: String )->Bool{
+    func isSizeFound(productID :Int, size: String)->Bool{
     guard let favourites = self.retrievebagProducts() else { return false}
     for fav in favourites {
         var isFound = true
@@ -67,8 +61,7 @@ class BagPersistenceManager{
     return false
     
 }
-    
-    func addToBagProducts(bagProduct  : ProductClass , size: String, count : Int = 1){
+    func addToBagProducts(bagProduct : ProductClass , size: String, count : Int = 1){
         let storedBagProduct = BagProduct(context: self.context)
         storedBagProduct.id  = Int64(bagProduct.id)
         storedBagProduct.count = Int64(count)
@@ -85,8 +78,6 @@ class BagPersistenceManager{
         try?self.context.save()
         print("added successfully")
     }
-    
-    
     func updateCount(productID :Int , count : Int,size:String){
         guard let bagProducts = self.retrievebagProducts() else {return}
         for bag in bagProducts {
@@ -97,8 +88,6 @@ class BagPersistenceManager{
             }
         }
     }
-    
-    
     func removeFromBag(productID :Int ){
         guard let bagProducts = self.retrievebagProducts() else {return}
         for bag in bagProducts {
@@ -108,5 +97,4 @@ class BagPersistenceManager{
         }
         try?self.context.save()
     }
-   
 }

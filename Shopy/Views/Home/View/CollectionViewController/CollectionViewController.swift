@@ -34,7 +34,6 @@ class CollectionViewController: UIViewController,ICanLogin {
     @IBOutlet weak var adsImage: UIImageView!
     let manager = FavouritesPersistenceManager.shared
     let bagManager = BagPersistenceManager.shared
-    private var categoryViewModel:CategoryViewModel!
     var showIndicator:ShowIndecator?
     var selectedIndexPath: IndexPath?
     
@@ -52,7 +51,6 @@ class CollectionViewController: UIViewController,ICanLogin {
     }
     
     func startPoint(){
-        categoryViewModel = CategoryViewModel()
         showIndicator = ShowIndecator(view: view.self)
         registerMenuCell()
         registerProductCell()
@@ -96,9 +94,6 @@ class CollectionViewController: UIViewController,ICanLogin {
         
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
-//        adsImage.loadGif(name: imagesArr[0])
-        
-//        MyUserDefaults.add(val: isDiscount, key: .isDisconut)
         
         if let state =  MyUserDefaults.getValue(forKey: .isDisconut){
             
