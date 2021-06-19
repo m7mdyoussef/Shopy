@@ -727,6 +727,12 @@
                                                     <constraint firstItem="Q5H-Wr-7td" firstAttribute="leading" secondItem="5YH-Yn-ba0" secondAttribute="leading" constant="16" id="iau-TJ-IeN"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yFx-JW-X6O" secondAttribute="trailing" constant="20" symbolic="YES" id="pyD-A3-rsl"/>
                                                 </constraints>
+                                                <edgeInsets key="layoutMargins" top="22" left="8" bottom="8" right="8"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="35"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVR-dq-DMJ">
                                                 <rect key="frame" x="0.0" y="206.5" width="414" height="59"/>
