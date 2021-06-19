@@ -34,6 +34,9 @@ class FavouriteProductsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = true
+        
+        let backButton = UIBarButtonItem(title: "back".localized, style: .plain, target: nil, action: nil)
+                self.navigationItem.backBarButtonItem = backButton
     }
 
     func fetchFavProducts() {

@@ -195,7 +195,7 @@ class MeTapViewModel:MeModelType,ICanLogin {
     func getCustomerData( onComplete : @escaping (CustomerClass,Int) -> Void , onError: @escaping ()->Void) {
         
         
-        remote.getAllUsers(onSuccess: { (allCustomers) in
+    remote.getAllUsers(onSuccess: { (allCustomers) in
        guard let customers = allCustomers else {return}
              let email = MyUserDefaults.getValue(forKey: .email) as! String
              

@@ -29,7 +29,7 @@ class OrderCell: UICollectionViewCell {
             
             
             if let date = orderData.createdAt.getDayMonthYear(){
-                uiCreatedAtLabel.text = "Created At: \(date)"
+                uiCreatedAtLabel.text = "\("Created At:".localized) \(date)"
             }
 //            self.uiContentView.layer.cornerRadius = 12.69
 //            self.uiContentView.layer.masksToBounds = true

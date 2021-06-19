@@ -28,22 +28,22 @@
                     <rect key="frame" x="10" y="762.5" width="394" height="89.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Kly-Rl-EKg">
-                            <rect key="frame" x="0.0" y="0.0" width="394" height="89.5"/>
+                            <rect key="frame" x="10" y="0.0" width="374" height="89.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Meq-gL-uk4">
-                                    <rect key="frame" x="0.0" y="0.0" width="394" height="39.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="39.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pm-cX-4MU">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="39.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="39.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQA-ts-3GD">
-                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="39.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQA-ts-3GD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="39.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFd-km-FhX">
-                                                    <rect key="frame" x="197" y="0.0" width="197" height="39.5"/>
+                                                    <rect key="frame" x="187" y="0.0" width="187" height="39.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -56,7 +56,7 @@
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O7t-QO-bFK">
-                                    <rect key="frame" x="0.0" y="49.5" width="394" height="40"/>
+                                    <rect key="frame" x="0.0" y="49.5" width="374" height="40"/>
                                     <color key="backgroundColor" name="Color"/>
                                     <state key="normal" title="Checkout">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,10 +86,10 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Kly-Rl-EKg" secondAttribute="trailing" id="8Pv-tv-vlo"/>
+                        <constraint firstAttribute="trailing" secondItem="Kly-Rl-EKg" secondAttribute="trailing" constant="10" id="8Pv-tv-vlo"/>
                         <constraint firstAttribute="bottom" secondItem="Kly-Rl-EKg" secondAttribute="bottom" id="fD0-xz-KJa"/>
                         <constraint firstItem="Kly-Rl-EKg" firstAttribute="top" secondItem="pcQ-JL-A52" secondAttribute="top" id="hRQ-Z7-FTl"/>
-                        <constraint firstItem="Kly-Rl-EKg" firstAttribute="leading" secondItem="pcQ-JL-A52" secondAttribute="leading" id="mi7-g7-6IG"/>
+                        <constraint firstItem="Kly-Rl-EKg" firstAttribute="leading" secondItem="pcQ-JL-A52" secondAttribute="leading" constant="10" id="mi7-g7-6IG"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nyC-1W-z6e">

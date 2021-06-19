@@ -119,13 +119,13 @@ class CategoryViewController: UIViewController,ICanLogin {
         //binding viewModel observables
         categoryViewModel.mainCategoryElementsObservable.bind(to: mainCategoryCollectionView.rx.items(cellIdentifier: Constants.mainCategoryElementCell)){ [weak self] row,item,cell in
             let mainCategoryCell = cell as! MainCategoriesCollectionViewCell
-            mainCategoryCell.mainCategoriesCellLabel.text = item
+            mainCategoryCell.mainCategoriesCellLabel.text = item.localized
             self?.mainCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: db)
         
         categoryViewModel.subCategoryElementsObservable.bind(to: subCategoryCollectionView.rx.items(cellIdentifier: Constants.subCategoryElementCell)){ [weak self] row,item,cell in
             let subCategoryCell = cell as! SubCategoriesCollectionViewCell
-            subCategoryCell.subCategorieslabel.text = item
+            subCategoryCell.subCategorieslabel.text = item.localized
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: db)
         

@@ -10,8 +10,8 @@ import Foundation
 import RxSwift
 
 class CategoryViewModel : CategoryContract,ICanLogin{
-    let mainCategoryElements = ["Men".localized,"Women".localized,"Kids".localized]
-    let subCategoryElements = ["T-Shirts".localized,"Shoes".localized,"Accessories".localized]
+    let mainCategoryElements = ["Men","Women","Kids"]
+    let subCategoryElements = ["T-Shirts","Shoes","Accessories"]
     var ProductElements:[ProductElement]?
     //observables
     var errorObservable: Observable<Bool>
@@ -47,6 +47,8 @@ class CategoryViewModel : CategoryContract,ICanLogin{
     func fetchFilterdProducts(mainCategoryElement:String,subCategoryElement:String){
         Loadingsubject.onNext(true)
         api.getCategoryProducts(categoryType: mainCategoryElement) {[weak self] (response) in
+            
+            
             switch response{
             case .success(let category):
                 self?.ProductElements = category?.products
