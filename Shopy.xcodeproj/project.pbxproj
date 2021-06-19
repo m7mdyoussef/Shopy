@@ -97,6 +97,8 @@
 		CF47988E2667D23300B0A64D /* SizesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF47988C2667D23100B0A64D /* SizesCollectionViewCell.xib */; };
 		CF47989F2669471500B0A64D /* PriceRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47989E2669471300B0A64D /* PriceRules.swift */; };
 		CF4798A42669497C00B0A64D /* DiscountCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4798A32669497B00B0A64D /* DiscountCode.swift */; };
+		CF61F1FE267E799C006C9D82 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61F1FD267E799B006C9D82 /* AboutViewController.swift */; };
+		CF61F206267E79E4006C9D82 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61F205267E79E4006C9D82 /* WebViewController.swift */; };
 		CF65719A2661966700C31614 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6571992661966700C31614 /* CollectionViewController.swift */; };
 		CF6571A9266197D300C31614 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6571A7266197D200C31614 /* ProductCollectionViewCell.swift */; };
 		CF6571AA266197D300C31614 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6571A8266197D300C31614 /* ProductCollectionViewCell.xib */; };
@@ -257,6 +259,8 @@
 		CF47988C2667D23100B0A64D /* SizesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SizesCollectionViewCell.xib; sourceTree = "<group>"; };
 		CF47989E2669471300B0A64D /* PriceRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRules.swift; sourceTree = "<group>"; };
 		CF4798A32669497B00B0A64D /* DiscountCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCode.swift; sourceTree = "<group>"; };
+		CF61F1FD267E799B006C9D82 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		CF61F205267E79E4006C9D82 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		CF6571992661966700C31614 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		CF6571A7266197D200C31614 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF6571A8266197D300C31614 /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -610,6 +614,7 @@
 		9E756A0526642D14000B5D98 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CF61F1FC267E7974006C9D82 /* About */,
 				9E182D8A26503E8100069E6E /* Main.storyboard */,
 				9E182D9226503E8300069E6E /* LaunchScreen.storyboard */,
 				CF79D3F1267949C2008697AB /* Setting */,
@@ -757,6 +762,15 @@
 				CF47988C2667D23100B0A64D /* SizesCollectionViewCell.xib */,
 			);
 			path = SizeCell;
+			sourceTree = "<group>";
+		};
+		CF61F1FC267E7974006C9D82 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				CF61F1FD267E799B006C9D82 /* AboutViewController.swift */,
+				CF61F205267E79E4006C9D82 /* WebViewController.swift */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		CF65719026617D8500C31614 /* Home */ = {
@@ -1258,6 +1272,7 @@
 				277534272674AFEB009F535A /* Localization+ext.swift in Sources */,
 				CF78F436266AE08A005B9FE1 /* ProductDetails+DelegateFlowLayout.swift in Sources */,
 				9E756A10266431EB000B5D98 /* SubCategoriesCollectionViewCell.swift in Sources */,
+				CF61F206267E79E4006C9D82 /* WebViewController.swift in Sources */,
 				2766A920266F5F3E0036F78C /* Order.swift in Sources */,
 				CF79D3F326794A2B008697AB /* SettingViewController.swift in Sources */,
 				27A3E18926724F62008590EB /* PostOrder.swift in Sources */,
@@ -1308,6 +1323,7 @@
 				9E756A1B26643B29000B5D98 /* CategoryContract.swift in Sources */,
 				CF6571A9266197D300C31614 /* ProductCollectionViewCell.swift in Sources */,
 				9E70BABF267178EF0099FB70 /* PayPalViewController.swift in Sources */,
+				CF61F1FE267E799C006C9D82 /* AboutViewController.swift in Sources */,
 				277533DB2674A092009F535A /* ICanLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
