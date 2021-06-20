@@ -14,17 +14,19 @@ class MainProductsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     
-    var productObject:ProductElement!{
-        didSet{
-            productName.text = productObject.title
-            productImage.sd_setImage(with: URL(string: productObject.image.src), placeholderImage: UIImage(named: "1"))
-        }
-    }
+    @IBOutlet weak var productPrice: UILabel!
+//    var productObject:ProductElement!{
+//        didSet{
+//            productName.text = productObject.title
+//            productImage.sd_setImage(with: URL(string: productObject.image.src), placeholderImage: UIImage(named: "1"))
+//        }
+//    }
     
     var DetailedProductObject:DetailedProducts!{
         didSet{
-            productName.text = DetailedProductObject.variants[0].price + " $"
-            productName.font = UIFont.boldSystemFont(ofSize: 17)
+            productName.text = DetailedProductObject.title
+            productPrice.text = DetailedProductObject.variants[0].price + " $"
+            productPrice.font = UIFont.boldSystemFont(ofSize: 17)
             productImage.sd_setImage(with: URL(string: DetailedProductObject.image.src), placeholderImage: UIImage(named: "placeholder"))
         }
     }

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,17 +17,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hQn-23-frl">
-                        <rect key="frame" x="16" y="17" width="93" height="117"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="93" id="4BF-lb-9P2"/>
-                            <constraint firstAttribute="height" constant="119.5" id="DKj-tB-hoW"/>
-                        </constraints>
+                        <rect key="frame" x="5" y="6" width="112.5" height="110"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhz-iZ-B4G" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="5" y="133" width="120" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="CBg-tj-KId"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhz-iZ-B4G" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                        <rect key="frame" x="3" y="118.5" width="120" height="26"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
@@ -38,32 +30,39 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9P-1T-cFM">
+                        <rect key="frame" x="2" y="145.5" width="125" height="26"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="rhz-iZ-B4G" secondAttribute="bottom" id="4nJ-5s-e48"/>
-                <constraint firstItem="hQn-23-frl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="BOI-6J-4WK"/>
-                <constraint firstItem="hQn-23-frl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="DAe-Mw-08a"/>
-                <constraint firstAttribute="bottom" secondItem="hQn-23-frl" secondAttribute="bottom" constant="37.5" id="J5H-Bj-R1G"/>
-                <constraint firstAttribute="trailing" secondItem="rhz-iZ-B4G" secondAttribute="trailing" id="K5q-Ta-JlQ"/>
-                <constraint firstAttribute="trailing" secondItem="hQn-23-frl" secondAttribute="trailing" constant="16" id="ozP-Cd-37L"/>
-                <constraint firstItem="rhz-iZ-B4G" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="urV-ZB-dkd"/>
+                <constraint firstAttribute="trailing" secondItem="rhz-iZ-B4G" secondAttribute="trailing" constant="2" id="6V4-3g-Ctq"/>
+                <constraint firstItem="rhz-iZ-B4G" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.15" id="7FD-ty-npj"/>
+                <constraint firstItem="q9P-1T-cFM" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="8p1-Ag-yoK"/>
+                <constraint firstItem="hQn-23-frl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="F0W-cM-CFc"/>
+                <constraint firstItem="rhz-iZ-B4G" firstAttribute="top" secondItem="hQn-23-frl" secondAttribute="bottom" constant="1" id="GgZ-dh-Ep1"/>
+                <constraint firstItem="hQn-23-frl" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.9" id="VGU-jC-oqb"/>
+                <constraint firstItem="q9P-1T-cFM" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.15" id="Wkq-b1-EBZ"/>
+                <constraint firstItem="q9P-1T-cFM" firstAttribute="top" secondItem="rhz-iZ-B4G" secondAttribute="bottom" constant="1" id="Wqd-bb-mwI"/>
+                <constraint firstItem="rhz-iZ-B4G" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.96" id="eJi-mv-Su3"/>
+                <constraint firstItem="q9P-1T-cFM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="eWn-2U-mUs"/>
+                <constraint firstItem="hQn-23-frl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="hpW-ok-Bwq"/>
+                <constraint firstItem="hQn-23-frl" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.65" id="mSG-Yf-JYR"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="125" height="176"/>
             <connections>
                 <outlet property="productImage" destination="hQn-23-frl" id="gMr-g6-HAQ"/>
                 <outlet property="productName" destination="rhz-iZ-B4G" id="L7t-f8-iF6"/>
+                <outlet property="productPrice" destination="q9P-1T-cFM" id="EDY-9r-Hne"/>
             </connections>
             <point key="canvasLocation" x="186.23188405797103" y="131.58482142857142"/>
         </collectionViewCell>
     </objects>
-    <designables>
-        <designable name="rhz-iZ-B4G">
-            <size key="intrinsicContentSize" width="38.5" height="18"/>
-        </designable>
-    </designables>
     <resources>
-        <image name="folder.fill" catalog="system" width="128" height="97"/>
+        <image name="folder.fill" catalog="system" width="128" height="95"/>
     </resources>
 </document>

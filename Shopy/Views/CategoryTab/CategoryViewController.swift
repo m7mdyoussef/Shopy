@@ -99,8 +99,8 @@ class CategoryViewController: UIViewController,ICanLogin {
         let subCategoryElementCell = UINib(nibName: Constants.subCategoryElementCell, bundle: nil)
         subCategoryCollectionView.register(subCategoryElementCell, forCellWithReuseIdentifier: Constants.subCategoryElementCell)
         
-        let productCell = UINib(nibName: Constants.productCell, bundle: nil)
-        productsCollectionView.register(productCell, forCellWithReuseIdentifier: Constants.productCell)
+        let productCell = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
+        productsCollectionView.register(productCell, forCellWithReuseIdentifier: "ProductCollectionViewCell")
         
         //     activityIndicatorView = UIActivityIndicatorView(style: .large)
         //        categoryViewModel = CategoryViewModel()
@@ -129,9 +129,10 @@ class CategoryViewController: UIViewController,ICanLogin {
             self?.subCategoryCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .top)
         }.disposed(by: db)
         
-        categoryViewModel.productsObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: Constants.productCell)){ row,item,cell in
-            let productsCell = cell as! MainProductsCollectionViewCell
-            productsCell.productObject = item
+        categoryViewModel.productsObservable.bind(to: productsCollectionView.rx.items(cellIdentifier: "ProductCollectionViewCell")){ row,item,cell in
+            let productsCell = cell as! ProductCollectionViewCell
+            productsCell.productPrice.text = item.title
+            productsCell.productImage.sd_setImage(with: URL(string: item.image.src))
             self.arrproductId.append(String(item.id))
         }.disposed(by: db)
         
@@ -261,7 +262,7 @@ extension CategoryViewController : UICollectionViewDelegateFlowLayout {
         }else if(collectionView.tag == 2){
             return CGSize(width: 126, height: 30)
         }else{
-            return CGSize(width: 130, height: 175)
+            return CGSize(width: 130, height: 220)
         }
     }
     

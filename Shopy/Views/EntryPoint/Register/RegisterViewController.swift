@@ -186,13 +186,14 @@ class RegisterViewController: UIViewController,IRounded {
             viewModel.signUp(customer:newCustomer,
                              onSuccess: { [unowned self] in
 
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                     self.viewModel.signIn(email: self.uiEmail.text!, password: self.uiPassword.text!, onSuccess: { [unowned self] in
                                         self.dismissLoadingHud(hud: hud)
                                         self.navigationController?.popViewController(animated: true)
                                     }) { [unowned self] (string) in
                                         self.dismissLoadingHud(hud: hud)
                                         self.onFaildHud(text: string)
+                                        self.tabBarController?.selectedIndex = 1
                                     }
                                 }
                                 

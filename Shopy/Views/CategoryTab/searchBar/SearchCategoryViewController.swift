@@ -111,7 +111,9 @@ class SearchCategoryViewController: UIViewController {
             let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.idProduct = String(value.element?.id ?? 0)
                  
-                self.navigationController?.pushViewController(detailsViewController, animated: true)
+             //   self.navigationController?.pushViewController(detailsViewController, animated: true)
+            detailsViewController.modalPresentationStyle = .fullScreen
+            self.present(detailsViewController, animated: true, completion: nil)
         }.disposed(by: db)
         
 //        categorySearchResultCollectionView.rx.itemSelected.subscribe{value in
