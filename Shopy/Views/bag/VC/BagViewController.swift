@@ -15,7 +15,7 @@ import ViewAnimator
 
 class BagViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
-
+    
     @IBOutlet weak var uiEmptyImage: UIImageView!
     @IBOutlet weak var checkoutButton: UIButton!
     @IBOutlet weak var bagProductsCollectionView: UICollectionView!{
@@ -43,13 +43,13 @@ class BagViewController: UIViewController {
                 selectBarButton.title = "Select".localized
                 self.navigationItem.leftBarButtonItem = nil
                 self.navigationItem.hidesBackButton = false
-             //   navigationItem.leftBarButtonItem = nil
+                //   navigationItem.leftBarButtonItem = nil
                 bagProductsCollectionView.allowsMultipleSelection = false
             case .selection:
                 selectBarButton.title = "Cancel".localized
                 navigationItem.leftBarButtonItem = deleteBarButton
                 navigationItem.leftBarButtonItem?.isEnabled = false
-//                navigationItem.leftBarButtonItem = deleteBarButton
+                //                navigationItem.leftBarButtonItem = deleteBarButton
                 bagProductsCollectionView.allowsMultipleSelection = true
             }
             
@@ -93,7 +93,7 @@ class BagViewController: UIViewController {
         alert.addAction(no)
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
-      
+        
         
     }
     
@@ -102,15 +102,15 @@ class BagViewController: UIViewController {
     
     var viewModel : BagViewModel!
     var bagProducts = [BagProduct]()
-
+    
     var bag = DisposeBag()
     var hud:JGProgressHUD!
     
     
-
+    
     var totalPrice:Double = 0
     var totalDiscount:Double = 0
-//    let hud = JGProgressHUD(style: .dark)
+    //    let hud = JGProgressHUD(style: .dark)
     
     
     override func viewDidLoad() {
@@ -119,7 +119,7 @@ class BagViewController: UIViewController {
         viewModel = BagViewModel()
         navigationItem.title = "Bag Products".localized
         let favProductCell = UINib(nibName: "BagCollectionViewCell", bundle: nil)
-      //  checkoutView.collectionCellLayout()
+        //  checkoutView.collectionCellLayout()
         bagProductsCollectionView.register(favProductCell, forCellWithReuseIdentifier: "BagCollectionViewCell")
         checkoutButton.layer.cornerRadius = 15
         checkoutButton.clipsToBounds = true
@@ -142,11 +142,6 @@ class BagViewController: UIViewController {
         }.disposed(by: bag)
         
     }
-//    
-//    override func viewDidAppear(_ animated: Bool) {
-//        let animation = AnimationType.from(direction: .left, offset: 300)
-//        UIView.animate(views: bagProductsCollectionView.visibleCells, animations: [animation],delay: 0.5,duration: 3)
-//    }
     
     func setUpNavigationBar(){
         navigationItem.rightBarButtonItem = selectBarButton
@@ -173,7 +168,7 @@ class BagViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         navigationController?.navigationBar.prefersLargeTitles = false
     }
-
+    
     func fetchBagProducts() {
         let localData = BagPersistenceManager.shared
         guard let bagProducts = localData.retrievebagProducts() else {return}
@@ -227,13 +222,11 @@ class BagViewController: UIViewController {
     func updateCount(productID : Int , count : Int ,size:String) {
         let localData = BagPersistenceManager.shared
         localData.updateCount(productID: productID, count: count,size: size)
-       // self.fetchBagProducts()
     }
     func updateTotalPrice() {
         let localData = BagPersistenceManager.shared
         guard let bagProducts = localData.retrievebagProducts() else {return}
         self.bagProducts = bagProducts
-//        var totalPrice = 0.0
         
         for bag in bagProducts {
             let count = Double(bag.count)
@@ -246,51 +239,58 @@ class BagViewController: UIViewController {
         DispatchQueue.main.async {
             self.totalPriceLabel.text = "\(self.totalPrice) $"
         }
-       
+        
     }
     
     @IBAction func uiCheckout(_ sender: Any) {
-//        viewModel.checkout(product: bagProducts)
         showPaymentOptins()
         
     }
     
-    
-    
     private func showPaymentOptins() {
-//        fetchBagProducts()
-//        updateTotalPrice()
-        let alertController = UIAlertController(title: "Payment Options".localized, message: "Choose prefered payment option".localized, preferredStyle: .actionSheet)
-        let vc = UIStoryboard.init(name: "Main".localized, bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CartInfoViewController
-        vc.modalPresentationStyle = .fullScreen
-        vc.delegate = self
         
-        let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool ? Double(round(1000 * (totalPrice * 0.10) )/1000) : 0
-        let obj = OrderObject(products: self.bagProducts, total: totalDiscount, subTotal:totalPrice , discount: discount)
-        vc.orderObject = obj
-        
-        let cardAction = UIAlertAction(title: "Pay with Card".localized, style: .default) { (action) in
-            vc.paymentMethod = .stripe
-            self.present(vc, animated: true, completion: nil)
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+            
+        }else{
+            let alertController = UIAlertController(title: "Payment Options".localized, message: "Choose prefered payment option".localized, preferredStyle: .actionSheet)
+            let vc = UIStoryboard.init(name: "Main".localized, bundle: nil).instantiateViewController(identifier: "cardInfoVC") as! CartInfoViewController
+            vc.modalPresentationStyle = .fullScreen
+            vc.delegate = self
+            
+            let discount = MyUserDefaults.getValue(forKey: .isDisconut) as! Bool ? Double(round(1000 * (totalPrice * 0.10) )/1000) : 0
+            let obj = OrderObject(products: self.bagProducts, total: totalDiscount, subTotal:totalPrice , discount: discount)
+            vc.orderObject = obj
+           
+                let cardAction = UIAlertAction(title: "Pay with Card".localized, style: .default) { (action) in
+                    vc.paymentMethod = .stripe
+                    if AppCommon.shared.checkConnectivity() == true {
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
+          
+            let cashOnDelivery = UIAlertAction(title: "Cash on delivery".localized, style: .default) { [weak self] (action) in
+                guard let self = self else {return}
+                vc.paymentMethod = .cash
+                if AppCommon.shared.checkConnectivity() == true {
+                self.present(vc, animated: true, completion: nil)
+                }
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel) { [weak self] (_) in
+                guard let self = self else {return}
+                self.fetchBagProducts()
+            }
+            
+            alertController.addAction(cardAction)
+            alertController.addAction(cancelAction)
+            alertController.addAction(cashOnDelivery)
+            
+            present(alertController, animated: true, completion: nil)
         }
         
-        let cashOnDelivery = UIAlertAction(title: "Cash on delivery".localized, style: .default) { [weak self] (action) in
-            guard let self = self else {return}
-            vc.paymentMethod = .cash
-            self.present(vc, animated: true, completion: nil)
-//            self.viewModel.checkout(product: self.bagProducts,status: .pending)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel".localized, style: .cancel) { [weak self] (_) in
-            guard let self = self else {return}
-            self.fetchBagProducts()
-        }
-        
-        alertController.addAction(cardAction)
-        alertController.addAction(cancelAction)
-        alertController.addAction(cashOnDelivery)
-        
-        present(alertController, animated: true, completion: nil)
     }
     
     private func showNotification(text: String, isError: Bool) {
@@ -307,8 +307,6 @@ class BagViewController: UIViewController {
     }
     
     private func finishPayment(token: STPToken){
-        
-//        var itemsToBuy : [PayPalItem] = []
         self.totalPrice = 0
         for item in bagProducts {
             self.totalPrice += Double(item.price!)!
@@ -319,19 +317,13 @@ class BagViewController: UIViewController {
         StripeClient.sharedClient.createAndConfirmPayment(token, amount: Int(totalPrice)) { (error) in
             
             if error == nil {
-                //self.emptyTheBasket()
-               // self.addItemsToPurchaseHistory(self.purchasedItemIds)
                 self.showNotification(text: "Payment Successful".localized, isError: false)
             } else {
                 self.showNotification(text: error!.localizedDescription, isError: true)
                 print("error gegdgjgdjjhgejgfjhghrgjdhegejgfjegdjhgejfgjdhgjf ", error!.localizedDescription)
             }
         }
-        
- 
     }
-
-
 }
 
 extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -355,9 +347,7 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
             alert.addAction(ok)
             self.present(alert, animated: true, completion: nil)
             
-            
-           
-         }
+        }
         cell.updateSavedCount = {[weak self](count , available,size) in
             if available {
                 self?.updateCount(productID: Int(self?.bagProducts[indexPath.item].id ?? 0), count: count,size: size)
@@ -366,15 +356,11 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
             else{
                 self?.presentGFAlertOnMainThread(title: "Error".localized, message: "Sorry , this product isn't available with this amount".localized, buttonTitle: "OK".localized)
             }
-        
+            
         }
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 2
-//    }
-//
+   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 2, bottom: 0, right: 2)
     }
@@ -414,8 +400,7 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
             }
         }
     }
-
-
+    
 }
 
 

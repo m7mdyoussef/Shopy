@@ -105,14 +105,12 @@ extension FavouriteProductsVC :UICollectionViewDelegate ,UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
-        vc.idProduct = String(favProducts[indexPath.row].id)
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true, completion: nil)
-//        navigationController?.pushViewController(vc, animated: true)
+        if AppCommon.shared.checkConnectivity() == true{
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsViewController") as! ProductDetailsViewController
+            vc.idProduct = String(favProducts[indexPath.row].id)
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
+        }
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 5
-//    }
-    
+
 }

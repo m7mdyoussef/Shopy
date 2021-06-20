@@ -122,7 +122,12 @@ class RegisterViewController: UIViewController,IRounded {
     }
     
     @IBAction func uiSubmit(_ sender: UIButton) {
-        
+        if AppCommon.shared.checkConnectivity() == false{
+                    let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+                    NoInternetViewController.modalPresentationStyle = .fullScreen
+                    self.present(NoInternetViewController, animated: true, completion: nil)
+                    
+        }else{
         checkEmptyTexts()
         viewModel.isPasswordMatching(pass: uiPassword.text, conf: uiConfirmation.text,
              yes: {empty in
@@ -143,6 +148,7 @@ class RegisterViewController: UIViewController,IRounded {
              }, no: {
                 onFaildHud(text: "Please confirm that you enter a valid passwords")
              })
+        }
     }
     
     func update() {

@@ -24,8 +24,6 @@ class MeVC: UIViewController {
     @IBOutlet weak var uiStack: UIStackView!
     @IBOutlet weak var uiOrderCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var uiRemoveAllOrders: UIButton!
-    
-    @IBOutlet weak var favouriteBtn: UIBarButtonItem!
     @IBOutlet weak var bagBtn: UIBarButtonItem!
     var hubBag: BadgeHub!
     var hubFavourite: BadgeHub!
@@ -50,19 +48,16 @@ class MeVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        if uiWishlistCollection.isHidden == false{
              let animation = AnimationType.from(direction: .left, offset: 300)
              UIView.animate(views: uiWishlistCollection.visibleCells, animations: [animation],delay: 0.5,duration: 2)
              
              let animation1 = AnimationType.random()
              UIView.animate(views: uiOrdersCollection.visibleCells,animations: [animation1],delay: 0.5,duration: 2)
-//         }
      }
     
     @IBAction func uiSettings(_ sender: Any) {
         let vc = storyboard?.instantiateViewController(identifier: "SettingViewController") as! SettingViewController
         navigationController?.pushViewController(vc, animated: true)
-//        present(vc, animated: true, completion: nil)
     }
     
     func setupViews()  {
@@ -262,19 +257,7 @@ class MeVC: UIViewController {
             uiRemoveAllOrders.isHidden = true
         }
     }
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//
-//        if let uiWishlistCollection = uiWishlistCollection {
-//            uiWishlistCollection.reloadData()
-//        }
-//    }
-    
 
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        uiWishlistCollection.collectionViewLayout.invalidateLayout()
-//    }
-    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         uiWishlistCollection.collectionViewLayout.invalidateLayout()
@@ -312,10 +295,6 @@ class MeVC: UIViewController {
 
 extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     
-    //    func numberOfSections(in collectionView: UICollectionView) -> Int {
-    //        1
-    //    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         switch collectionView {
@@ -330,10 +309,9 @@ extension MeVC : UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        //        return CGSize(width: CGFloat(view.layer.frame.width / 2), height: CGFloat(view.layer.frame.height * 1/4  ))
+        
         
         if collectionView == uiWishlistCollection{
-//            return CGSize(width: CGFloat(200), height: CGFloat(view.layer.frame.height * 1/3.5  ))
             return CGSize(width: CGFloat(200), height: CGFloat(uiWishlistCollection.frame.height))
         }else {
             return CGSize(width: CGFloat(150), height: CGFloat(200))

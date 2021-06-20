@@ -137,9 +137,15 @@ class CollectionViewController: UIViewController,ICanLogin {
     }
     
     @IBAction func searchOfProducts(_ sender: Any) {
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+            
+        }else{
         let searchCategoryViewController = self.storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
         searchCategoryViewController.productList = self.collectionViewModel?.ProductElements
-        self.navigationController?.pushViewController(searchCategoryViewController, animated: true)
+            self.navigationController?.pushViewController(searchCategoryViewController, animated: true)}
     }
     @IBAction func selectDiscountCode(_ sender: Any) {
         isDiscount = true

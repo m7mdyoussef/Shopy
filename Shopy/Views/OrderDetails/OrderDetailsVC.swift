@@ -64,9 +64,6 @@ class OrderDetailsVC: UIViewController {
             }
         }.disposed(by: bag)
         
-//        viewModel.orderProductsObservable?.drive(onNext: { [unowned self] (products) in
-//            uiProductsTableView.reloadData()
-//        }).disposed(by: bag)
         viewModel.fetchOrderProducts(orderLineItems: order!.lineItems)
     }
     func registerCell() {

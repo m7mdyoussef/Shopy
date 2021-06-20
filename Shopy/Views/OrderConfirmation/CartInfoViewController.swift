@@ -71,7 +71,7 @@ class CartInfoViewController: UIViewController {
         self.addressesDropDown.bottomOffset = CGPoint(x: 0, y:self.uiAddressDropDownView.plainView.bounds.height)
         
         addressesDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-          print("Selected item: \(item) at index: \(index)")
+            print("Selected item: \(item) at index: \(index)")
             let all = self.allAddresses[index]
             
             self.uiAddress.text = "Address : ".localized
@@ -79,8 +79,8 @@ class CartInfoViewController: UIViewController {
             
         }
         
-//        fetchAddresses()
-    
+        //        fetchAddresses()
+        
     }
     
     func fetchAddresses() {
@@ -115,26 +115,32 @@ class CartInfoViewController: UIViewController {
     }
     
     @IBAction func uiSubmit(_ sender: Any) {
-        
-        switch paymentMethod {
-        case .cash:
-            self.viewModel.checkout(product: self.orderObject.products,status: .pending)
-            viewModel.playSound(name: "Cash")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.dismissView()
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+            
+        }else{
+            switch paymentMethod {
+            case .cash:
+                self.viewModel.checkout(product: self.orderObject.products,status: .pending)
+                viewModel.playSound(name: "Cash")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.dismissView()
+                }
+                delegate?.clearBag()
+            case .stripe:
+                processCard()
+                self.viewModel.checkout(product: self.orderObject.products,status: .paid)
+            default:
+                self.viewModel.checkout(product: self.orderObject.products,status: .pending)
             }
-            delegate?.clearBag()
-        case .stripe:
-            processCard()
-            self.viewModel.checkout(product: self.orderObject.products,status: .paid)
-        default:
-            self.viewModel.checkout(product: self.orderObject.products,status: .pending)
         }
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
-//        delegate?.didClickCancel()
-//        dismissView()
+        //        delegate?.didClickCancel()
+        //        dismissView()
     }
     
     //MARK: - Helpers
@@ -196,12 +202,11 @@ extension CartInfoViewController : UICollectionViewDelegate,UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! OrderConfirmationCell
         cell.str = ""
         cell.uiLabel.text = String(describing: (Int(orderObject.products[indexPath.row].count)))
-//        cell.uiImage.image = UIImage(systemName: "pencil")
-        
+      
         if let image = orderObject.products[indexPath.row].image{
             cell.uiImage.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "placeholder"))
         }
-
+        
         return cell
     }
     

@@ -54,32 +54,39 @@ class Login: UIViewController,IRounded{
     }
 
     @IBAction func uiLogin(_ sender: UIButton) {
-            
-        guard let mail = uiEmail.text,
-              let pass = uiPassword.text else {
-            return
-        }
-        
-        if !(mail.isEmpty) && !(pass.isEmpty) {
-//            let hud = JGProgressHUD()
-//            hud.textLabel.text = "Loading"
-//            hud.style = .dark
-//            hud.show(in: self.view)
-            let hud = loadingHud(text: "Loading", style: .dark)
-            viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!, onSuccess: { [unowned self] in
-                self.dismissLoadingHud(hud: hud)
-                self.onSuccessHud()
-//                self.navigationController?.popViewController(animated: true)
-                self.dismiss(animated: true,completion: nil)
-            }) { [unowned self] (string) in
-//                hud.dismiss()
-                self.dismissLoadingHud(hud: hud)
-                self.onFaildHud(text: string)
-            }
-
+        if AppCommon.shared.checkConnectivity() == false{
+                    let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+                    NoInternetViewController.modalPresentationStyle = .fullScreen
+                    self.present(NoInternetViewController, animated: true, completion: nil)
+                    
         }else{
-            onFaildHud(text: "Please Fill in The blanks !!")
+            guard let mail = uiEmail.text,
+                  let pass = uiPassword.text else {
+                return
+            }
+            
+            if !(mail.isEmpty) && !(pass.isEmpty) {
+    //            let hud = JGProgressHUD()
+    //            hud.textLabel.text = "Loading"
+    //            hud.style = .dark
+    //            hud.show(in: self.view)
+                let hud = loadingHud(text: "Loading", style: .dark)
+                viewModel.signIn(email: uiEmail.text!, password: uiPassword.text!, onSuccess: { [unowned self] in
+                    self.dismissLoadingHud(hud: hud)
+                    self.onSuccessHud()
+    //                self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true,completion: nil)
+                }) { [unowned self] (string) in
+    //                hud.dismiss()
+                    self.dismissLoadingHud(hud: hud)
+                    self.onFaildHud(text: string)
+                }
+
+            }else{
+                onFaildHud(text: "Please Fill in The blanks !!")
+            }
         }
+       
     }
 }
 

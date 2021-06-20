@@ -203,9 +203,16 @@ class CategoryViewController: UIViewController,ICanLogin {
     }
     
     @IBAction func searchCategoryProducts(_ sender: Any) {
-        let searchCategoryViewController = storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
+        if AppCommon.shared.checkConnectivity() == false{
+            let NoInternetViewController = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+            NoInternetViewController.modalPresentationStyle = .fullScreen
+            self.present(NoInternetViewController, animated: true, completion: nil)
+            
+        }else{
+            let searchCategoryViewController = storyboard?.instantiateViewController(identifier: Constants.searchCategoryViewController) as! SearchCategoryViewController
         searchCategoryViewController.productList = categoryViewModel.ProductElements
         navigationController?.pushViewController(searchCategoryViewController, animated: true)
+        }
     }
     
     @IBAction func moveToBag(_ sender: Any) {
