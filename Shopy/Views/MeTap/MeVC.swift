@@ -137,8 +137,17 @@ class MeVC: UIViewController {
         }.disposed(by: bag)
         
         
-        uiWishlistCollection.rx.itemSelected.subscribe{ value in
-            print("tapped")
+//        uiWishlistCollection.rx.itemSelected.subscribe{ value in
+//
+//        }.disposed(by: bag)
+        
+        uiWishlistCollection.rx.modelSelected(FavouriteProduct.self).subscribe{[weak self] value in
+            guard let self = self else {return}
+            if let vc =  self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as? ProductDetailsViewController{
+                vc.modalPresentationStyle = .fullScreen
+                vc.idProduct = String(value.element!.id)
+                self.present(vc, animated: true, completion: nil)
+            }
         }.disposed(by: bag)
         
     }

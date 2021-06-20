@@ -2442,7 +2442,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-Po-zJ7">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="566"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tiu-5i-xXm" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tiu-5i-xXm" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                 <rect key="frame" x="8" y="8" width="398" height="0.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -2475,7 +2475,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="U9d-T1-Y5Z">
                                                 <rect key="frame" x="8" y="28.5" width="398" height="192.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Personal Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voU-ov-nQW" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Personal Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voU-ov-nQW" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                                         <rect key="frame" x="10" y="5" width="388" height="24.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
@@ -2529,9 +2529,9 @@
                                                         <rect key="frame" x="10" y="163" width="388" height="24.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZDi-Zs-AOU">
-                                                                <rect key="frame" x="149" y="1.5" width="82" height="22"/>
-                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <state key="normal" title="Choose" image="arrow.down.circle.fill" catalog="system">
+                                                                <rect key="frame" x="140" y="1.5" width="91" height="22"/>
+                                                                <color key="tintColor" systemColor="labelColor"/>
+                                                                <state key="normal" title=" Choose " image="arrow.down.circle.fill" catalog="system">
                                                                     <color key="titleColor" name="Color"/>
                                                                 </state>
                                                                 <connections>
