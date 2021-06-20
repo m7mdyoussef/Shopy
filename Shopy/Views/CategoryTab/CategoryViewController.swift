@@ -29,7 +29,6 @@ class CategoryViewController: UIViewController,ICanLogin {
     private var activityIndicatorView:UIActivityIndicatorView!
     private var categoryViewModel = CategoryViewModel()
     private var collectionViewModel = HomeViewModel()
-    private var arrproductId = [String]()
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -70,7 +69,6 @@ class CategoryViewController: UIViewController,ICanLogin {
                 
             }
             
-            arrproductId.removeAll()
             subCategElement = "T-Shirts"
             mainCategElement = "Men"
             categoryViewModel.fetchData()
@@ -133,7 +131,7 @@ class CategoryViewController: UIViewController,ICanLogin {
             let productsCell = cell as! ProductCollectionViewCell
             productsCell.productPrice.text = item.title
             productsCell.productImage.sd_setImage(with: URL(string: item.image.src))
-            self.arrproductId.append(String(item.id))
+
         }.disposed(by: db)
         
         
@@ -143,29 +141,39 @@ class CategoryViewController: UIViewController,ICanLogin {
             self?.mainCategElement = value
             self?.subCategElement = "T-Shirts"
             self?.categoryViewModel.fetchFilterdProducts(mainCategoryElement: self!.mainCategElement, subCategoryElement: self!.subCategElement)
-            self?.arrproductId.removeAll()
         }).disposed(by: db)
         
         subCategoryCollectionView.rx.modelSelected(String.self).subscribe(onNext: {[weak self] (value) in
             self?.subCategElement = value
             self?.categoryViewModel.fetchFilterdProducts(mainCategoryElement: self!.mainCategElement, subCategoryElement: self!.subCategElement)
-            self?.arrproductId.removeAll()
         }).disposed(by: db)
         
         
-        
-        productsCollectionView.rx.itemSelected.subscribe{value in
-            // print(value.element?.item)
+        productsCollectionView.rx.modelSelected(ProductElement.self).subscribe{(value) in
             if AppCommon.shared.checkConnectivity() == true{
                 // self.controlViews(flag: true)
-                self.collectionViewModel.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+                self.collectionViewModel.getProductElement(idProduct: String(value.element?.id ?? 0))
                 let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.modalPresentationStyle = .fullScreen
-                detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
+                detailsViewController.idProduct = String(value.element?.id ?? 0)
 //                self.navigationController?.pushViewController(detailsViewController, animated: true)
                 self.present(detailsViewController, animated: true, completion: nil)
             }
+            
         }.disposed(by: db)
+        
+//        productsCollectionView.rx.itemSelected.subscribe{value in
+//            // print(value.element?.item)
+//            if AppCommon.shared.checkConnectivity() == true{
+//                // self.controlViews(flag: true)
+//                self.collectionViewModel.getProductElement(idProduct: String(self.arrproductId[value.element?.item ?? 0]))
+//                let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
+//                detailsViewController.modalPresentationStyle = .fullScreen
+//                detailsViewController.idProduct = String(self.arrproductId[value.element?.item ?? 0])
+////                self.navigationController?.pushViewController(detailsViewController, animated: true)
+//                self.present(detailsViewController, animated: true, completion: nil)
+//            }
+//        }.disposed(by: db)
         
         
         //        productsCollectionView.rx.itemSelected.subscribe(onNext: {[weak self] (indexpath) in
