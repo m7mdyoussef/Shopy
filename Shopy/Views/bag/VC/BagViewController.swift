@@ -167,6 +167,9 @@ class BagViewController: UIViewController {
         fetchBagProducts()
         tabBarController?.tabBar.isHidden = true
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        let backButton = UIBarButtonItem(title: "Back".localized, style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+                self.navigationItem.backBarButtonItem = backButton
     }
     
     func fetchBagProducts() {

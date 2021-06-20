@@ -11,7 +11,7 @@
 "Logout" = "تسجيل خروج";
 "Login" = "تسجيل دخول";
 " Login" = " تسجيل دخول ";
-" Logout" = "تسجيل خروج ";
+" Logout" = " تسجيل خروج ";
 
 "Settings" = "الاعدادات";
 "OK" = "ًحسنا";
@@ -69,6 +69,7 @@
 "An Error Occured, Try Again later ..." = "هناك خطأ حدث، حاول وقت آخر...";
 "Created At:" = "تم الطلب في :";
 "back" = "رجوع";
+"Back" = "رجوع";
 "Select" ="اختر";
 "Address : " = "العنوان : ";
 "Cash on Deliver" = "دفع عند التوصيل";

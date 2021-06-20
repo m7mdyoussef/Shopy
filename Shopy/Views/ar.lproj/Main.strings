@@ -185,18 +185,18 @@
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "zd6-fC-ru2"; */
 "zd6-fC-ru2.title" = "منتج";
 
-"hrf-75-FIl.normalTitle" = "تغيير إلي العربية";
+"hrf-75-FIl.normalTitle" = " تغيير إلي العربية ";
 
-"dUQ-hN-eYD.normalTitle" = "تعديل البيانات الشخصية";
-"FTC-hV-wQe.normalTitle" = "الوضع الليلي";
+"dUQ-hN-eYD.normalTitle" = " تعديل البيانات الشخصية ";
+"FTC-hV-wQe.normalTitle" = " الوضع الليلي ";
 "DZq-UH-PfH.normalTitle" = " تسجيل الخروج ";
 
 "WN1-lD-w8L.normalTitle" = "اضافة الى الحقيبة";
 "Rwn-rH-XCd.text" = "الوصف";
 "GK1-kB-gcq.text" = "المقاسات";
 
-"fBk-1O-Bp6.normalTitle" = "عنَا";
-"yFx-JW-X6O.text" = "عنَا";
+"fBk-1O-Bp6.normalTitle" = " عنَا ";
+"yFx-JW-X6O.text" = " عنَا ";
 "Q5H-Wr-7td.text" = "بشسيبشسيبسيب";
 
 "Ywq-aH-ybR.normalTitle" = "اضافة عنوان";

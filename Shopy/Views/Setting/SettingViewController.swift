@@ -43,7 +43,7 @@ class SettingViewController: UIViewController {
         if viewModel.isEnglish(){
             uiLanguage.setTitle(" Change to Arabic ".localized, for: .normal)
         }else{
-            uiLanguage.setTitle(" التغيير الي الانجليزية".localized, for: .normal)
+            uiLanguage.setTitle(" التغيير الي الانجليزية ".localized, for: .normal)
         }
         
         
