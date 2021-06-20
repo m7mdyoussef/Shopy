@@ -102,6 +102,13 @@ class SettingViewController: UIViewController {
     }
     
     
+    @IBAction func aboutUS(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "AboutViewController") as! AboutViewController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
+    
+    
     @IBAction func logout(_ sender: Any) {
         if status == "Login".localized{
             let vc = self.storyboard?.instantiateViewController(identifier: "EntryPointVC") as! EntryPointVC
