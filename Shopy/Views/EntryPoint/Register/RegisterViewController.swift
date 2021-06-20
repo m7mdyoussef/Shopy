@@ -152,10 +152,13 @@ class RegisterViewController: UIViewController,IRounded {
                 newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: [address]))
 //                viewModel.update(customer:newCustomer,id:customerID)
             }else{
-                newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: []))
-//                viewModel.update(customer:newCustomer,id:customerID)
+                let password = MyUserDefaults.getValue(forKey: .password) as! String
+                if uiPassword.text!.isEmpty{
+                    newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: password, verifiedEmail: false, addresses: []))
+                }else{
+                    newCustomer = Customer(customer: CustomerClass(firstName: uiFirstName.text!, lastName: uiLastName.text!, email: uiEmail.text!, phone: uiPhone.text!, password: uiPassword.text!, verifiedEmail: false, addresses: []))
+                }
             }
-            
             
             viewModel.update(customer: newCustomer, id: customerID, onSuccess: {
                      self.showNotifications(text: "Updated Successfully", isError: false)

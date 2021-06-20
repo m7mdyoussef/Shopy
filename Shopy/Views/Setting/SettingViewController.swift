@@ -129,6 +129,5 @@ class SettingViewController: UIViewController {
             self.present(logout, animated: true, completion: nil)
         }
         
-        
     }
 }

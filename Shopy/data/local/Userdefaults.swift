@@ -27,6 +27,7 @@ enum Keys:String {
     case title = "address"
     case city = "city"
     case country = "country"
+    case password = "password"
 }
 class MyUserDefaults {
     private static var shared = UserDefaults.standard

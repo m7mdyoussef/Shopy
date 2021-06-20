@@ -203,13 +203,11 @@ class MeVC: UIViewController {
                 
                 viewModel.fetchFavProducts()
                 fetchOrders()
+            }else{
+//                self.uiWishlistCollection.reloadData()
+                viewModel.fetchFavProducts()
+                fetchOrders()
             }
-//            else{
-//                bagBtn.setBadge(text: String("0"))
-//                let vc = storyboard?.instantiateViewController(identifier: Constants.entryPoint) as! EntryPointVC
-//                vc.modalPresentationStyle = .fullScreen
-//                present(vc, animated: true, completion: nil)
-//            }
         }
     }
     

@@ -107,9 +107,9 @@ class EntryViewModel {
         }
         
     }
-        
+    
     func signIn(email:String,password:String,onSuccess:@escaping ()->(),onFailure: @escaping(String)->Void) {
- 
+        
         getAllUsers(onFinish:{ [unowned self] (allCustomers) in
             
             for i in allCustomers.customers{
@@ -144,12 +144,17 @@ class EntryViewModel {
         MyUserDefaults.add(val: customer.email!, key: .email)
         MyUserDefaults.add(val: customer.firstName, key: .username)
         MyUserDefaults.add(val: customer.id, key: .id)
-//        MyUserDefaults.add(val: true, key: .isDisconut)
+        //        MyUserDefaults.add(val: true, key: .isDisconut)
         
-        MyUserDefaults.add(val: customer.addresses[0].title, key: .title)
-        MyUserDefaults.add(val: customer.addresses[0].city, key: .city)
-        MyUserDefaults.add(val: customer.addresses[0].country, key: .country)
-//        guard let phone = customer.phone else {return}
+        if !customer.addresses.isEmpty{
+            MyUserDefaults.add(val: customer.addresses[0].title, key: .title)
+            MyUserDefaults.add(val: customer.addresses[0].city, key: .city)
+            MyUserDefaults.add(val: customer.addresses[0].country, key: .country)
+        }
+        if customer.password != ""{
+            MyUserDefaults.add(val: customer.password, key: .password)
+        }
+        //        guard let phone = customer.phone else {return}
         MyUserDefaults.add(val: customer.phone!, key: .phone)
         
     }
@@ -167,10 +172,11 @@ class EntryViewModel {
     
     func update(customer:Customer,id:Int,onSuccess:@escaping ()->Void,onFailure:@escaping (String)->Void) {
         
+        
         remote.updateCustomer(customer: customer, id: id, onCompletion: { (data) in
-                        if let decodedResponse =  try? JSONDecoder().decode(RegisterResponse.self, from: data){
+            if let decodedResponse =  try? JSONDecoder().decode(RegisterResponse.self, from: data){
                 print(String(decoding: data, as: UTF8.self))
-               
+                
                 if let phone = decodedResponse.errors?.phone{
                     let err = "phone \(phone[0])"
                     DispatchQueue.main.async {
@@ -195,6 +201,11 @@ class EntryViewModel {
                 }
                 
                 else{
+                    let customer = customer.customer
+                    
+                    let myCustomer = CustomerPostOrder(id: id, firstName: customer.firstName, lastName: customer.lastName, email: customer.email, phone: customer.phone, password: customer.password, verifiedEmail: true, addresses: [])
+                    
+                    self.saveCredentialsInUserDefaults(customer: myCustomer)
                     DispatchQueue.main.async {
                         onSuccess()
                     }
@@ -205,15 +216,15 @@ class EntryViewModel {
                 }
                 
             }
-
+            
         }) { (err) in
-             DispatchQueue.main.async {
-                           onFailure("An Error Occured")
-                       }
+            DispatchQueue.main.async {
+                onFailure("An Error Occured")
+            }
         }
         
-     
-
+        
+        
     }
     
 }
