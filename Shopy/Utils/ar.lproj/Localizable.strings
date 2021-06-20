@@ -68,7 +68,11 @@
 "Please Wait" = "انتظر من فضلك.";
 "An Error Occured, Try Again later ..." = "هناك خطأ حدث، حاول وقت آخر...";
 "Created At:" = "تم الطلب في :";
-"back" = "back";
+"back" = "رجوع";
+"Select" ="اختر";
+"Address : " = "العنوان : ";
+"Cash on Deliver" = "دفع عند التوصيل";
+"Visa" = "كارت الدفع الاليكتروني";
 
 
 //uiLanguage.setTitle(" Change to Arabic ".localized, for: .normal)

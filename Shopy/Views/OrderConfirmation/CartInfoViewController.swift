@@ -54,7 +54,7 @@ class CartInfoViewController: UIViewController {
         
         uiStackTextField.addArrangedSubview(paymentCardTextField)
         paymentCardTextField.delegate = self
-        uiPaymentlabel.text! += paymentMethod.rawValue
+        uiPaymentlabel.text! += paymentMethod.rawValue.localized
         uiName.text! += MyUserDefaults.getValue(forKey: .username) as! String
         
         uiAddress.text! += "\(MyUserDefaults.getValue(forKey:.title) as! String), \(MyUserDefaults.getValue(forKey:.city) as! String), \(MyUserDefaults.getValue(forKey:.country) as! String)"
@@ -74,7 +74,7 @@ class CartInfoViewController: UIViewController {
           print("Selected item: \(item) at index: \(index)")
             let all = self.allAddresses[index]
             
-            self.uiAddress.text = "Address : "
+            self.uiAddress.text = "Address : ".localized
             self.uiAddress.text! += "\(String(describing: all.title!)), \(String(describing: all.city!)), \(String(describing: all.country!))"
             
         }

@@ -24,19 +24,19 @@ class AboutViewController: UIViewController {
     }
     
     @IBAction func aminGithub(_ sender: Any) {
-        viewContact(url: "")
+        viewContact(url: "github.com/Amin-0-1")
     }
     
     @IBAction func elattarLinkedIn(_ sender: Any) {
-        viewContact(url: "")
+        viewContact(url: "www.linkedin.com/in/mahmoudelattar427/")
     }
     
     @IBAction func elattarGithub(_ sender: Any) {
-        viewContact(url: "")
+        viewContact(url: "github.com/El-Attar1234")
     }
     
     @IBAction func mohamedLinkedIn(_ sender: Any) {
-        viewContact(url: "www.linkedin.com/mwlite/in/youssef0111")
+        viewContact(url: "www.linkedin.com/in/youssef0111/")
     }
     
     @IBAction func mohamedGithub(_ sender: Any) {

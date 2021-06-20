@@ -42,7 +42,7 @@
 "ILG-GZ-sQd.text" = "الرقم السري غير متطابق";
 
 /* Class = "UILabel"; text = "OOPS!"; ObjectID = "Ifb-34-miL"; */
-"Ifb-34-miL.text" = "OOPS!";
+"Ifb-34-miL.text" = "اوبس";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "J3t-68-hBr"; */
 "J3t-68-hBr.normalTitle" = "حفظ";
@@ -51,7 +51,7 @@
 "JOt-ht-q1q.normalTitle" = "تأكيد";
 
 /* Class = "UITextField"; placeholder = "City"; ObjectID = "Jhb-ST-4EM"; */
-"Jhb-ST-4EM.placeholder" = "City";
+"Jhb-ST-4EM.placeholder" = "مدينة";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "KsQ-hv-CxE"; */
 "KsQ-hv-CxE.title" = "Item";
@@ -177,7 +177,7 @@
 "vlq-43-5Z3.normalTitle" = "انهاء";
 
 /* Class = "UILabel"; text = "Shopy"; ObjectID = "yaI-41-4Lu"; */
-"yaI-41-4Lu.text" = "Shopy";
+"yaI-41-4Lu.text" = "محلي";
 
 /* Class = "UITabBarItem"; title = "Me"; ObjectID = "yc5-Sb-4kN"; */
 "yc5-Sb-4kN.title" = "صفحتي";
@@ -194,3 +194,20 @@
 "WN1-lD-w8L.normalTitle" = "اضافة الى الحقيبة";
 "Rwn-rH-XCd.text" = "الوصف";
 "GK1-kB-gcq.text" = "المقاسات";
+
+"fBk-1O-Bp6.normalTitle" = "عنَا";
+"yFx-JW-X6O.text" = "عنَا";
+"Q5H-Wr-7td.text" = "بشسيبشسيبسيب";
+
+"Ywq-aH-ybR.normalTitle" = "اضافة عنوان";
+
+"OpR-n5-4rZ.normalTitle" = "تأكيد";
+"S6L-y8-G9z.text" = "الاجمالي";
+"Bux-VG-Hzz.text" = "قبل الخصم";
+"MnP-ca-VF0.text" = "الحقيبة";
+"ZDi-Zs-AOU.normalTitle" = "اختر";
+"voU-ov-nQW.text" = "معلومات شخصية";
+"uge-uY-4cU.text" = "الاسم : ";
+"Fp0-Rw-gAP.text" = "الهاتف : ";
+"363-IH-XiL.text" = "الخصم";
+"Y2T-JY-JPH.text" = "العنوان : ";

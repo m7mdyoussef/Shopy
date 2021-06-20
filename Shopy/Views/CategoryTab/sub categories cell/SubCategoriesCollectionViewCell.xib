@@ -19,22 +19,26 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a6m-KB-bMf">
-                        <rect key="frame" x="8" y="0.0" width="92" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="40"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accessories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-kx-E6B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accessories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-kx-E6B" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                 <rect key="frame" x="8" y="0.0" width="84" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="VoE-kx-E6B" secondAttribute="bottom" id="OdB-tR-551"/>
-                            <constraint firstAttribute="width" constant="92" id="VD6-IH-DWi"/>
-                            <constraint firstItem="VoE-kx-E6B" firstAttribute="leading" secondItem="a6m-KB-bMf" secondAttribute="leading" constant="8" id="ZHo-Vc-XsJ"/>
-                            <constraint firstAttribute="trailing" secondItem="VoE-kx-E6B" secondAttribute="trailing" id="f8t-al-k3c"/>
+                            <constraint firstAttribute="trailing" secondItem="VoE-kx-E6B" secondAttribute="trailing" constant="8" id="f8t-al-k3c"/>
                             <constraint firstItem="VoE-kx-E6B" firstAttribute="top" secondItem="a6m-KB-bMf" secondAttribute="top" id="hjb-2o-x7E"/>
+                            <constraint firstItem="VoE-kx-E6B" firstAttribute="leading" secondItem="a6m-KB-bMf" secondAttribute="leading" constant="8" id="ovO-5E-WQ0"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -42,8 +46,8 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="a6m-KB-bMf" secondAttribute="trailing" id="DJ2-Uq-Cps"/>
+                <constraint firstItem="a6m-KB-bMf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SIA-WE-omZ"/>
                 <constraint firstAttribute="bottom" secondItem="a6m-KB-bMf" secondAttribute="bottom" id="lxb-mC-kgM"/>
-                <constraint firstItem="a6m-KB-bMf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="t9X-pi-7pR"/>
                 <constraint firstItem="a6m-KB-bMf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wBi-uq-aWr"/>
             </constraints>
             <size key="customSize" width="54" height="34"/>
@@ -54,6 +58,11 @@
             <point key="canvasLocation" x="160.86956521739131" y="92.410714285714278"/>
         </collectionViewCell>
     </objects>
+    <designables>
+        <designable name="VoE-kx-E6B">
+            <size key="intrinsicContentSize" width="92" height="20.5"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

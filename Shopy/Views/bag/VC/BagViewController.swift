@@ -40,13 +40,13 @@ class BagViewController: UIViewController {
                     }
                 }
                 selectedIndexPathDictionaries.removeAll()
-                selectBarButton.title = "Select"
+                selectBarButton.title = "Select".localized
                 self.navigationItem.leftBarButtonItem = nil
                 self.navigationItem.hidesBackButton = false
              //   navigationItem.leftBarButtonItem = nil
                 bagProductsCollectionView.allowsMultipleSelection = false
             case .selection:
-                selectBarButton.title = "Cancel"
+                selectBarButton.title = "Cancel".localized
                 navigationItem.leftBarButtonItem = deleteBarButton
                 navigationItem.leftBarButtonItem?.isEnabled = false
 //                navigationItem.leftBarButtonItem = deleteBarButton
@@ -57,7 +57,7 @@ class BagViewController: UIViewController {
     }
     
     lazy var selectBarButton : UIBarButtonItem={
-        let item = UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(selectionButtonAction))
+        let item = UIBarButtonItem(title: "Select".localized, style: .plain, target: self, action: #selector(selectionButtonAction))
         return item
     }()
     
