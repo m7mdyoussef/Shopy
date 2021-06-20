@@ -511,9 +511,9 @@
 		9E182D9D26503E8300069E6E /* ShopyTests */ = {
 			isa = PBXGroup;
 			children = (
-				27C6E25A267BEBA600F342A5 /* MeTapViewModelTest.swift */,
 				9E55E736267BF9FB0084AECB /* Mocks */,
 				9E182DA026503E8300069E6E /* Info.plist */,
+				27C6E25A267BEBA600F342A5 /* MeTapViewModelTest.swift */,
 				9E5B1B40267BE6D900FC0CE7 /* CategoryViewModelTest.swift */,
 				CFC7FCB8267D9BD300CD4240 /* HomeViewModel.swift */,
 			);
