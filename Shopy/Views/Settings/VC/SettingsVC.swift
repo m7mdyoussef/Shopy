@@ -71,7 +71,7 @@ extension SettingsVC : UITableViewDelegate, UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sheetViewController = UIAlertController(title: "DDDD", message: "dddddd", preferredStyle: .alert)
+        _ = UIAlertController(title: "DDDD", message: "dddddd", preferredStyle: .alert)
         
         // Present it w/o any adjustments so it uses the default sheet presentation.
         //               present(sheetViewController, animated: true, completion: nil)

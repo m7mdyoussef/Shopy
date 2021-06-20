@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
             MyUserDefaults.add(val: false, key: .isFirstTime)
         }
         
-        if let status = MyUserDefaults.getValue(forKey: .theme) {
+        if MyUserDefaults.getValue(forKey: .theme) != nil {
 
         }else{
             MyUserDefaults.add(val: Themes.light.rawValue, key: .theme)

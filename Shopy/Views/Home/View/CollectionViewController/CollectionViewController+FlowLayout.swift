@@ -24,7 +24,7 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func registerProductCell(){
-        var productCell = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
+        let productCell = UINib(nibName: "ProductCollectionViewCell", bundle: nil)
         productsCollectionView.register(productCell, forCellWithReuseIdentifier: "ProductCollectionViewCell")
     }
     

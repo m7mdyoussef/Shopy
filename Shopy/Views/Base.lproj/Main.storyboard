@@ -123,7 +123,7 @@
                                     <action selector="moveToBag:" destination="xuX-Yf-DFG" id="di4-Tw-vIK"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="heart.fill" catalog="system" style="plain" id="kYc-EO-3e8">
+                            <barButtonItem image="heart.fill" catalog="system" id="kYc-EO-3e8">
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="uiShowFavourite:" destination="xuX-Yf-DFG" id="boC-xX-0Dz"/>
@@ -392,7 +392,7 @@
                                                 <rect key="frame" x="39.5" y="82" width="319" height="50"/>
                                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="319" id="JS3-Mx-Vod"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="319" id="JS3-Mx-Vod"/>
                                                     <constraint firstAttribute="height" constant="50" id="JqX-dX-hdE"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -400,7 +400,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11A-WG-1ds">
-                                                <rect key="frame" x="39" y="82" width="320" height="50"/>
+                                                <rect key="frame" x="184" y="82" width="30" height="50"/>
                                                 <connections>
                                                     <action selector="selectDiscountCode:" destination="pps-Ya-Y6X" eventType="touchUpInside" id="mpB-2q-VVK"/>
                                                 </connections>
@@ -416,11 +416,9 @@
                                             <constraint firstItem="K0y-Ji-7hR" firstAttribute="leading" secondItem="tSg-3y-tGa" secondAttribute="leading" id="bHg-1j-VsD"/>
                                             <constraint firstItem="K0y-Ji-7hR" firstAttribute="top" secondItem="tSg-3y-tGa" secondAttribute="top" id="dSf-NN-Zci"/>
                                             <constraint firstItem="11A-WG-1ds" firstAttribute="centerY" secondItem="W4L-VT-Qsd" secondAttribute="centerY" id="h6a-kb-OZt"/>
-                                            <constraint firstItem="11A-WG-1ds" firstAttribute="width" secondItem="W4L-VT-Qsd" secondAttribute="width" multiplier="1.00313" id="hF9-rg-uAO"/>
                                             <constraint firstItem="W4L-VT-Qsd" firstAttribute="centerY" secondItem="tSg-3y-tGa" secondAttribute="centerY" id="kDf-JT-H32"/>
                                             <constraint firstItem="11A-WG-1ds" firstAttribute="centerX" secondItem="W4L-VT-Qsd" secondAttribute="centerX" id="oaD-sZ-tjp"/>
                                             <constraint firstAttribute="bottom" secondItem="K0y-Ji-7hR" secondAttribute="bottom" id="pam-Pj-08d"/>
-                                            <constraint firstItem="W4L-VT-Qsd" firstAttribute="baseline" secondItem="11A-WG-1ds" secondAttribute="firstBaseline" constant="24.5" symbolType="layoutAnchor" id="vmn-16-Ml2"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowlBColor">
@@ -981,6 +979,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="pOT-hv-L1d" secondAttribute="trailing" constant="-23" id="0R5-s4-d4A"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yaI-41-4Lu" secondAttribute="trailing" constant="20" symbolic="YES" id="MXP-ek-LK0"/>
                                     <constraint firstAttribute="trailing" secondItem="b8S-XO-uqI" secondAttribute="trailing" constant="20" id="MhK-TD-InS"/>
                                     <constraint firstItem="b8S-XO-uqI" firstAttribute="top" secondItem="qTC-IV-iBv" secondAttribute="top" constant="35" id="NYe-RF-h9D"/>
                                     <constraint firstItem="yaI-41-4Lu" firstAttribute="leading" secondItem="qTC-IV-iBv" secondAttribute="leading" constant="155" id="NqJ-kI-rHO"/>
@@ -1079,7 +1078,7 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OOPS!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifb-34-miL">
                                                                 <rect key="frame" x="132" y="10" width="150" height="30"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="150" id="dwr-Iz-gvJ"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="dwr-Iz-gvJ"/>
                                                                     <constraint firstAttribute="height" constant="30" id="w7c-BO-TEG"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="25"/>
@@ -1109,7 +1108,6 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="7bd-p1-h8w" firstAttribute="centerX" secondItem="ow7-sJ-Ekq" secondAttribute="centerX" id="F26-0N-aeO"/>
                                                             <constraint firstAttribute="trailing" secondItem="7bd-p1-h8w" secondAttribute="trailing" constant="20" id="Ncg-V4-nJD"/>
                                                             <constraint firstAttribute="height" constant="40" id="e69-WV-T3X"/>
                                                             <constraint firstItem="7bd-p1-h8w" firstAttribute="leading" secondItem="ow7-sJ-Ekq" secondAttribute="leading" constant="20" id="i65-Rl-VZ8"/>
@@ -1123,7 +1121,7 @@
                                                                 <rect key="frame" x="57" y="0.0" width="300" height="60"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="300" id="UQm-g9-lsi"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="UQm-g9-lsi"/>
                                                                     <constraint firstAttribute="height" constant="60" id="XpR-Do-huX"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
@@ -1535,10 +1533,10 @@
             </objects>
             <point key="canvasLocation" x="-1536" y="558"/>
         </scene>
-        <!--Pay Pal View Controller-->
+        <!--View Controller-->
         <scene sceneID="v7i-N9-vse">
             <objects>
-                <viewController id="5fp-RI-bTg" customClass="PayPalViewController" customModule="Shopy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5fp-RI-bTg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aps-q9-TJn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1548,7 +1546,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="94" id="0fI-O9-4fK"/>
-                                    <constraint firstAttribute="width" constant="257" id="4MS-mQ-vdv"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="257" id="4MS-mQ-vdv"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="257" id="OBh-Hq-NwB"/>
                                     <constraint firstAttribute="height" constant="94" id="p0a-Jf-R6f"/>
                                 </constraints>
@@ -2114,7 +2112,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ubZ-JV-C1s">
                         <rightBarButtonItems>
-                            <barButtonItem image="gear" catalog="system" style="plain" id="Ktv-QS-nWm">
+                            <barButtonItem image="gear" catalog="system" style="done" id="Ktv-QS-nWm">
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <connections>
                                     <action selector="uiSettings:" destination="Wfi-LV-jbC" id="dle-m6-d6B"/>

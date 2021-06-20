@@ -60,13 +60,13 @@ class ProductDetailsViewController: UIViewController, ICanLogin{
     func setUpSizeCollection(){
         arrOption.asObservable().bind(to: sizeCollectionView.rx.items(cellIdentifier: "SizesCollectionViewCell")){row, items, cell in
             (cell as? SizesCollectionViewCell)?.productSize.text = String(items)
-        }
+        }.disposed(by: disposeBag)
         
         sizeCollectionView.rx.modelSelected(String.self).subscribe{ [weak self] value in
             guard let self = self else {return}
             print(value.element!)
             self.sizeProduct = value.element ?? ""
-        }
+        }.disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -180,6 +180,6 @@ extension ProductDetailsViewController: ImageSlideshowDelegate {
     @objc func didTap() {
         let fullScreenController = slideShow.presentFullScreenController(from: self)
         
-        fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: .white, color: nil)
+        fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: UIActivityIndicatorView.Style.medium, color: nil)
     }
 }

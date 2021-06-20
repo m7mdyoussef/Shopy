@@ -107,7 +107,7 @@ class SearchCategoryViewController: UIViewController {
         
         categorySearchResultCollectionView.rx.modelSelected(DetailedProducts.self).subscribe{[weak self]value in
             guard let self = self else {return}
-            print(value.element?.id)
+//            print(value.element?.id)
             let detailsViewController = self.storyboard?.instantiateViewController(identifier: "ProductDetailsViewController") as! ProductDetailsViewController
                 detailsViewController.idProduct = String(value.element?.id ?? 0)
                  

@@ -51,9 +51,9 @@ class BagPersistenceManager{
         for index in arrSizes!{
             print(index)
             if index == size{
-                isFound == true
+                isFound = true
             } else {
-                isFound == false
+                isFound = false
             }
         }
         if (fav.value(forKey: "id") as! Int64 == Int64(productID) && isFound == true){return true }
