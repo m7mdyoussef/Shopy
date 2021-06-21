@@ -74,7 +74,7 @@
 "Address : " = "العنوان : ";
 "Cash on Deliver" = "دفع عند التوصيل";
 "Visa" = "كارت الدفع الاليكتروني";
-
+"Whish List" = "المفضلة";
 
 //uiLanguage.setTitle(" Change to Arabic ".localized, for: .normal)
 //}else{

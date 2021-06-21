@@ -22,7 +22,7 @@ class FavouriteProductsVC: UIViewController {
     var favProducts = [FavouriteProduct]()
     override func viewDidLoad() {
         super.viewDidLoad()
-         navigationItem.title = "Whish List"
+        navigationItem.title = "Whish List".localized
         let favProductCell = UINib(nibName: "FavouriteproductCVC", bundle: nil)
         favouriteProductsCollectionView.register(favProductCell, forCellWithReuseIdentifier: "FavouriteproductCVC")
         
