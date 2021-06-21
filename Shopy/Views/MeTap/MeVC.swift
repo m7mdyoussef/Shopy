@@ -209,6 +209,7 @@ class MeVC: UIViewController {
                 fetchOrders()
             }else{
 //                self.uiWishlistCollection.reloadData()
+                bagBtn.setBadge(text: String("0"))
                 viewModel.fetchFavProducts()
                 fetchOrders()
             }
