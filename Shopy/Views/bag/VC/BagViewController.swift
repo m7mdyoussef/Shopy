@@ -363,6 +363,10 @@ extension BagViewController :UICollectionViewDelegate ,UICollectionViewDataSourc
         }
         return cell
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        bagProductsCollectionView.collectionViewLayout.invalidateLayout()
+    }
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 2, bottom: 0, right: 2)
